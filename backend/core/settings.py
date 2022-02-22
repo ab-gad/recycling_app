@@ -41,6 +41,8 @@ INSTALLED_APPS = [
 
     #make us able to establish connection (transfere data) between different origin websites
     "corsheaders",
+
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +135,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]
+
+# here we tell django to use our custome User Model instead of the default one
+AUTH_USER_MODEL = 'user.User'
