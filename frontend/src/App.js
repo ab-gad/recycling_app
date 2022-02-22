@@ -9,6 +9,7 @@ import Testimonial from "./Components/pages/Testimonial/Testimonial";
 import Login from "./Components/pages/Registeration/login";
 import Register from "./Components/pages/Registeration/register";
 import Navbar from "./Components/NavBar";
+import Chat from "./Components/pages/ChatBot/Chat";
 import ScrollButton from "./Components/ScrollButton";
 import ThemesContext , {themes} from  './Components/themes';
 import {BsFillMoonStarsFill , BsFillSunFill} from  'react-icons/bs';
@@ -97,6 +98,7 @@ const App = () => {
         </Langcontext.Provider>
       </Router>
       <ScrollButton />
+      <Chat />
     </div>
   );
 };
