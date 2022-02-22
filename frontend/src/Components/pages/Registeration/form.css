@@ -1,0 +1,85 @@
+:root{
+    --mycolor:#4CBB17;
+}
+@import url('http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin');
+#wholepage{
+    width:100% vh;
+    height:100% vh;
+    background-size: cover;
+    background-image:url(./assets/bg.jpeg);
+}
+#wholepage .container{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(0 0 0 / 79%);
+    font-family: Ubuntu, "times new roman", times, roman, serif;
+    padding-top: 20px;
+}
+#wholepage .loginform{
+    width: 300px;
+    height: 480px;
+    margin: 20px;
+    border-radius: 10px;
+    border: 2px solid var(--mycolor);
+    box-shadow:5px 5px  var(--mycolor);
+}
+#wholepage .registerform{
+    width: 300px;
+    height: 600px;
+    margin: 20px;
+    border-radius: 10px;
+    border: 2px solid var(--mycolor);
+    box-shadow:5px 5px  var(--mycolor);
+
+}
+#wholepage form{
+    padding-top: 10px;
+    font-size: 14px;
+    margin-top: 10px;
+
+}
+#wholepage input[type="email"],
+#wholepage input[type="password"],
+#wholepage input[type="text"]{
+    border-radius: 10px;
+    border: 2px solid var(--mycolor);
+    
+}
+#wholepage input[type="email"]:focus,
+#wholepage input[type="password"]:focus,
+#wholepage input[type="text"]:focus
+{
+    outline: none;
+    border: none;
+}
+#wholepage .form-group{
+    height: 60px;
+}
+#wholepage .card-title{
+    font-weight: 900;
+    padding-top: 20px;
+}
+#wholepage .checkbox label{
+    padding-left: 10px;
+}
+#wholepage .btn{
+    background: var(--mycolor)  !important;
+}
+#wholepage .loginform button{
+    margin-top: -50px;
+}
+#wholepage .registermsg{
+    text-align: center;
+    padding-top: 10px;
+}
+#wholepage .registermsg a{
+    color: var(--mycolor);;
+    font-weight: 1000;
+    
+}
+#wholepage small{
+    color: red;
+    font-weight: 500;
+}

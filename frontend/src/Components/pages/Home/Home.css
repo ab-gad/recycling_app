@@ -1,0 +1,397 @@
+/* --------------------------------------------- puplic -------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.oleo {
+  font-family: "Oleo Script Swash Caps", cursive;
+}
+
+/* scroll back ground */
+::-webkit-scrollbar {
+  display: none;
+}
+
+.page_title {
+  width: 100%;
+  height: 12rem;
+  background-image: url(../About/t.jpg);
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  left: 0;
+  z-index: 1;
+}
+
+.page_title::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: -1;
+}
+.page_title_info {
+  text-align: center;
+  color: azure;
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1px;
+}
+.page_title_info h2 {
+  font-size: 50px;
+}
+.page_title_info p {
+  color: rgba(240, 255, 255, 0.541);
+}
+
+.App {
+  text-align: center;
+}
+
+.size {
+  text-align: center;
+  margin: auto;
+  width: 60%;
+  font-family: Ubuntu, "times new roman", times, roman, serif;
+}
+
+.green {
+  font-family: "Oleo Script Swash Caps", cursive;
+  color: #68ea30;
+  text-align: center;
+}
+.ubuntu {
+  font-family: Ubuntu, "times new roman", times, roman, serif;
+}
+@import url("https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&display=swap");
+@import url("http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin");
+#headers {
+  font-weight: bold;
+  text-align: center;
+  font-family: Ubuntu, "times new roman", times, roman, serif;
+}
+.cont {
+  margin-left: 27%;
+  margin-right: 15%;
+  margin-top: 80px;
+}
+.icons {
+  position: relative;
+  width: 100%;
+  min-height: 20rem;
+  background-image: url("../Home/images/title.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+.icons::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  position: absolute;
+  border-radius: inherit;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.icons div svg:hover ,
+#home_icons_data span {
+  color: #4cbb17;
+}
+#home_icons_data span {
+  font-weight: bold;
+}
+.icons div svg {
+  color: azure;
+  font-size: 10rem;
+  padding: 2rem;
+  border-radius: 50%;
+  background: #ffffff29;
+  cursor: pointer;
+}
+.icons p {
+  color: azure;
+  text-align: center;
+  padding-top: 0.3rem;
+  font-size: 20px;
+  text-transform: capitalize;
+}
+.icons .circle_info {
+  width: 80vw;
+  height: 90vh;
+  background-color: #eee;
+  position: absolute;
+  z-index: 5;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem;
+  border-radius: 8px;
+}
+.icons .circle_info p {
+  color: black;
+}
+.circle_rate {
+  position: relative;
+  box-shadow: 0px 0px 20px rgb(255 224 0 / 82%) inset;
+  border-radius: 50%;
+  width: 60px !important;
+  height: 60px !important;
+}
+
+.circle_rate::after {
+  content: "";
+  position: absolute;
+  width: 10%;
+  border-radius: 50%;
+  box-shadow: 22px 27px 33px 11px #e3f0f4;
+  top: 0px;
+  left: -8px;
+}
+
+#reat_section {
+  background-image: url("../Home/images/green_4.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+  position: relative;
+  z-index: 1;
+}
+#reat_section::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  position: absolute;
+  border-radius: inherit;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+#reat_section table {
+  text-transform: capitalize;
+  color: azure;
+}
+
+#reat_section tr {
+  vertical-align: middle;
+}
+#reat_section th {
+  padding: 17px 20px 3rem;
+}
+#reat_section td {
+  position: relative;
+  padding: 1rem 0;
+}
+#reat_section td span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+}
+
+.MuiCircularProgress-circleDeterminate,
+.MuiLinearProgress-barColorPrimary {
+  color: #68ea30;
+  background-color: #68ea30 !important;
+}
+.MuiLinearProgress-colorPrimary {
+  background-color: #217272 !important ;
+}
+
+.env_rate {
+  width: 50%;
+  margin: 1.5rem auto 0;
+}
+#reat_section h6 {
+  margin-top: 3rem;
+}
+
+#homeCard a {
+  color: unset;
+  text-decoration: none;
+}
+
+#homeCard ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#homeCard .bg-green {
+  background-color: #6fd33d;
+}
+
+#homeCard .text-green {
+  color: #6fd33d;
+}
+
+#homeCard .card-body a:hover {
+  background-color: white;
+  color: #6fd33d;
+}
+
+#homeCard .buttom-rounded {
+  border-bottom-left-radius: 50% 30%;
+  border-bottom-right-radius: 50% 30%;
+}
+
+#homeCard .card {
+  background: linear-gradient(0deg, #6fd33de8, #6fd33de8),
+    url("../Home/images/bg.jpeg");
+  background-size: cover;
+}
+
+#homeCard .card img {
+  max-width: 30%;
+}
+/* --------------------------------------------------- About ----------------------------------------------- */
+#about {
+  font-size: 19px;
+}
+
+#about .about_info h2 {
+  margin-bottom: 1.5rem;
+  text-transform: capitalize;
+  color: #68ea30;
+  font-weight: bold;
+}
+#about .about_info p {
+  line-height: 1.8;
+}
+#about img {
+  width: 30rem;
+}
+
+#about .container_circle_icons {
+  /* background-color: #eee; */
+  padding: 3rem 0 7rem;
+}
+
+#about .circle_icons {
+  position: relative;
+  max-width: 600px;
+  margin: 3rem auto;
+  font-size: 7rem;
+}
+
+#about .circle_icons p {
+  font-size: initial;
+  color: #00000096;
+  font-weight: bold;
+  line-height: 2;
+}
+#about .circle_icons div {
+  font-size: 3.5rem;
+  color: darkcyan;
+}
+
+#about .circle_icons div .ico {
+  position: absolute;
+  color: rgba(0, 0, 0, 0.534);
+  border-radius: 8px;
+  max-width: 280px;
+  opacity: 0;
+  transition: 0.9s;
+  background-color: #eee;
+  box-shadow: 0 4px 15px 0 rgb(0 0 0 / 22%);
+}
+
+#about .circle_icons div:nth-child(1) .ico,
+#about .circle_icons div:nth-child(2) .ico,
+#about .circle_icons div:nth-child(3) .ico,
+#about .circle_icons div:nth-child(5) .ico,
+#about .circle_icons div:nth-child(6) .ico,
+#about .circle_icons div:nth-child(7) .ico {
+  padding: 0.5rem;
+}
+#about .circle_icons div:nth-child(1) .ico {
+  top: -5rem;
+  left: 9.5rem;
+}
+
+#about .circle_icons div:nth-child(2) {
+  position: absolute;
+  left: 3rem;
+  top: 8rem;
+}
+#about .circle_icons div:nth-child(2) .ico {
+  bottom: 0rem;
+  left: -21rem;
+}
+
+#about .circle_icons div:nth-child(3) {
+  position: absolute;
+  right: 3rem;
+  top: 8rem;
+}
+#about .circle_icons div:nth-child(3) .ico {
+  bottom: 0rem;
+  right: -21rem;
+}
+#about .circle_icons div:nth-child(4) {
+  margin: 7rem 0 9rem;
+  font-size: 6rem;
+  animation-name: flower;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  transition: 0.5s;
+}
+
+#about .circle_icons div:nth-child(4) span {
+  cursor: pointer;
+  position: relative;
+}
+
+#about .circle_icons div:nth-child(5) {
+  position: absolute;
+  left: 3rem;
+  bottom: 8rem;
+}
+#about .circle_icons div:nth-child(5) .ico {
+  bottom: -1rem;
+  left: -21rem;
+}
+
+#about .circle_icons div:nth-child(6) {
+  position: absolute;
+  right: 3rem;
+  bottom: 8rem;
+}
+#about .circle_icons div:nth-child(6) .ico {
+  right: -21rem;
+  bottom: 0rem;
+}
+#about .circle_icons div:nth-child(7) .ico {
+  bottom: -10.5rem;
+  left: 9.5rem;
+}
+#about .ico_2 {
+  box-shadow: 10px 10px 15px #00000026;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #77777729;
+  background-color: #eee;
+  color: #000;
+}
+
+@keyframes flower {
+  100% {
+    color: red;
+  }
+}
+
+#home_icons_data span {
+  color: #4cbb17;
+  font-weight: bold;
+}

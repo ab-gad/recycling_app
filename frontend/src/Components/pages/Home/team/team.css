@@ -1,0 +1,75 @@
+#team a{
+    color: unset;
+    text-decoration: none;
+}
+
+#team ul{
+    list-style-type: none;
+    padding-left: 0;
+}
+
+/* 
+#team {
+    background-color: #212123;
+    color: white;
+} */
+
+#team .bg-green{
+    background-color: #6fd33d;
+}
+
+#team .text-green{
+    color: #6fd33d;
+}
+
+#team .text-gray{
+    color: #989898;
+}
+
+#team .buttom-rounded {
+    border-bottom-left-radius: 50% 20%;
+    border-bottom-right-radius: 50% 20%;
+    overflow: hidden;
+}
+
+#team .scial-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    bottom: 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.616);
+    color:white;
+    transition: .2s;
+}
+#team .card:hover .scial-icons {
+   bottom: 0; 
+}
+
+#team .card:hover h6  {
+    color: #6fd33d;
+}
+
+#team .scial-icons i{
+    display: block;
+    margin: 0.3rem;
+    width: 2rem;
+    height: 2rem;
+    line-height: 1.9rem;
+    border-radius: 50%;
+    border: 2px solid;
+    text-align: center;
+    color: white;
+}
+
+#team .scial-icons a:hover i{
+    background-color: #66cd17;
+    border-color:#66cd17;
+}
+
+#team .card img {
+    max-height: 210px;
+}

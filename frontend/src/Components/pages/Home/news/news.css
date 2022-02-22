@@ -1,0 +1,32 @@
+/* .owl-theme .owl-nav [class*=owl-]:hover {
+    background:transparent;
+    color: #FFF;
+    text-decoration: none;
+}
+
+.owl-theme .owl-nav [class*=owl-] i:hover {
+    background-color: black;
+} */
+
+.owl-nav{
+    text-align: center;
+}
+
+.owl-nav button i {
+    color: #b12c2c;
+    transition: .2s;
+    border: 2px solid #b12c2c;
+}
+
+.owl-nav button i:hover{
+    background-color: #b12c2c;
+    color: white;
+}
+
+.owl-item {
+    height: 100% !important;
+}
+
+.item {
+    height: 100% !important;
+}

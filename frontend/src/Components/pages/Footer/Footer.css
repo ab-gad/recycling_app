@@ -1,0 +1,104 @@
+footer a{
+    color: unset;
+    text-decoration: none;
+}
+
+footer ul{
+    list-style-type: none;
+    padding-left: 0;
+}
+
+
+footer {
+    background-color: #212123;
+    color: white;
+}
+
+footer .bg-green{
+    background-color: #6fd33d;
+}
+
+footer .text-green{
+    color: #6fd33d;
+}
+
+footer .text-gray{
+    color: #989898;
+}
+
+footer .top-footer {
+    background-color: #242426;
+}
+
+footer .input-group {
+    width: auto !important;
+}
+
+footer .input-group-text {
+    background-color: #6fd33d;
+    color: white;
+    font-size: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    border:none
+
+}
+
+footer .scial-icons i{
+    display: inline-block;
+    display: inline-block;
+    margin: 0.3rem;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    border-radius: 50%;
+    border: 1px solid;
+    text-align: center;
+}
+
+footer .scial-icons a:hover i{
+    background-color: #66cd17;
+    color: white;
+    border-color:#66cd17;
+}
+
+footer .quick-links i {
+    font-size: .8rem;
+    display: inline-block;
+    margin-right: .7rem;
+}
+footer .quick-links li {
+    margin-bottom: .5rem;
+}
+footer .card {
+    background-color: transparent;
+}
+
+footer .our-address ul i {
+    color: #66cd17;
+    display: inline-block;
+    font-size: 1.2rem;
+    width: 2.2rem;
+}
+footer .our-address ul li {
+    display: flex;
+    align-items: center;
+}
+
+footer .btm-footer {
+    border-top: 1px solid #3a3a3b;
+}
+
+footer .below-footer {
+    background-image: url("../Home/images/bg.jpeg");
+    background-size: cover;
+}
+
+footer .overlay {
+    background-color: rgba(0, 0, 0, 0.651);
+}
+
+footer .quick-links li:hover a,
+footer .latest-nwes .card-title:hover{
+    color: #6fd33d;
+}
