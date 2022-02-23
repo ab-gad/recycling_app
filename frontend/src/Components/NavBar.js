@@ -1,163 +1,137 @@
-import React, { useEffect } from "react";
 import "./NavBar.css";
 import { NavLink } from "react-router-dom";
-import $ from "jquery";
 import { Langcontext } from "../App";
 import { useContext } from "react";
+import { FaRegUserCircle ,FaSeedling , FaBoxOpen } from 'react-icons/fa';
+import { VscHome } from 'react-icons/vsc';
+import { BsBuilding , BsChatDots } from 'react-icons/bs';
 
 const Navbar = () => {
   const Arabic = {
-    RecycleWebSite: " إعادة تدوير موقع",
-    Home: " الرئيسية",
-    About: " معلومات عنا",
-    Services: " خدمات",
-    Testimonial: " شهادة",
-    CountactUs: " اتصل بنا",
-    Login: " تسجيل",
+    RecycleWebSite: "إعادة تدوير موقع",
+    Home: "الرئيسية",
+    About: "من نحن",
+    Services: "خدمات",
+    Events: "الأحداث",
+    CountactUs: "اتصل بنا",
+    Login: "تسجيل",
+    Register: "إنشاء حساب",
   };
   const English = {
     RecycleWebSite: "Recycle Web Site",
     Home: "Home",
     About: "About",
     Services: "Services",
-    Testimonial: "Testimonial",
-    CountactUs: "Countact Us",
+    Events: "Events",
+    CountactUs: "Contact ",
     Login: "Login",
+    Register: "Register",
   };
+
   const { langcont, Setlangcontext } = useContext(Langcontext);
-  console.log(langcont, "langContext");
   const translation = langcont === "ENGLISH" ? English : Arabic;
+  const anmi_item = document.querySelectorAll('.anmi_item');
 
-  function animation() {
-    var tabsNewAnim = $("#navbarSupportedContent");
-    var activeItemNewAnim = tabsNewAnim.find(".active");
-    var activeWidthNewAnimHeight = activeItemNewAnim.innerHeight();
-    var activeWidthNewAnimWidth = activeItemNewAnim.innerWidth();
-    var itemPosNewAnimTop = activeItemNewAnim.position();
-    var itemPosNewAnimLeft = activeItemNewAnim.position();
-    $(".hori-selector").css({
-      top: itemPosNewAnimTop.top + "px",
-      left: itemPosNewAnimLeft.left + "px",
-      height: activeWidthNewAnimHeight + "px",
-      width: activeWidthNewAnimWidth + "px",
-    });
-    $("#navbarSupportedContent").on("click", "li", function (e) {
-      $("#navbarSupportedContent ul li").removeClass("active");
-      $(this).addClass("active");
-      var activeWidthNewAnimHeight = $(this).innerHeight();
-      var activeWidthNewAnimWidth = $(this).innerWidth();
-      var itemPosNewAnimTop = $(this).position();
-      var itemPosNewAnimLeft = $(this).position();
-      $(".hori-selector").css({
-        top: itemPosNewAnimTop.top + "px",
-        left: itemPosNewAnimLeft.left + "px",
-        height: activeWidthNewAnimHeight + "px",
-        width: activeWidthNewAnimWidth + "px",
-      });
-    });
-  }
+    anmi_item.forEach ( (item)=> {
+      item.addEventListener('click' , active )
+    })
+    
+    const language_zone = () => {
+      if ( langcont === "ENGLISH" ) {
+          Setlangcontext("ARABIC") 
+      } else {
+          Setlangcontext("ENGLISH") 
+      }
+    }
 
-  useEffect(() => {
-    animation();
-    $(window).on("resize", function () {
-      setTimeout(function () {
-        animation();
-      }, 500);
-    });
-  }, []);
-
+    function active (){
+      anmi_item.forEach( (item)=> {
+        item.classList.remove('active');
+        this.classList.add('active');
+      })
+    }
+      
   return (
-    <nav className="navbar navbar-expand-lg navbar-mainbg navbar-fixed-top">
-      <NavLink className="navbar-brand navbar-logo" to="/" exact>
-        {translation.RecycleWebSite}
-      </NavLink>
+    <>
+     <div className="overlay">
+      <nav className="navbar navbar-expand-lg ">
+        <div className="container-fluid ">
+          <NavLink className="navbar-brand navbar-logo text-light" to="/" >
+            <img src={require('../Components/pages/Home/images/lo.png')} alt="Logo" className="nav_logo" />
+          </NavLink>
+         
 
-      <button
-        className="navbar-toggler"
-        onClick={function () {
-          setTimeout(function () {
-            animation();
-          });
-        }}
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <i className="fas fa-bars text-white"></i>
-      </button>
+            <li className="nav-item mx-3 dropdown log_icon ">
+              <NavLink className="nav-link p-0 m-0 " to="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <FaRegUserCircle />
+              </NavLink>
+              <button type="button" className="btn btn-outline-light shadow-none rounded-pill m-2 mx-3 language_button " onClick={() => language_zone() } >
+                    {langcont}
+                </button>
 
-      <div className=" collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav ml-auto">
-          <div className="hori-selector">
-            <div className="left"></div>
-            <div className="right"></div>
+              <ul className="dropdown-menu log_drop" aria-labelledby="navbarDropdownMenuLink">
+                <li><NavLink className="dropdown-item text-center text-primary " to="/login" > {translation.Login} </NavLink></li>
+                <li><NavLink className="dropdown-item text-center text-primary " to="/register" > {translation.Register} </NavLink></li>
+              </ul>
+            </li>
+            
+                
+            <button className="navbar-toggler toggel_icon p-0" dir='rtl' type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">    
+              <div>
+                <span className='line navbar-toggler-icon' > </span>
+                <span className='line navbar-toggler-icon' > </span>
+                <span className='line navbar-toggler-icon' > </span>
+                <span className='line navbar-toggler-icon' > </span>
+              </div>
+
+            </button>
+
+          <div className="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+      
+            <ul className="navbar-nav nav_element " dir="ltr" >
+              <li className="nav-item anmi_item active">
+                <NavLink to="/" className="nav-link text-center d-flex gap-3 responsev_zon" aria-current="page" >
+                  <span className="ico text-light"> <VscHome /> </span>
+                  <span className="tex text-light " > {translation.Home} </span>  
+                </NavLink>
+              </li>
+
+              <li className="nav-item  anmi_item">
+                <NavLink to="/about" className="nav-link text-center  d-flex gap-3 responsev_zon" >
+                  <span className="ico text-light"> <BsBuilding/> </span>
+                  <span className="tex text-light" > {translation.About} </span>  
+                </NavLink>
+              </li>
+              
+              <li className="nav-item anmi_item">
+                <NavLink to="/service" className="nav-link text-center  d-flex gap-3 responsev_zon" >
+                  <span className="ico text-light"> <FaBoxOpen/> </span>
+                  <span className="tex text-light" > {translation.Services} </span>  
+                </NavLink>
+              </li>
+
+              <li className="nav-item anmi_item">
+                <NavLink to="/events" className="nav-link text-center  d-flex gap-3 responsev_zon" >
+                  <span className="ico text-light"> <FaSeedling/> </span>
+                  <span className="tex text-light" > {translation.Events} </span>  
+                </NavLink>
+              </li>
+
+              <li className="nav-item anmi_item">
+                <NavLink to="/contact" className="nav-link text-center  d-flex gap-3 responsev_zon" >
+                  <span className="ico text-light"> <BsChatDots/> </span>
+                  <span className="tex text-light" > {translation.CountactUs} </span>  
+                </NavLink>
+              </li>
+
+              <div className="indecator" ></div>          
+            </ul>
           </div>
-
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/" exact>
-              <span className="span1">
-                <i className="fas fa-tachometer-alt"></i>
-                {translation.Home}
-              </span>
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/about" exact>
-              <span className="span1">
-                {" "}
-                <i className="far fa-address-book"></i>
-                {translation.About}
-              </span>
-            </NavLink>
-          </li>
-
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/service" exact>
-              <span className="span1">
-                <i className="far fa-clone"></i>
-                {translation.Services}
-              </span>
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/testimonial" exact>
-              <span className="span1">
-                <i className="far fa-chart-bar"></i> {translation.Testimonial}
-              </span>
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/contact" exact>
-              <span className="span1">
-                {" "}
-                <i className="far fa-copy"></i>
-                {translation.CountactUs}
-              </span>
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/login" exact>
-              <span className="span1">
-                <i className="far fa-copy"></i>
-                {translation.Login}
-              </span>
-            </NavLink>
-          </li>
-        </ul>
-      </div>
-      <button
-          type="button"
-          className="btn btn-outline-light  rounded-pill m-2 cus-befor"
-          onClick={() => {
-            Setlangcontext(langcont === "ENGLISH" ? "ARABIC" : "ENGLISH");
-          }}
-        >
-          {langcont === "ENGLISH" ? "ARABIC" : "ENGLISH"}
-        </button>
-    </nav>
+        </div>
+      </nav>
+  </div>
+ 
+    </>
   );
 };
 export default Navbar;

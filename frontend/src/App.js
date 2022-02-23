@@ -78,7 +78,7 @@ const App = () => {
                 <Route path="/service" exact>
                   <Services />
                 </Route>
-                <Route path="/testimonial" exact>
+                <Route path="/events" exact>
                   <Testimonial />
                 </Route>
                 <Route path="/contact" exact>
