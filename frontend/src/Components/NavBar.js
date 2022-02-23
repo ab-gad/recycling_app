@@ -63,7 +63,7 @@ const Navbar = () => {
 
             <li className="nav-item mx-3 dropdown log_icon ">
               <NavLink className="nav-link p-0 m-0 " to="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <FaRegUserCircle />
+                <FaRegUserCircle className="text-light" />
               </NavLink>
               <button type="button" className="btn btn-outline-light shadow-none rounded-pill m-2 mx-3 language_button " onClick={() => language_zone() } >
                     {langcont}
