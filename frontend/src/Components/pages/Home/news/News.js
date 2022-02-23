@@ -4,6 +4,8 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import "./news.css"
+import Cart from "../../cart/Cart"
+
 
 const options = {
     margin: 30,
@@ -42,13 +44,23 @@ function News (){
         })
     }
 
+    const getUsers = () => {
+        fetch('http://localhost:8000/user_api/')
+        .then(res=>res.json())
+        .then(result => {
+            console.log("users", result)
+        })
+    }
+
     useEffect(()=>{
         getNews()
+        getUsers()
     },[])
 
     
     return(
         <section>
+            <Cart/>
             <div className="container py-5">
                 <div className="title mb-4">
                     <h2>

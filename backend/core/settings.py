@@ -38,13 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.gis', #
+    'django.contrib.gis', #to use gis module
 
     #make us able to establish connection (transfere data) between different origin websites
     "corsheaders",
     'events.apps.EventsConfig',
 
     'user',
+    'user_api',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
