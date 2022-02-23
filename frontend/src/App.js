@@ -1,4 +1,4 @@
-import React , { useState } from "react";
+import React , { useState }  from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 import About from "./Components/pages/About/About";
@@ -12,11 +12,26 @@ import Navbar from "./Components/NavBar";
 import ScrollButton from "./Components/ScrollButton";
 import ThemesContext , {themes} from  './Components/themes';
 import {BsFillMoonStarsFill , BsFillSunFill} from  'react-icons/bs';
+import { useEffect } from "react";
 
 // import { Langcontext } from './context/lang';
 export const Langcontext = React.createContext();
 
+
+// //testing spinner
+// const loader = document.querySelector(".preloader");
+
+// const showLoader = () => loader.classList.remove("preloader");
+// const addClass = () => loader.classList.add("loader-hide");
+// //--->
 const App = () => {
+//testing spinner
+  // useEffect(() => {
+  //   showLoader();
+  //   addClass();
+  // }, []);
+
+  // //-->
   const [langcont, Setlangcontext] = useState("ENGLISH");
  
   //creatr themes 
@@ -59,6 +74,8 @@ const App = () => {
   }
 
   return (
+
+
     <div dir={langcont === "ENGLISH" ? "ltr" : "rtl"}>
       <Router>
         <Langcontext.Provider value={{ langcont, Setlangcontext }}>
@@ -98,7 +115,9 @@ const App = () => {
       </Router>
       <ScrollButton />
     </div>
+
   );
 };
+
 
 export default App;
