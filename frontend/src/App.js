@@ -9,6 +9,7 @@ import Testimonial from "./Components/pages/Testimonial/Testimonial";
 import Login from "./Components/pages/Registeration/login";
 import Register from "./Components/pages/Registeration/register";
 import Navbar from "./Components/NavBar";
+import Chat from "./Components/pages/ChatBot/Chat";
 import ScrollButton from "./Components/ScrollButton";
 import ThemesContext , {themes} from  './Components/themes';
 import {BsFillMoonStarsFill , BsFillSunFill} from  'react-icons/bs';
@@ -95,7 +96,7 @@ const App = () => {
                 <Route path="/service" exact>
                   <Services />
                 </Route>
-                <Route path="/testimonial" exact>
+                <Route path="/events" exact>
                   <Testimonial />
                 </Route>
                 <Route path="/contact" exact>
@@ -114,6 +115,7 @@ const App = () => {
         </Langcontext.Provider>
       </Router>
       <ScrollButton />
+      <Chat />
     </div>
 
   );
