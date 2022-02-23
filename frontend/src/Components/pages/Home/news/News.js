@@ -58,7 +58,6 @@ function News (){
     
     return(
         <section>
-            <Cart/>
             <div className="container py-5">
                 <div className="title mb-4">
                     <h2>
