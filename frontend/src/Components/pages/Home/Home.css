@@ -82,6 +82,10 @@
   margin-right: 15%;
   margin-top: 80px;
 }
+.lamp_effect {
+
+  filter: drop-shadow(2px 4px 41px #fff);
+}
 .icons {
   position: relative;
   width: 100%;

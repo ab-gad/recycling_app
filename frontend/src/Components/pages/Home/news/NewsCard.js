@@ -9,11 +9,11 @@ function NewsCard(props){
         <div className="item">
             <div className="card h-100">
                 <img src={urlToImage} className="card-img-top" style={{minHeight: 240}} alt="..." />
-                <div className="card-body">
+                <div className="card-body body_height">
                     <h5 className="card-title" style={{minHeight: 80}}>{title}</h5>
                     <p className="card-text" style={{minHeight: 144}}>{contentWithoutCount}</p>
-                    <a target="_blank" href={url}>Read More</a>
                 </div>
+                    <a target="_blank" className="p-2" href={url}>Read More</a>
                 <div className="card-footer">
                     <small className="text-muted">{date}</small>
                 </div>
