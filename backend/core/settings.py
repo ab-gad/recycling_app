@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     #make us able to establish connection (transfere data) between different origin websites
     "corsheaders",
+    'events.apps.EventsConfig',
 
     'user',
 ]
