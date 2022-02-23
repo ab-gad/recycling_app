@@ -38,21 +38,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.gis', #to use gis module
+    'django.contrib.gis',  # to use gis module
 
-    #make us able to establish connection (transfere data) between different origin websites
+    # make us able to establish connection (transfere data) between different origin websites
     "corsheaders",
     'events.apps.EventsConfig',
 
     'user',
     'user_api',
+    'events_api',
     'rest_framework',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    "corsheaders.middleware.CorsMiddleware", #our cors middleware
+    "corsheaders.middleware.CorsMiddleware",  # our cors middleware
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
