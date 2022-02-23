@@ -11,7 +11,7 @@ function Team (){
                         Our Team Members
                     </h2>
                 </div>
-                <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-5 g-4">
+                <div className="row row-cols-2 justify-content-center row-cols-sm-2 row-cols-lg-5 g-4">
                     <TeamCard 
                         src={require('./team/team1.png')}
                         name="Ahmed Magdy"

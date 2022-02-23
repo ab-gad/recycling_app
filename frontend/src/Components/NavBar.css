@@ -226,7 +226,7 @@ nav .toggel_icon:hover .line:nth-child(even) {
   background-color: #b12c2c8a;
   border-radius: 50%;
   text-align: center;
-  line-height: 40px;
+  line-height: 37px;
   font-size: 25px;
   color: #fff;
   position: fixed;
@@ -234,4 +234,7 @@ nav .toggel_icon:hover .line:nth-child(even) {
   right: 0;
   margin: 20px;
   cursor: pointer ;
+}
+#box_theme  > svg {
+  filter: drop-shadow(0 0 6px #fff);
 }
