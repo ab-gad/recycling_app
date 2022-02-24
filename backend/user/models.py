@@ -85,7 +85,7 @@ class User (AbstractBaseUser, PermissionsMixin):
         max_length=255, verbose_name='email', unique=True)
     is_superuser = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     last_login = models.DateTimeField(
         blank=True, null=True, verbose_name='last login')
 
@@ -98,7 +98,7 @@ class User (AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(
         max_length=20, default='',  verbose_name='last name')
     phone = models.CharField(max_length=15, validators=[
-        PHONE_REGEX],  verbose_name='phone')
+        PHONE_REGEX], blank=True, null=True, verbose_name='phone')
     avatar = models.ImageField(
         upload_to="profile_images", verbose_name='profile picture', default='profile_images/default-pic.jpeg')
     city = models.CharField(
