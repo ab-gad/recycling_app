@@ -30,6 +30,7 @@ const options = {
 
 function News (){
     
+    const [user, setUser] = useState([])
     const [news, setNews] = useState([])
     const [ref, setRef] = useState(false)
     
@@ -47,6 +48,7 @@ function News (){
         .then(res=>res.json())
         .then(result => {
             console.log("users", result)
+            setUser()
         })
     }
 
