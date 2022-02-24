@@ -24,7 +24,7 @@ urlpatterns = [
     # to use restFramwork in authentication
     path('api-auth/', include('rest_framework.urls')),
     path('user_api/', include('user_api.urls', namespace='user_api')),
-    path('events_api/', include('events_api.urls', namespace='events_api'))
+    path('events_api/', include('events_api.urls'))
 
 ]
 
