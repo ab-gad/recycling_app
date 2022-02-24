@@ -2,6 +2,7 @@ import React , { useState }  from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 import About from "./Components/pages/About/About";
+import Show from "./Components/pages/Testimonial/showevent";
 import Contact from "./Components/pages/Contact/Contact";
 import Home from "./Components/pages/Home/Home";
 import Services from "./Components/pages/Service/Service";
@@ -99,6 +100,10 @@ const App = () => {
                 <Route path="/events" exact>
                   <Testimonial />
                 </Route>
+                <Route path="/events/Show/:id" exact>
+                  <Show />
+                </Route>
+
                 <Route path="/contact" exact>
                   <Contact />
                 </Route>

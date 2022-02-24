@@ -1,8 +1,6 @@
-import React , {useContext} from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Col, Container, Row } from "react-bootstrap";
-import { LinearProgress } from "@material-ui/core";
-import Progress from "../Home/progress";
 import lamp from "../Home/images/lamp.PNG";
 import plant from "../Home/images/plant.png";
 import recycling from "../Home/images/recycling.png";
@@ -16,6 +14,7 @@ import Carousel from "./carousel/carousel";
 import Popup from "./Popup";
 import Footer from "../Footer/Footer";
 import Home_icon_data from '../../home_icon_data';
+import Rateing from "./Rateing/rateing";
 
 // constructor = () => {
 //   this.state = { isLoading: true }
@@ -44,7 +43,7 @@ const Home = () => {
               ad minim veniam
             </p>
           </div>
-          <div className="row row-cols-1 row-cols-md-4 g-4">
+          <div className="row row-cols-2 row-cols-md-4 g-4">
             <Card
               title="Recycling"
               text="This is a longer card with supporting text below as a natural lead-in to additional content."
@@ -154,6 +153,7 @@ const Home = () => {
                   alt="Tree inside lamp!"
                   width="200"
                   height="300"
+                  className="lamp_effect "
                 />
               </Col>
             </Row>
@@ -162,82 +162,8 @@ const Home = () => {
       </section>
 
       {/*_______________________ Materials Data Table Section_____________________________*/}
-      <section id="reat_section" className=" my-5 p-3 fs-sm-6 fs-md-1">
-        <table className="table table-borderless text-center">
-          <thead className="">
-            <tr className=" row align-items-center">
-              <th className="col-3 d-none d-sm-block ">material</th>
-              <th className="col-4 col-sm-3">
-                annual <br /> production
-              </th>
-              <th className="col-4 col-sm-3">
-                Annual <br /> consumption
-              </th>
-              <th className="col-4 col-sm-3">recycling</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className=" row justify-content-between align-items-centermt-md-2">
-              <td className="col-12 col-sm-3 mb-3 mb-sm-0">plastic</td>
-              <td className="col-4 col-sm-3">
-                <Progress value={50} /> <span>50%</span>
-              </td>
-              <td className="col-4 col-sm-3">
-                <Progress value={80} />
-                <span>80%</span>
-              </td>
-              <td className="col-4 col-sm-3">
-                <Progress value={93} />
-                <span>93%</span>
-              </td>
-            </tr>
-            <tr className=" row justify-content-between align-items-center mt-5 mt-md-2">
-              <td className="col-12 col-sm-3 mb-3 mb-sm-0">
-                Cardboard and papers
-              </td>
-              <td className="col-4 col-sm-3">
-                <Progress value={45} />
-                <span>45%</span>
-              </td>
-              <td className="col-4 col-sm-3">
-                <Progress value={30} />
-                <span>30%</span>
-              </td>
-              <td className="col-4 col-sm-3">
-                <Progress value={80} />
-                <span>80%</span>
-              </td>
-            </tr>
-            <tr className=" row justify-content-between align-items-center mt-5 mt-md-2">
-              <td className="col-12 col-sm-3 mb-3 mb-sm-0">Aluminum</td>
-              <td className="col-4 col-sm-3">
-                <Progress value={70} />
-                <span>70%</span>
-              </td>
-              <td className="col-4 col-sm-3">
-                <Progress value={80} />
-                <span>80%</span>
-              </td>
-              <td className="col-4 col-sm-3">
-                <Progress value={90} />
-                <span>90%</span>
-              </td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colSpan={4} className="ssss">
-                <h6>environmental conservation rate</h6>
-                <LinearProgress
-                  className="env_rate"
-                  variant="determinate"
-                  value={80}
-                />
-              </td>
-            </tr>
-          </tfoot>
-        </table>
-      </section>
+     
+      <Rateing />
 
       {/* _________________________Team Member Section______________________________ */}
       <Team />

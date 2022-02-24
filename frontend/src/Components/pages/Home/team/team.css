@@ -8,11 +8,6 @@
     padding-left: 0;
 }
 
-/* 
-#team {
-    background-color: #212123;
-    color: white;
-} */
 
 #team .bg-green{
     background-color: #6fd33d;
@@ -72,4 +67,5 @@
 
 #team .card img {
     max-height: 210px;
+    object-fit: cover;
 }

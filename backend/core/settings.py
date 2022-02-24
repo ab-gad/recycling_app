@@ -38,18 +38,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',  # to use gis module
 
-    #make us able to establish connection (transfere data) between different origin websites
+    # make us able to establish connection (transfere data) between different origin websites
     "corsheaders",
     'events.apps.EventsConfig',
 
     'user',
+    'user_api',
+    'events_api',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    "corsheaders.middleware.CorsMiddleware", #our cors middleware
+    "corsheaders.middleware.CorsMiddleware",  # our cors middleware
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -70,6 +74,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
+
             ],
         },
     },
@@ -83,7 +89,8 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'recycling',
         'USER': DB_USER,
         'PASSWORD': DB_PASSWORD,
@@ -139,3 +146,7 @@ CORS_ALLOWED_ORIGINS = [
 
 # here we tell django to use our custome User Model instead of the default one
 AUTH_USER_MODEL = 'user.User'
+
+# media uploading
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
