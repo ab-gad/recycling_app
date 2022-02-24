@@ -1,6 +1,8 @@
 import React from "react";
 import "./Footer.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {FaMapMarkerAlt, FaPhone, FaEnvelopeOpen, FaFacebookF, FaPinterest, FaTwitter, FaVimeoV, FaLinkedinIn, FaChevronRight } from "react-icons/fa";
+
 const Footer = ()=>
 {
     return (
@@ -35,30 +37,30 @@ const Footer = ()=>
                             ducimus libero minus fuga fugit, illum.
                         </p>
                         <div className='scial-icons text-gray'>
-                            <a href="#"><i className="fab fa-facebook-f"></i></a>   
-                            <a href="#"><i className="fab fa-pinterest"></i></a>  
-                            <a href="#"><i className="fab fa-twitter"></i></a>  
-                            <a href="#"><i className="fab fa-vimeo-v"></i></a>  
-                            <a href="#"><i className="fab fa-linkedin-in"></i></a>  
+                            <a href="#"><FaFacebookF/></a>   
+                            <a href="#"><FaPinterest/></a>  
+                            <a href="#"><FaTwitter/></a>  
+                            <a href="#"><FaVimeoV/></a>  
+                            <a href="#"><FaLinkedinIn/></a>  
                         </div>
                     </div>
                     <div className='my-4 quick-links'>
                         <h3 className='mb-4'>Quick Links</h3>
                         <ul className='text-gray'>
                             <li>
-                                <i className="fas fa-chevron-right"></i> <a href='#'>About Us</a>
+                                <FaChevronRight/> <a href='#'>About Us</a>
                             </li>
                             <li>
-                                <i className="fas fa-chevron-right"></i> <a href='#'>Recent Projects</a>
+                                <FaChevronRight/>  <a href='#'>Recent Projects</a>
                             </li>
                             <li>
-                                <i className="fas fa-chevron-right"></i> <a href='#'>Our Mission</a>
+                                <FaChevronRight/>  <a href='#'>Our Mission</a>
                             </li>
                             <li>
-                                <i className="fas fa-chevron-right"></i> <a href='#'>FAQ's</a>
+                                <FaChevronRight/>  <a href='#'>FAQ's</a>
                             </li>
                             <li>
-                                <i className="fas fa-chevron-right"></i> <a href='#'>Privcy & Policy</a>
+                                <FaChevronRight/> <a href='#'>Privcy & Policy</a>
                             </li>
                         </ul>
                     </div>
@@ -99,13 +101,13 @@ const Footer = ()=>
                         </h3>
                         <ul className='small text-gray'>
                             <li className='mb-3'>
-                                <i className="fas fa-map-marker-alt"></i><p className='m-0'>60 Grant Ave, Central New <br/>Road 0708, UK</p>
+                                <FaMapMarkerAlt/><p className='m-0'>60 Grant Ave, Central New <br/>Road 0708, UK</p>
                             </li>
                             <li className='mb-3'>
-                                <i className="fas fa-phone"></i><p className='m-0'>+880 1723 801 729 </p>
+                                <FaPhone/><p className='m-0'>+880 1723 801 729 </p>
                             </li>
                             <li className='mb-3'>
-                                <i className="fas fa-envelope-open-text"></i><p className='m-0'>enviroco@gmail.com </p>
+                                <FaEnvelopeOpen/><p className='m-0'>enviroco@gmail.com </p>
                             </li>
                         </ul>
                     </div>
@@ -117,8 +119,8 @@ const Footer = ()=>
                     <div className='text-gray small'><a href='#'>Home</a> | <a href='#'>Privacy & policy</a> | <a href='#'>FAQ's</a></div>
                 </div>
             </div>
-            <div className='below-footer'>
-                <div className='overlay py-5'>
+            <div className='below-footer '>
+                <div className='overlay py-5 '>
                     <div className='container text-center py-5 my-5'>
                         <h5 className='mb-0'>Spreed your love</h5>
                         <h2 className='h1 my-3'>Become A Volunteer</h2>

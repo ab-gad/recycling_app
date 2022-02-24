@@ -21,11 +21,12 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls')), #to use restFramwork in authentication
-    path('user_api/', include('user_api.urls', namespace= 'user_api'))
+    # to use restFramwork in authentication
+    path('api-auth/', include('rest_framework.urls')),
+    path('user_api/', include('user_api.urls', namespace='user_api')),
+    path('events_api/', include('events_api.urls'))
 
 ]
 
 urlpatterns = urlpatterns + \
     static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    

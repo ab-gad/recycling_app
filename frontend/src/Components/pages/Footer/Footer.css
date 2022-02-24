@@ -44,7 +44,7 @@ footer .input-group-text {
 
 }
 
-footer .scial-icons i{
+footer .scial-icons svg{
     display: inline-block;
     display: inline-block;
     margin: 0.3rem;
@@ -54,15 +54,16 @@ footer .scial-icons i{
     border-radius: 50%;
     border: 1px solid;
     text-align: center;
+    padding: .3rem;
 }
 
-footer .scial-icons a:hover i{
+footer .scial-icons a:hover svg{
     background-color: #66cd17;
     color: white;
     border-color:#66cd17;
 }
 
-footer .quick-links i {
+footer .quick-links svg {
     font-size: .8rem;
     display: inline-block;
     margin-right: .7rem;
@@ -74,7 +75,7 @@ footer .card {
     background-color: transparent;
 }
 
-footer .our-address ul i {
+footer .our-address ul svg {
     color: #66cd17;
     display: inline-block;
     font-size: 1.2rem;
@@ -92,10 +93,12 @@ footer .btm-footer {
 footer .below-footer {
     background-image: url("../Home/images/bg.jpeg");
     background-size: cover;
+    height: 350px;
 }
 
 footer .overlay {
     background-color: rgba(0, 0, 0, 0.651);
+    height: 350px;
 }
 
 footer .quick-links li:hover a,

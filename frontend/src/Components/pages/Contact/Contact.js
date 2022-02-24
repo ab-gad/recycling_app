@@ -3,7 +3,9 @@ import "./Contact.css";
 import Footer from "../Footer/Footer";
 import PageTitle from "../../page_title";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import { BiMap,BiShareAlt } from "react-icons/bi";
+import { BsTwitter,BsFacebook,BsInstagram,BsLinkedin,BsFillEnvelopeFill } from "react-icons/bs";
+import { FiPhoneCall } from "react-icons/fi";
 import { send } from "emailjs-com";
 import Modal from "react-modal";
 import { Langcontext } from "../../../App";
@@ -83,7 +85,7 @@ const Contact = () => {
           <div className="row mt-2">
             <div className="col-md-6 d-flex align-items-stretch">
               <div className="info-box">
-                <i className="bx bx-map"></i>
+                <BiMap className="bimap"/>
                 <h3>
                   <b>{translation.OurAddress}</b>
                 </h3>
@@ -93,32 +95,32 @@ const Contact = () => {
 
             <div className="col-md-6 mt-4 mt-md-0 d-flex justify-content-center">
               <div className="info-box">
-                <i className="bx bx-share-alt"></i>
+                <BiShareAlt className="bimap"/>
                 <h3>{translation.SocialProfiles}</h3>
                 <div className="social-links">
                   <a
                     href="https://twitter.com/AdhamAtefDemo"
                     className="twitter"
                   >
-                    <i className="bx bxl-twitter"></i>
+                    <BsTwitter className="bssocial"/>
                   </a>
                   <a
                     href="https://www.facebook.com/adham.atef8585/"
                     className="facebook"
                   >
-                    <i className="bx bxl-facebook-circle"></i>
+                    <BsFacebook className="bssocial"/>
                   </a>
                   <a
                     href="https://www.instagram.com/adham_atef_demo/"
                     className="instagram"
                   >
-                    <i className="bx bxl-instagram"></i>
+                    <BsInstagram className="bssocial"/>
                   </a>
                   <a
                     href="https://www.linkedin.com/in/adham-atef/"
                     className="linkedin"
                   >
-                    <i className="bx bxl-linkedin-square"></i>
+                    <BsLinkedin className="bssocial"/>
                   </a>
                 </div>
               </div>
@@ -126,7 +128,7 @@ const Contact = () => {
 
             <div className="col-md-6 mt-4 d-flex align-items-stretch">
               <div className="info-box">
-                <i className="bx bx-envelope"></i>
+              <BsFillEnvelopeFill className="bimap"/>
                 <h3>
                   <b>{translation.EmailUs}</b>
                 </h3>
@@ -135,7 +137,7 @@ const Contact = () => {
             </div>
             <div className="col-md-6 mt-4 d-flex align-items-stretch">
               <div className="info-box">
-                <i className="bx bx-phone-call"></i>
+               <FiPhoneCall className="bimap"/>
                 <h3>
                   <b>{translation.CallUs}</b>
                 </h3>
