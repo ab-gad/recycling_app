@@ -13,6 +13,7 @@ import Cart from "./Components/pages/cart/Cart";
 // import Register from "./Components/pages/Registeration/register";
 import SignUp from "./Components/pages/Auth/register";
 import SignIn from "./Components/pages/Auth/login";
+import SignOut from "./Components/pages/Auth/logout";
 import Navbar from "./Components/NavBar";
 import Chat from "./Components/pages/ChatBot/Chat";
 import ScrollButton from "./Components/ScrollButton";
