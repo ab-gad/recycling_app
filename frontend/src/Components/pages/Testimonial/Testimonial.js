@@ -10,7 +10,7 @@ const Testimonial = () => {
 
 const [users,setUsers]=useState([])
 useEffect(()=>{
-axios.get('http://127.0.0.1:8000/events_api/')
+axios.get('http://127.0.0.1:8000/events_api/Events/')
 .then((res)=>{
 
   console.log(res.data  )
@@ -36,10 +36,9 @@ return(
 
 <div key={user.id} className="col-lg-4  col-sm-12">
 <Card style={{ width: '18rem' }}>
-<Link  to={`/showevent/${user.id}`} >
-
-  <Card.Img variant="top" src={user.img} />
-  </Link>
+<Link  to={`/Show/${user.id}`} >
+<Card.Img variant="top" src={user.img} />
+</Link>
   <Card.Body>
     <Card.Title>{user.title}</Card.Title>
     <Card.Text id="content" >

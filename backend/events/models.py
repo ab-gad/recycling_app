@@ -11,7 +11,7 @@ class Events(models.Model):
     start_date = models.DateTimeField(default=timezone.now)
     end_date = models.DateTimeField()
     location = models.CharField(max_length=400)
-    img = models.ImageField(upload_to='Event', verbose_name='Image')
+    img = models.ImageField(upload_to='Events', verbose_name='Image')
     useradmin = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
 
     def __str__(self):

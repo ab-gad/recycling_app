@@ -4,6 +4,7 @@ import {useParams} from "react-router-dom";
 import {useState, useEffect}  from  "react"
 import axios from "axios";
 import { Container,Row,Col } from "react-bootstrap";
+import './showevent.css';
 
 
 function Show(props) {
@@ -18,7 +19,7 @@ function Show(props) {
 
 	useEffect(() => {
 		axios
-		.get(`http://127.0.0.1:8000/events_api/${params.id}`)
+		.get(`http://127.0.0.1:8000/events_api/Events/${params.id}`)
 		.then((res)=> {
 			console.log(res.data, "here")
 			setInfo(res.data)
@@ -36,20 +37,21 @@ function Show(props) {
        
 
   <Container>
-      <Row>
-        <Col>
-        <img variant="top" className="im" src={`${userInfo.img}`} />
+              <p className="text" ><strong>Title: </strong>{userInfo.title}  </p>
+              <div className="col-lg-8">
+        <img  variant="top" className="page_title " src={`${userInfo.img}` }/>
+        </div>
+        <hr/>
+        <p className="badge rounded-pill bg-success center"> <strong>location: </strong> {userInfo.location}  </p>
+        <p className="text-center"><strong>Start date: </strong> {userInfo.start_date}  </p>
+        <p className="text-center"><strong>end date: </strong> {userInfo.end_date}  </p>
+        <hr/>
 
-        </Col>
-        <Col>
-        <p><strong>Title: </strong>{userInfo.title}  </p>
         <p><strong>details: </strong> {userInfo.details}  </p>
-        <p><strong>Start date: </strong> {userInfo.start_date}  </p>
-        <p><strong>end date: </strong> {userInfo.end_date}  </p>
-        <p><strong>location: </strong> {userInfo.location}  </p>
+  
 
-        </Col>
-      </Row>
+        
+      
   </Container> 
 
 

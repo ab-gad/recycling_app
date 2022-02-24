@@ -2,7 +2,6 @@ import React , { useState }  from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 import About from "./Components/pages/About/About";
-import Show from "./Components/pages/Testimonial/showevent";
 import Contact from "./Components/pages/Contact/Contact";
 import Home from "./Components/pages/Home/Home";
 import Services from "./Components/pages/Service/Service";
@@ -15,6 +14,7 @@ import ScrollButton from "./Components/ScrollButton";
 import ThemesContext , {themes} from  './Components/themes';
 import {BsFillMoonStarsFill , BsFillSunFill} from  'react-icons/bs';
 import { useEffect } from "react";
+import Show from "./Components/pages/Testimonial/showevent";
 
 // import { Langcontext } from './context/lang';
 export const Langcontext = React.createContext();
@@ -99,10 +99,10 @@ const App = () => {
                 </Route>
                 <Route path="/events" exact>
                   <Testimonial />
-                </Route>
-                <Route path="/events/Show/:id" exact>
-                  <Show />
-                </Route>
+      </Route>
+      <Route path="/Show/:id" component={Show} exact >
+        <Show/>
+        </Route>
 
                 <Route path="/contact" exact>
                   <Contact />
