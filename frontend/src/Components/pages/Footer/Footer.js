@@ -119,8 +119,8 @@ const Footer = ()=>
                     <div className='text-gray small'><a href='#'>Home</a> | <a href='#'>Privacy & policy</a> | <a href='#'>FAQ's</a></div>
                 </div>
             </div>
-            <div className='below-footer'>
-                <div className='overlay py-5'>
+            <div className='below-footer '>
+                <div className='overlay py-5 '>
                     <div className='container text-center py-5 my-5'>
                         <h5 className='mb-0'>Spreed your love</h5>
                         <h2 className='h1 my-3'>Become A Volunteer</h2>

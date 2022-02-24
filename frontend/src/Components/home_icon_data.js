@@ -6,7 +6,6 @@ export default function Home_icon_data () {
   return (
     <section id='home_icons_data'>
                 <div className=" icons d-flex flex-wrap justify-content-evenly justify-content-center my-5 py-5">      
-
                     <div className="btn" data-bs-toggle="collapse" data-bs-target="#card_data_1"  aria-controls="card_data_1">
                         <Icons icon={<MdOutlineRecycling />} value={"recycling"}  />
                         <div className="collapse multi-collapse" id="card_data_1" >

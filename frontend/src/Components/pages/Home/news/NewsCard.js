@@ -11,7 +11,7 @@ function NewsCard(props){
                 <img src={urlToImage} className="card-img-top" style={{minHeight: 240}} alt="..." />
                 <div className="card-body body_height">
                     <h5 className="card-title" style={{minHeight: 80}}>{title}</h5>
-                    <p className="card-text" style={{minHeight: 144}}>{contentWithoutCount}</p>
+                    <p className="card-text text-dark" style={{minHeight: 144}}>{contentWithoutCount}</p>
                 </div>
                     <a target="_blank" className="p-2" href={url}>Read More</a>
                 <div className="card-footer">

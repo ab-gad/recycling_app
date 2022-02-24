@@ -93,10 +93,12 @@ footer .btm-footer {
 footer .below-footer {
     background-image: url("../Home/images/bg.jpeg");
     background-size: cover;
+    height: 350px;
 }
 
 footer .overlay {
     background-color: rgba(0, 0, 0, 0.651);
+    height: 350px;
 }
 
 footer .quick-links li:hover a,
