@@ -1,8 +1,11 @@
-from django.urls import path
+from django.urls import path, include
 from .views import EventsList
+from rest_framework import routers
 
-app_name = 'events_api'
+router = routers.DefaultRouter()
+router.register(r'Events', EventsList)
 
 urlpatterns = [
-    path('', EventsList.as_view(), name='eventlist'),
+    path('', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
