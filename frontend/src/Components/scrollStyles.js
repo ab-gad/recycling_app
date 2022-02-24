@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Button = styled.div`
 position: fixed;
-right: 0;
+right: 10;
 bottom: 0;
 font-size: 40px;
 z-index: 1;

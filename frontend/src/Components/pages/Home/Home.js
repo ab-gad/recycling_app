@@ -16,7 +16,16 @@ import Footer from "../Footer/Footer";
 import Home_icon_data from '../../home_icon_data';
 import Rateing from "./Rateing/rateing";
 
+// constructor = () => {
+//   this.state = { isLoading: true }
+// }
+
+// componentDidMount = () => {
+//   this.setState({isLoading: false})
+// }
+
 const Home = () => {
+  
   return (
     <section  >
       {/* _______________________ Carouser Section ______________________________ */}
