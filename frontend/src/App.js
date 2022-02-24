@@ -1,4 +1,4 @@
-import React , { useState } from "react";
+import React , { useState }  from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 import About from "./Components/pages/About/About";
@@ -13,11 +13,27 @@ import Chat from "./Components/pages/ChatBot/Chat";
 import ScrollButton from "./Components/ScrollButton";
 import ThemesContext , {themes} from  './Components/themes';
 import {BsFillMoonStarsFill , BsFillSunFill} from  'react-icons/bs';
+import { useEffect } from "react";
+import Show from "./Components/pages/Testimonial/showevent";
 
 // import { Langcontext } from './context/lang';
 export const Langcontext = React.createContext();
 
+
+// //testing spinner
+// const loader = document.querySelector(".preloader");
+
+// const showLoader = () => loader.classList.remove("preloader");
+// const addClass = () => loader.classList.add("loader-hide");
+// //--->
 const App = () => {
+//testing spinner
+  // useEffect(() => {
+  //   showLoader();
+  //   addClass();
+  // }, []);
+
+  // //-->
   const [langcont, Setlangcontext] = useState("ENGLISH");
  
   //creatr themes 
@@ -60,6 +76,8 @@ const App = () => {
   }
 
   return (
+
+
     <div dir={langcont === "ENGLISH" ? "ltr" : "rtl"}>
       <Router>
         <Langcontext.Provider value={{ langcont, Setlangcontext }}>
@@ -81,7 +99,11 @@ const App = () => {
                 </Route>
                 <Route path="/events" exact>
                   <Testimonial />
-                </Route>
+      </Route>
+      <Route path="/Show/:id" component={Show} exact >
+        <Show/>
+        </Route>
+
                 <Route path="/contact" exact>
                   <Contact />
                 </Route>
@@ -100,7 +122,9 @@ const App = () => {
       <ScrollButton />
       <Chat />
     </div>
+
   );
 };
+
 
 export default App;

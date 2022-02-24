@@ -1,0 +1,16 @@
+#content{
+    overflow: hidden;
+    width:270px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    }
+
+    .overflow-information{ 
+        overflow: hidden;
+        display: inline-block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+          width:270px;
+          height: 20px;
+    }
