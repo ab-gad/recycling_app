@@ -3,7 +3,7 @@ import "./Contact.css";
 import Footer from "../Footer/Footer";
 import PageTitle from "../../page_title";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "boxicons";
+
 import { send } from "emailjs-com";
 import Modal from "react-modal";
 import { Langcontext } from "../../../App";
