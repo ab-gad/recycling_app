@@ -8,6 +8,7 @@ import Services from "./Components/pages/Service/Service";
 import Testimonial from "./Components/pages/Testimonial/Testimonial";
 import Login from "./Components/pages/Registeration/login";
 import Register from "./Components/pages/Registeration/register";
+import Cart from "./Components/pages/cart/Cart";
 import Navbar from "./Components/NavBar";
 import ScrollButton from "./Components/ScrollButton";
 import ThemesContext , {themes} from  './Components/themes';
@@ -89,6 +90,9 @@ const App = () => {
                 </Route>
                 <Route path="/register" exact>
                   <Register />
+                </Route>
+                <Route path="/cart" exact>
+                  <Cart />
                 </Route>
                 <Redirect to="/" />
               </Switch>
