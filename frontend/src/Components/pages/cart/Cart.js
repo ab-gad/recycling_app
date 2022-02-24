@@ -4,11 +4,9 @@ import "./cart.css"
 
 import Footer from '../Footer/Footer';
 
-function Cart(){
+function Cart( props ){
     const [price, setPrice] = useState({paper:0.70, metal:1.5, plastic:1.5})
-
-    const [quantity, setQuantity] = useState({paper:15, metal:10, plastic:5})
-    
+    const [quantity, setQuantity] = useState({paper:2, metal:2, plastic:2})
     
     const paperPrice   = price.paper*quantity.paper;
     const plasticPrice = price.plastic*quantity.plastic;
@@ -16,18 +14,22 @@ function Cart(){
     const sum = paperPrice + plasticPrice + metalPrice;
    
     const onChangeHandler = (e, material) => {
-        if (e.target.value >= 0){
+        if (e.target.value >= 0 ){
             setQuantity({...quantity, [material]:Number(e.target.value)})
+            console.log(e.target.value)
         }
     }
-
-
+    
+    let element_1 = document.getElementById("button-addon2");
+    if (quantity.paper == 20 ){
+        element_1.disabled = true
+    }
     return(
         <>
             <section id="cart">
                 <PageTitle title="My Cart" description="Clean & Earn"/>
                 <div className="container py-5 table-responsive">
-                    <div className="mb-3" >
+                    <div className="mb-5" >
                         <h3>Selling Policy</h3>
                         <h4>To make a successfull selling process please make sure you fullfilled the following conditions: </h4>
                         <ul>
@@ -61,9 +63,12 @@ function Cart(){
     
                         </ul>
                     </div>
-                    <h3 className="border-top pt-3 my-3">Start to Clean & Earn </h3>
-                    <table className="table">
-                        <caption>Clean & Earn</caption>
+                    <h3 className="border-top pt-3 my-3">Start to <span className="text-danger"> Clean And Earn </span> </h3>
+
+{/* ----------------------------------------- Oreder Form  --------------------------------------------- */}
+
+                    <table className="table text-center ">
+                        <caption>You Can Modify The Data Until Wednesday at 12:00 AM </caption>
                         <thead>
                             <tr>
                                 <th scope="col">Material</th>
@@ -71,14 +76,14 @@ function Cart(){
                                 <th scope="col">Price Per KG</th>
                                 <th scope="col">Total Revenue</th>
                             </tr>
-                        </thead>
+                        </thead >
                         <tbody className="align-middle">
                             <tr>
                                 <td>Paper</td>
                                 <td>
-                                    <div className="input-group ">
+                                    <div className="input-group justify-content-center">
                                         <button 
-                                            className="btn btn-outline-secondary" 
+                                            className="btn btn-outline-secondary shadow-none" 
                                             type="button" 
                                             id="button-addon1"
                                             onClick={()=> quantity.paper > 0 && setQuantity({...quantity, paper:quantity.paper-1})}
@@ -95,8 +100,9 @@ function Cart(){
                                             aria-describedby="button-addon1" 
                                         />
                                         <button 
-                                            className="btn btn-outline-secondary" 
+                                            className="btn btn-outline-secondary shadow-none" 
                                             type="button" 
+                                            
                                             id="button-addon2"
                                             onClick={()=> setQuantity({...quantity, paper:quantity.paper+1})}
                                         >
@@ -105,28 +111,21 @@ function Cart(){
                                     </div>
                                 </td>
                                 <td>
-                                    <input 
-                                            className="mx-2" 
-                                            value={price.paper}
-                                            disabled
-                                    />
+                                    <input className="mx-2" value={price.paper} disabled />
                                     <span>LE</span>    
                                 </td>
                                 <td>
-                                    <input 
-                                            className="mx-2" 
-                                            value={paperPrice.toFixed(2)}
-                                            disabled
-                                    />
+                                    <input className="mx-2" value={paperPrice.toFixed(2)} disabled />
                                     <span>LE</span>    
                                 </td>
                             </tr>
+
                             <tr>
                                 <td>Metal</td>
                                 <td>
-                                <div className="input-group ">
+                                <div className="input-group justify-content-center">
                                         <button 
-                                            className="btn btn-outline-secondary" 
+                                            className="btn btn-outline-secondary shadow-none" 
                                             type="button" 
                                             id="button-addon1"
                                             onClick={()=> quantity.paper > 0 && setQuantity({...quantity, metal:quantity.metal-1})}
@@ -143,7 +142,7 @@ function Cart(){
                                             aria-describedby="button-addon1" 
                                         />
                                         <button 
-                                            className="btn btn-outline-secondary" 
+                                            className="btn btn-outline-secondary shadow-none" 
                                             type="button" 
                                             id="button-addon2"
                                             onClick={()=> setQuantity({...quantity, metal:quantity.metal+1})}
@@ -153,28 +152,21 @@ function Cart(){
                                     </div>
                                 </td>
                                 <td>
-                                    <input 
-                                                className="mx-2" 
-                                                value={price.metal}
-                                                disabled
-                                        />
+                                    <input className="mx-2" value={price.metal} disabled />
                                     <span>LE</span>    
                                 </td>
                                 <td>
-                                    <input 
-                                                className="mx-2" 
-                                                value={metalPrice.toFixed(2)}
-                                                disabled
-                                        />
+                                    <input className="mx-2" value={metalPrice.toFixed(2)} disabled />
                                     <span>LE</span>    
                                 </td>
                             </tr>
+
                             <tr>
                                 <td>Plastic</td>
                                 <td>
-                                    <div className="input-group ">
+                                    <div className="input-group justify-content-center">
                                         <button 
-                                            className="btn btn-outline-secondary" 
+                                            className="btn btn-outline-secondary shadow-none" 
                                             type="button" 
                                             id="button-addon1"
                                             onClick={()=> quantity.paper > 0 && setQuantity({...quantity, plastic:quantity.plastic-1})}
@@ -191,7 +183,7 @@ function Cart(){
                                             aria-describedby="button-addon1" 
                                         />
                                         <button 
-                                            className="btn btn-outline-secondary" 
+                                            className="btn btn-outline-secondary shadow-none " 
                                             type="button" 
                                             id="button-addon2"
                                             onClick={()=> setQuantity({...quantity, plastic:quantity.plastic+1})}
@@ -201,41 +193,29 @@ function Cart(){
                                     </div>
                                 </td>
                                 <td>
-                                    <input 
-                                        className="mx-2" 
-                                        value={price.plastic}
-                                        disabled
-                                    />
+                                    <input className="mx-2" value={price.plastic} disabled />
                                     <span>LE</span>    
                                 </td>
                                 <td>
-                                    <input 
-                                        className="mx-2" 
-                                        value={plasticPrice.toFixed(2)}
-                                        disabled
-                                    />
+                                    <input className="mx-2" value={plasticPrice.toFixed(2)} disabled />
                                     <span>LE</span>    
                                 </td>
                             </tr>
                         </tbody>
+
                         <tfoot>
                             <tr>
-                                <td colSpan={3}>
-                                    Total
-                                </td>
+                                <td colSpan={3} > Total </td>
                                 <td>
-                                    <input 
-                                        className="mx-2" 
-                                        value={sum.toFixed(2)}
-                                        disabled
-                                    />
+                                    <input className="mx-2" value={sum.toFixed(2)} disabled />
                                     <span>LE</span>    
                                 </td>
                             </tr>
                         </tfoot>
                     </table>
+
                     <div className="my-4 text-center">
-                        <button className="btn btn-outline-success rounded-bill">Proceed Selling Process</button>
+                        <button className="btn btn-outline-success shadow-none rounded-bill">Proceed Selling Process</button>
                     </div>
                 </div>
             </section>

@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Service.css';
 import {Langcontext} from '../../../App'
 import {useContext}from "react";
+import { Link } from 'react-router-dom';
 
 const Services = () => {
     const Arabic={
@@ -120,18 +121,18 @@ const Services = () => {
 
             <div className="container">
                 <div className="catigorise d-flex flex-wrap  "> 
-                    <div className="catigory_1">
+                    <Link to='/cart' className="catigory_1">
                         <h3>{translation.FirstDivaccordion}</h3>
                         <p>{translation.firstaccordionbody}</p>
-                    </div>
-                    <div className="catigory_2">
+                    </Link>
+                    <Link to='/cart' className="catigory_2">
                         <h3>{translation.SecDivaccordion}</h3>
                         <p>{translation.Secaccordionbody}</p>
-                    </div>
-                    <div className="catigory_3">
+                    </Link>
+                    <Link to='/cart' className="catigory_3">
                         <h3>{translation.ThirdDivaccordion}</h3>
                         <p>{translation.Thirdaccordionbody}</p>
-                    </div>
+                    </Link>
                 </div>
             </div>
         
