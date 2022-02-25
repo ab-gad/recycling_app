@@ -32,6 +32,7 @@ urlpatterns = [
     path('user_api/', include('user_api.urls', namespace='user_api')),
     path('events_api/', include('events_api.urls')),
     path('comment_api_test/', include('comment_api_test.urls')),
+    path('api/stripe/', include('payments.urls')),
     path('auth/', include('authen.urls', namespace='authen')),
 
     # for auth tokens
