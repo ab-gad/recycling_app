@@ -129,6 +129,9 @@ const App = () => {
                 <Route path="/cart" exact>
                   <Cart />
                 </Route>
+                <Route path="/service/cart/:id" exact> 
+                  <Cart />
+                </Route>
                 <Redirect to="/" />
               </Switch>
             </ThemesContext.Provider>
