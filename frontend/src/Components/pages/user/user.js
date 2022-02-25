@@ -16,7 +16,7 @@ const User=()=> {
     <div className="card p-3 ">
         <div className="d-flex flex-row justify-content-center mb-3">
             <div className="image">
-                <img src="" className="rounded-circle"/> 
+                <img src={avatar} className="rounded-circle"/> 
                 <AiFillCamera /> 
             </div>
             <div className="d-flex flex-column ms-3 user-details">
