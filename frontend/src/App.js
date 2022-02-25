@@ -12,6 +12,7 @@ import Navbar from "./Components/NavBar";
 import ScrollButton from "./Components/ScrollButton";
 import ThemesContext , {themes} from  './Components/themes';
 import {BsFillMoonStarsFill , BsFillSunFill} from  'react-icons/bs';
+import Cart from "./Components/pages/cart/Cart";
 
 // import { Langcontext } from './context/lang';
 export const Langcontext = React.createContext();
@@ -89,6 +90,9 @@ const App = () => {
                 </Route>
                 <Route path="/register" exact>
                   <Register />
+                </Route>
+                <Route path="/service/cart/:id" exact> 
+                  <Cart />
                 </Route>
                 <Redirect to="/" />
               </Switch>

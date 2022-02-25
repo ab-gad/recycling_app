@@ -69,7 +69,7 @@
 .catigorise{
   margin: 5rem 0 ;
 }
-.catigorise div {
+.catigorise a {
   position: relative;
   padding: .5rem 1rem 0 ;
   margin: 2rem 0 ;
@@ -77,12 +77,12 @@
   transition: .5s;
   height: 9rem;
 }
-.catigorise div h3 ,
-.catigorise div p {
+.catigorise a h3 ,
+.catigorise a p {
   z-index: 5;
   position: relative;
 } 
-.catigorise div::before {
+.catigorise a::before {
   content: '';
   position: absolute;
   top: 0;
@@ -93,11 +93,11 @@
   transition: .5s;
 
 }
-.catigorise:hover div {
+.catigorise:hover a {
   width: 100%;
   margin-left: 0;
 }
-.catigorise div:hover::before  {
+.catigorise a:hover::before  {
   content: " ";
   width: 100%;
   border-radius: 8px;
@@ -127,4 +127,10 @@
   .catigorise .catigory_3 {
     margin-left: 0;
   }
+}
+
+.catigorise a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
