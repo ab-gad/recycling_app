@@ -1,8 +1,24 @@
 import React from 'react'
 import {AiFillCamera} from 'react-icons/ai'
+import axios from "axios"
+import {useState, useEffect}  from  "react"
+
 
 const User=()=> {
 
+    const getUser=()=>{
+        axios.get('http://localhost:8000/user_api/list/1')
+        .then((result)=>{
+            console.log("user",result.data)
+
+        })
+
+    }
+    useEffect(()=>{
+        getUser()
+        
+
+    },[])
 
 
 
@@ -16,14 +32,14 @@ const User=()=> {
     <div className="card p-3 ">
         <div className="d-flex flex-row justify-content-center mb-3">
             <div className="image">
-                <img src={avatar} className="rounded-circle"/> 
+                <img src="" className="rounded-circle"/> 
                 <AiFillCamera /> 
             </div>
             <div className="d-flex flex-column ms-3 user-details">
                 <h4 className="mb-0">user name</h4>
             </div>
         </div>
-        <h4 className='text-center'>My Profile</h4>
+        <h4 className='text-center'>User Profile</h4>
         <div className="row data_container">
             <div className="col-md-6">
                 <div className="inputs"> <label>First name</label>
