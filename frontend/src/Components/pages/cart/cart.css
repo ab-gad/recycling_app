@@ -1,5 +1,4 @@
-#cart input {
-    width: 100px !important;
+#cart input , textarea  {
     display: inline-block;
     padding: .375rem .75rem;
     font-size: 1rem;
@@ -13,8 +12,25 @@
     appearance: none;
     border-radius: .25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    outline: none;
 }
 
 #cart .input-group {
     flex-wrap: nowrap !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.table {
+  color: inherit !important;
+}
+.table input {
+  max-width: 56px;
 }
