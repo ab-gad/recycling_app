@@ -1,8 +1,12 @@
+from cgitb import lookup
 from rest_framework import generics
 from user.models import User, userLocation
 from events.models import Events
 from .serializers import UserSerializer, LocationSerializer, EventsSerializer
 from rest_framework.permissions import BasePermission, SAFE_METHODS
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
 # Create your views here.
 
 class EventWritePerm(BasePermission):
@@ -11,10 +15,19 @@ class EventWritePerm(BasePermission):
         if request.method in SAFE_METHODS:
             return True
         return obj.useradmin == request.user
+    #fn based views 
+@api_view(['Get'])
+def userList(request):
+    all_users=User.objects.all()
+    data=UserSerializer(all_users,many=True).data
+    return Response({'data':data})
 
-class UserList(generics.ListCreateAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer 
+    #class based views  
+class UserDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset=User.objects.all()
+    serializer_class=UserSerializer
+    lookup_field='id'
+
 
 class LocationList(generics.ListCreateAPIView):
     queryset = userLocation.objects.all()
