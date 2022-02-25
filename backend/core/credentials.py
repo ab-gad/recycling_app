@@ -3,10 +3,10 @@
 # DB_HOST = 'localhost'
 # DB_USER = 'postgres'
 
-DB_PASSWORD = 'adham8585'
+DB_PASSWORD = '0000'
 DB_HOST = 'localhost'
-DB_USER = 'postgres'
-#Social Auth
+DB_USER = 'team4'
+# Social Auth
 
 
 SOCIAL_AUTH_FACEBOOK_KEY = ''    # App ID

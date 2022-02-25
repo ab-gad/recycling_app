@@ -179,5 +179,3 @@ SIMPLE_JWT = {
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
     'TOKEN_TYPE_CLAIM': 'token_type',
 }
-GDAL_LIBRARY_PATH = r"C:\Users\adham\AppData\Local\Programs\Python\Python310\Lib\site-packages\osgeo\gdal304.dll"
-GEOS_LIBRARY_PATH = r"C:\Users\adham\AppData\Local\Programs\Python\Python310\Lib\site-packages\osgeo\geos_c.dll"
