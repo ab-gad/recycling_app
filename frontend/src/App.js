@@ -1,4 +1,4 @@
-import React , { useState } from "react";
+import React , { useState }  from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 import About from "./Components/pages/About/About";
@@ -6,18 +6,40 @@ import Contact from "./Components/pages/Contact/Contact";
 import Home from "./Components/pages/Home/Home";
 import Services from "./Components/pages/Service/Service";
 import Testimonial from "./Components/pages/Testimonial/Testimonial";
-import Login from "./Components/pages/Registeration/login";
-import Register from "./Components/pages/Registeration/register";
+
+import Cart from "./Components/pages/cart/Cart";
+
+// import Login from "./Components/pages/Registeration/login";
+// import Register from "./Components/pages/Registeration/register";
+import SignUp from "./Components/pages/Auth/register";
+import SignIn from "./Components/pages/Auth/login";
+import SignOut from "./Components/pages/Auth/logout";
 import Navbar from "./Components/NavBar";
+import Chat from "./Components/pages/ChatBot/Chat";
 import ScrollButton from "./Components/ScrollButton";
 import ThemesContext , {themes} from  './Components/themes';
 import {BsFillMoonStarsFill , BsFillSunFill} from  'react-icons/bs';
-import Cart from "./Components/pages/cart/Cart";
+import { useEffect } from "react";
+import Show from "./Components/pages/Testimonial/showevent";
 
 // import { Langcontext } from './context/lang';
 export const Langcontext = React.createContext();
 
+
+// //testing spinner
+// const loader = document.querySelector(".preloader");
+
+// const showLoader = () => loader.classList.remove("preloader");
+// const addClass = () => loader.classList.add("loader-hide");
+// //--->
 const App = () => {
+//testing spinner
+  // useEffect(() => {
+  //   showLoader();
+  //   addClass();
+  // }, []);
+
+  // //-->
   const [langcont, Setlangcontext] = useState("ENGLISH");
  
   //creatr themes 
@@ -60,6 +82,8 @@ const App = () => {
   }
 
   return (
+
+
     <div dir={langcont === "ENGLISH" ? "ltr" : "rtl"}>
       <Router>
         <Langcontext.Provider value={{ langcont, Setlangcontext }}>
@@ -81,15 +105,25 @@ const App = () => {
                 </Route>
                 <Route path="/events" exact>
                   <Testimonial />
-                </Route>
+      </Route>
+      <Route path="/Show/:id" component={Show} exact >
+        <Show/>
+        </Route>
+
                 <Route path="/contact" exact>
                   <Contact />
                 </Route>
                 <Route path="/login" exact>
-                  <Login />
+                  <SignIn/>
                 </Route>
                 <Route path="/register" exact>
-                  <Register />
+                  <SignUp/>
+                </Route>
+                <Route path="/logout" exact>
+                  <SignOut/>
+                </Route>
+                <Route path="/cart" exact>
+                  <Cart />
                 </Route>
                 <Route path="/service/cart/:id" exact> 
                   <Cart />
@@ -101,8 +135,11 @@ const App = () => {
         </Langcontext.Provider>
       </Router>
       <ScrollButton />
+      <Chat />
     </div>
+
   );
 };
+
 
 export default App;

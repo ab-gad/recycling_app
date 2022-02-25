@@ -34,7 +34,6 @@ const Services = () => {
           }
 
           const{langcont,Setlangcontext} = useContext(Langcontext);
-          console.log(langcont,"langContext")
           const translation=langcont==="ENGLISH"?English:Arabic;
 
         

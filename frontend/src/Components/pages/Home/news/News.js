@@ -30,6 +30,7 @@ const options = {
 
 function News (){
     
+    const [user, setUser] = useState([])
     const [news, setNews] = useState([])
     const [ref, setRef] = useState(false)
     
@@ -42,8 +43,18 @@ function News (){
         })
     }
 
+    const getUsers = () => {
+        fetch('http://localhost:8000/user_api/')
+        .then(res=>res.json())
+        .then(result => {
+            console.log("users", result)
+            setUser()
+        })
+    }
+
     useEffect(()=>{
         getNews()
+        getUsers()
     },[])
 
     

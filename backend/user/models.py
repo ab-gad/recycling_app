@@ -8,6 +8,10 @@ from django.core.validators import RegexValidator
 from django.db import models
 from django.urls import reverse
 
+from django.contrib.gis.db import models
+from django.contrib.gis.geos import Point
+
+
 # to get the date and time of registration > timezone.now 
 from django.utils import timezone
 
@@ -81,7 +85,7 @@ class User (AbstractBaseUser, PermissionsMixin):
         max_length=255, verbose_name='email', unique=True)
     is_superuser = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     last_login = models.DateTimeField(
         blank=True, null=True, verbose_name='last login')
 
@@ -94,7 +98,7 @@ class User (AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(
         max_length=20, default='',  verbose_name='last name')
     phone = models.CharField(max_length=15, validators=[
-        PHONE_REGEX],  verbose_name='phone')
+        PHONE_REGEX], blank=True, null=True, verbose_name='phone')
     avatar = models.ImageField(
         upload_to="profile_images", verbose_name='profile picture', default='profile_images/default-pic.jpeg')
     city = models.CharField(
@@ -138,6 +142,27 @@ class User (AbstractBaseUser, PermissionsMixin):
 
     def has_module_perms(self, app_label):
         return True
+
+
+class userLocation(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    latitude = models.FloatField(blank=True, null=True, 
+    verbose_name='Latitude')
+    longitude = models.FloatField(blank=True, null=True, 
+    verbose_name='Longitude')
+    location = models.PointField(blank=True, null=True)
+    city = models.CharField(max_length=50)
+    address = models.CharField(max_length=100)
+    
+
+    def save(self, *args, **kwargs):
+        self.location = Point(self.longitude, self.latitude)
+        super(userLocation, self).save(*args, **kwargs)  # Call the "real" save() method.
+
+    def __str__(self):
+        # here return the full name (we can return anything we want > return self.email)
+        return f'{self.user} || {self.city}'
+
 
 # class UserProfile(models.Model):
 #     user = models.OneToOneField(User, on_delete=models.CASCADE)
