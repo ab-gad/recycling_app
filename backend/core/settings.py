@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'user',
     'user_api',
     'events_api',
+    'comment_api_test',
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
     'authen',
@@ -172,10 +173,11 @@ SIMPLE_JWT = {
     'ALGORITHM': 'HS256',
     'SIGNING_KEY': SECRET_KEY,
     'VERIFYING_KEY': None,
-    'AUTH_HEADER_TYPES': ('Bearer','JWT'),
+    'AUTH_HEADER_TYPES': ('Bearer', 'JWT'),
     'USER_ID_FIELD': 'id',
     'USER_ID_CLAIM': 'user_id',
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
     'TOKEN_TYPE_CLAIM': 'token_type',
 }
-
+GDAL_LIBRARY_PATH = r"C:\Users\adham\AppData\Local\Programs\Python\Python310\Lib\site-packages\osgeo\gdal304.dll"
+GEOS_LIBRARY_PATH = r"C:\Users\adham\AppData\Local\Programs\Python\Python310\Lib\site-packages\osgeo\geos_c.dll"

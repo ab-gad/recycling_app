@@ -6,7 +6,7 @@ from user.models import User
 
 
 class Events(models.Model):
-    title = models.CharField(max_length=50,unique=True)
+    title = models.CharField(max_length=50, unique=True)
     details = models.TextField(max_length=2000)
     start_date = models.DateTimeField(default=timezone.now)
     end_date = models.DateTimeField()
@@ -20,7 +20,6 @@ class Events(models.Model):
     errors = {}
 
     def clean(self):
-
 
         valid = True
         start_date = self.start_date
@@ -51,6 +50,14 @@ class Events(models.Model):
         return valid
 
 
+class Comments(models.Model):
+    comment = models.TextField(max_length=500)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
 
+    @property
+    def avatar(self):
+        self.user.avatar
 
-
+    @property
+    def first_name(self):
+        self.user.first_name
