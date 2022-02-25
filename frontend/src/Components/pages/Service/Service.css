@@ -133,3 +133,9 @@
     margin-left: 0;
   }
 }
+
+.catigorise a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
