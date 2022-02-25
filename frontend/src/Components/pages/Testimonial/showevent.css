@@ -1,24 +1,24 @@
-body {
+#showeventCard body {
   background: radial-gradient(#e5e5e5, #ffff, #e5e5e5);
 }
 
-.card {
+#showeventCard .card {
   width: 20rem;
 }
 
-.card:hover {
+#showeventCard .card:hover {
   box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253) !important;
 }
 
-.card-body {
+#showeventCard .card-body {
   padding: 3rem 0 !important;
 }
 
-.card-text {
+#showeventCard .card-text {
   font-size: 0.9rem;
   padding: 0.4rem 1.9rem;
 }
-.overlay {
+#showeventCard .overlay {
   position: fixed;
   overflow-y: scroll;
   top: 0;
@@ -27,18 +27,18 @@ body {
   left: 0;
 }
 
-.container-fluid .row {
+#showeventCard .container-fluid .row {
   padding-top: 6rem;
 }
-.overflow {
+#showeventCard .overflow {
   overflow: hidden;
 }
-.card-img-top {
+#showeventCard .card-img-top {
   transform: scale(1);
   transition: transform 0.5s ease;
 }
 
-.card-img-top:hover {
+#showeventCard .card-img-top:hover {
   transform: scale(1.8);
 }
 [aria-hidden="true"] {
