@@ -13,7 +13,7 @@ function Cart () {
     const [limit , setLimit] = useState({ min: 2 , max: 20 })
     const cart_id = parseInt(useParams().id)
     const { latitude , longitude } = usePosition();
-    
+
     const paperPrice   = price.paper*quantity.paper;
     const plasticPrice = price.plastic*quantity.plastic;
     const metalPrice   = price.metal*quantity.metal;
@@ -158,6 +158,9 @@ function Cart () {
                         </div>
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6 ">
                             <input className="w-50" type="hidden" id="longitude" name="longitude" value={longitude} />
+                        </div>
+                        <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6 ">
+                            <input className="w-50" type="hidden" id="total_price" name="total_price" value={sum} />
                         </div>
                     </div>
 
