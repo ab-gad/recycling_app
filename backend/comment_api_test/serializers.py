@@ -3,9 +3,9 @@ from events.models import Comments
 
 
 class CommentsSerializer(serializers.ModelSerializer):
-    avatar = serializers.ReadOnlyField()
-    first_name = serializers.ReadOnlyField()
+    # avatar = serializers.ReadOnlyField()
+    # first_name = serializers.ReadOnlyField()
 
     class Meta:
         model = Comments
-        fields = '__all__'
+        fields = ['comments','user_id','avatar','first_name']

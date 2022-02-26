@@ -22,6 +22,7 @@ import ThemesContext , {themes} from  './Components/themes';
 import {BsFillMoonStarsFill , BsFillSunFill} from  'react-icons/bs';
 import { useEffect } from "react";
 import Show from "./Components/pages/Testimonial/showevent";
+import Homeproduct from "./Components/pages/Product/homeproduct";
 
 // import { Langcontext } from './context/lang';
 export const Langcontext = React.createContext();
@@ -110,9 +111,12 @@ const App = () => {
                 <Route path="/profile" exact>
                   <User />
                 </Route>
-      <Route path="/Show/:id" component={Show} exact >
-        <Show/>
-        </Route>
+                 <Route path="/Show/:id" component={Show} exact >
+                 <Show/>
+                </Route>
+                <Route path="/Homeproduct/" exact >
+                 <Homeproduct/>
+                </Route>
 
                 <Route path="/contact" exact>
                   <Contact />
