@@ -34,3 +34,6 @@ input[type=number] {
 .table input {
   max-width: 56px;
 }
+#not_valid {
+  display: none;
+}

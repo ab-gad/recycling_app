@@ -130,9 +130,6 @@ const App = () => {
                 <Route path="/logout" exact>
                   <SignOut/>
                 </Route>
-                <Route path="/cart" exact>
-                  <Cart />
-                </Route>
                 <Route path="/service/cart/:id" exact> 
                   <Cart />
                 </Route>
