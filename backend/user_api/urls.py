@@ -1,10 +1,13 @@
 from django.urls import path
-from .views import UserList,LocationList, EventDetails
+from .views import LocationList, EventDetails
+from . import views
 
 app_name = 'user_api'
 
 urlpatterns = [
-    path('', UserList.as_view(), name='userlist'),
+    # api
+    path('list/', views.userList, name='userlist'),
+    path('list/<int:id>', views.UserDetail.as_view(), name='userDetails'),
     path('location/', LocationList.as_view(), name='locationlist'),
     path('event/<int:pk>/', EventDetails.as_view(), name='eventdetails'),
     

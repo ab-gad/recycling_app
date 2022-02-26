@@ -16,6 +16,7 @@ const Navbar = () => {
     CountactUs: "اتصل بنا",
     Login: "تسجيل",
     Register: "إنشاء حساب",
+    Profile: "الملف الشخصي",
   };
   const English = {
     RecycleWebSite: "Recycle Web Site",
@@ -26,6 +27,8 @@ const Navbar = () => {
     CountactUs: "Contact ",
     Login: "Login",
     Register: "Register",
+    Profile: "Profile",
+
   };
 
   const { langcont, Setlangcontext } = useContext(Langcontext);
@@ -72,6 +75,7 @@ const Navbar = () => {
               <ul className="dropdown-menu log_drop" aria-labelledby="navbarDropdownMenuLink">
                 <li><NavLink className="dropdown-item text-center text-primary " to="/login" > {translation.Login} </NavLink></li>
                 <li><NavLink className="dropdown-item text-center text-primary " to="/register" > {translation.Register} </NavLink></li>
+                <li><NavLink className="dropdown-item text-center text-primary " to="/profile" > {translation.Profile} </NavLink></li>
               </ul>
             </li>
             

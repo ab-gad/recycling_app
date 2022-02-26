@@ -6,6 +6,7 @@ import Contact from "./Components/pages/Contact/Contact";
 import Home from "./Components/pages/Home/Home";
 import Services from "./Components/pages/Service/Service";
 import Testimonial from "./Components/pages/Testimonial/Testimonial";
+import User from "./Components/pages/user/user";
 
 import Cart from "./Components/pages/cart/Cart";
 
@@ -21,6 +22,7 @@ import ThemesContext , {themes} from  './Components/themes';
 import {BsFillMoonStarsFill , BsFillSunFill} from  'react-icons/bs';
 import { useEffect } from "react";
 import Show from "./Components/pages/Testimonial/showevent";
+import Homeproduct from "./Components/pages/Product/homeproduct";
 
 // import { Langcontext } from './context/lang';
 export const Langcontext = React.createContext();
@@ -105,10 +107,16 @@ const App = () => {
                 </Route>
                 <Route path="/events" exact>
                   <Testimonial />
-      </Route>
-      <Route path="/Show/:id" component={Show} exact >
-        <Show/>
-        </Route>
+                </Route>
+                <Route path="/profile" exact>
+                  <User />
+                </Route>
+                 <Route path="/Show/:id" component={Show} exact >
+                 <Show/>
+                </Route>
+                <Route path="/Homeproduct/" exact >
+                 <Homeproduct/>
+                </Route>
 
                 <Route path="/contact" exact>
                   <Contact />
