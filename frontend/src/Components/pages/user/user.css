@@ -3,7 +3,17 @@
 .card {
     border: none
 }
-
+.name_image_block{
+    border-radius: 25px;
+    border: 2px solid rgb(108, 195, 224);
+    box-shadow:5px 5px rgb(46, 172, 214) ;
+    margin: auto;
+}
+.form_container{
+    border-radius: 10px;
+    border: 2px solid rgb(108, 195, 224);
+    box-shadow:5px 5px rgb(46, 172, 214) ;
+}
 .image {
     position: relative
 }
