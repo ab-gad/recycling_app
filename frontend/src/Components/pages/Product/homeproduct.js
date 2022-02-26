@@ -1,17 +1,20 @@
 import React,{useEffect} from 'react';
 import {API_URL} from '../../../config/index';
-
+import QueryString from 'query-string';
+import{useLocation}from'react-router-dom';
 const Homeproduct =()=>{
 
+    const location=useLocation();
     useEffect(() => {
         // Check to see if this is a redirect back from Checkout
-        const query = new URLSearchParams(window.location.search);
+        const values = QueryString.parse(location.search);
+        console.log(values);
     
-        if (query.get("success")) {
+        if (values.success) {
           console.log("Order placed! You will receive an email confirmation.");
         }
     
-        if (query.get("canceled")) {
+        if (values.canceled) {
             console.log(
             "Order canceled -- continue to shop around and checkout when you're ready."
           );
