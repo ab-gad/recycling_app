@@ -230,6 +230,6 @@ nav .toggel_icon:hover .line:nth-child(even) {
   margin: 20px;
   cursor: pointer;
 }
-#box_theme  > svg {
+#box_theme > svg {
   filter: drop-shadow(0 0 6px #fff);
 }

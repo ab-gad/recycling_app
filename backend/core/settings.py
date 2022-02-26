@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'authen',
     'order',
+    'payments',
 ]
 
 MIDDLEWARE = [
@@ -165,6 +166,9 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
+STRIPE_SECRET_KEY = 'sk_test_51IYY44J336fqgY5lGe92VvAof8JhuDajn5srjtiukf4HfXty8sNYme4Zg4Clb8oCNTx04O6Wa47CABLkrtvI1zyc00xcXRGYzx'
+SITE_URL = 'http://localhost:3000'
+
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=1),
