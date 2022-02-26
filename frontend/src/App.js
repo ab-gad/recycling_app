@@ -6,8 +6,15 @@ import Contact from "./Components/pages/Contact/Contact";
 import Home from "./Components/pages/Home/Home";
 import Services from "./Components/pages/Service/Service";
 import Testimonial from "./Components/pages/Testimonial/Testimonial";
-import Login from "./Components/pages/Registeration/login";
-import Register from "./Components/pages/Registeration/register";
+import User from "./Components/pages/user/user";
+
+import Cart from "./Components/pages/cart/Cart";
+
+// import Login from "./Components/pages/Registeration/login";
+// import Register from "./Components/pages/Registeration/register";
+import SignUp from "./Components/pages/Auth/register";
+import SignIn from "./Components/pages/Auth/login";
+import SignOut from "./Components/pages/Auth/logout";
 import Navbar from "./Components/NavBar";
 import Chat from "./Components/pages/ChatBot/Chat";
 import ScrollButton from "./Components/ScrollButton";
@@ -99,7 +106,10 @@ const App = () => {
                 </Route>
                 <Route path="/events" exact>
                   <Testimonial />
-      </Route>
+                </Route>
+                <Route path="/profile" exact>
+                  <User />
+                </Route>
       <Route path="/Show/:id" component={Show} exact >
         <Show/>
         </Route>
@@ -108,10 +118,19 @@ const App = () => {
                   <Contact />
                 </Route>
                 <Route path="/login" exact>
-                  <Login />
+                  <SignIn/>
                 </Route>
                 <Route path="/register" exact>
-                  <Register />
+                  <SignUp/>
+                </Route>
+                <Route path="/logout" exact>
+                  <SignOut/>
+                </Route>
+                <Route path="/cart" exact>
+                  <Cart />
+                </Route>
+                <Route path="/service/cart/:id" exact> 
+                  <Cart />
                 </Route>
                 <Redirect to="/" />
               </Switch>
