@@ -1,11 +1,13 @@
 from orders.models import Orders
 from .serializers import OrderSerializer
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework import generics
 
-@api_view ([ 'GET' ])
-def orderlist (requsest):
-    all_orders = Orders.objects.all()
-    data = OrderSerializer(all_orders , many=True ).data
-    return Response( {'data' : data} )
+class Order_list(generics.ListAPIView):
+    queryset = Orders.objects.all()
+    serializer_class = OrderSerializer
+
+class Order_details(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Orders.objects.all()
+    serializer_class = OrderSerializer
+    lookup_field = 'id'
 
