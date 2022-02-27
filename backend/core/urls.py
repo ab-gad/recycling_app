@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-#for auth tokens
+# for auth tokens
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -31,9 +31,11 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('user_api/', include('user_api.urls', namespace='user_api')),
     path('events_api/', include('events_api.urls')),
+    path('comment_api_test/', include('comment_api_test.urls')),
+    path('api/stripe/', include('payments.urls')),
     path('auth/', include('authen.urls', namespace='authen')),
 
-    #for auth tokens
+    # for auth tokens
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 

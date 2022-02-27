@@ -48,12 +48,13 @@ INSTALLED_APPS = [
     'user',
     'user_api',
     'events_api',
+    'comment_api_test',
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
     'authen',
     'orders',
     'orders_api',
-    
+    'payments',
 ]
 
 MIDDLEWARE = [
@@ -166,6 +167,9 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
+STRIPE_SECRET_KEY = 'sk_test_51IYY44J336fqgY5lGe92VvAof8JhuDajn5srjtiukf4HfXty8sNYme4Zg4Clb8oCNTx04O6Wa47CABLkrtvI1zyc00xcXRGYzx'
+SITE_URL = 'http://localhost:3000/Homeproduct'
+# linktosite
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=1),
@@ -175,10 +179,9 @@ SIMPLE_JWT = {
     'ALGORITHM': 'HS256',
     'SIGNING_KEY': SECRET_KEY,
     'VERIFYING_KEY': None,
-    'AUTH_HEADER_TYPES': ('Bearer','JWT'),
+    'AUTH_HEADER_TYPES': ('Bearer', 'JWT'),
     'USER_ID_FIELD': 'id',
     'USER_ID_CLAIM': 'user_id',
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
     'TOKEN_TYPE_CLAIM': 'token_type',
 }
-
