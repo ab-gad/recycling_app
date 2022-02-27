@@ -12,9 +12,15 @@ import Cart from "./Components/pages/cart/Cart";
 
 // import Login from "./Components/pages/Registeration/login";
 // import Register from "./Components/pages/Registeration/register";
-import SignUp from "./Components/pages/Auth/register";
-import SignIn from "./Components/pages/Auth/login";
-import SignOut from "./Components/pages/Auth/logout";
+// import SignUp from "./Components/pages/Auth/register";
+// import SignIn from "./Components/pages/Auth/login";
+// import SignOut from "./Components/pages/Auth/logout";
+import Login from "./Components/pages/Auth/NewLogin";
+import Register from "./Components/pages/Auth/NewRegister";
+import Activate from "./Components/pages/Auth/Activate";
+import ResetPassword from "./Components/pages/Auth/ResetPassword";
+import ResetPasswordConfirm from "./Components/pages/Auth/ResetPasswordConfirm";
+
 import Navbar from "./Components/NavBar";
 import Chat from "./Components/pages/ChatBot/Chat";
 import ScrollButton from "./Components/ScrollButton";
@@ -121,7 +127,8 @@ const App = () => {
                 <Route path="/contact" exact>
                   <Contact />
                 </Route>
-                <Route path="/login" exact>
+
+                {/* <Route path="/login" exact>
                   <SignIn/>
                 </Route>
                 <Route path="/register" exact>
@@ -129,8 +136,15 @@ const App = () => {
                 </Route>
                 <Route path="/logout" exact>
                   <SignOut/>
-                </Route>
+                </Route> */}
+
+                <Route exact path='/login' component={Login} />
+                <Route exact path='/register' component={Register} />
+                <Route exact path='/reset-password' component={ResetPassword} />
+                <Route exact path='/password/reset/confirm/:uid/:token' component={ResetPasswordConfirm} />
+                <Route exact path='/activate/:uid/:token' component={Activate} />
                 <Route path="/service/cart/:id" exact> 
+
                   <Cart />
                 </Route>
                 <Redirect to="/" />

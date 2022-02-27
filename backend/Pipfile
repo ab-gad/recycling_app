@@ -16,6 +16,8 @@ pytz = "==2021.3"
 django-comments-dab = "==2.7.1"
 Pillow = "==9.0.1"
 stripe = "*"
+djoser = "*"
+social-auth-app-django = "*"
 
 [dev-packages]
 
