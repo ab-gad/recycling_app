@@ -21,7 +21,7 @@ PHONE_REGEX = RegexValidator(
 
 
 class UserManager(BaseUserManager):
-    # we can use **other_fields as the last parameter in our fun. and when using self.model 
+# we can use **other_fields as the last parameter in our fun. and when using self.model 
     def create_user(self, email, first_name, last_name='', password=None, is_active=True, is_staff=False, is_superuser=False):
         
         if not email:
