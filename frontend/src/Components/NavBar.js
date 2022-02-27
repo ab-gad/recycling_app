@@ -1,11 +1,11 @@
 import "./NavBar.css";
 import { NavLink } from "react-router-dom";
 import { Langcontext } from "../App";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { FaRegUserCircle ,FaSeedling , FaBoxOpen } from 'react-icons/fa';
 import { VscHome } from 'react-icons/vsc';
 import { BsBuilding , BsChatDots } from 'react-icons/bs';
-
+import axiosInstance from "../axios";
 const Navbar = () => {
   const Arabic = {
     RecycleWebSite: "إعادة تدوير موقع",
@@ -17,6 +17,8 @@ const Navbar = () => {
     Login: "تسجيل",
     Register: "إنشاء حساب",
     Profile: "الملف الشخصي",
+    settings: "الاعادات",
+    logout:"تسجيل الخروج"
   };
   const English = {
     RecycleWebSite: "Recycle Web Site",
@@ -28,7 +30,8 @@ const Navbar = () => {
     Login: "Login",
     Register: "Register",
     Profile: "Profile",
-
+    settings: "Settings",
+    logout:"Logout"
   };
 
   const { langcont, Setlangcontext } = useContext(Langcontext);
@@ -53,6 +56,25 @@ const Navbar = () => {
         this.classList.add('active');
       })
     }
+
+    const[authedUser, setAutheUser] = useState({})
+
+    const getAuthedUser = () => {
+      axiosInstance
+          .get('user_api/authedUser/')
+          .then(res => {
+              console.log(res,res.data, 'user',res.data.data)
+              setAutheUser(res.data.data)
+          })
+          .catch((err)=>{
+            console.log(err)
+            setAutheUser(false)
+          })
+    }
+
+    useEffect(()=>{
+      getAuthedUser()
+    },[])
       
   return (
     <>
@@ -66,17 +88,30 @@ const Navbar = () => {
 
             <li className="nav-item mx-3 dropdown log_icon ">
               <NavLink className="nav-link p-0 m-0 " to="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <FaRegUserCircle className="text-light" />
+                {authedUser ? 
+                  <> 
+                  <small>{`${authedUser.first_name} ${authedUser.last_name}`}</small>
+                  <img className="rounded-circle" src={`http://localhost:8000${authedUser.avatar}`} width='35' height='35'/> 
+                  </>
+                : 
+                  <FaRegUserCircle className="text-light" />
+                }
               </NavLink>
               <button type="button" className="btn btn-outline-light shadow-none rounded-pill m-2 mx-3 language_button " onClick={() => language_zone() } >
                     {langcont}
-                </button>
-
+              </button>
+              {authedUser ?
+              <ul className="dropdown-menu log_drop" aria-labelledby="navbarDropdownMenuLink">
+                <li><NavLink className="dropdown-item text-center text-primary " to="/profile" > {translation.Profile} </NavLink></li>
+                <li><NavLink className="dropdown-item text-center text-primary " to="/profile" > {translation.settings} </NavLink></li>
+                <li><NavLink className="dropdown-item text-center text-primary " to="/logout" > {translation.logout} </NavLink></li>
+              </ul>
+              :
               <ul className="dropdown-menu log_drop" aria-labelledby="navbarDropdownMenuLink">
                 <li><NavLink className="dropdown-item text-center text-primary " to="/login" > {translation.Login} </NavLink></li>
                 <li><NavLink className="dropdown-item text-center text-primary " to="/register" > {translation.Register} </NavLink></li>
-                <li><NavLink className="dropdown-item text-center text-primary " to="/profile" > {translation.Profile} </NavLink></li>
               </ul>
+              }
             </li>
             
                 
