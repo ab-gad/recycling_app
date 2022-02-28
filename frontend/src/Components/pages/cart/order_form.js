@@ -1,44 +1,109 @@
 import React , { useEffect , useState} from "react";
 import { useParams  } from "react-router-dom";
 import { usePosition } from 'use-position';
-import PageTitle from "../../page_title";
+// import PageTitle from "../../page_title";
 import { BiError } from 'react-icons/bi';
-import Footer from '../Footer/Footer';
-import "./cart.css";
-import {Order_form }
+// import Footer from '../Footer/Footer';
+// import "./cart.css";
 
 
-function Cart () {
+function Order_form () {
+    const [price, setPrice] = useState({paper:0.70, metal:1.5, plastic:1.5})
+    const [quantity, setQuantity] = useState({paper:2, metal:2, plastic:2})
+    const [limit , setLimit] = useState({ min: 2 , max: 20 })
+    const cart_id = parseInt(useParams().id)
+    const { latitude , longitude } = usePosition();
 
+    const paperPrice   = price.paper*quantity.paper;
+    const plasticPrice = price.plastic*quantity.plastic;
+    const metalPrice   = price.metal*quantity.metal;
+    const sum = paperPrice + plasticPrice + metalPrice;
+    
+    // catigory of kind of users 
+    useEffect( () => {
+        if ( cart_id === 2 ) {
+            setQuantity({paper:10 , metal:10 , plastic:10 }) ;
+            setLimit({  min: 10 , max: 80 });
+        }
+        else if ( cart_id === 3 ){
+            setQuantity({paper: 80 , metal: 80 , plastic: 80 }) ;
+            setLimit({ min: 80 , max: 200 });
+        }
+    } , [])
+    
+    const onChangeHandler = (e, material) => {
+        if (e.target.value >= 0){
+            setQuantity({...quantity, [material]:Number(e.target.value)})
+        }
+    }
+    
+    // form validation
+    const [ not_valid_message , setNotValid ] = useState("");
+    let firstName = document.getElementById("firstName");
+    let lastName = document.getElementById("lastName");
+    let phone = document.getElementById("phone");
+    let city = document.getElementById("city");
+    let Address = document.getElementById("Address");
+    let not_valid = document.getElementById("not_valid");
+    let pattern = /[0-9]/
+
+    function form_validation (){
+        if ( !firstName.value ||
+             firstName.value.match(pattern) || 
+             firstName.value.replace(/\s/g, "") === "" ) {
+
+            not_valid.style.display = 'block'
+            setNotValid("First Name is Required and Mustn't be Numeric")
+            return false
+        } 
+        else if ( !lastName.value ||
+                  lastName.value.match(pattern) ||
+                  lastName.value.replace(/\s/g, "") === "" ) {
+
+            not_valid.style.display = 'block'
+            setNotValid("Last Name is Required and Mustn't be Numeric ")
+            return false
+        }
+        else if ( phone.value.length != 11 ||
+                 (phone.value[0] !=0 || phone.value[1] != 1 )  ) {
+
+            not_valid.style.display = 'block'
+            setNotValid("Phone Must be 11 Number and be Egyptian Phone Number")
+            return false
+        }
+        else if ( !city.value ||
+                  city.value.match(pattern) ||
+                  city.value.replace(/\s/g, "") === "" ) {
+
+            not_valid.style.display = 'block'
+            setNotValid(" City is Required and Mustn't be Numeric ")
+            return false
+        }
+        else if ( !Address.value ||
+                  Address.value.replace(/\s/g, "") === "" ) {
+
+            not_valid.style.display = 'block'
+            setNotValid(" Address is Required and Must be Specified ")
+            return false
+        }
+        else {
+            not_valid.style.display = 'none'
+            return true
+
+        }
+    }
+
+    function predefult (event) {
+        if ( !(form_validation()) ) {
+            event.preventDefault()
+        }
+    }
+    
     return(
         <>
             <section id="cart">
-                <PageTitle title="My Cart" description="Clean And Earn"/>
-                <div className="container py-5 table-responsive">
-                    <div className="mb-5" >
-                        <h2>Selling Policy</h2>
-                        <h5>- To make a successfull selling process please make sure you fullfilled the following conditions: </h5>
-                        <ul>
-                            <li> Make sure the information you fill in the form is correct </li>
-                            <li> After you fill out the form, you can start selling your items with the following rules:
-                                <ul className="text-secondary">
-                                    <li> - If you are an <strong> apartment</strong>, the quantity specified for you is <strong> 2 kg : 20 kg </strong> as a maximum. </li>
-                                    <li> - If you are a <strong> shop</strong>, you can specify the quantity available to you between <strong> 10 kg : 80 kg </strong> as a maximum. </li>
-                                    <li> - If you <strong> work in garbage collection</strong>, you can specify the quantity you have from <strong> 80 kg : 200 kg </strong>  as a maximum. </li>
-                                </ul>
-                            </li>
-                            <li> Depending on the amount of material you tries to sell the plan will be choosed </li>
-                            <li> Afer choosing quantities you have to click on the "Done" button to intiate an order and start your selling process. </li>
-                            <li> Our representative will come to your location within after few days your selling order </li>
-                            <li>You can modify the data and quantity that you have as you want until Wednesday,
-                                as on that day the data entered is approved A statement is printed with the quantity and price that was approved and
-                                given to the representative, who deals with the customer according to what is registered with him in the statement. </li>
-                        </ul>
-                        
-                        
-                        
-                    </div>
-                    <h3 className="border-top pt-3 my-3">Start to <span className="text-danger"> Clean and Earn </span> </h3>
+
+                <h3 className="border-top pt-3 my-3">Start to <span className="text-danger"> Clean and Earn </span> </h3>
 
                 <form action="" method="">
                     <div className="my-3 row ">
@@ -191,12 +256,10 @@ function Cart () {
                         { not_valid_message }
                     </p>
                 </div>
-                </form>
-            </div>
+            </form>
         </section> 
-        <Footer/>
-        </> 
+    </> 
     )
 }
 
-export default Cart;
+export default Order_form;

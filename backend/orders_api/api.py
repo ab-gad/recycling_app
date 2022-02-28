@@ -2,7 +2,7 @@ from orders.models import Orders
 from .serializers import OrderSerializer
 from rest_framework import generics
 
-class Order_list(generics.ListAPIView):
+class Order_list(generics.ListCreateAPIView):
     queryset = Orders.objects.all()
     serializer_class = OrderSerializer
 
