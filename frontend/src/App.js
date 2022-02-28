@@ -8,7 +8,6 @@ import Services from "./Components/pages/Service/Service";
 import Testimonial from "./Components/pages/Testimonial/Testimonial";
 import User from "./Components/pages/user/user";
 
-import Cart from "./Components/pages/cart/Cart";
 
 // import Login from "./Components/pages/Registeration/login";
 // import Register from "./Components/pages/Registeration/register";
@@ -33,6 +32,9 @@ import {BsFillMoonStarsFill , BsFillSunFill} from  'react-icons/bs';
 import { useEffect } from "react";
 import Show from "./Components/pages/Testimonial/showevent";
 import Homeproduct from "./Components/pages/Product/homeproduct";
+import Cart from "./Components/pages/Product/cart";
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 // import { Langcontext } from './context/lang';
 export const Langcontext = React.createContext();
@@ -95,7 +97,6 @@ const App = () => {
 
   return (
 
-
     <div dir={langcont === "ENGLISH" ? "ltr" : "rtl"}>
       <Provider store={store}>
         <Router>
@@ -149,7 +150,6 @@ const App = () => {
                   <Route exact path='/password/reset/confirm/:uid/:token' component={ResetPasswordConfirm} />
                   <Route exact path='/activate/:uid/:token' component={Activate} />
                   <Route path="/service/cart/:id" exact> 
-
                     <Cart />
                   </Route>
                   <Redirect to="/" />

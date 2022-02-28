@@ -5,13 +5,15 @@ import React, { useContext, useState, useEffect } from "react";
 import { FaRegUserCircle ,FaSeedling , FaBoxOpen } from 'react-icons/fa';
 import { VscHome } from 'react-icons/vsc';
 import { BsBuilding , BsChatDots } from 'react-icons/bs';
-
+import { useSelector} from "react-redux"
+import { useEffect } from "react";
 import axiosInstance from "../axios";
 import { connect } from "react-redux";
 import { checkAuthenticated, load_user, logout} from "../redux/actions/actions";
 import { useHistory } from 'react-router-dom';
 
 const Navbar = (props) => {
+  const {cartTotalQuantity}=useSelector(state=>state.cart)
   const Arabic = {
     RecycleWebSite: "إعادة تدوير موقع",
     Home: "الرئيسية",
@@ -118,7 +120,6 @@ const Navbar = (props) => {
                 <li><NavLink className="dropdown-item text-center text-primary " to="/profile" > {translation.Profile} </NavLink></li>
                 <li><NavLink className="dropdown-item text-center text-primary " to="/profile" > {translation.settings} </NavLink></li>
                 <li><button className="dropdown-item text-center text-primary " onClick={logout_user}> {translation.logout} </button></li>
-                
               </ul>
               :
               <ul className="dropdown-menu log_drop" aria-labelledby="navbarDropdownMenuLink">
