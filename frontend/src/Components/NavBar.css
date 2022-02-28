@@ -176,11 +176,11 @@ nav .nav_logo {
   left: 20px;
   top: 0;
 }
-nav .language_button {
+/* nav .language_button {
   position: absolute;
   right: 37px;
   top: 0;
-}
+} */
 
 body {
   font-family: "Roboto", sans-serif;
