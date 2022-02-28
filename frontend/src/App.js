@@ -108,7 +108,7 @@ const App = () => {
                 <Route path="/events" exact>
                   <Testimonial />
                 </Route>
-                <Route path="/profile" exact>
+                <Route path="/settings" exact>
                   <User />
                 </Route>
                  <Route path="/Show/:id" component={Show} exact >

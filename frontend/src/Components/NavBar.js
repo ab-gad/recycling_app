@@ -16,7 +16,7 @@ const Navbar = () => {
     CountactUs: "اتصل بنا",
     Login: "تسجيل",
     Register: "إنشاء حساب",
-    Profile: "الملف الشخصي",
+    settings: "الضبط",
   };
   const English = {
     RecycleWebSite: "Recycle Web Site",
@@ -27,7 +27,7 @@ const Navbar = () => {
     CountactUs: "Contact ",
     Login: "Login",
     Register: "Register",
-    Profile: "Profile",
+    settings: "settings",
 
   };
 
@@ -75,7 +75,7 @@ const Navbar = () => {
               <ul className="dropdown-menu log_drop" aria-labelledby="navbarDropdownMenuLink">
                 <li><NavLink className="dropdown-item text-center text-primary " to="/login" > {translation.Login} </NavLink></li>
                 <li><NavLink className="dropdown-item text-center text-primary " to="/register" > {translation.Register} </NavLink></li>
-                <li><NavLink className="dropdown-item text-center text-primary " to="/profile" > {translation.Profile} </NavLink></li>
+                <li><NavLink className="dropdown-item text-center text-primary " to="/settings" > {translation.settings} </NavLink></li>
               </ul>
             </li>
             
