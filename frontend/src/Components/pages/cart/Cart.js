@@ -35,7 +35,6 @@ function Cart () {
                         
                         
                     </div>
-                    <h3 className="border-top pt-3 my-3">Start to <span className="text-danger"> Clean and Earn </span> </h3>
 
                     <Order_form />
 

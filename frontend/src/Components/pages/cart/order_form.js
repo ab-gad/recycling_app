@@ -6,22 +6,30 @@ import "./cart.css";
 
 
 function Order_form () {
-    const [price, setPrice] = useState({paper:0.70, metal:1.5, plastic:1.5})
-    const [quantity, setQuantity] = useState({paper:2, metal:2, plastic:2})
+    const [price, setPrice] = useState({ paper: 0.70 , metal: 1.5 , plastic: 1.5})
+    const [quantity, setQuantity] = useState({ paper: 2 , metal: 2 , plastic: 2})
     const [limit , setLimit] = useState({ min: 2 , max: 20 })
     const cart_catigory = useParams().name
+    const order_id = useParams().order_id
     const { latitude , longitude } = usePosition();
-
+    const date = new Date().toLocaleString()
     const paperPrice   = price.paper*quantity.paper;
     const plasticPrice = price.plastic*quantity.plastic;
     const metalPrice   = price.metal*quantity.metal;
     const sum = paperPrice + plasticPrice + metalPrice;
-    
+   
+
     // catigory of kind of users 
     useEffect( () => {
         if ( cart_catigory === 'shop' ) {
-            setQuantity({paper:10 , metal:10 , plastic:10 }) ;
+            setQuantity({paper: 10 , metal: 10 , plastic: 10 }) ;
             setLimit({  min: 10 , max: 80 });
+            if ( order_id  ) {
+                console.log(order_id)
+            }else {
+                console.log("No ID")
+
+            }
         }
         else if ( cart_catigory === 'worker' ){
             setQuantity({paper: 80 , metal: 80 , plastic: 80 }) ;
@@ -99,15 +107,13 @@ function Order_form () {
     
     return(
         <>
-            <section id="cart">
-
-                <h3 className="border-top pt-3 my-3">Start to <span className="text-danger"> Clean and Earn </span> </h3>
-
+            <section id="cart" className="container">
+                <h3 className="border-top py-3 my-4">Start to <span className="text-danger"> Clean and Earn </span> </h3>
                 <form action="" method="">
                     <div className="my-3 row ">
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6  ">
                             <label htmlFor="firstName" > First Name </label>
-                            <input className="w-50" type="text" id="firstName" name="firstName"  />
+                            <input className="w-50" type="text" id="firstName" name="firstName" />
                         </div>
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6 ">
                             <label htmlFor="lastName" > Last Name </label>
@@ -136,10 +142,13 @@ function Order_form () {
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6 ">
                             <input className="w-50" type="hidden" id="total_price" name="total_price" value={sum} />
                         </div>
+                        <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6 ">
+                            <input className="w-50" type="hidden" id="date" name="date" value={date} />
+                        </div>
                     </div>
 
                 <table className="table text-center table-responsive-sm ">
-                    <caption>You Can Update To Data Until Wednesday 12:00 AM</caption>
+                    <caption>You Can Update Form Data Through Your Profile </caption>
                     <thead>
                         <tr >
                             <th scope="col">Material</th>
