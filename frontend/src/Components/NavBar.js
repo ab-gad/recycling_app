@@ -6,14 +6,13 @@ import { FaRegUserCircle ,FaSeedling , FaBoxOpen } from 'react-icons/fa';
 import { VscHome } from 'react-icons/vsc';
 import { BsBuilding , BsChatDots } from 'react-icons/bs';
 import { useSelector} from "react-redux"
-import { useEffect } from "react";
 import axiosInstance from "../axios";
 import { connect } from "react-redux";
 import { checkAuthenticated, load_user, logout} from "../redux/actions/actions";
 import { useHistory } from 'react-router-dom';
 
 const Navbar = (props) => {
-  const {cartTotalQuantity}=useSelector(state=>state.cart)
+  // const {cartTotalQuantity}=useSelector(state=>state.cart)
   const Arabic = {
     RecycleWebSite: "إعادة تدوير موقع",
     Home: "الرئيسية",
@@ -62,21 +61,6 @@ const Navbar = (props) => {
         item.classList.remove('active');
         this.classList.add('active');
       })
-    }
-
-    const[authedUser, setAutheUser] = useState({})
-
-    const getAuthedUser = () => {
-      axiosInstance
-          .get('user_api/authedUser/')
-          .then(res => {
-              console.log(res,res.data, 'user',res.data.data)
-              setAutheUser(res.data.data)
-          })
-          .catch((err)=>{
-            console.log(err)
-            setAutheUser(false)
-          })
     }
     
     const history = useHistory();
