@@ -3,5 +3,5 @@ from . import views
 
 
 urlpatterns = [
-    path('Comments', views.showMultipleModels2),
+    path('Products', views.showMultipleModels),
 ]
