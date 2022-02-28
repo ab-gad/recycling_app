@@ -12,12 +12,21 @@ const User=()=> {
     // const id=props.match.params.id
     
     const [userData,updateData]=useState({})
+    // const [image,setImage] = useState(null)
     const handleChange=(e) => {
-        console.log(e.target.value)
+        // if ([e.target.name] == 'avatar'){
+        //     setImage({
+        //         avatar: e.target.files[0]
+        //     })
+        //     console.log(e.target.files)
+        // }
+
+        // console.log(e.target.value)
         updateData({
             ...userData, // spread operator
             [e.target.name]:e.target.value.trim() // trim()=>trim/remove whitespace from both sides of a string
         })
+        
     }
 
     const updateUser=() => {
@@ -29,17 +38,13 @@ const User=()=> {
             last_name: userData.last_name,
             phone:userData.phone,
             birthdate:userData.birthdate,
-            // avatar:userData.avatar
+            // avatar:image.avatar
         })
         .then((response) => {
             console.log(response.data)
-            updateData({first_name:response.data.first_name,
-                        last_name:response.datalast_name,
-                        email:response.data.email,
-                        phone:response.data.phone,
-                        city:response.data.city,
-                        birthdate:response.data.birthdate,})
+            updateData(response.data)
         })
+        
         .catch((err) => {
             console.log(err)
         })
@@ -50,7 +55,6 @@ const User=()=> {
         .then((result) => {
             console.log("user",result.data)
             setUser(result.data)
-            updateData(result.data)
 
         })
         .catch((err) => {
@@ -81,12 +85,13 @@ const User=()=> {
     const mailVaildation = (e) => {
         if(e.target.name === "email") {
             setmailName(e.target.value);
-            
-            if(e.target.value.match("[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z]{2,4}")){
+            if(e.target.value.match("[a-zA-Z0-9._]+@[a-z]+\.[a-zA-Z]{2,4}")){
                 setmailError (" ");
+                // console.log(mailName)
             }else {
                 setmailError ("Please enter a vaild email format");
             }
+            
         }
     }
 
@@ -142,9 +147,7 @@ const User=()=> {
             <div className="image">
                 <img src={`${user.avatar}`} className="rounded-circle border border-primary border-3" style={{maxWidth: 80,maxHeight:80}}/> 
                 <span ><AiFillCamera /> </span>
-                {/* <a class="btn btn-large btn-primary logout" href="#">
-                    <span ><AiFillCamera /> </span>
-                </a>                 */}
+                
             </div>
             <div className="d-flex flex-column ms-3 user-details">
                 <h4 className="mb-0">{`${user.first_name}`} {`${user.last_name}`}</h4>
@@ -164,7 +167,9 @@ const User=()=> {
                 </div>
                 <div className="col-md-6">
                     <div className="inputs"> <label>Profile picture</label>
-                    <input type="file" accept="image/*" name="avatar"  class="form-control form-control-alternative"/>
+                    <input type="file" accept="image/*" name="avatar"  class="form-control form-control-alternative"
+                     onChange={(e)=>handleChange(e)}
+                    />
                     </div>
                         
                 </div>
