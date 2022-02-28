@@ -20,10 +20,6 @@ import Activate from "./Components/pages/Auth/Activate";
 import ResetPassword from "./Components/pages/Auth/ResetPassword";
 import ResetPasswordConfirm from "./Components/pages/Auth/ResetPasswordConfirm";
 
-//Redux
-import {Provider} from 'react-redux'
-import store from "./redux/store";
-
 import Navbar from "./Components/NavBar";
 import Chat from "./Components/pages/ChatBot/Chat";
 import ScrollButton from "./Components/ScrollButton";
@@ -98,7 +94,7 @@ const App = () => {
   return (
 
     <div dir={langcont === "ENGLISH" ? "ltr" : "rtl"}>
-      <Provider store={store}>
+
         <Router>
           <Langcontext.Provider value={{ langcont, Setlangcontext }}>
             <main>
@@ -160,7 +156,7 @@ const App = () => {
         </Router>
         <ScrollButton />
         <Chat />
-      </Provider>
+
     </div>
 
   );
