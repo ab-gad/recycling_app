@@ -6,7 +6,6 @@ import { FaRegUserCircle ,FaSeedling , FaBoxOpen } from 'react-icons/fa';
 import { VscHome } from 'react-icons/vsc';
 import { BsBuilding , BsChatDots } from 'react-icons/bs';
 import { useSelector} from "react-redux"
-import { useEffect } from "react";
 import axiosInstance from "../axios";
 import { connect } from "react-redux";
 import { checkAuthenticated, load_user, logout} from "../redux/actions/actions";
