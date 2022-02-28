@@ -63,21 +63,6 @@ const Navbar = (props) => {
         this.classList.add('active');
       })
     }
-
-    const[authedUser, setAutheUser] = useState({})
-
-    const getAuthedUser = () => {
-      axiosInstance
-          .get('user_api/authedUser/')
-          .then(res => {
-              console.log(res,res.data, 'user',res.data.data)
-              setAutheUser(res.data.data)
-          })
-          .catch((err)=>{
-            console.log(err)
-            setAutheUser(false)
-          })
-    }
     
     const history = useHistory();
     const logout_user = () => {
