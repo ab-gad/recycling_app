@@ -6,14 +6,14 @@ import { FaRegUserCircle ,FaSeedling , FaBoxOpen } from 'react-icons/fa';
 import { VscHome } from 'react-icons/vsc';
 import { BsBuilding , BsChatDots } from 'react-icons/bs';
 import { useSelector} from "react-redux"
-import { useEffect } from "react";
 import axiosInstance from "../axios";
 import { connect } from "react-redux";
 import { checkAuthenticated, load_user, logout} from "../redux/actions/actions";
 import { useHistory } from 'react-router-dom';
+import {cartTotalQuantity} from '../features/cartSlice';
 
 const Navbar = (props) => {
-  const {cartTotalQuantity}=useSelector(state=>state.cart)
+  // const {cartTotalQuantity}=useSelector(state=>state.cart)
   const Arabic = {
     RecycleWebSite: "إعادة تدوير موقع",
     Home: "الرئيسية",

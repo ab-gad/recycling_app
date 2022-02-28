@@ -6,6 +6,7 @@ import {removeFromCart,decreaseCart,addToCart,clearCart,getTotals}from"../../../
 
 const Cart =()=>{
     const cart =useSelector((state)=>state.cart);
+    console.log(cart);
     const dispatch=useDispatch();
     const handleRemoveFromCart = (cartItem) => {
         dispatch(removeFromCart(cartItem));

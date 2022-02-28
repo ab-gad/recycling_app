@@ -129,6 +129,9 @@ const App = () => {
                   <Route path="/Homeproduct/" exact >
                   <Homeproduct/>
                   </Route>
+                  <Route path="/Cart/" exact >
+                  <Cart/>
+                  </Route>
 
                   <Route path="/contact" exact>
                     <Contact />
@@ -149,9 +152,9 @@ const App = () => {
                   <Route exact path='/reset-password' component={ResetPassword} />
                   <Route exact path='/password/reset/confirm/:uid/:token' component={ResetPasswordConfirm} />
                   <Route exact path='/activate/:uid/:token' component={Activate} />
-                  <Route path="/service/cart/:id" exact> 
+                  {/* <Route path="/service/cart/:id" exact> 
                     <Cart />
-                  </Route>
+                  </Route> */}
                   <Redirect to="/" />
                 </Switch>
               </ThemesContext.Provider>
