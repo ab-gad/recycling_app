@@ -3,12 +3,12 @@ import { useState } from "react";
 
 const Mail = () => {
 
-    const [mailNBame , setmailNBame]= useState("");
+    const [mailName , setmailName]= useState("");
     const [mailError , setmailError] = useState(null)
 
     const mailVaildation = (e) => {
         if(e.target.name === "email") {
-            setmailNBame(e.target.value);
+            setmailName(e.target.value);
             if (e.target.value === "") {
                 setmailError (null);
             }else if (e.target.value.match("[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z]{2,4}")){

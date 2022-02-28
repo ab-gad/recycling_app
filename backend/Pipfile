@@ -18,6 +18,7 @@ Pillow = "==9.0.1"
 stripe = "*"
 djoser = "*"
 social-auth-app-django = "*"
+django-jazzmin"==2.4.9"
 
 [dev-packages]
 
