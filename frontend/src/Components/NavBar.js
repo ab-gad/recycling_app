@@ -5,8 +5,13 @@ import { useContext } from "react";
 import { FaRegUserCircle ,FaSeedling , FaBoxOpen } from 'react-icons/fa';
 import { VscHome } from 'react-icons/vsc';
 import { BsBuilding , BsChatDots } from 'react-icons/bs';
+import { useSelector} from "react-redux"
+import { useEffect } from "react";
 
 const Navbar = () => {
+const {cartTotalQuantity}=useSelector(state=>state.cart)
+
+
   const Arabic = {
     RecycleWebSite: "إعادة تدوير موقع",
     Home: "الرئيسية",
@@ -71,12 +76,14 @@ const Navbar = () => {
               <button type="button" className="btn btn-outline-light shadow-none rounded-pill m-2 mx-3 language_button " onClick={() => language_zone() } >
                     {langcont}
                 </button>
-
               <ul className="dropdown-menu log_drop" aria-labelledby="navbarDropdownMenuLink">
                 <li><NavLink className="dropdown-item text-center text-primary " to="/login" > {translation.Login} </NavLink></li>
                 <li><NavLink className="dropdown-item text-center text-primary " to="/register" > {translation.Register} </NavLink></li>
                 <li><NavLink className="dropdown-item text-center text-primary " to="/profile" > {translation.Profile} </NavLink></li>
               </ul>
+              <button type="button" className="btn btn-outline-light shadow-none rounded-pill  language_button "   >
+                    {cartTotalQuantity}
+                </button>
             </li>
             
                 

@@ -8,7 +8,6 @@ import Services from "./Components/pages/Service/Service";
 import Testimonial from "./Components/pages/Testimonial/Testimonial";
 import User from "./Components/pages/user/user";
 
-import Cart from "./Components/pages/cart/Cart";
 
 // import Login from "./Components/pages/Registeration/login";
 // import Register from "./Components/pages/Registeration/register";
@@ -23,6 +22,9 @@ import {BsFillMoonStarsFill , BsFillSunFill} from  'react-icons/bs';
 import { useEffect } from "react";
 import Show from "./Components/pages/Testimonial/showevent";
 import Homeproduct from "./Components/pages/Product/homeproduct";
+import Cart from "./Components/pages/Product/cart";
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 // import { Langcontext } from './context/lang';
 export const Langcontext = React.createContext();
@@ -88,6 +90,7 @@ const App = () => {
 
     <div dir={langcont === "ENGLISH" ? "ltr" : "rtl"}>
       <Router>
+        <ToastContainer/>
         <Langcontext.Provider value={{ langcont, Setlangcontext }}>
           <main>
             <Navbar />
@@ -110,6 +113,9 @@ const App = () => {
                 </Route>
                 <Route path="/profile" exact>
                   <User />
+                </Route>
+                <Route path="/Cart" exact>
+                  <Cart />
                 </Route>
                  <Route path="/Show/:id" component={Show} exact >
                  <Show/>
