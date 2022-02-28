@@ -2,7 +2,10 @@ import {
     USER_LOADED_FAIL,
     USER_LOADED_SUCCESS,
     LOGIN_FAIL,
-    LOGIN_SUCCESS  
+    LOGIN_SUCCESS,
+    AUTHENTICATED_SUCCESS,
+    AUTHENTICATED_FAIL,
+    LOGOUT,    
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -25,6 +28,7 @@ export default function authReducer (state = initialState, action) {
                 refresh: payload.refresh
             }
         case LOGIN_FAIL:
+        case LOGOUT:
             localStorage.removeItem('access');
             localStorage.removeItem('refresh');
             return {
@@ -44,6 +48,17 @@ export default function authReducer (state = initialState, action) {
                 ...state,
                 user: null
             }
+        case AUTHENTICATED_SUCCESS:
+            return {
+                ...state,
+                isAuthenticated: true
+            }
+        case AUTHENTICATED_FAIL:
+            return {
+                ...state,
+                isAuthenticated: false
+            }
+
         default:
             return state
     }

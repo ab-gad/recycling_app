@@ -1,12 +1,17 @@
 import "./NavBar.css";
 import { NavLink } from "react-router-dom";
 import { Langcontext } from "../App";
-import { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { FaRegUserCircle ,FaSeedling , FaBoxOpen } from 'react-icons/fa';
 import { VscHome } from 'react-icons/vsc';
 import { BsBuilding , BsChatDots } from 'react-icons/bs';
+
 import axiosInstance from "../axios";
-const Navbar = () => {
+import { connect } from "react-redux";
+import { checkAuthenticated, load_user, logout} from "../redux/actions/actions";
+import { useHistory } from 'react-router-dom';
+
+const Navbar = (props) => {
   const Arabic = {
     RecycleWebSite: "إعادة تدوير موقع",
     Home: "الرئيسية",
@@ -71,9 +76,17 @@ const Navbar = () => {
             setAutheUser(false)
           })
     }
+    
+    const history = useHistory();
+    const logout_user = () => {
+      props.logout();
+      history.push('/login');
+    } ;
 
     useEffect(()=>{
-      getAuthedUser()
+      props.checkAuthenticated()
+      props.load_user()
+      console.log("user>>>>>",props.user)
     },[])
       
   return (
@@ -86,12 +99,12 @@ const Navbar = () => {
           </NavLink>
          
 
-            <li className="nav-item mx-3 dropdown log_icon ">
+            <li className="nav-item mx-3 dropdown log_icon d-flex align-items-center">
               <NavLink className="nav-link p-0 m-0 " to="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {authedUser ? 
+                {props.user !== null? 
                   <> 
-                  <small>{`${authedUser.first_name} ${authedUser.last_name}`}</small>
-                  <img className="rounded-circle" src={`http://localhost:8000${authedUser.avatar}`} width='35' height='35'/> 
+                  <span className="fs-5 mx-2 text-white">{`${props.user.first_name} ${props.user.last_name}`}</span>
+                  <img className="rounded-circle" src={`${props.user.avatar}`} width='40' height='40' alt='user Avatar'/> 
                   </>
                 : 
                   <FaRegUserCircle className="text-light" />
@@ -100,11 +113,12 @@ const Navbar = () => {
               <button type="button" className="btn btn-outline-light shadow-none rounded-pill m-2 mx-3 language_button " onClick={() => language_zone() } >
                     {langcont}
               </button>
-              {authedUser ?
+              {props.isAuthenticated ?
               <ul className="dropdown-menu log_drop" aria-labelledby="navbarDropdownMenuLink">
                 <li><NavLink className="dropdown-item text-center text-primary " to="/profile" > {translation.Profile} </NavLink></li>
                 <li><NavLink className="dropdown-item text-center text-primary " to="/profile" > {translation.settings} </NavLink></li>
-                <li><NavLink className="dropdown-item text-center text-primary " to="/logout" > {translation.logout} </NavLink></li>
+                <li><button className="dropdown-item text-center text-primary " onClick={logout_user}> {translation.logout} </button></li>
+                
               </ul>
               :
               <ul className="dropdown-menu log_drop" aria-labelledby="navbarDropdownMenuLink">
@@ -173,4 +187,10 @@ const Navbar = () => {
     </>
   );
 };
-export default Navbar;
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.authReducer.isAuthenticated,
+  user: state.authReducer.user
+});
+
+export default connect(mapStateToProps, {checkAuthenticated, load_user, logout})(Navbar);

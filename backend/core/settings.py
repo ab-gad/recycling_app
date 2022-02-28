@@ -210,7 +210,8 @@ DJOSER = {
     'SERIALIZERS':{
         'user_create':'authen.serializers.UserCreateSerializer',
         'user':'authen.serializers.UserCreateSerializer',
-        'user_delete':'authen.serializers.UserDeleteSerializer',
+        'current_user': 'authen.serializers.CurrentUserSerializer',
+        'user_delete': 'djoser.serializers.UserDeleteSerializer',
     }
 }
 

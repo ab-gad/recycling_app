@@ -12,6 +12,11 @@ class UserCreateSerializer(UserCreateSerializer):
         model = Djoser_user
         fields = ('id','email','password', 'first_name', 'last_name')
 
+class CurrentUserSerializer(UserCreateSerializer):
+    class Meta(UserCreateSerializer.Meta):
+        model = Djoser_user
+        fields = '__all__'
+
 class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
