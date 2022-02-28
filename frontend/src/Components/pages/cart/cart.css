@@ -37,3 +37,8 @@ input[type=number] {
 #not_valid {
   display: none;
 }
+#submit_mark {
+  font-size: 30px;
+  color: red ;
+  display: none;
+}

@@ -1,7 +1,19 @@
+
+
 .card {
     border: none
 }
-
+.name_image_block{
+    border-radius: 25px;
+    border: 2px solid rgb(108, 195, 224);
+    box-shadow:5px 5px rgb(46, 172, 214) ;
+    margin: auto;
+}
+.form_container{
+    border-radius: 10px;
+    border: 2px solid rgb(108, 195, 224);
+    box-shadow:5px 5px rgb(46, 172, 214) ;
+}
 .image {
     position: relative
 }
@@ -18,41 +30,45 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    top: -0px;
-    right: 0px
+    top: -10px;
+    left: 50px
 }
 
-.user-details h4 {
-    color: blue
+.user-details h4  {
+    font-size: 30px;
+    font-weight: 600;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    color: blue;
+    padding:20px
 }
+
 
 .inputs label {
     display: flex;
     margin-left: 3px;
     font-weight: 500;
     font-size: 13px;
-    margin-bottom: 4px;
-}
-.data_container div{
-    margin:1rem;
-
+    margin-bottom: 4px
 }
 
 .inputs input {
     font-size: 14px;
     height: 40px;
-    border: 2px solid #ced4da;
+    border: 2px solid #ced4da
 }
 
 .inputs input:focus {
     box-shadow: none;
-    border: 2px solid blue;
+    border: 2px solid blue
 }
 
+
 .btn {
-    font-weight: 600;
+    font-weight: 600
 }
 
 .btn:focus {
-    box-shadow: none;
+    box-shadow: none
 }

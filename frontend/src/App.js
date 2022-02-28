@@ -130,9 +130,14 @@ const App = () => {
                 <Route path="/logout" exact>
                   <SignOut/>
                 </Route>
-                <Route path="/service/cart/:id" exact> 
+                <Route path="/service/cart/:name" exact> 
                   <Cart />
                 </Route>
+
+                <Route path="/service/cart/:name/:order_id" exact> 
+                  <Cart />
+                </Route>
+
                 <Redirect to="/" />
               </Switch>
             </ThemesContext.Provider>

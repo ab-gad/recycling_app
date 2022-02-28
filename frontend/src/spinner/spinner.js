@@ -1,15 +1,15 @@
-import React , { useEffect } from 'react';
+import React, { useEffect } from "react";
 import { RiRecycleLine } from "react-icons/ri";
-import './spinner.css';
+import "./spinner.css";
 
 function Spinner() {
 
-    useEffect( () => {
-        let spinner = document.getElementById("load_animation")
-        window.addEventListener("load" , function(){
-            spinner.style.display = "none"
-        })
-    })
+  useEffect ( ()=> {
+    window.addEventListener('load' , function () {
+      let spinner = document.getElementById("load_animation");
+      spinner.style.display = "none";
+    } , []);
+  })
 
   return (
     <div id="load_animation" >

@@ -125,20 +125,23 @@ const Services = () => {
 
             <div className="container">
                 <div className="catigorise d-flex flex-wrap  "> 
-                    <Link to="/service/cart/1" className="catigory_1" >
+                    <div className="catigory_1" >
                         <h3>{translation.FirstDivaccordion}</h3>
                         <p>{translation.firstaccordionbody}</p>
-                    </Link>
+                        <Link to="/service/cart/home" className='btn shadow-none px-4'> Create Order </Link>
+                    </div>
 
-                    <Link to="/service/cart/2" className="catigory_2" >
+                    <div className="catigory_2" >
                         <h3>{translation.SecDivaccordion}</h3>
                         <p>{translation.Secaccordionbody}</p>
-                    </Link>
+                        <Link to="/service/cart/shop" className='btn shadow-none px-4'> Create Order </Link>
+                    </div>
                     
-                    <Link to="/service/cart/3" className="catigory_3" >
+                    <div className="catigory_3" >
                         <h3>{translation.ThirdDivaccordion}</h3>
                         <p>{translation.Thirdaccordionbody}</p>
-                    </Link>
+                        <Link to="/service/cart/worker" className='btn shadow-none px-4'> Create Order </Link>
+                    </div>
                 </div>
             </div>
         
