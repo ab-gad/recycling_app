@@ -5,11 +5,100 @@ import PageTitle from "../../page_title";
 import { BiError } from 'react-icons/bi';
 import Footer from '../Footer/Footer';
 import "./cart.css";
-import {Order_form }
 
 
 function Cart () {
+    const [price, setPrice] = useState({paper:0.70, metal:1.5, plastic:1.5})
+    const [quantity, setQuantity] = useState({paper:2, metal:2, plastic:2})
+    const [limit , setLimit] = useState({ min: 2 , max: 20 })
+    const cart_id = parseInt(useParams().id)
+    const { latitude , longitude } = usePosition();
 
+    const paperPrice   = price.paper*quantity.paper;
+    const plasticPrice = price.plastic*quantity.plastic;
+    const metalPrice   = price.metal*quantity.metal;
+    const sum = paperPrice + plasticPrice + metalPrice;
+    
+    // catigory of kind of users 
+    useEffect( () => {
+        if ( cart_id === 2 ) {
+            setQuantity({paper:10 , metal:10 , plastic:10 }) ;
+            setLimit({  min: 10 , max: 80 });
+        }
+        else if ( cart_id === 3 ){
+            setQuantity({paper: 80 , metal: 80 , plastic: 80 }) ;
+            setLimit({ min: 80 , max: 200 });
+        }
+    } , [])
+    
+    const onChangeHandler = (e, material) => {
+        if (e.target.value >= 0){
+            setQuantity({...quantity, [material]:Number(e.target.value)})
+        }
+    }
+    
+    // form validation
+    const [ not_valid_message , setNotValid ] = useState("");
+    let firstName = document.getElementById("firstName");
+    let lastName = document.getElementById("lastName");
+    let phone = document.getElementById("phone");
+    let city = document.getElementById("city");
+    let Address = document.getElementById("Address");
+    let not_valid = document.getElementById("not_valid");
+    let pattern = /[0-9]/
+
+    function form_validation (){
+        if ( !firstName.value ||
+             firstName.value.match(pattern) || 
+             firstName.value.replace(/\s/g, "") === "" ) {
+
+            not_valid.style.display = 'block'
+            setNotValid("First Name is Required and Mustn't be Numeric")
+            return false
+        } 
+        else if ( !lastName.value ||
+                  lastName.value.match(pattern) ||
+                  lastName.value.replace(/\s/g, "") === "" ) {
+
+            not_valid.style.display = 'block'
+            setNotValid("Last Name is Required and Mustn't be Numeric ")
+            return false
+        }
+        else if ( phone.value.length != 11 ||
+                 (phone.value[0] !=0 || phone.value[1] != 1 )  ) {
+
+            not_valid.style.display = 'block'
+            setNotValid("Phone Must be 11 Number and be Egyptian Phone Number")
+            return false
+        }
+        else if ( !city.value ||
+                  city.value.match(pattern) ||
+                  city.value.replace(/\s/g, "") === "" ) {
+
+            not_valid.style.display = 'block'
+            setNotValid(" City is Required and Mustn't be Numeric ")
+            return false
+        }
+        else if ( !Address.value ||
+                  Address.value.replace(/\s/g, "") === "" ) {
+
+            not_valid.style.display = 'block'
+            setNotValid(" Address is Required and Must be Specified ")
+            return false
+        }
+        else {
+            not_valid.style.display = 'none'
+            return true
+
+        }
+    }
+
+    function predefult (event) {
+        if ( !(form_validation()) ) {
+            event.preventDefault()
+        }
+    }
+    
     return(
         <>
             <section id="cart">
