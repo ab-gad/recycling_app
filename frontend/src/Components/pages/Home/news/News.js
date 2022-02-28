@@ -4,6 +4,7 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import "./news.css";
+import axiosInstance from "../../../../axios";
 
 const options = {
     margin: 30,
@@ -29,8 +30,7 @@ const options = {
   };
 
 function News (){
-    
-    const [user, setUser] = useState([])
+
     const [news, setNews] = useState([])
     const [ref, setRef] = useState(false)
     
@@ -43,18 +43,10 @@ function News (){
         })
     }
 
-    const getUsers = () => {
-        fetch('http://localhost:8000/user_api/')
-        .then(res=>res.json())
-        .then(result => {
-            console.log("users", result)
-            setUser()
-        })
-    }
+    
 
     useEffect(()=>{
         getNews()
-        getUsers()
     },[])
 
     
