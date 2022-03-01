@@ -113,7 +113,7 @@ function Order_form () {
     function inputsData (e){
         data[e.target.id] = e.target.value
         setData(data)
-        console.log(data)
+        // console.log(data)
     }
 
     const predefult = (event) => {
