@@ -16,3 +16,10 @@ class EventsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Events
         fields = '__all__'
+
+class AuthedUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        exclude = ('password', )
+
+

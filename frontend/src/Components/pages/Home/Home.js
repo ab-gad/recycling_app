@@ -15,7 +15,8 @@ import Popup from "./Popup";
 import Footer from "../Footer/Footer";
 import Home_icon_data from '../../home_icon_data';
 import Rateing from "./Rateing/rateing";
-
+import Spinner from "../../../spinner/spinner";
+import { RiRecycleLine } from "react-icons/ri";
 // constructor = () => {
 //   this.state = { isLoading: true }
 // }
@@ -28,6 +29,7 @@ const Home = () => {
   
   return (
     <section  >
+      <Spinner />
       {/* _______________________ Carouser Section ______________________________ */}
       <Carousel />
       {/* ______________________ 4 Cards (Working) Section _____________________________*/}

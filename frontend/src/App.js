@@ -8,21 +8,30 @@ import Services from "./Components/pages/Service/Service";
 import Testimonial from "./Components/pages/Testimonial/Testimonial";
 import User from "./Components/pages/user/user";
 
-import Cart from "./Components/pages/cart/Cart";
 
 // import Login from "./Components/pages/Registeration/login";
 // import Register from "./Components/pages/Registeration/register";
-import SignUp from "./Components/pages/Auth/register";
-import SignIn from "./Components/pages/Auth/login";
-import SignOut from "./Components/pages/Auth/logout";
+// import SignUp from "./Components/pages/Auth/register";
+// import SignIn from "./Components/pages/Auth/login";
+// import SignOut from "./Components/pages/Auth/logout";
+import Login from "./Components/pages/Auth/NewLogin";
+import Register from "./Components/pages/Auth/NewRegister";
+import Activate from "./Components/pages/Auth/Activate";
+import ResetPassword from "./Components/pages/Auth/ResetPassword";
+import ResetPasswordConfirm from "./Components/pages/Auth/ResetPasswordConfirm";
+
 import Navbar from "./Components/NavBar";
 import Chat from "./Components/pages/ChatBot/Chat";
+import Order_form from "./Components/pages/cart/order_form";
 import ScrollButton from "./Components/ScrollButton";
 import ThemesContext , {themes} from  './Components/themes';
 import {BsFillMoonStarsFill , BsFillSunFill} from  'react-icons/bs';
 import { useEffect } from "react";
 import Show from "./Components/pages/Testimonial/showevent";
 import Homeproduct from "./Components/pages/Product/homeproduct";
+import Cart from "./Components/pages/Product/cart";
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 // import { Langcontext } from './context/lang';
 export const Langcontext = React.createContext();
@@ -85,62 +94,71 @@ const App = () => {
 
   return (
 
-
     <div dir={langcont === "ENGLISH" ? "ltr" : "rtl"}>
-      <Router>
-        <Langcontext.Provider value={{ langcont, Setlangcontext }}>
-          <main>
-            <Navbar />
-            <ThemesContext.Provider value={{theme}} >
-              <div onClick={toggle_theme} id='box_theme'>
-                { theme_icon }
-              </div>
-              <Switch>
-                <Route path="/" exact>
-                  <Home />
-                </Route>
-                <Route path="/about" exact>
-                  <About />
-                </Route>
-                <Route path="/service" exact>
-                  <Services />
-                </Route>
-                <Route path="/events" exact>
-                  <Testimonial />
-                </Route>
-                <Route path="/settings" exact>
-                  <User />
-                </Route>
-                 <Route path="/Show/:id" component={Show} exact >
-                 <Show/>
-                </Route>
-                <Route path="/Homeproduct/" exact >
-                 <Homeproduct/>
-                </Route>
 
-                <Route path="/contact" exact>
-                  <Contact />
-                </Route>
-                <Route path="/login" exact>
-                  <SignIn/>
-                </Route>
-                <Route path="/register" exact>
-                  <SignUp/>
-                </Route>
-                <Route path="/logout" exact>
-                  <SignOut/>
-                </Route>
-                <Route path="/service/cart/:id" exact> 
-                  <Cart />
-                </Route>
-                <Redirect to="/" />
-              </Switch>
-            </ThemesContext.Provider>
-          </main>
-        </Langcontext.Provider>
-      </Router>
-      <ScrollButton />
-      <Chat />
+        <Router>
+          <Langcontext.Provider value={{ langcont, Setlangcontext }}>
+            <main>
+              <Navbar />
+              <ThemesContext.Provider value={{theme}} >
+                <div onClick={toggle_theme} id='box_theme'>
+                  { theme_icon }
+                </div>
+                <Switch>
+                  <Route path="/" exact>
+                    <Home />
+                  </Route>
+                  <Route path="/about" exact>
+                    <About />
+                  </Route>
+                  <Route path="/service" exact>
+                    <Services />
+                  </Route>
+                  <Route path="/events" exact>
+                    <Testimonial />
+                  </Route>
+                  <Route path="/settings" exact>
+                    <User />
+                  </Route>
+                  <Route path="/Show/:id" component={Show} exact >
+                  <Show/>
+                  </Route>
+                  <Route path="/Homeproduct/" exact >
+                  <Homeproduct/>
+                  </Route>
+
+                  <Route path="/contact" exact>
+                    <Contact />
+                  </Route>
+                  <Route path="/service/cart/:name/:order_id" exact> 
+                    <Order_form />
+                  </Route>
+                  {/* <Route path="/login" exact>
+                    <SignIn/>
+                  </Route>
+                  <Route path="/register" exact>
+                    <SignUp/>
+                  </Route>
+                  <Route path="/logout" exact>
+                    <SignOut/>
+                  </Route> */}
+
+                  <Route exact path='/login' component={Login} />
+                  <Route exact path='/register' component={Register} />
+                  <Route exact path='/reset-password' component={ResetPassword} />
+                  <Route exact path='/password/reset/confirm/:uid/:token' component={ResetPasswordConfirm} />
+                  <Route exact path='/activate/:uid/:token' component={Activate} />
+                  <Route path="/service/cart/:id" exact> 
+                    <Cart />
+                  </Route>
+                  <Redirect to="/" />
+                </Switch>
+              </ThemesContext.Provider>
+            </main>
+          </Langcontext.Provider>
+        </Router>
+        <ScrollButton />
+        <Chat />
     </div>
 
   );

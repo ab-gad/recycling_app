@@ -30,4 +30,5 @@ class Migration(migrations.Migration):
             name='plastic_q',
             field=models.IntegerField(),
         ),
+
     ]
