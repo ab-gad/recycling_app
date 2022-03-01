@@ -23,8 +23,8 @@ const User=()=> {
 
         // console.log(e.target.value)
         updateData({
-            ...userData, // spread operator
-            [e.target.name]:e.target.value.trim() // trim()=>trim/remove whitespace from both sides of a string
+            ...userData,
+            [e.target.name]:e.target.value.trim()
         })
         
     }
@@ -42,7 +42,7 @@ const User=()=> {
         })
         .then((response) => {
             console.log(response.data)
-            updateData(response.data)
+            setUser(response.data)
         })
         
         .catch((err) => {
@@ -55,7 +55,7 @@ const User=()=> {
         .then((result) => {
             console.log("user",result.data)
             setUser(result.data)
-
+            updateData(result.data)
         })
         .catch((err) => {
             console.log(err)
