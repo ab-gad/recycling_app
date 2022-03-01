@@ -2,6 +2,7 @@ import React , { useEffect , useState} from "react";
 import { useParams  } from "react-router-dom";
 import { usePosition } from 'use-position';
 import { BiError } from 'react-icons/bi';
+import axios from "axios";
 import "./cart.css";
 
 
@@ -99,9 +100,47 @@ function Order_form () {
         }
     }
 
-    function predefult (event) {
-        if ( !(form_validation()) ) {
-            event.preventDefault()
+
+    // Axios Api
+    const url = ""
+    const [data , setData] = useState({
+        firstName: '',
+        lastName: '',
+        phone: '',
+        city: '',
+        Address: '',
+    })
+    function inputsData (e){
+        data[e.target.id] = e.target.value
+        setData(data)
+        console.log(data)
+    }
+
+    const predefult = (event) => {
+        event.preventDefault();
+        if ( !(form_validation() ) ) {
+            console.log("استغفر الله  ")
+        }
+        else {
+            axios.post(url,{
+                first_name: data.firstName ,
+                last_name: data.lastName ,
+                phone: data.phone ,
+                city: data.city ,
+                address: data.Address ,
+                paper_q: quantity.paper ,
+                plastic_q: quantity.plastic ,
+                metal_q: quantity.metal ,
+                total_price: sum ,
+                latitude: latitude ,
+                longitude: latitude ,
+            })
+            .then ( req => {
+                console.log(req.data)
+            })   
+            .catch((err) => {
+                console.log(err)
+            }) 
         }
     }
     
@@ -109,27 +148,27 @@ function Order_form () {
         <>
             <section id="cart" className="container">
                 <h3 className="border-top py-3 my-4">Start to <span className="text-danger"> Clean and Earn </span> </h3>
-                <form action="" method="">
+                <form action="" onSubmit={ (event) => predefult(event)}  >
                     <div className="my-3 row ">
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6  ">
                             <label htmlFor="firstName" > First Name </label>
-                            <input className="w-50" type="text" id="firstName" name="firstName" />
+                            <input className="w-50" onChange={(e) => inputsData(e) } type="text" id="firstName" name="firstName" />
                         </div>
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6 ">
                             <label htmlFor="lastName" > Last Name </label>
-                            <input className="w-50" type="text" id="lastName" name="lastName" />
+                            <input className="w-50" onChange={(e) => inputsData(e) }  type="text" id="lastName" name="lastName" />
                         </div>
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6 ">
                             <label htmlFor="phone" > Phone </label>
-                            <input className="w-50" type="number" id="phone" name="phone" />
+                            <input className="w-50" onChange={(e) => inputsData(e) } type="number" id="phone" name="phone" />
                         </div>
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6 ">
                             <label htmlFor="city" > City </label>
-                            <input className="w-50" type="text" id="city" name="city" />
+                            <input className="w-50" onChange={(e) => inputsData(e) } type="text" id="city" name="city" />
                         </div>
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 ">
                             <label htmlFor="Address" > Detailed Address <span className="text-muted mx-2"> This will help our representative reach you, so please enter the ( Street - Building No. - Floor No. - Apartment No. ) </span> </label>
-                            <textarea className="w-100" rows="5" id="Address" name="address" > </textarea>
+                            <textarea className="w-100" onChange={(e) => inputsData(e) } rows="5" id="Address" name="address" > </textarea>
                         </div>
 
                         {/* hidden inputs */}
@@ -256,8 +295,10 @@ function Order_form () {
                         </tr>
                     </tfoot>
                 </table>
+                
                 <div className="my-4 text-center">
-                    <button type="submit" onClick={ (event) => predefult(event)} className="btn btn-outline-success rounded-bill shadow-none"> Done </button>
+                {/* onClick={ (event) => predefult(event)}  */}
+                    <button type="submit" className="btn btn-outline-success rounded-bill shadow-none"> Done </button>
                     <p className="text-danger my-3 m-auto p-3 rounded text-center border border-danger w-50" id="not_valid">
                         <BiError className="d-block my-2 m-auto h2 " />
                         { not_valid_message }
