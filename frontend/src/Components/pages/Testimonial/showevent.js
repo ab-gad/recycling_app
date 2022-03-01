@@ -20,6 +20,18 @@ const Show = (props) => {
         console.log(err);
       });
   }, []);
+
+  // useEffect(() => {
+  //   axios
+  //     .get(`http://127.0.0.1:8000/comment_api_test/Comments`)
+  //     .then((comment) => {
+  //       console.log(comment.data, "comment");
+  //       setInfo(comment.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
   return (
     <>
     <section id="showeventCard">
