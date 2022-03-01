@@ -3,13 +3,19 @@ import {AiFillCamera} from 'react-icons/ai'
 import axios from "axios"
 import {useState, useEffect}  from  "react"
 import './user.css'
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
+import { useSelector } from "react-redux";
+
+
 
 
 
 const User=()=> {
     // const history=useHistory()
     // const id=props.match.params.id
+const authed_user = useSelector((state)=> state.authReducer.user)
+console.log(authed_user)
+    
     
     const [userData,updateData]=useState({})
     // const [image,setImage] = useState(null)
@@ -31,7 +37,7 @@ const User=()=> {
 
     const updateUser=() => {
         console.log("without avatar",userData)
-        axios.put(`http://localhost:8000/user_api/list/8`,{
+        axios.put(`http://localhost:8000/user_api/list/${authed_user.id}`,{
             email: userData.email,
             city: userData.city,
             first_name: userData.first_name,
@@ -51,7 +57,7 @@ const User=()=> {
     }
     const [user, setUser] = useState({})
     const getUser=() => {
-        axios.get(`http://localhost:8000/user_api/list/8`)
+        axios.get(`http://localhost:8000/user_api/list/${authed_user.id}`)
         .then((result) => {
             console.log("user",result.data)
             setUser(result.data)
@@ -63,7 +69,7 @@ const User=()=> {
 
     }
     const deleteUser=() => {
-        axios.delete(`http://localhost:8000/user_api/list/8`)
+        axios.delete(`http://localhost:8000/user_api/list/${authed_user.id}`)
         .then((result) => {
             console.log("user",result.data)
 
