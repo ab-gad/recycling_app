@@ -69,7 +69,7 @@
 .catigorise{
   margin: 5rem 0 ;
 }
-.catigorise a {
+.catigorise div {
   position: relative;
   padding: .5rem 1rem 0 ;
   margin: 2rem 0 ;
@@ -77,12 +77,12 @@
   transition: .5s;
   height: 9rem;
 }
-.catigorise a h3 ,
-.catigorise a p {
+.catigorise div h3 ,
+.catigorise div p {
   z-index: 5;
   position: relative;
 } 
-.catigorise a::before {
+.catigorise div::before {
   content: '';
   position: absolute;
   top: 0;
@@ -93,15 +93,16 @@
   transition: .5s;
 
 }
-.catigorise:hover a {
+.catigorise:hover div {
   width: 100%;
   margin-left: 0;
 }
-.catigorise a:hover::before  {
+.catigorise div:hover::before  {
   content: " ";
   width: 100%;
   border-radius: 8px;
 }
+
 .catigorise .catigory_2 {
   margin-left: 15rem;
 }
@@ -110,7 +111,7 @@
   margin-left: 30rem;
 }
 
-.catigorise a {
+.catigorise div {
   text-decoration: none;
   color: inherit ;
 }
@@ -134,8 +135,23 @@
   }
 }
 
-.catigorise a {
+.catigorise div {
   text-decoration: none;
   color: inherit;
-  cursor: pointer;
+
+}
+.catigorise a {
+  position: absolute;
+  left: 50%;
+  bottom: -20px;
+  transform: translateX(-50%);
+  color: #ffffff;
+  letter-spacing: 1.5px;
+  background-color: #4bb6e5;
+  
+}
+.catigorise:hover a {
+  color: azure  ;
+  background-color: #6a6ad6 !important;
+  transition: .5s;
 }

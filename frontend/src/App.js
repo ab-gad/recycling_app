@@ -22,6 +22,7 @@ import ResetPasswordConfirm from "./Components/pages/Auth/ResetPasswordConfirm";
 
 import Navbar from "./Components/NavBar";
 import Chat from "./Components/pages/ChatBot/Chat";
+import Order_form from "./Components/pages/cart/order_form";
 import ScrollButton from "./Components/ScrollButton";
 import ThemesContext , {themes} from  './Components/themes';
 import {BsFillMoonStarsFill , BsFillSunFill} from  'react-icons/bs';
@@ -129,7 +130,9 @@ const App = () => {
                   <Route path="/contact" exact>
                     <Contact />
                   </Route>
-
+                  <Route path="/service/cart/:name/:order_id" exact> 
+                    <Order_form />
+                  </Route>
                   {/* <Route path="/login" exact>
                     <SignIn/>
                   </Route>

@@ -3,7 +3,7 @@ import Progress from "../../Home/progress";
 
 function Rateing (){
     return (
-        <section id="reat_section" className=" my-5 p-3 fs-sm-6 fs-md-1">
+        <section id="reat_section" className=" my-5 p-3 fs-sm-6 fs-md-1 text-light">
         <table className="table table-borderless text-center">
           <thead className="">
             <tr className=" row align-items-center">
