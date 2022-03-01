@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import {
     USER_LOADED_FAIL,
     USER_LOADED_SUCCESS,
@@ -14,10 +15,12 @@ import {
     SIGNUP_SUCCESS,
     SIGNUP_FAIL,
     ACTIVATION_SUCCESS,
-    ACTIVATION_FAIL, 
+    ACTIVATION_FAIL,
+    GOOGLE_AUTH_SUCCESS,
+    GOOGLE_AUTH_FAIL, 
 } from "./actionTypes";
 
-
+axios.defaults.withCredentials = true;
 export const load_user = () => async dispatch => {
     if (localStorage.getItem('access')) {
         const config = {
@@ -200,5 +203,41 @@ export const verify = (uid, token) => async dispatch => {
         dispatch({
             type: ACTIVATION_FAIL
         })
+    }
+};
+
+export const googleAuthenticate = (state, code) => async dispatch => {
+    if (state && code && !localStorage.getItem('access')) {
+        console.log("GOoGLE AURH START")
+        const config = {
+            headers: {
+                'content-type': 'application/x-www-form-urlencoded'
+            }
+        };
+
+        const details = {
+            'state': state,
+            'code': code
+        };
+        console.log("GOoGLE AURH DETAILS" ,details)
+        //put our state and code in a url friendly format
+        const formBody = Object.keys(details).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(details[key])).join('&');
+
+        console.log('URL ', formBody)
+        try {
+            const res = await axios.post(`http://127.0.0.1:8000/auth/o/google-oauth2/?${formBody}`);
+
+            dispatch({
+                type: GOOGLE_AUTH_SUCCESS,
+                payload: res.data
+            });
+
+            dispatch(load_user());
+        } catch (err) {
+            console.log('ERR GOOGLE', err)
+            dispatch({
+                type: GOOGLE_AUTH_FAIL
+            });
+        }
     }
 };

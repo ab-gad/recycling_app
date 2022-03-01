@@ -13,7 +13,9 @@ import {
     SIGNUP_SUCCESS,
     SIGNUP_FAIL,
     ACTIVATION_SUCCESS,
-    ACTIVATION_FAIL,      
+    ACTIVATION_FAIL,
+    GOOGLE_AUTH_SUCCESS,
+    GOOGLE_AUTH_FAIL,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -42,6 +44,7 @@ export default function authReducer (state = initialState, action) {
             }
         case LOGIN_FAIL:
         case SIGNUP_FAIL:
+        case GOOGLE_AUTH_FAIL:
         case LOGOUT:
             localStorage.removeItem('access');
             localStorage.removeItem('refresh');
@@ -71,6 +74,15 @@ export default function authReducer (state = initialState, action) {
             return {
                 ...state,
                 isAuthenticated: false
+            }
+        case GOOGLE_AUTH_SUCCESS:
+            localStorage.setItem('access', payload.access);
+            localStorage.setItem('refresh', payload.refresh);
+            return {
+                ...state,
+                isAuthenticated: true,
+                access: payload.access,
+                refresh: payload.refresh
             }
         case PASSWORD_RESET_SUCCESS:
         case PASSWORD_RESET_FAIL:

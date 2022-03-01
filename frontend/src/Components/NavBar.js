@@ -8,8 +8,10 @@ import { BsBuilding , BsChatDots } from 'react-icons/bs';
 import { useSelector} from "react-redux"
 import axiosInstance from "../axios";
 import { connect } from "react-redux";
-import { checkAuthenticated, load_user, logout} from "../redux/actions/actions";
+import { checkAuthenticated, load_user, logout, googleAuthenticate} from "../redux/actions/actions";
 import { useHistory } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
+import queryString from "query-string"
 
 const Navbar = (props) => {
   const {cartTotalQuantity}=useSelector(state=>state.cart)
@@ -74,6 +76,28 @@ const Navbar = (props) => {
       props.load_user()
       console.log("user>>>>>",props.user)
     },[])
+      
+    let location = useLocation()
+    useEffect(()=>{
+      const values = queryString.parse(location.search) 
+      //location.search > will grap only what comes after ur domain
+      //queryString.parse > will put it in key value format
+
+      const state = values.state ? values.state : null
+      const code = values.code ? values.code : null
+
+      console.log("code", code)
+      console.log("state", state)
+
+      if (state && code){
+        props.googleAuthenticate(state, code)
+      } else {
+        props.checkAuthenticated()
+        props.load_user()
+        console.log("user>>>>>",props.user)
+      }
+      
+    },[location])
       
   return (
     <>
@@ -178,4 +202,4 @@ const mapStateToProps = state => ({
   user: state.authReducer.user
 });
 
-export default connect(mapStateToProps, {checkAuthenticated, load_user, logout})(Navbar);
+export default connect(mapStateToProps, {checkAuthenticated, load_user, logout, googleAuthenticate})(Navbar);
