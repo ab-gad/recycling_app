@@ -140,7 +140,7 @@ const User=()=> {
 
 
   return (
-<div className="container mt-3">
+<div className="container mt-3 text-dark">
     <div className="card p-3 ">
         <div className="d-flex flex-row justify-content-center mb-3 name_image_block">
             

@@ -3,7 +3,7 @@ from user.models import User
 
 class Orders (models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
-    first_name = models.CharField(max_length=50 )
+    first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     city = models.CharField(max_length=20)
     phone = models.IntegerField()

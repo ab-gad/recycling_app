@@ -1,11 +1,14 @@
 from cgitb import lookup
+from urllib import response
 from rest_framework import generics
+from orders.models import Orders
 from user.models import User, userLocation
 from events.models import Events
 from .serializers import UserSerializer, LocationSerializer, EventsSerializer
 from rest_framework.permissions import BasePermission, SAFE_METHODS
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from orders_api.serializers import OrderSerializer
 
 # Create your views here.
 
@@ -14,7 +17,7 @@ class EventWritePerm(BasePermission):
     def has_object_permission(self, request, view, obj):
         if request.method in SAFE_METHODS:
             return True
-        return obj.useradmin == request.user
+        return obj.useradmin == request.user 
     #fn based views 
 @api_view(['Get'])
 def userList(request):
@@ -38,6 +41,11 @@ class EventDetails(generics.RetrieveUpdateDestroyAPIView, EventWritePerm):
     queryset = Events.objects.all()
     serializer_class =  EventsSerializer
 
+@api_view(['Get'])
+def profile(request,id):
+    user_orders_query=Orders.objects.filter(user_id_id=id)
+    user_orders=OrderSerializer(user_orders_query,many=True).data
+    return Response({'orders':user_orders})
 
 
 """ Concrete View Classes
