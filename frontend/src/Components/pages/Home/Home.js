@@ -25,8 +25,13 @@ import { RiRecycleLine } from "react-icons/ri";
 //   this.setState({isLoading: false})
 // }
 
+// import { fetchProducts } from "../../../redux/actions/product_action";
+// import { useDispatch } from 'react-redux';
+
+
 const Home = () => {
-  
+//   const dispatch=useDispatch();
+// dispatch(fetchProducts());
   return (
     <section  >
       <Spinner />
