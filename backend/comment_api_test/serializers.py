@@ -1,11 +1,15 @@
 from rest_framework import serializers
+# from user.models import User
 from events.models import Comments
 
 
 class CommentsSerializer(serializers.ModelSerializer):
-    # avatar = serializers.ReadOnlyField()
-    # first_name = serializers.ReadOnlyField()
-
     class Meta:
         model = Comments
-        fields = ['comments','user_id','avatar','first_name']
+        fields = ['comment', 'user']
+
+
+# class UserSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = User
+#         fields = ['id','first_name','last_name','avatar']

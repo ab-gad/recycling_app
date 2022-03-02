@@ -1,50 +1,57 @@
 import React from "react";
 import PageTitle from "../../page_title";
-import './homeproducts.css';
+import "./homeproducts.css";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useGetAllProductsQuery } from "../../../features/productsApi";
 import { addToCart } from "../../../features/cartSlice";
 const Homeproduct = () => {
+  const { data, error, isLoading } = useGetAllProductsQuery();
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+    // history.push("/Cart");
+  };
 
-const {data ,error ,isLoading}=useGetAllProductsQuery();
-const dispatch=useDispatch();
-const history=useHistory();
-const handleAddToCart =(product)=>{
-dispatch(addToCart(product));
-// history.push("/Cart");
-};
+  return (
+    <>
+      <PageTitle title="Products" description="Home/Products" />
 
-return(
-  <>
-<PageTitle title="Products" description="Home/Products"/>
-
-<div className="container">
-{isLoading ?( <p>loading...</p>)
-:error?(<p>error occured</p>):(
-<div className="row">
-{data?.map(product =>          <div key={product.id} className="col-lg-3  col-md-3 col-sm-12">
-                <div className="card border" >
-                   <img src={product.image} className="card-img-top" alt={product.title} />
-                   <hr/>
-                   <div className="card-body">
-                     <h5 className="card-title">{product.title}</h5>
-                     <p className="card-text">
-                     {product.description}
-                     </p>
-                     <button onClick={()=> handleAddToCart(product)} className="btn btn-primary" >
-                       Add To Cart
-                     </button>
-                   </div>
-                 </div>
-               </div>)}
-</div>
-)
-}
-
-</div>
-</>
-)
+      <div className="container">
+        {isLoading ? (
+          <p>loading...</p>
+        ) : error ? (
+          <p>error occured</p>
+        ) : (
+          <div className="row">
+            {data?.map((product) => (
+              <div key={product.id} className="col-lg-3  col-md-3 col-sm-12">
+                <div className="card border">
+                  <img
+                    src={product.image}
+                    className="card-img-top"
+                    alt={product.title}
+                  />
+                  <hr />
+                  <div className="card-body">
+                    <h5 className="card-title">{product.title}</h5>
+                    <p className="card-text">{product.description}</p>
+                    <button
+                      onClick={() => handleAddToCart(product)}
+                      className="btn btn-primary"
+                    >
+                      Add To Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </>
+  );
 };
 export default Homeproduct;
 
