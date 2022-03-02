@@ -96,6 +96,7 @@ const App = () => {
     <div dir={langcont === "ENGLISH" ? "ltr" : "rtl"}>
 
         <Router>
+          <ToastContainer/>
           <Langcontext.Provider value={{ langcont, Setlangcontext }}>
             <main>
               <Navbar />
@@ -125,7 +126,9 @@ const App = () => {
                   <Route path="/Homeproduct/" exact >
                   <Homeproduct/>
                   </Route>
-
+                  <Route path="/Cart/" exact >
+                  <Cart/>
+                  </Route>
                   <Route path="/contact" exact>
                     <Contact />
                   </Route>
