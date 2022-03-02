@@ -47,3 +47,8 @@
 [aria-hidden="false"] {
   display: block;
 }
+
+.border{
+  border-color:black ;
+  border-width: 3px;
+}

@@ -15,6 +15,3 @@ SOCIAL_AUTH_FACEBOOK_SECRET = ''  # App Secret
 
 EMAIL_HOST_USER = 'philosopher.gad@gmail.com'
 EMAIL_HOST_PASSWORD = 'kwkcqlhzagigjdbe'
-
-
-
