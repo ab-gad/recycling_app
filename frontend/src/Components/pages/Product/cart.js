@@ -10,7 +10,7 @@ import {
   getTotals,
 } from "../../../features/cartSlice";
 
-const Cart = () => {
+const Wagon = () => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const handleRemoveFromCart = (cartItem) => {
@@ -195,4 +195,4 @@ const Cart = () => {
     </div>
   );
 };
-export default Cart;
+export default Wagon;
