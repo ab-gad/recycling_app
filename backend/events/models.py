@@ -1,4 +1,5 @@
 
+from email.policy import default
 from xml.parsers.expat import model
 from django.db import models
 from django.utils import timezone
@@ -54,7 +55,8 @@ class Events(models.Model):
 class Comments(models.Model):
     comment = models.TextField(max_length=500)
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
-    #avata = models.ImageField(upload_to='comments', verbose_name='Imag')
+    # avata = models.ImageField(upload_to='comments',
+    #                         verbose_name='Imag', default=None)
     #first = models.CharField(max_length=50)
 
     # @property
