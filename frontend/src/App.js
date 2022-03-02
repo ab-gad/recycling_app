@@ -19,6 +19,8 @@ import Register from "./Components/pages/Auth/NewRegister";
 import Activate from "./Components/pages/Auth/Activate";
 import ResetPassword from "./Components/pages/Auth/ResetPassword";
 import ResetPasswordConfirm from "./Components/pages/Auth/ResetPasswordConfirm";
+import Facebook from "./Components/pages/Auth/Facebook";
+import Google from "./Components/pages/Auth/Google";
 
 import Navbar from "./Components/NavBar";
 import Chat from "./Components/pages/ChatBot/Chat";
@@ -140,6 +142,8 @@ const App = () => {
                     <SignOut/>
                   </Route> */}
 
+                  <Route exact path='/facebook' component={Facebook} />
+                  <Route exact path='/google' component={Google} />
                   <Route exact path='/login' component={Login} />
                   <Route exact path='/register' component={Register} />
                   <Route exact path='/reset-password' component={ResetPassword} />

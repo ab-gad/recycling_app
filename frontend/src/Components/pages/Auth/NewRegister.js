@@ -36,7 +36,17 @@ const Signup = ({ signup, isAuthenticated }) => {
 
     const continueWithGoogle = async () => {
         try {
-            const res = await axios.get(`http://127.0.0.1:8000/auth/o/google-oauth2/?redirect_uri=http://127.0.0.1:3000`)
+            const res = await axios.get(`http://127.0.0.1:8000/auth/o/google-oauth2/?redirect_uri=http://127.0.0.1:3000/google`)
+
+            window.location.replace(res.data.authorization_url);
+        } catch (err) {
+            console.log('ERR', err)
+        }
+    };
+
+    const continueWithFacebook = async () => {
+        try {
+            const res = await axios.get(`http://127.0.0.1:8000/auth/o/facebook/?redirect_uri=http://127.0.0.1:3000/facebook`)
 
             window.location.replace(res.data.authorization_url);
         } catch (err) {
@@ -110,6 +120,9 @@ const Signup = ({ signup, isAuthenticated }) => {
             </form>
             <button className='btn btn-danger mt-3' onClick={continueWithGoogle}>
                 Continue With Google
+            </button>
+            <button className='btn btn-primary mt-3' onClick={continueWithFacebook}>
+                Continue With Facebook
             </button>
             <p className='mt-3'>
                 Already have an account? <Link to='/login'>Sign In</Link>

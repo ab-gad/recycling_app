@@ -5,8 +5,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { FaRegUserCircle ,FaSeedling , FaBoxOpen } from 'react-icons/fa';
 import { VscHome } from 'react-icons/vsc';
 import { BsBuilding , BsChatDots } from 'react-icons/bs';
-import { useSelector} from "react-redux"
-import axiosInstance from "../axios";
+import { useSelector} from "react-redux";
 import { connect } from "react-redux";
 import { checkAuthenticated, load_user, logout, googleAuthenticate} from "../redux/actions/actions";
 import { useHistory } from 'react-router-dom';
@@ -79,25 +78,10 @@ const Navbar = (props) => {
       
     let location = useLocation()
     useEffect(()=>{
-      const values = queryString.parse(location.search) 
-      //location.search > will grap only what comes after ur domain
-      //queryString.parse > will put it in key value format
-
-      const state = values.state ? values.state : null
-      const code = values.code ? values.code : null
-
-      console.log("code", code)
-      console.log("state", state)
-
-      if (state && code){
-        props.googleAuthenticate(state, code)
-      } else {
         props.checkAuthenticated()
         props.load_user()
         console.log("user>>>>>",props.user)
-      }
-      
-    },[location])
+    },[])
       
   return (
     <>

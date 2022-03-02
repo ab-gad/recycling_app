@@ -209,7 +209,18 @@ DJOSER = {
     'ACTIVATION_URL': 'activate/{uid}/{token}',
     'SEND_ACTIVATION_EMAIL':True,
     'SOCIAL_AUTH_TOKEN_STRATEGY': 'djoser.social.token.jwt.TokenStrategy',
-    'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': ['http://localhost:8000/google', 'http://localhost:3000/google', 'http://127.0.0.1:3000' ,'http://127.0.0.1:3000/google', 'http://127.0.0.1:8000/google'],
+    'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': [
+        'http://localhost:8000/facebook',
+        'http://localhost:3000/facebook',
+        'http://127.0.0.1:3000', 
+        'http://127.0.0.1:3000/facebook', 
+        'http://127.0.0.1:8000/facebook',
+        'http://localhost:8000/google',
+        'http://localhost:3000/google',
+        'http://127.0.0.1:3000', 
+        'http://127.0.0.1:3000/google', 
+        'http://127.0.0.1:8000/google'
+    ],
     'SERIALIZERS':{
         'user_create':'authen.serializers.UserCreateSerializer',
         'user':'authen.serializers.UserCreateSerializer',
@@ -231,7 +242,8 @@ SIMPLE_JWT = {
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
-    'django.contrib.auth.backends.ModelBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend'
 )
 
 
@@ -244,6 +256,11 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
 'https://www.googleapis.com/auth/userinfo.profile'
 ]
 SOCIAL_AUTH_GOOGLE_OAUTH2_EXTRA_DATA = ['first_name', 'last_name']
+
+#Facebook
+SOCIAL_AUTH_FACEBOOK_KEY = SOCIAL_AUTH_FACEBOOK_KEY
+SOCIAL_AUTH_FACEBOOK_SECRET = SOCIAL_AUTH_FACEBOOK_SECRET
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 
 JAZZMIN_SETTINGS = {
     "site_title": "Recycling",
