@@ -23,13 +23,14 @@ import ResetPasswordConfirm from "./Components/pages/Auth/ResetPasswordConfirm";
 import Navbar from "./Components/NavBar";
 import Chat from "./Components/pages/ChatBot/Chat";
 import Order_form from "./Components/pages/cart/order_form";
+import Cart from './Components/pages/cart/Cart';
 import ScrollButton from "./Components/ScrollButton";
 import ThemesContext , {themes} from  './Components/themes';
 import {BsFillMoonStarsFill , BsFillSunFill} from  'react-icons/bs';
 import { useEffect } from "react";
 import Show from "./Components/pages/Testimonial/showevent";
 import Homeproduct from "./Components/pages/Product/homeproduct";
-import Cart from "./Components/pages/Product/cart";
+import Wagon from "./Components/pages/Product/cart";
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
@@ -97,6 +98,7 @@ const App = () => {
     <div dir={langcont === "ENGLISH" ? "ltr" : "rtl"}>
 
         <Router>
+          <ToastContainer/>
           <Langcontext.Provider value={{ langcont, Setlangcontext }}>
             <main>
               <Navbar />
@@ -126,12 +128,17 @@ const App = () => {
                   <Route path="/Homeproduct/" exact >
                   <Homeproduct/>
                   </Route>
-
+                  <Route path="/Wagon/" exact >
+                  <Wagon/>
+                  </Route>
                   <Route path="/contact" exact>
                     <Contact />
                   </Route>
                   <Route path="/service/cart/:name/:order_id" exact> 
                     <Order_form />
+                  </Route>
+                  <Route path="/service/cart/:name" exact> 
+                   <Cart />
                   </Route>
                   {/* <Route path="/login" exact>
                     <SignIn/>
@@ -148,9 +155,7 @@ const App = () => {
                   <Route exact path='/reset-password' component={ResetPassword} />
                   <Route exact path='/password/reset/confirm/:uid/:token' component={ResetPasswordConfirm} />
                   <Route exact path='/activate/:uid/:token' component={Activate} />
-                  <Route path="/service/cart/:id" exact> 
-                    <Cart />
-                  </Route>
+                  
                   <Redirect to="/" />
                 </Switch>
               </ThemesContext.Provider>
