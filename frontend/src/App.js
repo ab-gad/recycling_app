@@ -7,6 +7,8 @@ import Home from "./Components/pages/Home/Home";
 import Services from "./Components/pages/Service/Service";
 import Testimonial from "./Components/pages/Testimonial/Testimonial";
 import User from "./Components/pages/user/user";
+import Profile from "./Components/pages/user/profile";
+
 
 
 // import Login from "./Components/pages/Registeration/login";
