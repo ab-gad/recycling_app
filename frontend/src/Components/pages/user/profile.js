@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 
 
 
-const User=()=> {
+const Profile=()=> {
     // const history=useHistory()
 const authed_user = useSelector((state)=> state.authReducer.user)
 console.log(authed_user)
@@ -230,4 +230,4 @@ console.log(authed_user)
   );
 };
 
-export default User;
+export default Profile;

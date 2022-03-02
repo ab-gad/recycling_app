@@ -120,6 +120,9 @@ const App = () => {
                   <Route path="/settings" exact>
                     <User />
                   </Route>
+                  <Route path="/profile" exact>
+                    <Profile />
+                  </Route>
                   <Route path="/Show/:id" component={Show} exact >
                   <Show/>
                   </Route>
