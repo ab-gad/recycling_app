@@ -7,7 +7,8 @@ import Home from "./Components/pages/Home/Home";
 import Services from "./Components/pages/Service/Service";
 import Testimonial from "./Components/pages/Testimonial/Testimonial";
 import User from "./Components/pages/user/user";
-
+import Error_404 from "./Components/pages/Home/error_404";
+import Success_order from "./Components/pages/cart/success_order";
 
 // import Login from "./Components/pages/Registeration/login";
 // import Register from "./Components/pages/Registeration/register";
@@ -118,6 +119,12 @@ const App = () => {
                   </Route>
                   <Route path="/service/cart/:name/:order_id" exact> 
                     <Order_form />
+                  </Route>
+                  <Route path="/error_404" exact> 
+                    <Error_404 />
+                  </Route>
+                  <Route path="/success_order" exact> 
+                    <Success_order />
                   </Route>
 
                   <Route exact path='/login' component={Login_Register} />
