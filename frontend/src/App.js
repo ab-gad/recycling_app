@@ -14,8 +14,8 @@ import User from "./Components/pages/user/user";
 // import SignUp from "./Components/pages/Auth/register";
 // import SignIn from "./Components/pages/Auth/login";
 // import SignOut from "./Components/pages/Auth/logout";
-import Login from "./Components/pages/Auth/NewLogin";
-import Register from "./Components/pages/Auth/NewRegister";
+import Login_Register from "./Components/pages/Auth/NewLogin";
+// import Register from "./Components/pages/Auth/NewRegister";
 import Activate from "./Components/pages/Auth/Activate";
 import ResetPassword from "./Components/pages/Auth/ResetPassword";
 import ResetPasswordConfirm from "./Components/pages/Auth/ResetPasswordConfirm";
@@ -24,34 +24,22 @@ import Google from "./Components/pages/Auth/Google";
 
 import Navbar from "./Components/NavBar";
 import Chat from "./Components/pages/ChatBot/Chat";
+import Order_form from "./Components/pages/cart/order_form";
+import Cart from './Components/pages/cart/Cart';
 import ScrollButton from "./Components/ScrollButton";
 import ThemesContext , {themes} from  './Components/themes';
 import {BsFillMoonStarsFill , BsFillSunFill} from  'react-icons/bs';
 import { useEffect } from "react";
 import Show from "./Components/pages/Testimonial/showevent";
 import Homeproduct from "./Components/pages/Product/homeproduct";
-import Cart from "./Components/pages/Product/cart";
+import Wagon from "./Components/pages/Product/cart";
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
 // import { Langcontext } from './context/lang';
 export const Langcontext = React.createContext();
 
-
-// //testing spinner
-// const loader = document.querySelector(".preloader");
-
-// const showLoader = () => loader.classList.remove("preloader");
-// const addClass = () => loader.classList.add("loader-hide");
-// //--->
 const App = () => {
-//testing spinner
-  // useEffect(() => {
-  //   showLoader();
-  //   addClass();
-  // }, []);
-
-  // //-->
   const [langcont, Setlangcontext] = useState("ENGLISH");
  
   //creatr themes 
@@ -98,6 +86,7 @@ const App = () => {
     <div dir={langcont === "ENGLISH" ? "ltr" : "rtl"}>
 
         <Router>
+          <ToastContainer/>
           <Langcontext.Provider value={{ langcont, Setlangcontext }}>
             <main>
               <Navbar />
@@ -127,11 +116,18 @@ const App = () => {
                   <Route path="/Homeproduct/" exact >
                   <Homeproduct/>
                   </Route>
-
+                  <Route path="/Wagon/" exact >
+                  <Wagon/>
+                  </Route>
                   <Route path="/contact" exact>
                     <Contact />
                   </Route>
-
+                  <Route path="/service/cart/:name/:order_id" exact> 
+                    <Order_form />
+                  </Route>
+                  <Route path="/service/cart/:name" exact> 
+                   <Cart />
+                  </Route>
                   {/* <Route path="/login" exact>
                     <SignIn/>
                   </Route>
@@ -144,14 +140,18 @@ const App = () => {
 
                   <Route exact path='/facebook' component={Facebook} />
                   <Route exact path='/google' component={Google} />
-                  <Route exact path='/login' component={Login} />
-                  <Route exact path='/register' component={Register} />
+                  <Route exact path='/login' component={Login_Register} />
+                  {/* <Route exact path='/register' component={Login_Register} /> */}
                   <Route exact path='/reset-password' component={ResetPassword} />
                   <Route exact path='/password/reset/confirm/:uid/:token' component={ResetPasswordConfirm} />
                   <Route exact path='/activate/:uid/:token' component={Activate} />
-                  <Route path="/service/cart/:id" exact> 
+
+                  {/* <Route path="/service/cart/:id" exact> 
                     <Cart />
-                  </Route>
+                  </Route> */}
+
+                  
+
                   <Redirect to="/" />
                 </Switch>
               </ThemesContext.Provider>

@@ -6,7 +6,7 @@
 }
 :root {
   --color: #222327;
-  --bg_nav_Color: #2a004f;
+  --bg_nav_Color: #00a300;
   --nav_overlay: #eee;
   --nav_font_color: rgb(245 212 212);
 }
@@ -176,11 +176,11 @@ nav .nav_logo {
   left: 20px;
   top: 0;
 }
-/* nav .language_button {
+nav .language_button {
   position: absolute;
   right: 37px;
   top: 0;
-} */
+}
 
 body {
   font-family: "Roboto", sans-serif;

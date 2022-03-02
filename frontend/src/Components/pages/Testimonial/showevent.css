@@ -1,6 +1,6 @@
-#showeventCard body {
+/* #showeventCard body {
   background: radial-gradient(#e5e5e5, #ffff, #e5e5e5);
-}
+} */
 
 #showeventCard .card {
   width: 20rem;
@@ -46,4 +46,9 @@
 }
 [aria-hidden="false"] {
   display: block;
+}
+
+.border{
+  border-color:black ;
+  border-width: 3px;
 }

@@ -1,0 +1,103 @@
+body {
+    height: 100vh !important ;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#form_container form {
+    margin: 2rem 0 0;
+}
+#form_container  {
+    margin: auto;
+    padding: 0;
+    border-radius: 5px;
+    color: #000;
+    max-width: 22rem;
+}
+
+#type_container {
+    max-width: 24rem;
+    padding: 1.5rem 1rem ;
+    border: 1px solid #00000028;
+    max-width: 24rem;
+    border-radius: 5px;
+}
+@media (min-width: 1200px){
+    #form_container {
+        max-width: 75%;
+    }
+}
+#type_container h2 {
+    font-family: "Oleo Script Swash Caps", cursive;
+    color: #00a300 ;
+    font-size: 35px;
+}
+#form_container .form_img {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+#type_container .btn_container {
+    /* padding: inherit; */
+    font-size: 30px;
+}
+#form_container .btn {
+    min-width: 45%;
+    font-weight: 100 !important ;
+}
+
+#type_container button svg {
+    font-size: 20px;
+    margin-right: 2px;
+}
+
+#type_container .btn_color {
+    background-color: #00a300c5;
+    color: #fff;
+    padding: 10px;
+}
+#type_container .btn_color:hover {
+    background-color: #00a300;
+
+}
+#type_container button.bg-light:hover {
+    background-color: #00a300c5 !important ;
+    color: #fff !important;
+}
+.form_inputs input {
+    margin: 1rem 0;
+    padding: .5rem;
+    box-shadow: none !important;
+    outline: none !important;
+}
+.form_inputs p , span {
+    font-size: 15px;
+}
+
+#login_form .input_icon {
+    width: 15%;
+    font-size: 22px;
+    background-color: #00a300c5;
+    color: #fff;
+    padding: 10px;
+    height: 43px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+#login_form .login_input {
+    width: 85%;
+    border-left: none;
+    border: 1px solid #00000021;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+#form_container button.text-dark { 
+    border: 1px solid #00a30071 ; 
+}
+.validation_mess {
+    display: none;
+}

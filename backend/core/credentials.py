@@ -19,6 +19,3 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
 
 EMAIL_HOST_USER = 'philosopher.gad@gmail.com'
 EMAIL_HOST_PASSWORD = 'kwkcqlhzagigjdbe'
-
-
-

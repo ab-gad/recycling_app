@@ -1,98 +1,44 @@
-import React, { useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { login } from '../../../redux/actions/actions';
-import axios from 'axios';
-axios.defaults.withCredentials = true;
+import React, { useState } from "react";
+import Login_Form from "./Form_Componant/login_componant";
+import Register_Form from "./Form_Componant/register_comopnant";
+import { FcGoogle } from 'react-icons/fc';
+import './login_register.css';
 
-const Login = ({ login, isAuthenticated }) => {
-    const [formData, setFormData] = useState({
-        email: '',
-        password: '' 
-    });
-
-    const { email, password } = formData;
-
-    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
-
-    const onSubmit = e => {
-        e.preventDefault();
-
-        login(email, password);
-    };
-
-    if (isAuthenticated) {
-        return <Redirect to='/' />
+const Login_Register = () => {
+  const [ form , setForm ] = useState(<Login_Form />)
+  const [ form_title , setFormTitle ] = useState('Login')
+  
+  function convert (e) {
+    if (e.target.id === 'login_button' ){
+      setForm(<Login_Form/>)
+      setFormTitle('Login')
     }
-
-    const continueWithGoogle = async () => {
-        try {
-            const res = await axios.get(`http://127.0.0.1:8000/auth/o/google-oauth2/?redirect_uri=http://127.0.0.1:3000/google`)
-
-            window.location.replace(res.data.authorization_url);
-        } catch (err) {
-            console.log('ERR', err)
-        }
-    };
-
-    const continueWithFacebook = async () => {
-        try {
-            const res = await axios.get(`http://127.0.0.1:8000/auth/o/facebook/?redirect_uri=http://localhost:3000/facebook`)
-
-            window.location.replace(res.data.authorization_url);
-        } catch (err) {
-
-        }
-    };
+    else {
+      setForm(<Register_Form/>)
+      setFormTitle('Register')
+    }
+  }
 
 
-    return (
-        <div className='container mt-5'>
-            <h1>Sign In</h1>
-            <p>Sign into your Account</p>
-            <form onSubmit={e => onSubmit(e)}>
-                <div className='form-group'>
-                    <input
-                        className='form-control'
-                        type='email'
-                        placeholder='Email'
-                        name='email'
-                        value={email}
-                        onChange={e => onChange(e)}
-                        required
-                    />
-                </div>
-                <div className='form-group'>
-                    <input
-                        className='form-control'
-                        type='password'
-                        placeholder='Password'
-                        name='password'
-                        value={password}
-                        onChange={e => onChange(e)}
-                        minLength='6'
-                        required
-                    />
-                </div>
-                <button className='btn btn-primary' type='submit'>Login</button>
-            </form>
-            <button className='btn btn-danger mt-3' onClick={continueWithGoogle}>
-                Continue With Google
-            </button>
-            <button className='btn btn-primary mt-3' onClick={continueWithFacebook}>
-                Continue With Facebook
-            </button>
-            <p className='mt-3'>
-                Don't have an account? <Link to='/register'>Sign Up</Link>
-            </p>
-            <p className='mt-3'>
-                Forgot your Password? <Link to='/reset-password'>Reset Password</Link>
-            </p>
+  return (
+    <div className="mt-5 row justify-content-between align-items-center" id="form_container">
+      <img src={require('./images/earth.png')} alt="From_photo" className="form_img d-none d-xl-block col-7 p-0" height='100%'  />
+      <div className=" col-xl-5 m-auto" id="type_container" >
+
+        <h2 className="mb-5 text-center " > {form_title} </h2>
+        <div className="btn_container px-0 d-flex justify-content-between">
+          <button className="btn btn_color " onClick={(e) => convert(e)} id="login_button" > Login </button>
+          <button className="btn btn_color " onClick={(e) => convert(e)} id="register_button" > Sign Up </button>
         </div>
-    );
+
+          {form}
+          
+          <button className="btn btn_color bg-light w-100 mt-3 text-dark" > <FcGoogle/> Login With Google Account </button>
+
+      </div>
+    </div>
+  );
 };
 
-const mapStateToProps = state => ({
-    isAuthenticated: state.authReducer.isAuthenticated
-});
-export default connect(mapStateToProps, { login })(Login);
+
+export default Login_Register;
