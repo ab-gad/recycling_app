@@ -4,7 +4,7 @@ from django.contrib.gis.geos import Point
 
 class Orders (models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
-    first_name = models.CharField(max_length=50 )
+    first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     phone = models.IntegerField()
     paper_q = models.IntegerField()
