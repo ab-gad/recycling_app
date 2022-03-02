@@ -172,18 +172,28 @@ export const signup = (first_name, last_name, email, password, re_password) => a
     };
 
     const body = JSON.stringify({ first_name, last_name, email, password, re_password });
-
     try {
         const res = await axios.post(`http://127.0.0.1:8000/auth/users/`, body, config);
-
+        console.log('RES', res)
         dispatch({
             type: SIGNUP_SUCCESS,
             payload: res.data
         });
     } catch (err) {
-        dispatch({
-            type: SIGNUP_FAIL
-        })
+        if (err.response){
+            console.log("signUp Err Res" ,err.response)
+            dispatch({
+                type: SIGNUP_FAIL,
+                payload: err.response.data
+            })
+        }
+        else {
+            dispatch({
+                type: SIGNUP_FAIL,
+                payload: err
+            })
+            console.log("signUp Err" ,err)
+        } 
     }
 };
 

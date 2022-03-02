@@ -3,22 +3,28 @@ import Login_Form from "./Form_Componant/login_componant";
 import Register_Form from "./Form_Componant/register_comopnant";
 import { FcGoogle } from 'react-icons/fc';
 import './login_register.css';
+import { Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Login_Register = () => {
   const [ form , setForm ] = useState(<Login_Form />)
   const [ form_title , setFormTitle ] = useState('Login')
-  
+  const isAuthenticated = useSelector(state=>state.authReducer.isAuthenticated)
+
   function convert (e) {
     if (e.target.id === 'login_button' ){
       setForm(<Login_Form/>)
       setFormTitle('Login')
     }
     else {
-      setForm(<Register_Form/>)
+      setForm(<Register_Form setForm={setForm}/>)
       setFormTitle('Register')
     }
   }
 
+    if (isAuthenticated) {
+        return <Redirect to='/' />
+    }
 
   return (
     <div className="mt-5 row justify-content-between align-items-center" id="form_container">
