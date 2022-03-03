@@ -145,9 +145,12 @@ console.log(authed_user)
 
 
   return (
-      
+    
+
+
+
         <div className='col-xl-5 m-auto' id='settings_container'>
-                <img src={`${user.avatar}`} className="rounded-circle"/> 
+                <img src={`${user.avatar}`} className="rounded-circle border border-success border-4"/> 
             <h2 className="mb-5 text-center">{`${user.first_name}`} {`${user.last_name}`}</h2>
             
             <form >
