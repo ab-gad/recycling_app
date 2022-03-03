@@ -17,19 +17,12 @@ import Home_icon_data from '../../home_icon_data';
 import Rateing from "./Rateing/rateing";
 import Spinner from "../../../spinner/spinner";
 import { RiRecycleLine } from "react-icons/ri";
-// constructor = () => {
-//   this.state = { isLoading: true }
-// }
-
-// componentDidMount = () => {
-//   this.setState({isLoading: false})
-// }
 
 const Home = () => {
   
   return (
     <section  >
-      <Spinner />
+      {/* <Spinner /> */}
       {/* _______________________ Carouser Section ______________________________ */}
       <Carousel />
       {/* ______________________ 4 Cards (Working) Section _____________________________*/}

@@ -8,16 +8,15 @@ import Services from "./Components/pages/Service/Service";
 import Testimonial from "./Components/pages/Testimonial/Testimonial";
 import User from "./Components/pages/user/user";
 import Profile from "./Components/pages/user/profile";
-
-
-
+import Error_404 from "./Components/pages/Home/error_404";
+import Success_order from "./Components/pages/cart/success_order";
 // import Login from "./Components/pages/Registeration/login";
 // import Register from "./Components/pages/Registeration/register";
 // import SignUp from "./Components/pages/Auth/register";
 // import SignIn from "./Components/pages/Auth/login";
 // import SignOut from "./Components/pages/Auth/logout";
-import Login from "./Components/pages/Auth/NewLogin";
-import Register from "./Components/pages/Auth/NewRegister";
+import Login_Register from "./Components/pages/Auth/NewLogin";
+// import Register from "./Components/pages/Auth/NewRegister";
 import Activate from "./Components/pages/Auth/Activate";
 import ResetPassword from "./Components/pages/Auth/ResetPassword";
 import ResetPasswordConfirm from "./Components/pages/Auth/ResetPasswordConfirm";
@@ -39,21 +38,7 @@ import "react-toastify/dist/ReactToastify.css";
 // import { Langcontext } from './context/lang';
 export const Langcontext = React.createContext();
 
-
-// //testing spinner
-// const loader = document.querySelector(".preloader");
-
-// const showLoader = () => loader.classList.remove("preloader");
-// const addClass = () => loader.classList.add("loader-hide");
-// //--->
 const App = () => {
-//testing spinner
-  // useEffect(() => {
-  //   showLoader();
-  //   addClass();
-  // }, []);
-
-  // //-->
   const [langcont, Setlangcontext] = useState("ENGLISH");
  
   //creatr themes 
@@ -142,25 +127,25 @@ const App = () => {
                   <Route path="/service/cart/:name/:order_id" exact> 
                     <Order_form />
                   </Route>
-                  <Route path="/service/cart/:name" exact> 
-                   <Cart />
+                  <Route path="/error_404" exact> 
+                    <Error_404 />
                   </Route>
-                  {/* <Route path="/login" exact>
-                    <SignIn/>
+                  <Route path="/success_order" exact> 
+                    <Success_order />
                   </Route>
-                  <Route path="/register" exact>
-                    <SignUp/>
-                  </Route>
-                  <Route path="/logout" exact>
-                    <SignOut/>
-                  </Route> */}
 
-                  <Route exact path='/login' component={Login} />
-                  <Route exact path='/register' component={Register} />
+                  <Route exact path='/login' component={Login_Register} />
+                  {/* <Route exact path='/register' component={Login_Register} /> */}
                   <Route exact path='/reset-password' component={ResetPassword} />
                   <Route exact path='/password/reset/confirm/:uid/:token' component={ResetPasswordConfirm} />
                   <Route exact path='/activate/:uid/:token' component={Activate} />
+
+                  {/* <Route path="/service/cart/:id" exact> 
+                    <Cart />
+                  </Route> */}
+
                   
+
                   <Redirect to="/" />
                 </Switch>
               </ThemesContext.Provider>
