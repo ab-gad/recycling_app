@@ -1,24 +1,24 @@
 
 
-.card {
+#user_profile .card {
     border: none
 }
-.name_image_block{
+#user_profile .name_image_block{
     border-radius: 25px;
     border: 2px solid rgb(108, 195, 224);
     box-shadow:5px 5px rgb(46, 172, 214) ;
     margin: auto;
 }
-.form_container{
+#user_profile .form_container{
     border-radius: 10px;
     border: 2px solid rgb(108, 195, 224);
     box-shadow:5px 5px rgb(46, 172, 214) ;
 }
-.image {
+#user_profile .image {
     position: relative
 }
 
-.image span {
+#user_profile .image span {
     background-color: blue;
     color: #fff;
     padding: 6px;
@@ -34,7 +34,7 @@
     left: 50px
 }
 
-.user-details h4  {
+#user_profile .user-details h4  {
     font-size: 30px;
     font-weight: 600;
     display: flex;
@@ -45,7 +45,7 @@
 }
 
 
-.inputs label {
+#user_profile .inputs label {
     display: flex;
     margin-left: 3px;
     font-weight: 500;
@@ -53,22 +53,22 @@
     margin-bottom: 4px;
 }
 
-.inputs input {
+#user_profile .inputs input {
     font-size: 14px;
     height: 40px;
     border: 2px solid #ced4da
 }
 
-.inputs input:focus {
+#user_profile .inputs input:focus {
     box-shadow: none;
     border: 2px solid blue
 }
 
 
-.btn {
+#user_profile .btn {
     font-weight: 600
 }
 
-.btn:focus {
+#user_profile .btn:focus {
     box-shadow: none
 }
