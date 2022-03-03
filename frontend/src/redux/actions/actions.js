@@ -24,6 +24,73 @@ import {
 from "./actionTypes";
 
 axios.defaults.withCredentials = true;
+
+export const signup = (first_name, last_name, email, password, re_password) => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
+    const body = JSON.stringify({ first_name, last_name, email, password, re_password });
+    try {
+        const res = await axios.post(`http://127.0.0.1:8000/auth/users/`, body, config);
+        console.log('RES', res)
+        dispatch({
+            type: SIGNUP_SUCCESS,
+            payload: res.data
+        });
+    } catch (err) {
+        if (err.response){
+            console.log("signUp Err Res" ,err.response)
+            dispatch({
+                type: SIGNUP_FAIL,
+                payload: err.response.data
+            })
+        } else {
+            dispatch({
+                type: SIGNUP_FAIL,
+                payload: err
+            })
+            console.log("signUp Err" ,err)
+        } 
+    }
+};
+
+export const login = (email, password) => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
+    const body = JSON.stringify({ email, password });
+
+    try {
+        const res = await axios.post(`http://127.0.0.1:8000/auth/jwt/create/`, body, config);
+
+        dispatch({
+            type: LOGIN_SUCCESS,
+            payload: res.data
+        });
+
+        dispatch(load_user());
+    } catch (err) {
+        if (err.response){
+            console.log("Login Err Res" ,err.response)
+            dispatch({
+                type: LOGIN_FAIL,
+                payload: err.response.data
+            })
+        } else {
+            dispatch({
+                type: LOGIN_FAIL,
+                payload: err
+            })
+        }
+    }
+};
+
 export const load_user = () => async dispatch => {
     if (localStorage.getItem('access')) {
         const config = {
@@ -50,31 +117,6 @@ export const load_user = () => async dispatch => {
         dispatch({
             type: USER_LOADED_FAIL
         });
-    }
-};
-
-export const login = (email, password) => async dispatch => {
-    const config = {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    };
-
-    const body = JSON.stringify({ email, password });
-
-    try {
-        const res = await axios.post(`http://127.0.0.1:8000/auth/jwt/create/`, body, config);
-
-        dispatch({
-            type: LOGIN_SUCCESS,
-            payload: res.data
-        });
-
-        dispatch(load_user());
-    } catch (err) {
-        dispatch({
-            type: LOGIN_FAIL
-        })
     }
 };
 
@@ -136,9 +178,18 @@ export const reset_password = (email) => async dispatch => {
             type: PASSWORD_RESET_SUCCESS
         });
     } catch (err) {
-        dispatch({
-            type: PASSWORD_RESET_FAIL
-        });
+        if (err.response){
+            console.log("resetPassErr" ,err.response)
+            dispatch({
+                type: PASSWORD_RESET_FAIL,
+                payload: err.response.data
+            })
+        }else{
+            dispatch({
+                type: PASSWORD_RESET_FAIL,
+                payload:err
+            });
+        }
     }
 };
 
@@ -161,39 +212,6 @@ export const reset_password_confirm = (uid, token, new_password, re_new_password
         dispatch({
             type: PASSWORD_RESET_CONFIRM_FAIL
         });
-    }
-};
-
-export const signup = (first_name, last_name, email, password, re_password) => async dispatch => {
-    const config = {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    };
-
-    const body = JSON.stringify({ first_name, last_name, email, password, re_password });
-    try {
-        const res = await axios.post(`http://127.0.0.1:8000/auth/users/`, body, config);
-        console.log('RES', res)
-        dispatch({
-            type: SIGNUP_SUCCESS,
-            payload: res.data
-        });
-    } catch (err) {
-        if (err.response){
-            console.log("signUp Err Res" ,err.response)
-            dispatch({
-                type: SIGNUP_FAIL,
-                payload: err.response.data
-            })
-        }
-        else {
-            dispatch({
-                type: SIGNUP_FAIL,
-                payload: err
-            })
-            console.log("signUp Err" ,err)
-        } 
     }
 };
 

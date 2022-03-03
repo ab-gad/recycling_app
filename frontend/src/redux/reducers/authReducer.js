@@ -26,6 +26,8 @@ const initialState = {
     isAuthenticated: null,
     user: null,
     err: null,
+    loginErr:null,
+    resetPassErr:null,
     signUp: null,
 };
 
@@ -42,6 +44,9 @@ export default function authReducer (state = initialState, action) {
                 isAuthenticated: true,
                 access: payload.access,
                 refresh: payload.refresh,
+                err:null,
+                resetPassErr:null,
+                loginErr:null,
             }
         case SIGNUP_SUCCESS:
             return {
@@ -63,7 +68,8 @@ export default function authReducer (state = initialState, action) {
                 refresh: null,
                 isAuthenticated: false,
                 user: null,
-                err:payload || null
+                err:payload || null,
+                loginErr:payload || null
             }
         case USER_LOADED_SUCCESS:
             return {
@@ -85,8 +91,16 @@ export default function authReducer (state = initialState, action) {
                 ...state,
                 isAuthenticated: false
             }
-        case PASSWORD_RESET_SUCCESS:
         case PASSWORD_RESET_FAIL:
+            return {
+                ...state,
+                resetPassErr:payload || null
+            }
+        case PASSWORD_RESET_SUCCESS:
+            return {
+                ...state,
+                resetPassErr: null
+            }
         case PASSWORD_RESET_CONFIRM_SUCCESS:
         case PASSWORD_RESET_CONFIRM_FAIL:
         case ACTIVATION_SUCCESS:

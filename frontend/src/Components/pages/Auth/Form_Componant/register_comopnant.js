@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { signup } from '../../../../redux/actions/actions';
-import Login_Form from './login_componant'
+import LoginForm from './login_componant'
 import { useEffect } from 'react';
 
-const Register_Form = ({ signup, setForm, err, signUp}) => {
+const RegisterForm = ({ signup, setForm, err, signUp}) => {
     const [formData, setFormData] = useState({
         first_name: '',
         last_name: '',
@@ -66,10 +66,6 @@ const Register_Form = ({ signup, setForm, err, signUp}) => {
 
         }
     }
-
-    // if (accountCreated){
-    //     setForm(<Login_Form/>)
-    // }
 
     const onSubmit = e => {
         e.preventDefault();
@@ -139,4 +135,4 @@ const mapStateToProps = state => ({
     signUp:state.authReducer.signUp
 });
 
-export default connect(mapStateToProps, { signup })(Register_Form);
+export default connect(mapStateToProps, { signup })(RegisterForm);

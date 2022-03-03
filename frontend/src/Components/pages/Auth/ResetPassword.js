@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { reset_password } from '../../../redux/actions/actions';
 
-const ResetPassword = ({ reset_password }) => {
+const ResetPassword = ({ reset_password, resetPassErr }) => {
     const [requestSent, setRequestSent] = useState(false);
     const [formData, setFormData] = useState({
         email: ''
     });
 
+    
     const { email } = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,12 +21,16 @@ const ResetPassword = ({ reset_password }) => {
         setRequestSent(true);
     };
 
-    if (requestSent) {
-        return <Redirect to='/' />
+    useEffect(()=>{
+        console.log(resetPassErr)
+    },[resetPassErr])
+
+    if (requestSent && resetPassErr === null) {
+        return <Redirect to='/login' />
     }
 
     return (
-        <div className='container mt-5'>
+        <div className='container mt-5 w-50 mx-auto'>
             <h1>Request Password Reset:</h1>
             <form onSubmit={e => onSubmit(e)}>
                 <div className='form-group'>
@@ -39,10 +44,15 @@ const ResetPassword = ({ reset_password }) => {
                         required
                     />
                 </div>
-                <button className='btn btn-primary' type='submit'>Reset Password</button>
+                <p className=" my-2 text-center text-danger" id="validation" > {resetPassErr&&resetPassErr.email[0]} </p>
+                <button className='btn btn-primary my-2' type='submit'>Reset Password</button>
             </form>
         </div>
     );
 };
 
-export default connect(null, { reset_password })(ResetPassword);
+const mapStateToProps = (state) => ({
+    resetPassErr: state.authReducer.resetPassErr,
+  });
+
+export default connect(mapStateToProps, { reset_password })(ResetPassword);

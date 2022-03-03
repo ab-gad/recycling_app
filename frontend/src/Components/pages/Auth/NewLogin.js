@@ -1,30 +1,44 @@
 import React, { useState } from "react";
-import Login_Form from "./Form_Componant/login_componant";
-import Register_Form from "./Form_Componant/register_comopnant";
+import LoginForm from "./Form_Componant/login_componant";
+import RegisterForm from "./Form_Componant/register_comopnant";
 import { FcGoogle } from 'react-icons/fc';
 import './login_register.css';
 import { Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 const Login_Register = () => {
-  const [ form , setForm ] = useState(<Login_Form />)
-  const [ form_title , setFormTitle ] = useState('Login')
-  const isAuthenticated = useSelector(state=>state.authReducer.isAuthenticated)
 
-  function convert (e) {
-    if (e.target.id === 'login_button' ){
-      setForm(<Login_Form/>)
-      setFormTitle('Login')
-    }
-    else {
-      setForm(<Register_Form setForm={setForm}/>)
-      setFormTitle('Register')
-    }
-  }
-
+    const [ form , setForm ] = useState(<LoginForm />)
+    const [ form_title , setFormTitle ] = useState('Login')
+    const isAuthenticated = useSelector(state=>state.authReducer.isAuthenticated)
     if (isAuthenticated) {
         return <Redirect to='/' />
     }
+    
+    function convert (e) {
+        if (e.target.id === 'login_button' ){
+        setForm(<LoginForm/>)
+        setFormTitle('Login')
+        }
+        else {
+        setForm(<RegisterForm setForm={setForm}/>)
+        setFormTitle('Register')
+        }
+    }
+
+    const continueWithGoogle = async () => {
+        try {
+            const res = await axios.get(`http://127.0.0.1:8000/auth/o/google-oauth2/?redirect_uri=http://127.0.0.1:3000/google`)
+
+            window.location.replace(res.data.authorization_url);
+        } catch (err) {
+            console.log('ERR', err)
+        }
+    };
+
+
+    
 
   return (
     <div className="mt-5 row justify-content-between align-items-center" id="form_container">
@@ -39,7 +53,7 @@ const Login_Register = () => {
 
           {form}
           
-          <button className="btn btn_color bg-light w-100 mt-3 text-dark" > <FcGoogle/> Login With Google Account </button>
+          <button  onClick={continueWithGoogle} className="btn btn_color bg-light w-100 mt-3 text-dark" > <FcGoogle/> Continue With Google Account </button>
 
       </div>
     </div>

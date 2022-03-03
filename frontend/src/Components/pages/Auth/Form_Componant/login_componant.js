@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../../../redux/actions/actions";
 import { FaUserAlt , FaLock } from "react-icons/fa";
 
 
-const Login_Form = ({ login, isAuthenticated }) => {
+const LoginForm = ({ login, loginErr  }) => {
     const [formData, setFormData] = useState({
         email: "",
         password: "",
@@ -52,14 +52,19 @@ const Login_Form = ({ login, isAuthenticated }) => {
     
     const onSubmit = (e) => {
         e.preventDefault();
-        if ( validation() ) {
+        const valid =  validation()
+        if ( valid ) {
             login(email, password);
         }
     };
-    
-    if (isAuthenticated) {
-        return <Redirect to="/" />;
-    }
+
+    useEffect(()=>{
+        if (loginErr !== null){
+            console.log(loginErr)
+            login_validation_mess.style.display = 'block'
+            setNotValid(loginErr.detail)
+        }
+    },[loginErr])
     
     return (
      
@@ -75,8 +80,8 @@ const Login_Form = ({ login, isAuthenticated }) => {
                     <input className="login_input" type="password" placeholder="Password" name="password" minLength='6' required
                            value={password} onChange={(e) => onChange(e)} id="login_password" />
 
-                    <input type="checkbox" onClick={() => Show_Password() } className="m-0"/>
-                    <span className="text-muted"> Show Password </span>
+                    <input id="show_pass" type="checkbox" onClick={() => Show_Password() } className="m-0"/>
+                    <label htmlFor="show_pass" className="text-muted mx-1"> Show Password </label>
                 </div>
                 <p className="mt-2">
                     <Link to="/reset-password" className="text-muted"> Forgot your Password?</Link>
@@ -91,7 +96,8 @@ const Login_Form = ({ login, isAuthenticated }) => {
 
 const mapStateToProps = (state) => ({
     isAuthenticated: state.authReducer.isAuthenticated,
+    loginErr: state.authReducer.loginErr,
   });
 
-export default connect(mapStateToProps, { login })(Login_Form);
+export default connect(mapStateToProps, { login })(LoginForm);
   
