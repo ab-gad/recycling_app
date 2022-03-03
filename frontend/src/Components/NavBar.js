@@ -9,7 +9,6 @@ import { useSelector} from "react-redux"
 import { connect } from "react-redux";
 import { logout} from "../redux/actions/actions";
 import { useHistory } from 'react-router-dom';
-import { useLocation } from "react-router-dom";
 
 const Navbar = (props) => {
   const {cartTotalQuantity}=useSelector(state=>state.cart)
@@ -21,7 +20,8 @@ const Navbar = (props) => {
     Events: "الأحداث",
     CountactUs: "اتصل بنا",
     Products: "منتجات",
-    LoginSignUp: "تسجيل/إنشاء حساب",
+    Login: " تسجيل الدخول",
+    SignUp:"انشاء حساب",
     Profile: "الملف الشخصي",
     settings: "الاعدادات",
     logout:"تسجيل الخروج"
@@ -34,7 +34,8 @@ const Navbar = (props) => {
     Events: "Events",
     CountactUs: "Contact ",
     Products: "Products",
-    LoginSignUp: "Login/SignUp",
+    Login: "Login",
+    Register: "Register",
     Profile: "Profile",
     settings: "Settings",
     logout:"Logout"
@@ -66,7 +67,7 @@ const Navbar = (props) => {
     const history = useHistory();
     const logout_user = () => {
       props.logout();
-      history.push('/login');
+      history.push('/auth/login');
     } ;
 
   return (
@@ -103,8 +104,8 @@ const Navbar = (props) => {
               </ul>
               :
               <ul className="dropdown-menu log_drop" aria-labelledby="navbarDropdownMenuLink">
-                <li><NavLink className="dropdown-item text-center text-primary " to="/login" > {translation.LoginSignUp} </NavLink></li>
-                {/* <li><NavLink className="dropdown-item text-center text-primary " to="/register" > {translation.Register} </NavLink></li> */}
+                <li><NavLink className="dropdown-item text-center text-primary " to="/auth/login" > {translation.Login} </NavLink></li>
+                <li><NavLink className="dropdown-item text-center text-primary " to="/auth/register" > {translation.Register} </NavLink></li>
               </ul>
               }
             </li>

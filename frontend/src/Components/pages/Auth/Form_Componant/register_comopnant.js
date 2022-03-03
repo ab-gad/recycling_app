@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { signup } from '../../../../redux/actions/actions';
 import LoginForm from './login_componant'
 import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const RegisterForm = ({ signup, setForm, err, signUp}) => {
     const [formData, setFormData] = useState({
@@ -16,6 +17,7 @@ const RegisterForm = ({ signup, setForm, err, signUp}) => {
     const { first_name, last_name, email, password, re_password } = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+    const history = useHistory()
 
     // Register Validation
     const [notValid , setNotValid] = useState("")
@@ -77,7 +79,7 @@ const RegisterForm = ({ signup, setForm, err, signUp}) => {
     };
 
     const validateServerResponse = ()=>{
-        if (err !== null){
+        if (err !== null && register_validation_mess){
             register_validation_mess.style.color='red'
             register_validation_mess.style.display = 'block'
             if (err.password){
@@ -86,10 +88,6 @@ const RegisterForm = ({ signup, setForm, err, signUp}) => {
             }else if(err.email){
                 setNotValid(err.email[0])
             }
-        }else if (signUp==='success'){
-            register_validation_mess.style.display = 'block'
-            register_validation_mess.style.color='green' 
-            setNotValid('You have Successfully Registered \nCheck Your Email for Activation')
         }else{
             register_validation_mess && (register_validation_mess.style.display = 'block')
             setNotValid(err)

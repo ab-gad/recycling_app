@@ -145,7 +145,7 @@ const App = ({load_user,checkAuthenticated, user, isAuthenticated}) => {
                   </Route>
                   <Route exact path='/facebook' component={Facebook} />
                   <Route exact path='/google' component={Google} />
-                  <Route exact path='/login' component={Login_Register} />
+                  <Route exact path='/auth/:page' component={Login_Register} />
                   {/* <Route exact path='/register' component={Login_Register} /> */}
                   <Route exact path='/reset-password' component={ResetPassword} />
                   <Route exact path='/password/reset/confirm/:uid/:token' component={ResetPasswordConfirm} />

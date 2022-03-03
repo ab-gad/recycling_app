@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from "react-toastify";
 
 import {
     USER_LOADED_FAIL,
@@ -40,7 +41,13 @@ export const signup = (first_name, last_name, email, password, re_password) => a
             type: SIGNUP_SUCCESS,
             payload: res.data
         });
+        toast.info(`Sign up success check your mail for activation`, {
+            position: "bottom-left",
+          });
     } catch (err) {
+        toast.error(`Sign up fail, Try again`, {
+            position: "bottom-left",
+          });
         if (err.response){
             console.log("signUp Err Res" ,err.response)
             dispatch({
@@ -68,7 +75,9 @@ export const login = (email, password) => async dispatch => {
 
     try {
         const res = await axios.post(`http://127.0.0.1:8000/auth/jwt/create/`, body, config);
-
+        toast.done(`Login Success`, {
+            position: "bottom-left",
+          });
         dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data
@@ -76,6 +85,9 @@ export const login = (email, password) => async dispatch => {
 
         dispatch(load_user());
     } catch (err) {
+        toast.error(`Login fail, Try again`, {
+            position: "bottom-left",
+          });
         if (err.response){
             console.log("Login Err Res" ,err.response)
             dispatch({
@@ -173,11 +185,16 @@ export const reset_password = (email) => async dispatch => {
 
     try {
         await axios.post(`http://127.0.0.1:8000/auth/users/reset_password/`, body, config);
-
+        toast.info(`Reset password Email sent to check your Mail`, {
+            position: "bottom-left",
+          });
         dispatch({
             type: PASSWORD_RESET_SUCCESS
         });
     } catch (err) {
+        toast.error(`Reset password fail, Try again`, {
+            position: "bottom-left",
+          });
         if (err.response){
             console.log("resetPassErr" ,err.response)
             dispatch({
@@ -204,11 +221,16 @@ export const reset_password_confirm = (uid, token, new_password, re_new_password
 
     try {
         await axios.post(`http://127.0.0.1:8000/auth/users/reset_password_confirm/`, body, config);
-
+        toast.done(`Password Reset Successfull`, {
+            position: "bottom-left",
+          });
         dispatch({
             type: PASSWORD_RESET_CONFIRM_SUCCESS
         });
     } catch (err) {
+        toast.error(`Error resetting yor pasword, Try again`, {
+            position: "bottom-left",
+          });
         dispatch({
             type: PASSWORD_RESET_CONFIRM_FAIL
         });
@@ -227,10 +249,16 @@ export const verify = (uid, token) => async dispatch => {
     try {
         await axios.post(`http://127.0.0.1:8000/auth/users/activation/`, body, config);
 
-        dispatch({
+        toast.done(`Account is Successfully verified`, {
+            position: "bottom-left",
+          });
+        dispatch({  
             type: ACTIVATION_SUCCESS,
         });
     } catch (err) {
+        toast.error(`verification fails, try again`, {
+            position: "bottom-left",
+          });
         dispatch({
             type: ACTIVATION_FAIL
         })
@@ -269,6 +297,9 @@ export const googleAuthenticate = (state, code) => async dispatch => {
             dispatch({
                 type: GOOGLE_AUTH_FAIL
             });
+            toast.error(`Social Authentication with Google fail, Try again`, {
+                position: "bottom-left",
+              });
         }
     }
 };

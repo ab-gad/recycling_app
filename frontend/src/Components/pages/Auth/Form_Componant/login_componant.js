@@ -59,7 +59,7 @@ const LoginForm = ({ login, loginErr  }) => {
     };
 
     useEffect(()=>{
-        if (loginErr !== null){
+        if (loginErr !== null && login_validation_mess){
             console.log(loginErr)
             login_validation_mess.style.display = 'block'
             setNotValid(loginErr.detail)
