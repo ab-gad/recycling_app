@@ -36,7 +36,7 @@ const Signup = ({ signup, isAuthenticated }) => {
 
     return (
         <div className='container mt-5'>
-            <h1>Sign Up</h1>
+            <h1>Sign Up </h1>
             <p>Create your Account</p>
             <form onSubmit={e => onSubmit(e)}>
                 <div className='form-group'>
