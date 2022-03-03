@@ -104,13 +104,13 @@ function Carousel (){
                   You can participate in different events and be a volunteer to live in a better world
                 </p>
                 <div className="cus-bottons my-4 animate__animated animate__fadeInUpBig">
-                  <button
+                  <Link
                     to='/events'
                     type="button"
                     className="btn fw-light btn-outline-light btn-lg rounded-pill m-2 cus-befor"
                   >
                     Events
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -125,13 +125,13 @@ function Carousel (){
                   It is our pleasure to contact us and give your opinions and suggestions
                 </p>
                 <div className="my-4 fw-light cus-bottons animate__animated animate__fadeInUpBig">        
-                  <button
+                  <Link
                     to='/contact'
                     type="button"
                     className="btn fw-light btn-outline-light btn-lg rounded-pill m-2 cus-befor"
                   >
                     Contact Us
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
