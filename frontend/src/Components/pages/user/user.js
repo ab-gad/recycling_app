@@ -228,9 +228,7 @@ console.log(authed_user)
 
 
         <div className='col-xl-5 m-auto' id='settings_container'>
-            {/* <div className='m-auto'> */}
-                <img src={`${user.avatar}`} className="rounded-circle border border-primary border-3 " style={{maxWidth: 80,maxHeight:80}}/> 
-            {/* </div> */}
+                <img src={`${user.avatar}`} className="rounded-circle"/> 
             <h2 className="mb-5 text-center">{`${user.first_name}`} {`${user.last_name}`}</h2>
             
             <form >
