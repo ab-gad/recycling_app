@@ -6,12 +6,10 @@ import { FaRegUserCircle ,FaSeedling , FaBoxOpen } from 'react-icons/fa';
 import { VscHome } from 'react-icons/vsc';
 import { BsBuilding , BsChatDots  , BsShop , BsCart2 } from 'react-icons/bs';
 import { useSelector} from "react-redux"
-import axiosInstance from "../axios";
 import { connect } from "react-redux";
-import { checkAuthenticated, load_user, logout, googleAuthenticate} from "../redux/actions/actions";
+import { logout} from "../redux/actions/actions";
 import { useHistory } from 'react-router-dom';
 import { useLocation } from "react-router-dom";
-import queryString from "query-string"
 
 const Navbar = (props) => {
   const {cartTotalQuantity}=useSelector(state=>state.cart)
@@ -71,19 +69,6 @@ const Navbar = (props) => {
       history.push('/login');
     } ;
 
-    useEffect(()=>{
-      props.checkAuthenticated()
-      props.load_user()
-      console.log("user>>>>>",props.user)
-    },[])
-      
-    let location = useLocation()
-    useEffect(()=>{
-        props.checkAuthenticated()
-        props.load_user()
-        console.log("user>>>>>",props.user)
-    },[])
-      
   return (
     <>
      <div className="overlay">
@@ -196,4 +181,4 @@ const mapStateToProps = state => ({
   user: state.authReducer.user
 });
 
-export default connect(mapStateToProps, {checkAuthenticated, load_user, logout, googleAuthenticate})(Navbar);
+export default connect(mapStateToProps, {logout})(Navbar);

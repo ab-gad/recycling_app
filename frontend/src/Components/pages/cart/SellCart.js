@@ -1,12 +1,16 @@
 import React from "react";
 import PageTitle from "../../page_title";
 import Footer from '../Footer/Footer';
-import Order_form from "./order_form";
+import OrderForm from "./OrderForm";
+import EditOrder from "./Edit_order";
 import "./cart.css";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-
-function Cart () {
-
+function SellCart () {
+    const {name, order_id} = useParams()
+    console.log(name, "name from sell cart")
+    console.log(order_id, "ORDER_ID from sell cart")
     return(
         <>
             <section id="cart">
@@ -35,9 +39,9 @@ function Cart () {
                         
                         
                     </div>
-
-                    <Order_form />
-
+                    <Link to='/service/cart/shop/1' >TESTME</Link>
+                    
+                    {order_id ? <EditOrder type={name} order_id={order_id} /> : <OrderForm type={name}/>}
                 </div>
             </section> 
         <Footer/>
@@ -45,4 +49,4 @@ function Cart () {
     )
 }
 
-export default Cart;
+export default SellCart;

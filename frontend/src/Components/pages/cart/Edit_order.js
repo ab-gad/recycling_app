@@ -1,5 +1,4 @@
 import React , { useEffect , useState} from "react";
-import { useParams  } from "react-router-dom";
 import { usePosition } from 'use-position';
 import { BiError } from 'react-icons/bi';
 import axios from "axios";
@@ -7,12 +6,12 @@ import { useSelector } from 'react-redux';
 import "./cart.css";
 
 
-function Order_form () {
+function EditOrder (props) {
     const [price, setPrice] = useState({ paper: 0.70 , metal: 1.5 , plastic: 1.5})
     const [quantity, setQuantity] = useState({ paper: 2 , metal: 2 , plastic: 2})
     const [limit , setLimit] = useState({ min: 2 , max: 20 })
-    const cart_catigory = useParams().name
-    const order_id = useParams().order_id
+    const cart_catigory = props.type
+    const order_id = props.order_id
     const { latitude , longitude } = usePosition();
     const date = new Date().toLocaleString()
     const paperPrice   = price.paper*quantity.paper;
@@ -25,9 +24,10 @@ function Order_form () {
     useEffect( () => {
         if ( cart_catigory === 'shop' ) {
             setQuantity({paper: 10 , metal: 10 , plastic: 10 }) ;
+            setPrice({ paper: 0.50 , metal: 1.3 , plastic: 1.3})
             setLimit({  min: 10 , max: 80 });
             if ( order_id  ) {
-                console.log(order_id)
+                console.log('SSSSSSSSSSSSSSSSSSS',order_id)
             }else {
                 console.log("No ID")
 
@@ -35,6 +35,7 @@ function Order_form () {
         }
         else if ( cart_catigory === 'worker' ){
             setQuantity({paper: 80 , metal: 80 , plastic: 80 }) ;
+            setPrice({ paper: 0.45 , metal: 1.1 , plastic: 1.1})
             setLimit({ min: 80 , max: 200 });
         }
     } , [])
@@ -308,8 +309,8 @@ function Order_form () {
                 </div>
             </form>
         </section> 
-    </> 
+        </> 
     )
 }
 
-export default Order_form;
+export default EditOrder;
