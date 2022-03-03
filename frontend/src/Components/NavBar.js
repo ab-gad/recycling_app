@@ -10,6 +10,7 @@ import axiosInstance from "../axios";
 import { connect } from "react-redux";
 import { checkAuthenticated, load_user, logout} from "../redux/actions/actions";
 import { useHistory } from 'react-router-dom';
+import CartPage from './pages/Product/cartHome';
 
 const Navbar = (props) => {
   // const {cartTotalQuantity}=useSelector(state=>state.cart)
@@ -157,6 +158,12 @@ const Navbar = (props) => {
 
               <li className="nav-item anmi_item">
                 <NavLink to="/contact" className="nav-link text-center  d-flex gap-3 responsev_zon" >
+                  <span className="ico text-light"> <BsChatDots/> </span>
+                  <span className="tex text-light" > {translation.CountactUs} </span>  
+                </NavLink>
+              </li>
+              <li className="nav-item anmi_item">
+                <NavLink to="/CartPage" className="nav-link text-center  d-flex gap-3 responsev_zon" >
                   <span className="ico text-light"> <BsChatDots/> </span>
                   <span className="tex text-light" > {translation.CountactUs} </span>  
                 </NavLink>

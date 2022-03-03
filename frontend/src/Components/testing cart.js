@@ -5,12 +5,26 @@ import { Link } from 'react-router-dom'
 import _ from 'lodash'
 
 const Carrt = (props) => {
-    
     let totalPrice = 0
+
     let items = _.map(props.cart, (element, index) => {
         totalPrice += element.product.price * element.quantity
         return (
-            <Table.Row key={index}>
+            <form  >
+                <table style="width:100%">
+  <tr>
+    <th>Company</th>
+    <th>Contact</th>
+    <th>Country</th>
+  </tr>
+  <tr>
+    <td>{index+1}</td>
+    <td>{element.product.name}</td>
+    <td>{element.quantity}</td>
+  </tr>
+
+</table>
+            {/* <Table.Row key={index}>
                 <Table.Cell>{index+1}</Table.Cell>
                 <Table.Cell>{element.product.name}</Table.Cell>
                 <Table.Cell>{element.quantity}</Table.Cell>
@@ -19,11 +33,11 @@ const Carrt = (props) => {
                 <Table.Cell>
                     <Button circular icon='trash' onClick={(e) => props.handleRemoveItem(e, element)} />
                 </Table.Cell>
-            </Table.Row>
+            </Table.Row> */}
+            <button  type="submit" value="Submit"></button>
+            </form>
         )
     })
-
-
 
     const itemList =
         <Table striped padded attached>
@@ -52,6 +66,7 @@ const Carrt = (props) => {
         </Table>
 
     const cartEmptyMessage =
+    
         <Message info>
             <Message.Header>
                 Your shopping-cart is empty.
@@ -62,9 +77,24 @@ const Carrt = (props) => {
 
     return (
         <div>
-            {items.length > 0 ? itemList : cartEmptyMessage}
+            {items.length > 0 ? 
+            (<>
+                <table style="width:100%">
+                  <tr>
+                    <th>Company</th>
+                    <th>Contact</th>
+                    <th>Country</th>
+                  </tr>
+                  <tr>
+                    <td>Alfreds Futterkiste</td>
+                    <td>Maria Anders</td>
+                    <td>Germany</td>
+                  </tr>
+                
+                </table></>) : (<>
+            </>)}
 
-            <Divider />
+            {/* <Divider />
 
             <Button
                 content='Total'
@@ -75,8 +105,8 @@ const Carrt = (props) => {
             <Button.Group floated='right'>
                 <Button primary as={Link} to='/'>Continue shopping</Button>
                 <Button.Or />
-                <Button color='red' onClick={this.submit}>Place order</Button>
-            </Button.Group>
+                <Button color='red' disabled={items.length <= 0} onClick={(e) => props.nextStep()}>Next step</Button>
+            </Button.Group> */}
         </div>
     )
 }

@@ -22,7 +22,8 @@ const cart = (state=[], action={}) => {
                     id: shortid.generate(),
                     product: action.payload.product,
                     quantity: action.payload.quantity
-                }
+                },
+
             ]
 
         case REMOVE_FROM_CART:
@@ -38,6 +39,10 @@ const cart = (state=[], action={}) => {
 
         case CLEAR_CART:
             return []
+
+        // add
+
+        // add
 
         default:
             return state

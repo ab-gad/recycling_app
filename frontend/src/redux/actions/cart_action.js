@@ -2,7 +2,7 @@ import _ from 'lodash'
 import axios from 'axios'
 import toastr from 'toastr'
 
-import { ADD_TO_CART, REMOVE_FROM_CART, CLEAR_CART } from './actionTypes'
+import { ADD_TO_CART, REMOVE_FROM_CART, CLEAR_CART  ,FETCH_CART_FAILURE,FETCH_CART_REQUEST,FETCH_CART_SUCCESS} from './actionTypes'
 import { clearShippingOptions } from './Shipping'
 import { clearBillingOptions } from './Billing'
 export const TOASTR_OPTIONS = {
@@ -62,5 +62,40 @@ export const placeOrder = (items, shippingData, billingData) => {
         }
 
         dispatch(clearBillingOptions())
+    }
+}
+
+
+export const fetchCartRequest = () => {
+    return {
+        type: FETCH_CART_REQUEST
+    }
+}
+
+export const fetchCartSuccess = (order) => {
+    return {
+        type: FETCH_CART_SUCCESS,
+        payload: order
+    }
+}
+
+export const fetchCartFailure = (error) => {
+    return {
+        type: FETCH_CART_FAILURE,
+        payload: error
+    }
+}
+
+export const fetchCart = () => {
+    return dispatch => {
+        dispatch(fetchCartRequest())
+        axios.get('http://127.0.0.1:8000/cart/products/')
+            .then((res) => {
+                dispatch(fetchCartSuccess(res.data))
+                console.log(res.data,"data")
+            })
+            .catch((err) => {
+                dispatch(fetchCartFailure(err))
+            })
     }
 }

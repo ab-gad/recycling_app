@@ -65,33 +65,7 @@ class CartPage extends React.Component {
                             clearCart={this.props.clearCart}
                         />
 
-            case 2:
-                return <Shipping
-                            shipping={this.props.shipping}
-                            nextStep={this.nextStep}
-                            previousStep={this.previousStep}
-                            setShippingOptions={this.props.setShippingOptions}
-                        />
 
-            case 3:
-                return <Billing
-                            billing={this.props.billing}
-                            nextStep={this.nextStep}
-                            previousStep={this.previousStep}
-                            setBillingOptions={this.props.setBillingOptions}
-                        />
-
-            case 4:
-                return <Confirmation
-                            cart={this.props.cart}
-                            shipping={this.props.shipping}
-                            billing={this.props.billing}
-                            previousStep={this.previousStep}
-                            submit={this.submit}
-                        />
-
-            default:
-                return
         }
     }
 
@@ -139,22 +113,15 @@ class CartPage extends React.Component {
 
 CartPage.propTypes = {
     cart: PropTypes.array.isRequired,
-    shipping: PropTypes.object.isRequired,
     removeFromCart: PropTypes.func.isRequired,
-    setShippingOptions: PropTypes.func.isRequired,
-    setBillingOptions: PropTypes.func.isRequired,
     clearCart: PropTypes.func.isRequired,
     placeOrder: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => {
     return {
         cart: state.cart,
-        shipping: state.shipping,
-        billing: state.billing,
-        auth: state.auth
+
     }
 }
 
