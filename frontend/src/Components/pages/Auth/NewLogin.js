@@ -41,7 +41,7 @@ const Login_Register = () => {
     
 
   return (
-    <div className="mt-5 row justify-content-between align-items-center" id="form_container">
+    <div className="mt-5 row justify-content-between align-items-center" id="form_container" dir="ltr">
       <img src={require('./images/earth.png')} alt="From_photo" className="form_img d-none d-xl-block col-7 p-0" height='100%'  />
       <div className=" col-xl-5 m-auto" id="type_container" >
 
