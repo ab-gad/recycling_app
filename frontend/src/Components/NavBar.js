@@ -6,7 +6,6 @@ import { FaRegUserCircle ,FaSeedling , FaBoxOpen } from 'react-icons/fa';
 import { VscHome } from 'react-icons/vsc';
 import { BsBuilding , BsChatDots  , BsShop , BsCart2 } from 'react-icons/bs';
 import { useSelector} from "react-redux"
-import axiosInstance from "../axios";
 import { connect } from "react-redux";
 import { checkAuthenticated, load_user, logout} from "../redux/actions/actions";
 import { useHistory } from 'react-router-dom';
@@ -60,6 +59,7 @@ const Navbar = (props) => {
       anmi_item.forEach( (item)=> {
         item.classList.remove('active');
         this.classList.add('active');
+        localStorage.setItem("navActive" , this.id )
       })
     }
     
@@ -72,22 +72,29 @@ const Navbar = (props) => {
     useEffect(()=>{
       props.checkAuthenticated()
       props.load_user()
-      console.log("user>>>>>",props.user)
     },[])
       
+    useEffect( ()=> {
+      document.getElementById("home").classList.remove('active');
+      document.getElementById(localStorage.getItem("navActive")).classList.add('active');
+    })
+
   return (
     <>
      <div className="overlay">
-      <nav className="navbar navbar-expand-lg ">
+      <nav className="navbar navbar-expand-lg " dir='ltr'>
         <div className="container-fluid ">
 
-          <NavLink className="navbar-brand navbar-logo text-light" to="/" >
-            <img src={require('../Components/pages/Home/images/lo.png')} alt="Logo" className="nav_logo" />
-          </NavLink>
+          <div className=" navbar-logo text-light" >
+            <div className="nav_logo" >
+              <img src={require('../Components/pages/Home/images/lo1.png')} alt="Logo" />
+              <span> C <span className="text-warning fw-bold"> 2 </span> R </span>
+            </div>
+          </div>
 
           <button type="button" className="btn btn-outline-light shadow-none rounded-pill m-2 mx-3 language_button " onClick={() => language_zone() } >
-                    {langcont}
-            </button>
+            {langcont}
+          </button>   
 
             <li className="nav-item mx-3 dropdown log_icon d-flex align-items-center">
               <NavLink className="nav-link p-0 m-0 " to="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -113,9 +120,12 @@ const Navbar = (props) => {
                 {/* <li><NavLink className="dropdown-item text-center text-primary " to="/register" > {translation.Register} </NavLink></li> */}
               </ul>
               }
-            </li>
+            </li>       
             
-                
+                <NavLink to='/' className="nav-link product_cart " >
+                  <span> 3 </span>
+                  <BsCart2/>
+                </NavLink>
             <button className="navbar-toggler toggel_icon p-0" dir='rtl' type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">    
               <div>
                 <span className='line navbar-toggler-icon' > </span>
@@ -129,42 +139,42 @@ const Navbar = (props) => {
           <div className="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
       
             <ul className="navbar-nav nav_element " dir="ltr" >
-              <li className="nav-item anmi_item active">
-                <NavLink to="/" className="nav-link text-center d-flex gap-3 responsev_zon" aria-current="page" >
+              <li className="nav-item anmi_item active" id="home">
+                <NavLink to="/" className="nav-link text-center d-flex gap-3 responsev_zon" aria-current="page"  >
                   <span className="ico text-light"> <VscHome /> </span>
                   <span className="tex text-light " > {translation.Home} </span>  
                 </NavLink>
               </li>
 
-              <li className="nav-item  anmi_item">
+              <li className="nav-item  anmi_item" id="about" >
                 <NavLink to="/about" className="nav-link text-center  d-flex gap-3 responsev_zon" >
                   <span className="ico text-light"> <BsBuilding/> </span>
                   <span className="tex text-light" > {translation.About} </span>  
                 </NavLink>
               </li>
               
-              <li className="nav-item anmi_item">
+              <li className="nav-item anmi_item" id="services">
                 <NavLink to="/service" className="nav-link text-center  d-flex gap-3 responsev_zon" >
                   <span className="ico text-light"> <FaBoxOpen/> </span>
                   <span className="tex text-light" > {translation.Services} </span>  
                 </NavLink>
               </li>
 
-              <li className="nav-item anmi_item">
+              <li className="nav-item anmi_item" id="events">
                 <NavLink to="/events" className="nav-link text-center  d-flex gap-3 responsev_zon" >
                   <span className="ico text-light"> <FaSeedling/> </span>
                   <span className="tex text-light" > {translation.Events} </span>  
                 </NavLink>
               </li>
 
-              <li className="nav-item anmi_item">
+              <li className="nav-item anmi_item" id="product" >
                 <NavLink to="/Homeproduct" className="nav-link text-center  d-flex gap-3 responsev_zon" >
                   <span className="ico text-light"> <BsShop/> </span>
                   <span className="tex text-light" > {translation.Products} </span>  
                 </NavLink>
               </li>
 
-              <li className="nav-item anmi_item">
+              <li className="nav-item anmi_item" id="contact">
                 <NavLink to="/contact" className="nav-link text-center  d-flex gap-3 responsev_zon" >
                   <span className="ico text-light"> <BsChatDots/> </span>
                   <span className="tex text-light" > {translation.CountactUs} </span>  
