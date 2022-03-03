@@ -1,169 +1,112 @@
-import React, { useState } from 'react';
-import axiosInstance from '../../../axios';
-import { useHistory } from 'react-router-dom';
-//MaterialUI
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import { Link as ReactLink} from 'react-router-dom';
+// import React, { useState } from 'react';
+// import { Link, Redirect } from 'react-router-dom';
+// import { connect } from 'react-redux';
+// import { signup } from '../../../redux/actions/actions';
+// import axios from 'axios';
 
-const useStyles = makeStyles((theme) => ({
-	paper: {
-		marginTop: theme.spacing(8),
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
-	},
-	avatar: {
-		margin: theme.spacing(1),
-		backgroundColor: theme.palette.secondary.main,
-	},
-	form: {
-		width: '100%', // Fix IE 11 issue.
-		marginTop: theme.spacing(3),
-	},
-	submit: {
-		margin: theme.spacing(3, 0, 2),
-	},
-}));
+// const Signup = ({ signup, isAuthenticated }) => {
+//     const [accountCreated, setAccountCreated] = useState(false);
+//     const [formData, setFormData] = useState({
+//         first_name: '',
+//         last_name: '',
+//         email: '',
+//         password: '',
+//         re_password: ''
+//     });
 
-export default function SignUp() {
-	const history = useHistory();
-	const initialFormData = Object.freeze({
-		email: '',
-		password: '',
-		first_name: '',
-        last_name:''
-	});
+//     const { first_name, last_name, email, password, re_password } = formData;
 
-	const [formData, updateFormData] = useState(initialFormData);
+//     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-	const handleChange = (e) => {
-		updateFormData({
-			...formData,
-			// Trimming any whitespace
-			[e.target.name]: e.target.value.trim(),
-		});
-	};
+//     const onSubmit = e => {
+//         e.preventDefault();
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		console.log(formData);
+//         if (password === re_password) {
+//             signup(first_name, last_name, email, password, re_password);
+//             setAccountCreated(true);
+//         }
+//     };
 
-		axiosInstance
-			.post(`auth/register/`, {
-				email: formData.email,
-				password: formData.password,
-				first_name: formData.first_name,
-                last_name: formData.last_name
-			})
-			.then((res) => {
-				history.push('/login');
-				console.log(res);
-				console.log(res.data);
-			})
-			.catch((err)=>{
-				console.log(err)
-			})
-	};
+//     if (isAuthenticated) {
+//         return <Redirect to='/' />
+//     }
+//     if (accountCreated) {
+//         return <Redirect to='/login' />
+//     }
 
-	const classes = useStyles();
+//     return (
+//         <div className='container mt-5'>
+//             <h1>Sign Up</h1>
+//             <p>Create your Account</p>
+//             <form onSubmit={e => onSubmit(e)}>
+//                 <div className='form-group'>
+//                     <input
+//                         className='form-control'
+//                         type='text'
+//                         placeholder='First Name*'
+//                         name='first_name'
+//                         value={first_name}
+//                         onChange={e => onChange(e)}
+//                         required
+//                     />
+//                 </div>
+//                 <div className='form-group'>
+//                     <input
+//                         className='form-control'
+//                         type='text'
+//                         placeholder='Last Name*'
+//                         name='last_name'
+//                         value={last_name}
+//                         onChange={e => onChange(e)}
+//                         required
+//                     />
+//                 </div>
+//                 <div className='form-group'>
+//                     <input
+//                         className='form-control'
+//                         type='email'
+//                         placeholder='Email*'
+//                         name='email'
+//                         value={email}
+//                         onChange={e => onChange(e)}
+//                         required
+//                     />
+//                 </div>
+//                 <div className='form-group'>
+//                     <input
+//                         className='form-control'
+//                         type='password'
+//                         placeholder='Password*'
+//                         name='password'
+//                         value={password}
+//                         onChange={e => onChange(e)}
+//                         minLength='6'
+//                         required
+//                     />
+//                 </div>
+//                 <div className='form-group'>
+//                     <input
+//                         className='form-control'
+//                         type='password'
+//                         placeholder='Confirm Password*'
+//                         name='re_password'
+//                         value={re_password}
+//                         onChange={e => onChange(e)}
+//                         minLength='6'
+//                         required
+//                     />
+//                 </div>
+//                 <button className='btn btn-primary' type='submit'>Register</button>
+//             </form>
+//             <p className='mt-3'>
+//                 Already have an account? <Link to='/login'>Sign In</Link>
+//             </p>
+//         </div>
+//     );
+// };
 
-	return (
-		<Container component="main" maxWidth="xs">
-			<CssBaseline />
-			<div className={classes.paper}>
-				<Avatar className={classes.avatar}></Avatar>
-				<Typography component="h1" variant="h5">
-					Sign up
-				</Typography>
-				<form className={classes.form} noValidate>
-					<Grid container spacing={2}>
-                        <Grid item xs={12}>
-							<TextField
-								variant="outlined"
-								required
-								fullWidth
-								id="first_name"
-								label="First_name"
-								name="first_name"
-								autoComplete="first_name"
-								onChange={handleChange}
-							/>
-						</Grid>
-                        <Grid item xs={12}>
-							<TextField
-								variant="outlined"
-								required
-								fullWidth
-								id="last_name"
-								label="Last_name"
-								name="last_name"
-								autoComplete="last_name"
-								onChange={handleChange}
-							/>
-						</Grid>
-						<Grid item xs={12}>
-							<TextField
-								variant="outlined"
-								required
-								fullWidth
-								id="email"
-								label="Email Address"
-								name="email"
-								autoComplete="email"
-								onChange={handleChange}
-							/>
-						</Grid>
-						<Grid item xs={12}>
-							<TextField
-								variant="outlined"
-								required
-								fullWidth
-								name="password"
-								label="Password"
-								type="password"
-								id="password"
-								autoComplete="current-password"
-								onChange={handleChange}
-							/>
-						</Grid>
-						<Grid item xs={12}>
-							<FormControlLabel
-								control={<Checkbox value="allowExtraEmails" color="primary" />}
-								label="I want to receive inspiration, marketing promotions and updates via email."
-							/>
-						</Grid>
-					</Grid>
-					<Button
-						type="submit"
-						fullWidth
-						variant="contained"
-						color="primary"
-						className={classes.submit}
-						onClick={handleSubmit}
-					>
-						Sign Up
-					</Button>
-					<Grid container justify="flex-end">
-						<Grid item>
-							<ReactLink to='login'>
-								<Link variant="body2">
-									Already have an account? Sign in
-								</Link>
-							</ReactLink>
-						</Grid>
-					</Grid>
-				</form>
-			</div>
-		</Container>
-	);
-}
+// const mapStateToProps = state => ({
+//     isAuthenticated: state.authReducer.isAuthenticated
+// });
+
+// export default connect(mapStateToProps, { signup })(Signup);

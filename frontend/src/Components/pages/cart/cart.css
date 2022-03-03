@@ -42,3 +42,9 @@ input[type=number] {
   color: red ;
   display: none;
 }
+
+.success_img {
+  position: relative;
+  left: 50%;
+  transform: translatex(-50%) ;
+}

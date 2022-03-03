@@ -3,6 +3,7 @@ import { useParams  } from "react-router-dom";
 import { usePosition } from 'use-position';
 import { BiError } from 'react-icons/bi';
 import axios from "axios";
+import { useSelector } from 'react-redux';
 import "./cart.css";
 
 
@@ -103,6 +104,7 @@ function Order_form () {
 
     // Axios Api
     const url = ""
+    const user_id = useSelector(state => state.authReducer.user )
     const [data , setData] = useState({
         firstName: '',
         lastName: '',
