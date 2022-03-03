@@ -2,9 +2,8 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "./profile.css";
-import { useHistory } from 'react-router-dom';
+import { useHistory,Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
-import { GiCoinsPile } from "react-icons/gi";
 
 const Profile = () => {
   const history=useHistory()
@@ -14,7 +13,6 @@ const Profile = () => {
 //     history.push('/login')
 //   }
   const [orders, setOrders] = useState([]);
-
   const getOrders = () => {
       console.log(authed_user.id)
     axios
@@ -30,10 +28,15 @@ const Profile = () => {
   useEffect(() => {
     getOrders();
   }, []);
+  const [orderId,setOrderId]=useState()
+  const showDetails=(e)=>{
+    console.log(e.target.id)
+
+  }
 
   return (
     <>
-        <h1 className="text-center"> {`Welcome ${orders[0].first_name} ${orders[0].last_name}`} </h1>
+        <h1 className="text-center"> {`Welcome ${authed_user.first_name} ${authed_user.last_name}`} </h1>
         <div className="row justify-content-center ">
         {orders.map((order) => {
             return (
@@ -77,6 +80,7 @@ const Profile = () => {
                         <li className="step0 text-right" id="step4">Delivered</li>
                     </ul>
                 </div>
+                <Link to="/service/cart/:name/:order_id" className="btn btn-danger w-50 m-auto" onClick={(e) =>showDetails(e) }>order details</Link>
                 
             </div>
                 
