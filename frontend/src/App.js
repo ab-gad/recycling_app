@@ -29,11 +29,9 @@ import ScrollButton from "./Components/ScrollButton";
 import ThemesContext , {themes} from  './Components/themes';
 import {BsFillMoonStarsFill , BsFillSunFill} from  'react-icons/bs';
 import { useEffect } from "react";
-import ShoppingPage from './Components/pages/Product/productHome'
-import CartPage from './Components/pages/Product/cartHome';
 import Show from "./Components/pages/Testimonial/showevent";
-import Product from "./Components/pages/Product/product";
-
+import Homeproduct from "./Components/pages/Product/homeproduct";
+import Wagon from "./Components/pages/Product/cart";
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
@@ -117,11 +115,11 @@ const App = () => {
                   <Route path="/Show/:id" component={Show} exact >
                   <Show/>
                   </Route>
-                  <Route path="/ShoppingPage/" exact >
-                  <ShoppingPage/>
+                  <Route path="/Homeproduct/" exact >
+                  <Homeproduct/>
                   </Route>
-                  <Route path="/CartPage/" exact >
-                  <CartPage/>
+                  <Route path="/Wagon/" exact >
+                  <Wagon/>
                   </Route>
                   <Route path="/contact" exact>
                     <Contact />

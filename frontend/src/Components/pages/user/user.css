@@ -1,6 +1,6 @@
-/* 
 
-.container .card {
+
+.card {
     border: none
 }
 .name_image_block{
@@ -71,77 +71,4 @@
 
 .btn:focus {
     box-shadow: none
-} */
-
-
-
-body {
-    height: 100vh !important ;
-}
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-#settings_container img{
-    margin: auto;
-}
-
-
-/* #settings_container form  {
-    margin: auto;
-    padding: 0px;
-    border-radius: 5px;
-    color: #000;
-    max-width: 22rem;
-} */
-
-#settings_container {
-    max-width: 24rem;
-    padding: 1.5rem 1rem ;
-    border: 1px solid #00000028;
-    max-width: 30rem;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-@media (min-width: 1200px){
-    #form_container {
-        max-width: 75%;
-    }
-}
-#settings_container h2 {
-    font-family: "Oleo Script Swash Caps", cursive;
-    color: #00a300 ;
-    font-size: 35px;
-}
-
-
-#settings_container .btn_container {
-    font-size: 30px;
-}
-.buttons .btn {
-    min-width: 40%;
-    font-weight: 100 !important ;
-}
-
-
-
-#settings_container .btn_color {
-    background-color: #00a300c5;
-    color: #fff;
-    padding: 10px;
-}
-#settings_container .btn_color:hover {
-    background-color: #00a300;
-
-}
-
-.form_inputs input {
-    margin: 1rem 0;
-    padding: .5rem;
-    
-}
-small{
-    color:red;
-    font-weight: 100;
 }

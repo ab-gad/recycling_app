@@ -107,7 +107,6 @@ class User (AbstractBaseUser, PermissionsMixin):
         blank=True, null=True, verbose_name='birthdate')
     address = models.CharField(
         max_length=90, blank=True, default='',  verbose_name='address')
-    
     is_worker = models.BooleanField(default=False)
     is_market = models.BooleanField(default=False)
 
