@@ -54,12 +54,12 @@
 
 /*________________________________ buttons __________________________________*/
 
-button.cus-befor {
+a.cus-befor {
   position: relative;
   overflow: hidden;
   transition: 0.5s;
 }
-button.cus-befor::before {
+a.cus-befor::before {
   content: "";
   display: inline-block;
   position: absolute;
@@ -73,7 +73,7 @@ button.cus-befor::before {
   transition: 0.5s;
 }
 
-button.cus-befor:hover::before {
+a.cus-befor:hover::before {
   left: 110%;
 }
 

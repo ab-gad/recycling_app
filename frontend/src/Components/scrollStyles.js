@@ -5,8 +5,8 @@ position: fixed;
 right: 10;
 bottom: 0;
 font-size: 40px;
-z-index: 1;
+z-index: 555;
 cursor: pointer;
-color: green;
+color: #00a300;
 margin: 20px;
 `
