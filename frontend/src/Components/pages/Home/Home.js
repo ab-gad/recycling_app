@@ -17,13 +17,6 @@ import Home_icon_data from '../../home_icon_data';
 import Rateing from "./Rateing/rateing";
 import Spinner from "../../../spinner/spinner";
 import { RiRecycleLine } from "react-icons/ri";
-// constructor = () => {
-//   this.state = { isLoading: true }
-// }
-
-// componentDidMount = () => {
-//   this.setState({isLoading: false})
-// }
 
 // import { fetchProducts } from "../../../redux/actions/product_action";
 // import { useDispatch } from 'react-redux';
@@ -34,7 +27,7 @@ const Home = () => {
 // dispatch(fetchProducts());
   return (
     <section  >
-      <Spinner />
+      {/* <Spinner /> */}
       {/* _______________________ Carouser Section ______________________________ */}
       <Carousel />
       {/* ______________________ 4 Cards (Working) Section _____________________________*/}

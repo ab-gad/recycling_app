@@ -4,7 +4,7 @@ import { Langcontext } from "../App";
 import React, { useContext, useState, useEffect } from "react";
 import { FaRegUserCircle ,FaSeedling , FaBoxOpen } from 'react-icons/fa';
 import { VscHome } from 'react-icons/vsc';
-import { BsBuilding , BsChatDots } from 'react-icons/bs';
+import { BsBuilding , BsChatDots  , BsShop , BsCart2 } from 'react-icons/bs';
 import { useSelector} from "react-redux"
 import axiosInstance from "../axios";
 import { connect } from "react-redux";
@@ -21,10 +21,10 @@ const Navbar = (props) => {
     Services: "خدمات",
     Events: "الأحداث",
     CountactUs: "اتصل بنا",
-    Login: "تسجيل",
-    Register: "إنشاء حساب",
+    Products: "منتجات",
+    LoginSignUp: "تسجيل/إنشاء حساب",
     Profile: "الملف الشخصي",
-    settings: "الاعادات",
+    settings: "الاعدادات",
     logout:"تسجيل الخروج"
   };
   const English = {
@@ -34,8 +34,8 @@ const Navbar = (props) => {
     Services: "Services",
     Events: "Events",
     CountactUs: "Contact ",
-    Login: "Login",
-    Register: "Register",
+    Products: "Products",
+    LoginSignUp: "Login/SignUp",
     Profile: "Profile",
     settings: "Settings",
     logout:"Logout"
@@ -81,10 +81,14 @@ const Navbar = (props) => {
      <div className="overlay">
       <nav className="navbar navbar-expand-lg ">
         <div className="container-fluid ">
+
           <NavLink className="navbar-brand navbar-logo text-light" to="/" >
             <img src={require('../Components/pages/Home/images/lo.png')} alt="Logo" className="nav_logo" />
           </NavLink>
-         
+
+          <button type="button" className="btn btn-outline-light shadow-none rounded-pill m-2 mx-3 language_button " onClick={() => language_zone() } >
+                    {langcont}
+            </button>
 
             <li className="nav-item mx-3 dropdown log_icon d-flex align-items-center">
               <NavLink className="nav-link p-0 m-0 " to="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -97,19 +101,17 @@ const Navbar = (props) => {
                   <FaRegUserCircle className="text-light" />
                 }
               </NavLink>
-              <button type="button" className="btn btn-outline-light shadow-none rounded-pill m-2 mx-3 language_button " onClick={() => language_zone() } >
-                    {langcont}
-              </button>
+              
               {props.isAuthenticated ?
               <ul className="dropdown-menu log_drop" aria-labelledby="navbarDropdownMenuLink">
                 <li><NavLink className="dropdown-item text-center text-primary " to="/profile" > {translation.Profile} </NavLink></li>
-                <li><NavLink className="dropdown-item text-center text-primary " to="/profile" > {translation.settings} </NavLink></li>
+                <li><NavLink className="dropdown-item text-center text-primary " to="/settings" > {translation.settings} </NavLink></li>
                 <li><button className="dropdown-item text-center text-primary " onClick={logout_user}> {translation.logout} </button></li>
               </ul>
               :
               <ul className="dropdown-menu log_drop" aria-labelledby="navbarDropdownMenuLink">
-                <li><NavLink className="dropdown-item text-center text-primary " to="/login" > {translation.Login} </NavLink></li>
-                <li><NavLink className="dropdown-item text-center text-primary " to="/register" > {translation.Register} </NavLink></li>
+                <li><NavLink className="dropdown-item text-center text-primary " to="/login" > {translation.LoginSignUp} </NavLink></li>
+                {/* <li><NavLink className="dropdown-item text-center text-primary " to="/register" > {translation.Register} </NavLink></li> */}
               </ul>
               }
             </li>
@@ -153,6 +155,13 @@ const Navbar = (props) => {
                 <NavLink to="/events" className="nav-link text-center  d-flex gap-3 responsev_zon" >
                   <span className="ico text-light"> <FaSeedling/> </span>
                   <span className="tex text-light" > {translation.Events} </span>  
+                </NavLink>
+              </li>
+
+              <li className="nav-item anmi_item">
+                <NavLink to="/Homeproduct" className="nav-link text-center  d-flex gap-3 responsev_zon" >
+                  <span className="ico text-light"> <BsShop/> </span>
+                  <span className="tex text-light" > {translation.Products} </span>  
                 </NavLink>
               </li>
 
