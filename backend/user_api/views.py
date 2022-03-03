@@ -1,5 +1,4 @@
 from cgitb import lookup
-from urllib import response
 from rest_framework import generics
 from orders.models import Orders
 from user.models import User, userLocation

@@ -7,9 +7,9 @@ import Home from "./Components/pages/Home/Home";
 import Services from "./Components/pages/Service/Service";
 import Testimonial from "./Components/pages/Testimonial/Testimonial";
 import User from "./Components/pages/user/user";
+import Profile from "./Components/pages/user/profile";
 import Error_404 from "./Components/pages/Home/error_404";
 import Success_order from "./Components/pages/cart/success_order";
-
 // import Login from "./Components/pages/Registeration/login";
 // import Register from "./Components/pages/Registeration/register";
 // import SignUp from "./Components/pages/Auth/register";
@@ -108,6 +108,9 @@ const App = () => {
                   </Route>
                   <Route path="/settings" exact>
                     <User />
+                  </Route>
+                  <Route path="/profile" exact>
+                    <Profile />
                   </Route>
                   <Route path="/Show/:id" component={Show} exact >
                   <Show/>
