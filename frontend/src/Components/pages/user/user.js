@@ -90,7 +90,8 @@ console.log(authed_user)
     const mailVaildation = (e) => {
         if(e.target.name === "email") {
             setmailName(e.target.value);
-            if(e.target.value.match("[a-zA-Z0-9._]+@[a-z]+\.[a-zA-Z]{2,4}")){
+            if(e.target.value.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)){
+
                 setmailError (" ");
                 // console.log(mailName)
             }else {
