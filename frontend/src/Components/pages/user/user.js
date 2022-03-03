@@ -1,4 +1,5 @@
 import React from 'react'
+import {AiFillCamera} from 'react-icons/ai'
 import axios from "axios"
 import {useState, useEffect}  from  "react"
 import './user.css'
@@ -146,6 +147,7 @@ console.log(authed_user)
 
 
   return (
+
     
 
 
@@ -164,38 +166,15 @@ console.log(authed_user)
                 <input name='last_name' className="form-control" type="text" placeholder={`${user.last_name}`}
                         onChange={(e)=>{handleChange(e);lNameVaildation(e)}}/>
                          <small>{lNameError}</small> 
+
                 </div>
-                <div className='form-group'>
-                <input name='email' className="form-control" type="email" placeholder={`${user.email}`}
-                        onChange={(e)=>{handleChange(e);mailVaildation(e)}}/>
-                         <small>{mailError}</small> 
+                <div className="mt-3 gap-2 d-flex justify-content-end">
+                    <button onClick={e => {deleteUser()} } className="px-3 btn btn-sm btn-outline-primary">Delete</button>
+                    <button onClick={e => {updateUser()} } className="px-3 btn btn-sm btn-primary">Edit</button> 
                 </div>
-                <div className='form-group'>
-                <input type="date" name='birthdate' className="form-control" placeholder={`${user.birthdate}`}
-                        onChange={(e)=>handleChange(e)}/>
-                </div>
-                <div className='form-group'>
-                <input type="file" accept="image/*" name="avatar"  class="form-control form-control-alternative"
-                        onChange={(e)=>handleChange(e)}
-                     />
-                </div>
-                <div className='form-group'>
-                <input name='phone' className="form-control" type="text" placeholder={`${user.phone}`}
-                        onChange={(e)=>{handleChange(e);phoneVaildation(e)}}/>
-                         <small>{phoneError}</small> 
-                </div>
-                <div className='form-group'>
-                <input name='city' className="form-control" type="text" placeholder={`${user.city}`}
-                        onChange={(e)=>handleChange(e)}/>
-                </div>
-                <div className="btn_container px-0 d-flex justify-content-between buttons">
-                    <button className="btn btn_color " onClick={e => {updateUser()} }  id="login_button" > Edit </button>
-                    <button className="btn btn_color " onClick={e => {deleteUser()} }  id="register_button" > Delete </button>
-                </div>
-                
-            </form>
-            
+            </div>
         </div>
+    </div>
 
 
   );

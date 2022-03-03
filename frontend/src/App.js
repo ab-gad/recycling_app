@@ -124,6 +124,9 @@ const App = () => {
                   <Route path="/contact" exact>
                     <Contact />
                   </Route>
+                  <Route path="/service/cart/:name" exact> 
+                    <Cart />
+                  </Route>
                   <Route path="/service/cart/:name/:order_id" exact> 
                     <Order_form />
                   </Route>
