@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom'
 
 import ProductList from './projectlist'
 import { fetchProducts } from '../../../redux/actions/product_action'
-// import { addToCart } from '../actions/Cart'
+import { addToCart } from '../../../redux/actions/cart_action'
 
 class ShoppingPage extends React.Component {
     componentDidMount() {
@@ -34,4 +34,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default withRouter(connect(mapStateToProps, { fetchProducts })(ShoppingPage))
+export default withRouter(connect(mapStateToProps, { fetchProducts,addToCart })(ShoppingPage))

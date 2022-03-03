@@ -1,7 +1,7 @@
 # Database
-DB_PASSWORD = '123456'
+DB_PASSWORD = '0000'
 DB_HOST = 'localhost'
-DB_USER = 'postgres'
+DB_USER = 'team4'
 
 # DB_PASSWORD = '0000'
 # DB_HOST = 'localhost'

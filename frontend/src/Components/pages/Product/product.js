@@ -1,4 +1,6 @@
+
 import React from 'react'
+import './Product.scss'
 import PropTypes from 'prop-types'
 import { Modal, Card, Image, Rating, Grid, Header, Divider, Button, Input } from 'semantic-ui-react'
 import toastr from 'toastr'
@@ -7,7 +9,7 @@ export const TOASTR_OPTIONS = {
   preventDuplicated: true,
   positionClass: 'toast-bottom-left'
 }
-// import './Product.css'
+
 
 toastr.options = TOASTR_OPTIONS
 

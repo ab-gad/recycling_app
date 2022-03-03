@@ -29,10 +29,10 @@ import ThemesContext , {themes} from  './Components/themes';
 import {BsFillMoonStarsFill , BsFillSunFill} from  'react-icons/bs';
 import { useEffect } from "react";
 import ShoppingPage from './Components/pages/Product/productHome'
-
+import CartPage from './Components/pages/Product/cartHome';
 import Show from "./Components/pages/Testimonial/showevent";
 import Product from "./Components/pages/Product/product";
-import Wagon from "./Components/pages/Product/cart";
+
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
@@ -130,8 +130,8 @@ const App = () => {
                   <Route path="/ShoppingPage/" exact >
                   <ShoppingPage/>
                   </Route>
-                  <Route path="/Wagon/" exact >
-                  <Wagon/>
+                  <Route path="/CartPage/" exact >
+                  <CartPage/>
                   </Route>
                   <Route path="/contact" exact>
                     <Contact />
