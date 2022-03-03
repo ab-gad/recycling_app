@@ -105,6 +105,7 @@ function Carousel (){
                 </p>
                 <div className="cus-bottons my-4 animate__animated animate__fadeInUpBig">
                   <button
+                    to='/events'
                     type="button"
                     className="btn fw-light btn-outline-light btn-lg rounded-pill m-2 cus-befor"
                   >
@@ -125,6 +126,7 @@ function Carousel (){
                 </p>
                 <div className="my-4 fw-light cus-bottons animate__animated animate__fadeInUpBig">        
                   <button
+                    to='/contact'
                     type="button"
                     className="btn fw-light btn-outline-light btn-lg rounded-pill m-2 cus-befor"
                   >
