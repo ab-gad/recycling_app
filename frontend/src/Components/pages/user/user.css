@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,800&display=swap');
 body {
     height: 100vh !important ;
 }
@@ -24,7 +25,7 @@ body {
 
 
 #settings_container h2 {
-    font-family: "Oleo Script Swash Caps", cursive;
+    font-family: 'Poppins', sans-serif;
     color: #00a300 ;
     font-size: 35px;
 }
