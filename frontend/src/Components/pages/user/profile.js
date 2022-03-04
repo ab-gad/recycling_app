@@ -33,7 +33,7 @@ const Profile = () => {
 
   return (
     <>
-        <h1 className="text-center"> {`Welcome ${orders[0].first_name} ${orders[0].last_name}`} </h1>
+        <h1 className="text-center"> {`Welcome ${authed_user.first_name} ${authed_user.last_name}`} </h1>
         <div className="row justify-content-center ">
         {orders.map((order) => {
             return (
@@ -77,6 +77,8 @@ const Profile = () => {
                         <li className="step0 text-right" id="step4">Delivered</li>
                     </ul>
                 </div>
+                <Link to="/service/cart/:name/:order_id" className="btn btn-danger w-50 m-auto">order details</Link>
+
                 
             </div>
                 
