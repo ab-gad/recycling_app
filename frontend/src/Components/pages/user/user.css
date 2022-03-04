@@ -1,80 +1,4 @@
-/* 
-
-.container .card {
-    border: none
-}
-.name_image_block{
-    border-radius: 25px;
-    border: 2px solid rgb(108, 195, 224);
-    box-shadow:5px 5px rgb(46, 172, 214) ;
-    margin: auto;
-}
-.form_container{
-    border-radius: 10px;
-    border: 2px solid rgb(108, 195, 224);
-    box-shadow:5px 5px rgb(46, 172, 214) ;
-}
-.image {
-    position: relative
-}
-
-.image span {
-    background-color: blue;
-    color: #fff;
-    padding: 6px;
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    font-size: 13px;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: -10px;
-    left: 50px
-}
-
-.user-details h4  {
-    font-size: 30px;
-    font-weight: 600;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    color: blue;
-    padding:20px
-}
-
-
-.inputs label {
-    display: flex;
-    margin-left: 3px;
-    font-weight: 500;
-    font-size: 13px;
-    margin-bottom: 4px;
-}
-
-.inputs input {
-    font-size: 14px;
-    height: 40px;
-    border: 2px solid #ced4da
-}
-
-.inputs input:focus {
-    box-shadow: none;
-    border: 2px solid blue
-}
-
-
-.btn {
-    font-weight: 600
-}
-
-.btn:focus {
-    box-shadow: none
-} */
-
-
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,800&display=swap');
 body {
     height: 100vh !important ;
 }
@@ -83,19 +7,6 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
-#settings_container img{
-    margin: auto;
-}
-
-
-/* #settings_container form  {
-    margin: auto;
-    padding: 0px;
-    border-radius: 5px;
-    color: #000;
-    max-width: 22rem;
-} */
-
 #settings_container {
     max-width: 24rem;
     padding: 1.5rem 1rem ;
@@ -103,14 +14,18 @@ body {
     max-width: 30rem;
     border-radius: 5px;
     margin-top: 10px;
+    
 }
-@media (min-width: 1200px){
-    #form_container {
-        max-width: 75%;
-    }
+#settings_container img{
+    margin: auto;
+    display: block;
+    max-width: 80px;
+    max-height: 80px;
 }
+
+
 #settings_container h2 {
-    font-family: "Oleo Script Swash Caps", cursive;
+    font-family: 'Poppins', sans-serif;
     color: #00a300 ;
     font-size: 35px;
 }
@@ -136,7 +51,7 @@ body {
 
 }
 
-.form_inputs input {
+#settings_container input {
     margin: 1rem 0;
     padding: .5rem;
     

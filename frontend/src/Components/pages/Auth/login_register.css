@@ -73,7 +73,8 @@ body {
     box-shadow: none !important;
     outline: none !important;
 }
-.form_inputs p , span {
+.form_inputs p , 
+#login_form span {
     font-size: 15px;
 }
 

@@ -8,11 +8,24 @@
   font-family: "Oleo Script Swash Caps", cursive;
 }
 
-/* scroll back ground */
+/* scroll bar styel  */
 ::-webkit-scrollbar {
-  display: none;
+  width: 18px;
 }
 
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00a300; 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #55ad0c; 
+}
 .page_title {
   width: 100%;
   height: 12rem;
