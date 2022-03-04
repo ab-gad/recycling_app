@@ -57,7 +57,11 @@ def profile(request,id):
     user_orders=OrderSerializer(user_orders_query,many=True).data
     return Response({'orders':user_orders})
 
-
+@api_view(['Get'])
+def events(request,id):
+    user_events_query=Events.objects.filter(useradmin_id=id)
+    user_events=EventsSerializer(user_events_query,many=True).data
+    return Response({'events':user_events})
 
 """ Concrete View Classes
 #CreateAPIView
