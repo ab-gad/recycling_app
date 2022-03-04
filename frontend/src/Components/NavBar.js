@@ -7,7 +7,7 @@ import { VscHome } from 'react-icons/vsc';
 import { BsBuilding , BsChatDots  , BsShop , BsCart2 } from 'react-icons/bs';
 import { useSelector} from "react-redux"
 import { connect } from "react-redux";
-import { checkAuthenticated, load_user, logout} from "../redux/actions/actions";
+import { logout} from "../redux/actions/actions";
 import { useHistory } from 'react-router-dom';
 
 const Navbar = (props) => {
@@ -20,9 +20,10 @@ const Navbar = (props) => {
     Events: "الأحداث",
     CountactUs: "اتصل بنا",
     Products: "منتجات",
-    LoginSignUp: "تسجيل/إنشاء حساب",
+    Login: " تسجيل الدخول",
+    SignUp:"انشاء حساب",
     Profile: "الملف الشخصي",
-    settings: "الاعادات",
+    settings: "الاعدادات",
     logout:"تسجيل الخروج"
   };
   const English = {
@@ -33,7 +34,8 @@ const Navbar = (props) => {
     Events: "Events",
     CountactUs: "Contact ",
     Products: "Products",
-    LoginSignUp: "Login/SignUp",
+    Login: "Login",
+    Register: "Register",
     Profile: "Profile",
     settings: "Settings",
     logout:"Logout"
@@ -66,18 +68,13 @@ const Navbar = (props) => {
     const history = useHistory();
     const logout_user = () => {
       props.logout();
-      history.push('/login');
+      history.push('/auth/login');
     } ;
 
-    useEffect(()=>{
-      props.checkAuthenticated()
-      props.load_user()
-    },[])
-      
-    useEffect( ()=> {
-      document.getElementById("home").classList.remove('active');
-      document.getElementById(localStorage.getItem("navActive")).classList.add('active');
-    })
+    // useEffect( ()=> {
+    //   document.getElementById("home").classList.remove('active');
+    //   document.getElementById(localStorage.getItem("navActive")).classList.add('active');
+    // })
 
   return (
     <>
@@ -111,13 +108,13 @@ const Navbar = (props) => {
               {props.isAuthenticated ?
               <ul className="dropdown-menu log_drop" aria-labelledby="navbarDropdownMenuLink">
                 <li><NavLink className="dropdown-item text-center text-primary " to="/profile" > {translation.Profile} </NavLink></li>
-                <li><NavLink className="dropdown-item text-center text-primary " to="/profile" > {translation.settings} </NavLink></li>
+                <li><NavLink className="dropdown-item text-center text-primary " to="/settings" > {translation.settings} </NavLink></li>
                 <li><button className="dropdown-item text-center text-primary " onClick={logout_user}> {translation.logout} </button></li>
               </ul>
               :
               <ul className="dropdown-menu log_drop" aria-labelledby="navbarDropdownMenuLink">
-                <li><NavLink className="dropdown-item text-center text-primary " to="/login" > {translation.LoginSignUp} </NavLink></li>
-                {/* <li><NavLink className="dropdown-item text-center text-primary " to="/register" > {translation.Register} </NavLink></li> */}
+                <li><NavLink className="dropdown-item text-center text-primary " to="/auth/login" > {translation.Login} </NavLink></li>
+                <li><NavLink className="dropdown-item text-center text-primary " to="/auth/register" > {translation.Register} </NavLink></li>
               </ul>
               }
             </li>       
@@ -197,4 +194,4 @@ const mapStateToProps = state => ({
   user: state.authReducer.user
 });
 
-export default connect(mapStateToProps, {checkAuthenticated, load_user, logout})(Navbar);
+export default connect(mapStateToProps, {logout})(Navbar);

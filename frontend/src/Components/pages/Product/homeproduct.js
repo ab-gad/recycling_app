@@ -1,19 +1,68 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PageTitle from "../../page_title";
 import "./homeproducts.css";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useGetAllProductsQuery } from "../../../features/productsApi";
-import { addToCart } from "../../../features/cartSlice";
+import { addToCart, updateCart } from "../../../features/cartSlice";
+import { useSelector } from "react-redux";
 const Homeproduct = () => {
   const { data, error, isLoading } = useGetAllProductsQuery();
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.authReducer.user);
+
+  console.log(user, "ys");
+  const cartItems = useSelector((state) => state.cart.cartItems);
+
   const history = useHistory();
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
+
+    // const all = {};
+
+    // if (user != null) {
+    //   const user_id = user.id;
+    //   all[user_id] = cartItems;
+    //   localStorage.setItem("cartItems", JSON.stringify(all));
+    // } else {
+    //   const user_id = 0;
+    //   all[user_id] = cartItems;
+    //   localStorage.setItem("cartItems", JSON.stringify(all));
+    // }
+
     // history.push("/Cart");
   };
+  useEffect(() => {
+    if (localStorage.getItem("cartItems") != [] && user != null) {
+      const usercart = JSON.parse(localStorage.getItem("cartItems"));
+      if (usercart[user.id]) {
+        console.log(usercart, "cat");
+        dispatch(updateCart(usercart[user.id]));
+      }
+    } else {
+      dispatch(updateCart([]));
+    }
+  }, [user]);
 
+  useEffect(() => {
+    const all = {};
+
+    if (user != null) {
+      if (cartItems != []) {
+        const user_id = user.id;
+        all[user_id] = cartItems;
+        localStorage.setItem("cartItems", JSON.stringify(all));
+      } else {
+        const user_id = user.id;
+        all[user_id] = cartItems;
+        localStorage.setItem("cartItems", JSON.stringify(all));
+      }
+    } else {
+      const user_id = 0;
+      all[user_id] = cartItems;
+      localStorage.setItem("any", JSON.stringify(all));
+    }
+  }, [cartItems]);
   return (
     <>
       <PageTitle title="Products" description="Home/Products" />

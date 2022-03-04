@@ -1,24 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,800&display=swap');
 
 
-.card {
-    border: none;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.name_image_block{
-    border-radius: 25px;
-    border: 2px solid rgb(108, 195, 224);
-    box-shadow:5px 5px rgb(46, 172, 214) ;
+#settings_container {
+    height: 100vh !important ;
+    max-width: 24rem;
+    padding: 1.5rem 1rem ;
+    border: 1px solid #00000028;
+    max-width: 30rem;
+    border-radius: 5px;
+    margin-top: 10px;
+    
+}
+#settings_container img{
     margin: auto;
-}
-.form_container{
-    border-radius: 10px;
-    border: 2px solid rgb(108, 195, 224);
-    box-shadow:5px 5px rgb(46, 172, 214) ;
-}
-.image {
-    position: relative
+    display: block;
+    max-width: 80px;
+    max-height: 80px;
 }
 
-.image span {
+#settings_container .image span {
     background-color: blue;
     color: #fff;
     padding: 6px;
@@ -33,42 +38,37 @@
     top: -10px;
     left: 50px;
 }
+#settings_container h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #00a300 ;
+    font-size: 35px;
+}
 
-.user-details h4  {
+
+#settings_container .btn_container {
     font-size: 30px;
-    font-weight: 600;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    color: blue;
-    padding:20px
+}
+#settings_container .buttons .btn {
+    min-width: 40%;
+    font-weight: 100 !important ;
 }
 
+#settings_container .btn_color {
+    background-color: #00a300c5;
+    color: #fff;
+    padding: 10px;
+}
+#settings_container .btn_color:hover {
+    background-color: #00a300;
 
-.inputs label {
-    display: flex;
-    margin-left: 3px;
-    font-weight: 500;
-    font-size: 13px;
-    margin-bottom: 4px;
 }
 
-.inputs input {
-    font-size: 14px;
-    height: 40px;
-    border: 2px solid #ced4da
+#settings_container input {
+    margin: 1rem 0;
+    padding: .5rem;
+    
 }
-
-.inputs input:focus {
-    box-shadow: none;
-    border: 2px solid blue
-}
-
-
-.btn {
-    font-weight: 600
-}
-
-.btn:focus {
-    box-shadow: none
+#settings_container small{
+    color:red;
+    font-weight: 100;
 }

@@ -7,9 +7,9 @@ import Home from "./Components/pages/Home/Home";
 import Services from "./Components/pages/Service/Service";
 import Testimonial from "./Components/pages/Testimonial/Testimonial";
 import User from "./Components/pages/user/user";
+import Profile from "./Components/pages/user/profile";
 import Error_404 from "./Components/pages/Home/error_404";
 import Success_order from "./Components/pages/cart/success_order";
-
 // import Login from "./Components/pages/Registeration/login";
 // import Register from "./Components/pages/Registeration/register";
 // import SignUp from "./Components/pages/Auth/register";
@@ -20,11 +20,15 @@ import Login_Register from "./Components/pages/Auth/NewLogin";
 import Activate from "./Components/pages/Auth/Activate";
 import ResetPassword from "./Components/pages/Auth/ResetPassword";
 import ResetPasswordConfirm from "./Components/pages/Auth/ResetPasswordConfirm";
+import Facebook from "./Components/pages/Auth/Facebook";
+import Google from "./Components/pages/Auth/Google";
+import { checkAuthenticated, load_user} from "./redux/actions/actions";
+import { connect } from "react-redux";
+import ProtectedRoute from "./Components/ProtectedRoute";
 
 import Navbar from "./Components/NavBar";
 import Chat from "./Components/pages/ChatBot/Chat";
-import Order_form from "./Components/pages/cart/order_form";
-import Cart from './Components/pages/cart/Cart';
+import SellCart from "./Components/pages/cart/SellCart";
 import ScrollButton from "./Components/ScrollButton";
 import ThemesContext , {themes} from  './Components/themes';
 import {BsFillMoonStarsFill , BsFillSunFill} from  'react-icons/bs';
@@ -38,7 +42,7 @@ import "react-toastify/dist/ReactToastify.css";
 // import { Langcontext } from './context/lang';
 export const Langcontext = React.createContext();
 
-const App = () => {
+const App = ({load_user,checkAuthenticated, user, isAuthenticated}) => {
   const [langcont, Setlangcontext] = useState("ENGLISH");
  
   //creatr themes 
@@ -79,6 +83,12 @@ const App = () => {
     localStorage.getItem('theme_state') === 'lighe' ?  setTheme(themes.light) :  setTheme(themes.dark)
   
   }
+  useEffect(()=>{
+    checkAuthenticated()
+    load_user()
+    console.log("user>>>>>",user)
+  },[])
+    
 
   return (
 
@@ -109,6 +119,9 @@ const App = () => {
                   <Route path="/settings" exact>
                     <User />
                   </Route>
+                  <Route path="/profile" exact>
+                    <Profile />
+                  </Route>
                   <Route path="/Show/:id" component={Show} exact >
                   <Show/>
                   </Route>
@@ -121,20 +134,18 @@ const App = () => {
                   <Route path="/contact" exact>
                     <Contact />
                   </Route>
-                  <Route path="/service/cart/:name" exact> 
-                    <Cart />
-                  </Route>
-                  <Route path="/service/cart/:name/:order_id" exact> 
-                    <Order_form />
+                  <ProtectedRoute exact path="/service/cart/:name/:order_id"  component={SellCart}/>
+                  <ProtectedRoute exact path="/success_order"  component={Success_order}/>
+
+                  <Route path="/service/cart/:name/" exact> 
+                    <SellCart/>
                   </Route>
                   <Route path="/error_404" exact> 
                     <Error_404 />
                   </Route>
-                  <Route path="/success_order" exact> 
-                    <Success_order />
-                  </Route>
-
-                  <Route exact path='/login' component={Login_Register} />
+                  <Route exact path='/facebook' component={Facebook} />
+                  <Route exact path='/google' component={Google} />
+                  <Route exact path='/auth/:page' component={Login_Register} />
                   {/* <Route exact path='/register' component={Login_Register} /> */}
                   <Route exact path='/reset-password' component={ResetPassword} />
                   <Route exact path='/password/reset/confirm/:uid/:token' component={ResetPasswordConfirm} />
@@ -159,5 +170,10 @@ const App = () => {
   );
 };
 
+const mapStateToProps = state => ({
+  isAuthenticated: state.authReducer.isAuthenticated,
+  user: state.authReducer.user
+});
 
-export default App;
+export default connect(mapStateToProps, {checkAuthenticated, load_user})(App);
+

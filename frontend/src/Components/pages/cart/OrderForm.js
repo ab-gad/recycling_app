@@ -5,11 +5,13 @@ import { BiError } from 'react-icons/bi';
 import axios from "axios";
 import { useSelector } from 'react-redux';
 import { Langcontext } from "../../../App";
+import { useHistory } from "react-router-dom";
 import "./cart.css";
+import { toast } from "react-toastify";
 
 
-function Order_form () {
-
+function OrderForm (props) {
+    
     const Arabic = {
         first_name: "الأسم الأول",
         last_name: "الأسم الثاني",
@@ -61,35 +63,48 @@ function Order_form () {
     const { langcont, Setlangcontext } = useContext(Langcontext);
     const translation = langcont === "ENGLISH" ? English : Arabic;
 
-    const [price, setPrice] = useState({ paper: 0.70 , metal: 1.5 , plastic: 1.5})
-    const [quantity, setQuantity] = useState({ paper: 2 , metal: 2 , plastic: 2})
-    const [limit , setLimit] = useState({ min: 2 , max: 20 })
-    const cart_catigory = useParams().name
-    const order_id = useParams().order_id
+    const order_id = props.order_id
+    const [price, setPrice] = useState({})
+    const [quantity, setQuantity] = useState({})
+    const [limit , setLimit] = useState({})
     const { latitude , longitude } = usePosition();
+    const cart_catigory = props.type
+    let type = ""
+    if (cart_catigory==='shop'){
+        type = 'S'
+    }else if (cart_catigory==='worker'){
+        type = 'W'
+    }else {
+        type = 'H'
+    }
+    const history = useHistory()
     const date = new Date().toLocaleString()
+    // catigory of kind of users 
+    
+    useEffect(()=>{
+        if ( cart_catigory === 'shop' ) {
+            setQuantity({paper: 10 , metal: 10 , plastic: 10 }) ;
+            setPrice({ paper: 0.50 , metal: 1.3 , plastic: 1.3})
+            setLimit({  min: 10 , max: 80 });
+        }
+        else if ( cart_catigory === 'worker' ){
+            setQuantity({paper: 80 , metal: 80 , plastic: 80 }) ;
+            setPrice({ paper: 0.45 , metal: 1.1 , plastic: 1.1})
+            setLimit({ min: 80 , max: 200 });
+        }else{
+            setQuantity({ paper: 2 , metal: 2 , plastic: 2}) ;
+            setPrice({ paper: 0.70 , metal: 1.5 , plastic: 1.5})
+            setLimit({ min: 2 , max: 20 });
+        }
+    },[cart_catigory])
+
     const paperPrice   = price.paper*quantity.paper;
     const plasticPrice = price.plastic*quantity.plastic;
     const metalPrice   = price.metal*quantity.metal;
     const sum = paperPrice + plasticPrice + metalPrice;
    
 
-    // catigory of kind of users 
-    useEffect( () => {
-        if ( cart_catigory === 'shop' ) {
-            setQuantity({paper: 10 , metal: 10 , plastic: 10 }) ;
-            setLimit({  min: 10 , max: 80 });
-            if ( order_id  ) {
-                console.log(order_id)
-            }else {
-                console.log("No ID")
-            }
-        }
-        else if ( cart_catigory === 'worker' ){
-            setQuantity({paper: 80 , metal: 80 , plastic: 80 }) ;
-            setLimit({ min: 80 , max: 200 });
-        }
-    } , [])
+    
     
     const onChangeHandler = (e, material) => {
         if (e.target.value >= 0){
@@ -124,9 +139,8 @@ function Order_form () {
             setNotValid(`${translation.last_validation}`)
             return false
         }
-        else if ( phone.value.length != 11 ||
-                 (phone.value[0] !=0 || phone.value[1] != 1 )  ) {
-
+        else if ( phone.value.length !== 11 || phone.value[0] !== '0' || phone.value[1] !== '1' ){
+            console.log('PHONE',phone.value.length,phone.value )
             not_valid.style.display = 'block'
             setNotValid(`${translation.phone_validation}`)
             return false
@@ -154,8 +168,8 @@ function Order_form () {
 
 
     // Axios Api
-    const url = ""
-    const user_id = useSelector(state => state.authReducer.user )
+    const url = "http://127.0.0.1:8000/orders_api/"
+    const user = useSelector(state => state.authReducer.user )
     const [data , setData] = useState({
         firstName: '',
         lastName: '',
@@ -168,13 +182,13 @@ function Order_form () {
         setData(data)
     }
 
-    const predefult = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
-        if ( !(form_validation() ) ) {
-            console.log("استغفر الله  ")
-        }
-        else {
-            axios.post(url,{
+        const valid = form_validation()
+        console.log("USER",user, "Valid", valid )
+        if (user !== null && valid){
+            console.log('VAAALID')
+            const orderData = {
                 first_name: data.firstName ,
                 last_name: data.lastName ,
                 phone: data.phone ,
@@ -184,22 +198,41 @@ function Order_form () {
                 plastic_q: quantity.plastic ,
                 metal_q: quantity.metal ,
                 total_price: sum ,
-                latitude: latitude ,
-                longitude: latitude ,
-            })
+                latitude: latitude || null ,
+                longitude: latitude || null ,
+                user_id:user.id,
+                type:type
+            }
+            console.log(orderData)
+            axios.post(url,orderData)
             .then ( req => {
                 console.log(req.data)
-            })   
+                toast.success(`Your Order Was Sent Successfully`, {
+                    position: "bottom-left",
+                  });
+                history.push('/success_order')
+            })
             .catch((err) => {
+                toast.error(`error in sending , please Try again`, {
+                    position: "bottom-left",
+                  });
                 console.log(err)
-            }) 
+                history.push('/error_404')
+            })
+        }else if(user === null){
+            console.log('NOT VAL', valid)
+            toast.warning(`Make sure you are logged to be able to send your order`, {
+                position: "bottom-left",
+              });
+            not_valid.style.display = 'block'
+            setNotValid("Make sure you are logged to be able to send your order")
         }
     }
     return(
         <>
-            <section id="cart" className="container" >
+            <section id="cart" className="container">
                 <h3 className="border-top py-3 my-4" dir='ltr'>Start to <span className="text-danger"> Clean and Earn </span> </h3>
-                <form action="" onSubmit={ (event) => predefult(event)}  >
+                <form action="" onSubmit={ (event) => handleSubmit(event)}  >
                     <div className="my-3 row ">
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6  ">
                             <label htmlFor="firstName" > {translation.first_name} </label>
@@ -354,8 +387,7 @@ function Order_form () {
                 </table>
                 
                 <div className="my-4 text-center">
-                {/* onClick={ (event) => predefult(event)}  */}
-                    <button type="submit" className="btn btn-outline-success rounded-bill shadow-none"> {translation.button} </button>
+                    <button type="submit" className="btn btn-outline-success rounded-bill shadow-none"> {translation.button}  </button>
                     <p className="text-danger my-3 m-auto p-3 rounded text-center border border-danger w-50" id="not_valid">
                         <BiError className="d-block my-2 m-auto h2 " />
                         { not_valid_message }
@@ -367,4 +399,4 @@ function Order_form () {
     )
 }
 
-export default Order_form;
+export default OrderForm;

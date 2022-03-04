@@ -1,7 +1,10 @@
-from django.urls import path
-from . import views
+from django.urls import path, include
+from .views import OrderProductList
+from rest_framework import routers
 
+router = routers.DefaultRouter()
+router.register(r'OrderProductList', OrderProductList)
 
 urlpatterns = [
-    path('Products', views.showMultipleModels),
+    path('', include(router.urls)),
 ]
