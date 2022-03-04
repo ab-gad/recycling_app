@@ -35,7 +35,7 @@ const Profile = () => {
   return (
     <section id="profile_container">  
         <h1 className="text-center"> {`Welcome ${authed_user.first_name} ${authed_user.last_name}`} </h1>
-        <div className="row justify-content-center ">
+        <div className="row justify-content-center " id="profile_container">
         {orders.map((order) => {
             return (
 			

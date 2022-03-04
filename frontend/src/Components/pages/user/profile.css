@@ -1,11 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,800&display=swap');
+h1{
+    font-family: 'Poppins', sans-serif;
+    color: #00a300 ;
+    margin-top: 10px;
+}
 #profile_container .card {
     max-width: 300px;
     padding: 4vh 0;
     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-top: 3px solid rgb(252, 103, 49);
     border-bottom: 3px solid rgb(252, 103, 49);
+    
 
 }
+
 
 
 #profile_container .title {
