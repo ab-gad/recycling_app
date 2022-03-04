@@ -33,32 +33,30 @@ const Homeproduct = () => {
     // history.push("/Cart");
   };
   useEffect(() => {
-    if (localStorage.getItem("cartItems") != [] && user != null ) {
-      const usercart=JSON.parse(localStorage.getItem("cartItems"));
-      if(usercart[user.id]){
-        console.log(usercart,"cat")
+    if (localStorage.getItem("cartItems") != [] && user != null) {
+      const usercart = JSON.parse(localStorage.getItem("cartItems"));
+      if (usercart[user.id]) {
+        console.log(usercart, "cat");
         dispatch(updateCart(usercart[user.id]));
       }
-      
-     
-    }else{
-      dispatch(updateCart([]))
+    } else {
+      dispatch(updateCart([]));
     }
   }, [user]);
 
- useEffect(() => {
+  useEffect(() => {
     const all = {};
 
-    if (user != null ) {
-      if(cartItems !=[]){
-      const user_id = user.id;
-      all[user_id] = cartItems;
-      localStorage.setItem("cartItems", JSON.stringify(all));
-     }else{
-      const user_id = user.id;
-      all[user_id] = cartItems;
-      localStorage.setItem("cartItems", JSON.stringify(all));
-     }
+    if (user != null) {
+      if (cartItems != []) {
+        const user_id = user.id;
+        all[user_id] = cartItems;
+        localStorage.setItem("cartItems", JSON.stringify(all));
+      } else {
+        const user_id = user.id;
+        all[user_id] = cartItems;
+        localStorage.setItem("cartItems", JSON.stringify(all));
+      }
     } else {
       const user_id = 0;
       all[user_id] = cartItems;

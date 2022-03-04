@@ -208,23 +208,23 @@ DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': 'password/reset/confirm/{uid}/{token}',
     'USERNAME_RESET_CONFIRM_URL': 'email/reset/confirm/{uid}/{token}',
     'ACTIVATION_URL': 'activate/{uid}/{token}',
-    'SEND_ACTIVATION_EMAIL':True,
+    'SEND_ACTIVATION_EMAIL': True,
     'SOCIAL_AUTH_TOKEN_STRATEGY': 'djoser.social.token.jwt.TokenStrategy',
     'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': [
         'http://localhost:8000/facebook',
         'http://localhost:3000/facebook',
-        'http://127.0.0.1:3000', 
-        'http://127.0.0.1:3000/facebook', 
+        'http://127.0.0.1:3000',
+        'http://127.0.0.1:3000/facebook',
         'http://127.0.0.1:8000/facebook',
         'http://localhost:8000/google',
         'http://localhost:3000/google',
-        'http://127.0.0.1:3000', 
-        'http://127.0.0.1:3000/google', 
+        'http://127.0.0.1:3000',
+        'http://127.0.0.1:3000/google',
         'http://127.0.0.1:8000/google'
     ],
-    'SERIALIZERS':{
-        'user_create':'authen.serializers.UserCreateSerializer',
-        'user':'authen.serializers.UserCreateSerializer',
+    'SERIALIZERS': {
+        'user_create': 'authen.serializers.UserCreateSerializer',
+        'user': 'authen.serializers.UserCreateSerializer',
         'current_user': 'authen.serializers.CurrentUserSerializer',
         'user_delete': 'djoser.serializers.UserDeleteSerializer',
     }
@@ -248,17 +248,17 @@ AUTHENTICATION_BACKENDS = (
 )
 
 
-#Google
+# Google
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = SOCIAL_AUTH_GOOGLE_OAUTH2_KEY
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET =SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET
 # SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile', 'openid']
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
-'https://www.googleapis.com/auth/userinfo.email',
-'https://www.googleapis.com/auth/userinfo.profile'
+    'https://www.googleapis.com/auth/userinfo.email',
+    'https://www.googleapis.com/auth/userinfo.profile'
 ]
 SOCIAL_AUTH_GOOGLE_OAUTH2_EXTRA_DATA = ['first_name', 'last_name']
 
-#Facebook
+# Facebook
 SOCIAL_AUTH_FACEBOOK_KEY = SOCIAL_AUTH_FACEBOOK_KEY
 SOCIAL_AUTH_FACEBOOK_SECRET = SOCIAL_AUTH_FACEBOOK_SECRET
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']

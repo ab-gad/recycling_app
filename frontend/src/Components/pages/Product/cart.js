@@ -2,7 +2,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import PageTitle from "../../page_title";
 import { useEffect ,useState} from "react";
+import { TiMinus,TiPlus } from "react-icons/ti";
 
+import { BsFillTrashFill } from "react-icons/bs";
 import {
   removeFromCart,
   decreaseCart,
@@ -177,7 +179,7 @@ if(user!=null){
                                 data-mdb-toggle="tooltip"
                                 title="Remove item"
                               >
-                                <i className="fas fa-trash"></i>
+                                <BsFillTrashFill/>
                               </button>
                               {/* <button type="button" className="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip"
                      title="Move to the wish list">
@@ -191,7 +193,7 @@ if(user!=null){
                                   onClick={() => handleDecreaseCart(cartItem)}
                                   className="btn btn-primary px-3 me-2"
                                 >
-                                  <i className="fas fa-minus"></i>
+                                  <TiMinus/>
                                 </button>
 
                                 <div className="form-outline">
@@ -210,7 +212,7 @@ if(user!=null){
                                   onClick={() => handleIncreaseCart(cartItem)}
                                   className="btn btn-primary px-3 ms-2"
                                 >
-                                  <i className="fas fa-plus"></i>
+                                 <TiPlus/>
                                 </button>
                               </div>
 
