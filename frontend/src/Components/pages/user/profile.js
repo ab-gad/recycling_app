@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import "./profile.css";
 import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import { useSelector } from "react-redux";
 import { GiCoinsPile } from "react-icons/gi";
 
