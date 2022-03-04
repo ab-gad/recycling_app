@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import "./profile.css";
 import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import { useSelector } from "react-redux";
 import { GiCoinsPile } from "react-icons/gi";
 
@@ -32,7 +33,7 @@ const Profile = () => {
   }, []);
 
   return (
-    <>
+    <section id="profile_container">  
         <h1 className="text-center"> {`Welcome ${authed_user.first_name} ${authed_user.last_name}`} </h1>
         <div className="row justify-content-center ">
         {orders.map((order) => {
@@ -92,7 +93,7 @@ const Profile = () => {
 
       
       
-    </>  
+    </section>  
       
       
       

@@ -43,9 +43,9 @@ const Navbar = (props) => {
   const translation = langcont === "ENGLISH" ? English : Arabic;
   const anmi_item = document.querySelectorAll('.anmi_item');
 
-    anmi_item.forEach ( (item)=> {
-      item.addEventListener('click' , active )
-    })
+    // anmi_item.forEach ( (item)=> {
+    //   item.addEventListener('click' , active )
+    // })
     
     const language_zone = () => {
       if ( langcont === "ENGLISH" ) {
@@ -55,13 +55,13 @@ const Navbar = (props) => {
       }
     }
 
-    function active (){
-      anmi_item.forEach( (item)=> {
-        item.classList.remove('active');
-        this.classList.add('active');
-        localStorage.setItem("navActive" , this.id )
-      })
-    }
+    // function active (){
+    //   anmi_item.forEach( (item)=> {
+    //     item.classList.remove('active');
+    //     this.classList.add('active');
+    //     localStorage.setItem("navActive" , this.id )
+    //   })
+    // }
     
     const history = useHistory();
     const logout_user = () => {
@@ -74,10 +74,10 @@ const Navbar = (props) => {
       props.load_user()
     },[])
       
-    useEffect( ()=> {
-      document.getElementById("home").classList.remove('active');
-      document.getElementById(localStorage.getItem("navActive")).classList.add('active');
-    })
+    // useEffect( ()=> {
+    //   document.getElementById("home").classList.remove('active');
+    //   document.getElementById(localStorage.getItem("navActive")).classList.add('active');
+    // })
 
   return (
     <>
