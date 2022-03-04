@@ -90,7 +90,8 @@
   left: -5px;
   height: 100%;
   width: 8px;
-  background-color: #089bdf86;
+  background-color: #00a30046;
+  /* 089bdf86 */
   transition: .5s;
 
 }
@@ -148,7 +149,7 @@
   transform: translateX(-50%);
   color: #ffffff;
   letter-spacing: 1.5px;
-  background-color: #4bb6e5;
+  background-color: #00a300c7;
   
 }
 @media (max-width: 592px){
@@ -158,6 +159,6 @@
 }
 .catigorise:hover a {
   color: azure  ;
-  background-color: #6a6ad6 !important;
+  background-color: #00a300 !important;
   transition: .5s;
 }
