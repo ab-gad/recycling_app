@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,800&display=swap');
-body {
-    height: 100vh !important ;
-}
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 #settings_container {
+    height: 100vh !important ;
     max-width: 24rem;
     padding: 1.5rem 1rem ;
     border: 1px solid #00000028;
@@ -23,7 +23,21 @@ body {
     max-height: 80px;
 }
 
-
+#settings_container .image span {
+    background-color: blue;
+    color: #fff;
+    padding: 6px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    font-size: 13px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -10px;
+    left: 50px;
+}
 #settings_container h2 {
     font-family: 'Poppins', sans-serif;
     color: #00a300 ;
@@ -34,12 +48,10 @@ body {
 #settings_container .btn_container {
     font-size: 30px;
 }
-.buttons .btn {
+#settings_container .buttons .btn {
     min-width: 40%;
     font-weight: 100 !important ;
 }
-
-
 
 #settings_container .btn_color {
     background-color: #00a300c5;
@@ -56,7 +68,7 @@ body {
     padding: .5rem;
     
 }
-small{
+#settings_container small{
     color:red;
     font-weight: 100;
 }

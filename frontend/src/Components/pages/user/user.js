@@ -146,9 +146,6 @@ console.log(authed_user)
 
   return (
 
-    
-
-
 
         <div className='col-xl-5 m-auto' id='settings_container'>
                 <img src={`${user.avatar}`} className="rounded-circle border border-success border-4"/> 
