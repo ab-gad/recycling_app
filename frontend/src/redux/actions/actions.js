@@ -20,7 +20,8 @@ import {
     GOOGLE_AUTH_SUCCESS,
     GOOGLE_AUTH_FAIL,
     FACEBOOK_AUTH_SUCCESS,
-    FACEBOOK_AUTH_FAIL
+    FACEBOOK_AUTH_FAIL,
+    USER_SELL_ORDERS
 }
 from "./actionTypes";
 
@@ -336,3 +337,12 @@ export const facebookAuthenticate = (state, code) => async dispatch => {
         }
     }
 };
+
+//______________________ORDERS_________________________//
+
+export const setUserSellOrders = (payload)=>{
+    return{
+        type : USER_SELL_ORDERS,
+        payload
+    }
+}

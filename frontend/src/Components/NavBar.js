@@ -71,10 +71,10 @@ const Navbar = (props) => {
       history.push('/auth/login');
     } ;
 
-    useEffect( ()=> {
-      document.getElementById("home").classList.remove('active');
-      document.getElementById(localStorage.getItem("navActive")).classList.add('active');
-    })
+    // useEffect( ()=> {
+    //   document.getElementById("home").classList.remove('active');
+    //   document.getElementById(localStorage.getItem("navActive")).classList.add('active');
+    // })
 
   return (
     <>

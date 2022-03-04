@@ -19,10 +19,11 @@ function OrderForm (props) {
         city: '',
         Address: '',
     })
+    const [orderData , setOrderData] = useState({})
 
     const user = useSelector(state => state.authReducer.user )
     const userSellOrders = useSelector(state => state.sellOrders )
-    
+
     const order_id =  props.order_id
     const cart_catigory = props.type
 
@@ -38,20 +39,28 @@ function OrderForm (props) {
     
     useEffect(()=>{
         if ( cart_catigory === 'shop' ) {
-            setQuantity({paper: 10 , metal: 10 , plastic: 10 }) ;
             setPrice({ paper: 0.50 , metal: 1.3 , plastic: 1.3})
             setLimit({  min: 10 , max: 80 });
         }
         else if ( cart_catigory === 'worker' ){
-            setQuantity({paper: 80 , metal: 80 , plastic: 80 }) ;
             setPrice({ paper: 0.45 , metal: 1.1 , plastic: 1.1})
             setLimit({ min: 80 , max: 200 });
         }else{
-            setQuantity({ paper: 2 , metal: 2 , plastic: 2}) ;
             setPrice({ paper: 0.70 , metal: 1.5 , plastic: 1.5})
             setLimit({ min: 2 , max: 20 });
         }
     },[cart_catigory])
+
+    useEffect(()=>{
+        const filteredOrders = userSellOrders.filter(order => order.id == order_id )
+        const myOrder = filteredOrders[0]
+        setOrderData(myOrder)
+        console.log("sSSSSSS",myOrder)
+        setQuantity({
+            paper: myOrder.paper_q , 
+            metal: myOrder.metal_q , 
+            plastic: myOrder.plastic_q}) ;
+    },[])
 
     const paperPrice   = price.paper*quantity.paper;
     const plasticPrice = price.plastic*quantity.plastic;
@@ -124,7 +133,7 @@ function OrderForm (props) {
 
 
     // Axios Api
-    const url = "http://127.0.0.1:8000/orders_api/"
+    const url = `http://127.0.0.1:8000/orders_api/${order_id}`
     
     function inputsData (e){
         data[e.target.id] = e.target.value
@@ -154,16 +163,17 @@ function OrderForm (props) {
                 type:type
             }
             console.log(orderData)
-            axios.post(url,orderData)
-            .then ( req => {
-                console.log(req.data)
-                toast.success(`Your Order Was Sent Successfully`, {
+            axios.put(url,orderData)
+            .then ( res => {
+                console.log(res.data)
+                toast.success(`Your Order Was Updated Successfully`, {
                     position: "bottom-left",
                   });
+                setOrderData(res.data)
                 history.push('/success_order')
             })
             .catch((err) => {
-                toast.error(`error in sending , please Try again`, {
+                toast.error(`error Updating , please Try again`, {
                     position: "bottom-left",
                   });
                 console.log(err)
@@ -187,23 +197,23 @@ function OrderForm (props) {
                     <div className="my-3 row ">
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6  ">
                             <label htmlFor="firstName" > First Name </label>
-                            <input className="w-50" onChange={(e) => inputsData(e) } type="text" id="firstName" name="firstName" />
+                            <input value={orderData.first_name} className="w-50" onChange={(e) => inputsData(e) } type="text" id="firstName" name="firstName" />
                         </div>
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6 ">
                             <label htmlFor="lastName" > Last Name </label>
-                            <input className="w-50" onChange={(e) => inputsData(e) }  type="text" id="lastName" name="lastName" />
+                            <input value={orderData.last_name} className="w-50" onChange={(e) => inputsData(e) }  type="text" id="lastName" name="lastName" />
                         </div>
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6 ">
                             <label htmlFor="phone" > Phone </label>
-                            <input className="w-50" onChange={(e) => inputsData(e) } type="number" id="phone" name="phone" />
+                            <input value={orderData.phone} className="w-50" onChange={(e) => inputsData(e) } type="number" id="phone" name="phone" />
                         </div>
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6 ">
                             <label htmlFor="city" > City </label>
-                            <input className="w-50" onChange={(e) => inputsData(e) } type="text" id="city" name="city" />
+                            <input value={orderData.city} className="w-50" onChange={(e) => inputsData(e) } type="text" id="city" name="city" />
                         </div>
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 ">
                             <label htmlFor="Address" > Detailed Address <span className="text-muted mx-2"> This will help our representative reach you, so please enter the ( Street - Building No. - Floor No. - Apartment No. ) </span> </label>
-                            <textarea className="w-100" onChange={(e) => inputsData(e) } rows="5" id="Address" name="address" > </textarea>
+                            <textarea value={orderData.address} className="w-100" onChange={(e) => inputsData(e) } rows="5" id="Address" name="address" > </textarea>
                         </div>
 
                         {/* hidden inputs */}
