@@ -137,12 +137,32 @@ function OrderForm (props) {
     
     function inputsData (e){
         data[e.target.id] = e.target.value
+        orderData[e.target.name] = e.target.value
         setData(data)
+        setOrderData(orderData)
         // console.log(data)
     }
-
+    const onDelete = (e) => {
+        e.preventDefault();
+        console.log('DELETE YES')
+        axios.delete(url)
+            .then ( res => {
+                console.log(res.data)
+                toast.success(`Your Order Was Deleted Successfully`, {
+                    position: "bottom-left",
+                  });
+                
+                history.push('/profile')
+            })
+            .catch((err) => {
+                toast.error(`error Updating , please Try again`, {
+                    position: "bottom-left",
+                  });
+                console.log(err)
+                // history.push('/error_404')
+            })
+    }
     const handleSubmit = (event) => {
-        event.preventDefault();
         const valid = form_validation()
         console.log("USER",user, "Valid", valid )
         if (user !== null && valid){
@@ -181,11 +201,11 @@ function OrderForm (props) {
             })
         }else if(user === null){
             console.log('NOT VAL', valid)
-            toast.warning(`Make sure you are logged to be able to send your order`, {
+            toast.warning(`Make sure you are logged to be able to update your order`, {
                 position: "bottom-left",
               });
             not_valid.style.display = 'block'
-            setNotValid("Make sure you are logged to be able to send your order")
+            setNotValid("Make sure you are logged to be able to upadate your order")
         }
     }
     
@@ -197,11 +217,11 @@ function OrderForm (props) {
                     <div className="my-3 row ">
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6  ">
                             <label htmlFor="firstName" > First Name </label>
-                            <input value={orderData.first_name} className="w-50" onChange={(e) => inputsData(e) } type="text" id="firstName" name="firstName" />
+                            <input value={orderData.first_name} className="w-50" onChange={(e) => inputsData(e) } type="text" id="firstName" name="first_name" />
                         </div>
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6 ">
                             <label htmlFor="lastName" > Last Name </label>
-                            <input value={orderData.last_name} className="w-50" onChange={(e) => inputsData(e) }  type="text" id="lastName" name="lastName" />
+                            <input value={orderData.last_name} className="w-50" onChange={(e) => inputsData(e) }  type="text" id="lastName" name="last_name" />
                         </div>
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6 ">
                             <label htmlFor="phone" > Phone </label>
@@ -343,7 +363,9 @@ function OrderForm (props) {
                 
                 <div className="my-4 text-center">
                 {/* onClick={ (event) => handleSubmit(event)}  */}
-                    <button type="submit" className="btn btn-outline-success rounded-bill shadow-none"> Done </button>
+                    <button type="submit" className="btn btn-outline-success rounded-bill shadow-none"> Update My Order </button>
+                    <button className="btn btn-outline-danger rounded-bill shadow-none"
+                     onClick={(e) => { if (window.confirm('Are you sure you wish to delete this order?')) onDelete(e) } }> Delete Order </button>
                     <p className="text-danger my-3 m-auto p-3 rounded text-center border border-danger w-50" id="not_valid">
                         <BiError className="d-block my-2 m-auto h2 " />
                         { not_valid_message }
