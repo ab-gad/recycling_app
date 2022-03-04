@@ -1,5 +1,5 @@
 import { LinearProgress } from "@material-ui/core";
-import Progress from "../../Home/progress";
+import Progress from "./progress";
 
 function Rateing (){
     return (

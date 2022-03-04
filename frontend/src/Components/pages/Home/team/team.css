@@ -48,7 +48,7 @@
     color: #6fd33d;
 }
 
-#team .scial-icons i{
+#team .scial-icons svg{
     display: block;
     margin: 0.3rem;
     width: 2rem;
@@ -60,7 +60,7 @@
     color: white;
 }
 
-#team .scial-icons a:hover i{
+#team .scial-icons a:hover svg{
     background-color: #66cd17;
     border-color:#66cd17;
 }

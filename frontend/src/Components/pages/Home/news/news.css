@@ -1,6 +1,7 @@
 
 .owl-nav{
     text-align: center;
+    margin: 18px;
 }
 
 .owl-nav button i {
@@ -18,14 +19,14 @@
     height: 100% !important;
 }
 
-#item {
+.item {
     height: 100% !important;
 }
-#item .body_height {
+.body_height {
     max-height: 14rem!important;
     overflow: hidden;
 }
-#item .card-img-top {
+.item .card-img-top {
     width: 100%;
     height: 100px;
     object-fit: cover;
