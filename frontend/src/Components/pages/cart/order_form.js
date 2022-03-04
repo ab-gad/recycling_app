@@ -2,6 +2,7 @@ import React , { useEffect , useState} from "react";
 import { useParams  } from "react-router-dom";
 import { usePosition } from 'use-position';
 import { BiError } from 'react-icons/bi';
+import axios from 'axios';
 import "./cart.css";
 
 
@@ -17,19 +18,51 @@ function Order_form () {
     const plasticPrice = price.plastic*quantity.plastic;
     const metalPrice   = price.metal*quantity.metal;
     const sum = paperPrice + plasticPrice + metalPrice;
-   
+    
+    // Axios API 
+    const orders_api = `http://localhost:8000/orders_api/orders_api/` 
+    const [data , setData] = useState ({
+        first_name: '',
+        last_name: '',
+        phone: '',
+        city: '',
+        address: '',
+    })
+    function inputs_data (e){
+        
+    }
+
+    axios.post(orders_api , {
+        first_name: firstName.value ,
+        last_name : lastName.value ,
+        phone : phone.value ,
+        city : city.value ,
+        address : Address.value ,
+        paper_q : quantity.paper ,
+        plastic_q : quantity.plastic ,
+        metal_q : quantity.metal ,
+        total_price : sum.toFixed(2) ,
+        latitude : latitude ,
+        longitude : longitude ,
+        })
+        .then(function (response) {
+            console.log("done");
+        })
+        .catch(function (error) {
+        console.log(error);
+        });
 
     // catigory of kind of users 
     useEffect( () => {
         if ( cart_catigory === 'shop' ) {
             setQuantity({paper: 10 , metal: 10 , plastic: 10 }) ;
             setLimit({  min: 10 , max: 80 });
-            if ( order_id  ) {
-                console.log(order_id)
-            }else {
-                console.log("No ID")
+            // if ( order_id  ) {
+            //     console.log(order_id)
+            // }else {
+            //     console.log("No ID")
 
-            }
+            // }
         }
         else if ( cart_catigory === 'worker' ){
             setQuantity({paper: 80 , metal: 80 , plastic: 80 }) ;
@@ -100,11 +133,12 @@ function Order_form () {
     }
 
     function predefult (event) {
+
         if ( !(form_validation()) ) {
             event.preventDefault()
+
         }
     }
-    
     return(
         <>
             <section id="cart" className="container">
@@ -113,23 +147,23 @@ function Order_form () {
                     <div className="my-3 row ">
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6  ">
                             <label htmlFor="firstName" > First Name </label>
-                            <input className="w-50" type="text" id="firstName" name="firstName" />
+                            <input className="w-50" onChange={(e)=> inputs_data(e)} value={data.first_name} type="text" id="firstName" name="firstName" />
                         </div>
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6 ">
                             <label htmlFor="lastName" > Last Name </label>
-                            <input className="w-50" type="text" id="lastName" name="lastName" />
+                            <input className="w-50" onChange={(e)=> inputs_data(e)} value={data.last_name} type="text" id="lastName" name="lastName" />
                         </div>
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6 ">
                             <label htmlFor="phone" > Phone </label>
-                            <input className="w-50" type="number" id="phone" name="phone" />
+                            <input className="w-50" onChange={(e)=> inputs_data(e)} value={data.phone} type="number" id="phone" name="phone" />
                         </div>
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6 ">
                             <label htmlFor="city" > City </label>
-                            <input className="w-50" type="text" id="city" name="city" />
+                            <input className="w-50" onChange={(e)=> inputs_data(e)} value={data.city} type="text" id="city" name="city" />
                         </div>
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 ">
                             <label htmlFor="Address" > Detailed Address <span className="text-muted mx-2"> This will help our representative reach you, so please enter the ( Street - Building No. - Floor No. - Apartment No. ) </span> </label>
-                            <textarea className="w-100" rows="5" id="Address" name="address" > </textarea>
+                            <textarea className="w-100" onChange={(e)=> inputs_data(e)} value={data.address} rows="5" id="Address" name="address" > </textarea>
                         </div>
 
                         {/* hidden inputs */}

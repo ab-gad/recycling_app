@@ -16,7 +16,7 @@ class Orders (models.Model):
     latitude = models.FloatField(blank=True, null=True, verbose_name='Latitude')
     longitude = models.FloatField(blank=True, null=True, verbose_name='Longitude')
     location = models.PointField(blank=True, null=True)
-    order_date = models.DateTimeField(auto_now_add=True)
+    # order_date = models.DateTimeField(auto_now_add=True)
 
 
     def save(self, *args, **kwargs):
