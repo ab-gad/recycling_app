@@ -33,7 +33,7 @@ const Profile = () => {
   }, []);
 
   return (
-    <>
+    <section id="profile_container">  
         <h1 className="text-center"> {`Welcome ${authed_user.first_name} ${authed_user.last_name}`} </h1>
         <div className="row justify-content-center ">
         {orders.map((order) => {
@@ -93,7 +93,7 @@ const Profile = () => {
 
       
       
-    </>  
+    </section>  
       
       
       
