@@ -1,18 +1,60 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import PageTitle from "../../page_title";
-import { useEffect } from "react";
+import { useEffect ,useState} from "react";
+
 import {
   removeFromCart,
   decreaseCart,
   addToCart,
   clearCart,
   getTotals,
+  updateCart,
 } from "../../../features/cartSlice";
+import { useHistory } from "react-router-dom";
+import "./homeproducts.css";
 
 const Wagon = () => {
-  const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.authReducer.user);
+  const cartItems = useSelector((state) => state.cart.cartItems);
+
+   useEffect(() => {
+    const all = {};
+
+    if (user != null ) {
+      if(cartItems !=[]){
+      const user_id = user.id;
+      all[user_id] = cartItems;
+      localStorage.setItem("cartItems", JSON.stringify(all));
+     }else{
+      const user_id = user.id;
+      all[user_id] = cartItems;
+      localStorage.setItem("cartItems", JSON.stringify(all));
+     }
+    } else {
+      const user_id = 0;
+      all[user_id] = cartItems;
+      localStorage.setItem("any", JSON.stringify(all));
+    }
+  }, [cartItems]);
+
+useEffect(()=>{
+if(user!=null){
+  const usercart=JSON.parse(localStorage.getItem("cartItems"));
+
+  dispatch(updateCart(usercart[user.id]));
+}else{
+
+  const usercart=JSON.parse(localStorage.getItem("any"));
+
+  dispatch(updateCart(usercart[0]));
+}
+},[user]);
+
+
+  const cart = useSelector((state) => state.cart);
+  
   const handleRemoveFromCart = (cartItem) => {
     dispatch(removeFromCart(cartItem));
   };
@@ -31,6 +73,49 @@ const Wagon = () => {
   useEffect(() => {
     dispatch(getTotals());
   }, [cart, dispatch]);
+
+// api post
+const history = useHistory();
+
+const checkout=()=>{
+if(user!=null){
+  fetch('http://127.0.0.1:8000/order_product_api/OrderProductList/', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      "products": item,
+      "quantities": quantity,
+      "total_price": cart.cartTotalAmount,
+      "user":user.id
+    })
+  })
+}else{
+  history.push("/login");
+
+}
+};
+
+// const [users, setUsers] = useState([]);
+
+// useEffect(() => {
+//   axios
+//     .get("http://127.0.0.1:8000/order_product_api/OrderProductList/")
+//     .then((res) => {
+//       console.log(res.data);
+//       setUsers(res.data);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// }, []);
+
+
+  const item=[]
+  const quantity=[]
+  const total=0
   return (
     <div>
       {cart.cartItems.length === 0 ? (
@@ -43,16 +128,24 @@ const Wagon = () => {
         </>
       ) : (
         <>
-          <section class="h-100 gradient-custom">
-            <div class="container py-5">
-              <div class="row d-flex justify-content-center my-4">
-                <div class="col-md-8">
-                  <div class="card mb-4">
-                    <div class="card-headercartItem py-3">
-                      <h5 class="mb-0">Cart - 2 items</h5>
+          <section className="h-100 gradient-custom">
+            <div className="container py-5">
+              <div className="row d-flex justify-content-center my-4">
+                <div className="col-md-8">
+                  <div className="card mb-4">
+                    <div className="card-headercartItem py-3">
+                      <h5 className="mb-0">Cart -items</h5>
                     </div>
                     {cart.cartItems?.map((cartItem) => (
+                  
+
+             
+                       
                       <div key={cartItem.id}>
+                      <div className="visi">
+                      {item.push(cartItem.title)}
+                       {quantity.push(cartItem.cartQuantity)}
+                        </div>
                         <div className="card-body">
                           <div className="row">
                             <div className="col-lg-3 col-md-12 mb-4 mb-lg-0">
@@ -87,9 +180,9 @@ const Wagon = () => {
                                 <i className="fas fa-trash"></i>
                               </button>
                               {/* <button type="button" className="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip"
-                    title="Move to the wish list">
-                    <i className="fas fa-heart"></i>
-                  </button> */}
+                     title="Move to the wish list">
+                      <i className="fas fa-heart"></i>
+                     </button> */}
                             </div>
 
                             <div className="col-lg-4 col-md-6 mb-4 mb-lg-0">
@@ -132,7 +225,9 @@ const Wagon = () => {
                           <hr className="my-4" />
                         </div>
                       </div>
+                      
                     ))}
+          
                   </div>
                   <button
                     type="button"
@@ -181,6 +276,7 @@ const Wagon = () => {
                       <button
                         type="button"
                         className="btn btn-primary btn-lg btn-block"
+                        onClick={()=>checkout()}
                       >
                         Go to checkout
                       </button>
@@ -193,6 +289,8 @@ const Wagon = () => {
         </>
       )}
     </div>
+
   );
+  
 };
 export default Wagon;

@@ -161,28 +161,65 @@ nav {
   left: -79px !important;
   color: green !important;
 }
-.log_icon {
+.log_icon ,
+.product_cart {
   position: absolute;
-  right: 170px;
-  top: 30px;
+  right: 201px;
+  top: 32px;
   transform: translatey(-50%);
   font-size: 32px;
 }
+.product_cart {
+  right: 161px;
+  color: var(--nav_font_color);
+}
+.product_cart:hover {
+  color: var(--nav_font_color);
+}
 
+.product_cart span {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 1px;
+  font-size: 16px;
+}
 nav .responsev_zon {
   width: 100px;
   margin: auto;
 }
 nav .nav_logo {
-  height: 60px;
-  position: absolute;
-  left: 20px;
+  max-height: 3.2em;
+  position: relative;
+  left: 5px;
   top: 0;
 }
+nav .nav_logo img {
+  width: inherit;
+  height: 51px;
+  top: 0;
+  left: 0;
+}
+nav .nav_logo span {
+  font-size: 1.5em;
+}
+nav .nav_logo span:first-child {
+  font-size: 1.6em;
+  font-family: "Oleo Script Swash Caps", cursive;
+}
+@media (max-width: 552px) {
+  nav .nav_logo span {
+    font-size: 1em;
+  }
+  nav .nav_logo {
+    left: -10px;
+  }
+}
+
 nav .language_button {
   position: absolute;
-  right: 65px;
-  top: 5px;
+  right: 60px;
+  top: 8px;
 }
 
 body {
@@ -193,9 +230,9 @@ nav .toggel_icon {
   width: 2.2em;
   height: 2.2em;
   box-shadow: none !important;
-  position: fixed;
-  right: 16px;
-  top: 7px;
+  position: relative;
+  right: 5px;
+  top: 50%;
 }
 nav .line {
   width: 100%;

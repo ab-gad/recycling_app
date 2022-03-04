@@ -153,6 +153,7 @@ console.log(authed_user)
 
 
   return (
+
     
 
 
@@ -171,6 +172,7 @@ console.log(authed_user)
                 <input name='last_name' className="form-control" type="text" placeholder={`${user.last_name}`}
                         onChange={(e)=>{handleChange(e);lNameVaildation(e)}}/>
                          <small>{lNameError}</small> 
+
                 </div>
                 <div className='form-group'>
                 <input name='email' className="form-control" type="email" placeholder={`${user.email}`}
@@ -201,8 +203,9 @@ console.log(authed_user)
                 </div>
                 
             </form>
-            
-        </div>
+       </div>
+       
+    
 
 
   );
