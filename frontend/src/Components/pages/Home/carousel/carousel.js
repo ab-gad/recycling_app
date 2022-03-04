@@ -1,10 +1,12 @@
+import { Link } from 'react-router-dom';
 import "./carousel.css"
 
-function Carousel ()
-{
+
+function Carousel (){
+
  return (
     <section>
-    <div className="carousel">
+    <div className="carousel slide" data-bs-ride="carousel">
       <div
         id="carouselExampleCaptions"
         className="carousel slide cus-carousel-height"
@@ -42,93 +44,91 @@ function Carousel ()
           ></button>
         </div>
         <div className="carousel-inner cus-full-height">
-          <div className="carousel-item first-slide active cus-full-height">
+          <div className="carousel-item first-slide active cus-full-height" data-bs-interval="6000" >
             <div className="cus-overlay">
               <div className="container py-5 d-flex flex-column align-items-center justify-content-center text-center cus-full-height">
                 <h1 className="my-4 h2 animate__animated animate__zoomIn">
-                  WELCOME TO THE WORLD
+                  Welcome in Call To Recycle
                 </h1>
-                <p className="mb-0 col-8-md col-lg-7 fs-5 d-none d-md-block animate__animated animate__zoomIn">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Blanditiis, maiores amet quasi sunt dignissimos totam!
+                <p className="mb-0 col-8-md col-lg-7 fs-5 d-none text-capitalize d-md-block animate__animated animate__zoomIn">
+                  with Call to recycle Sell your paper, plastic  and metal garbage and improve your income   
                 </p>
-                <div className="my-4 cus-bottons animate__animated animate__fadeInUpBig">
-                  <button
+                <div className="my-4  cus-bottons animate__animated animate__fadeInUpBig">
+                  <Link
+                    to='/service'
                     type="button"
-                    className="btn btn-get-start btn-lg rounded-pill mx-2 cus-befor"
+                    className="btn fw-light btn-get-start btn-lg rounded-pill mx-2 cus-befor"
                   >
                     Get Start Now
-                  </button>
-                  <button
+                  </Link>
+                  <Link
+                    to='/about'
                     type="button"
-                    className="btn btn-outline-light btn-lg rounded-pill m-2 cus-befor"
+                    className="btn fw-light btn-outline-light btn-lg rounded-pill m-2 cus-befor"
                   >
-                    Contact Us
-                  </button>
+                    About Us
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
-          <div className="carousel-item zero-slide cus-full-height">
+          <div className="carousel-item zero-slide cus-full-height" data-bs-interval="6000">
             <div className="cus-overlay">
               <div className="container py-5 d-flex flex-column align-items-center justify-content-center text-center cus-full-height">
-                <h1 className="my-4 h2 animate__animated animate__zoomIn">
-                  WELCOME TO THE WORLD
+                <h1 className="my-4 h2 text-capitalize  animate__animated animate__zoomIn">
+                  What you want to buy 
                 </h1>
-                <p className="mb-0 col-8-md col-lg-7 fs-5 d-none d-md-block animate__animated animate__zoomIn">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Blanditiis, maiores amet quasi sunt dignissimos totam!
+                <p className="mb-0 text-capitalize  col-8-md col-lg-7 fs-5 d-none d-md-block animate__animated animate__zoomIn">
+                  You can buy many products that help you keep your family healthy and safe
                 </p>
+                <div className="my-4 cus-bottons animate__animated animate__fadeInUpBig">
+
+                  <Link
+                    to='/Homeproduct'
+                    type="button"
+                    className="btn fw-light btn-outline-light btn-lg rounded-pill m-2 cus-befor"
+                  >
+                    Products
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
-          <div className="carousel-item second-slide cus-full-height">
+          <div className="carousel-item second-slide cus-full-height" data-bs-interval="6000">
             <div className="cus-overlay">
               <div className="container py-5 d-flex flex-column align-items-center justify-content-center text-center cus-full-height">
-                <h1 className="my-4 h2 animate__animated animate__zoomIn">
-                  What Do You Do Today For Peaples 2
+                <h1 className="my-4 text-capitalize h2 animate__animated animate__zoomIn">
+                  Participate in different events
                 </h1>
-                <p className="mb-0 col-8-md col-lg-7 fs-5 d-none d-md-block animate__animated animate__zoomIn">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Blanditiis, maiores amet quasi sunt dignissimos totam!
+                <p className="mb-0 text-capitalize col-8-md col-lg-7 fs-5 d-none d-md-block animate__animated animate__zoomIn">
+                  You can participate in different events and be a volunteer to live in a better world
                 </p>
                 <div className="cus-bottons my-4 animate__animated animate__fadeInUpBig">
                   <button
+                    to='/events'
                     type="button"
-                    className="btn btn-get-start btn-lg rounded-pill mx-2 cus-befor"
+                    className="btn fw-light btn-outline-light btn-lg rounded-pill m-2 cus-befor"
                   >
-                    Get Start Now
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-outline-light btn-lg rounded-pill m-2 cus-befor"
-                  >
-                    Contact Us
+                    Events
                   </button>
                 </div>
               </div>
             </div>
           </div>
-          <div className="carousel-item third-slide cus-full-height">
+          <div className="carousel-item third-slide cus-full-height" data-bs-interval="6000">
             <div className="cus-overlay">
               <div className="container py-5 d-flex flex-column align-items-center justify-content-center text-center cus-full-height">
-                <h1 className="my-4 h2 animate__animated animate__zoomIn">
-                  What Do You Do Today For Peaples 1
+                <h1 className="my-4 h2 text-capitalize animate__animated animate__zoomIn">
+                  Contact with us
                 </h1>
-                <p className="my-0 col-8-md col-lg-7 fs-5 d-none d-md-block animate__animated animate__zoomIn">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Blanditiis, maiores amet quasi sunt dignissimos totam!
+                <p className="my-0 col-8-md text-capitalize col-lg-7 fs-5 d-none d-md-block animate__animated animate__zoomIn">
+                  It is our pleasure to contact us and give your opinions and suggestions
                 </p>
-                <div className="my-4 cus-bottons animate__animated animate__fadeInUpBig">
+                <div className="my-4 fw-light cus-bottons animate__animated animate__fadeInUpBig">        
                   <button
+                    to='/contact'
                     type="button"
-                    className="btn btn-get-start btn-lg rounded-pill mx-2 cus-befor"
-                  >
-                    Get Start Now
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-outline-light btn-lg rounded-pill m-2 cus-befor"
+                    className="btn fw-light btn-outline-light btn-lg rounded-pill m-2 cus-befor"
                   >
                     Contact Us
                   </button>

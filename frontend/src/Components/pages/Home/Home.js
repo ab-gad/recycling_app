@@ -22,7 +22,7 @@ const Home = () => {
   
   return (
     <section  >
-      {/* <Spinner /> */}
+      <Spinner />
       {/* _______________________ Carouser Section ______________________________ */}
       <Carousel />
       {/* ______________________ 4 Cards (Working) Section _____________________________*/}
