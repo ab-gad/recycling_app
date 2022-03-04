@@ -1,21 +1,12 @@
 .card {
-    /* margin: auto; */
-    /* width: 38%; */
     max-width: 300px;
     padding: 4vh 0;
     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-top: 3px solid rgb(252, 103, 49);
     border-bottom: 3px solid rgb(252, 103, 49);
-    /* border-left: none; */
-    /* border-right: none; */
 
 }
 
-/* @media(max-width:768px) {
-    .card {
-        width: 90%
-    }
-} */
 
 .title {
     color: rgb(252, 103, 49);
