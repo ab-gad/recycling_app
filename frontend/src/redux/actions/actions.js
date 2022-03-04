@@ -75,7 +75,7 @@ export const login = (email, password) => async dispatch => {
 
     try {
         const res = await axios.post(`http://127.0.0.1:8000/auth/jwt/create/`, body, config);
-        toast.done(`Login Success`, {
+        toast.success(`Login Success`, {
             position: "bottom-left",
           });
         dispatch({
@@ -221,7 +221,7 @@ export const reset_password_confirm = (uid, token, new_password, re_new_password
 
     try {
         await axios.post(`http://127.0.0.1:8000/auth/users/reset_password_confirm/`, body, config);
-        toast.done(`Password Reset Successfull`, {
+        toast.success(`Password Reset Successfull`, {
             position: "bottom-left",
           });
         dispatch({
@@ -249,9 +249,10 @@ export const verify = (uid, token) => async dispatch => {
     try {
         await axios.post(`http://127.0.0.1:8000/auth/users/activation/`, body, config);
 
-        toast.done(`Account is Successfully verified`, {
+        toast.success(`Account is Successfully verified`, {
             position: "bottom-left",
           });
+          
         dispatch({  
             type: ACTIVATION_SUCCESS,
         });

@@ -5,6 +5,7 @@ import axios from "axios";
 import { useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import "./cart.css";
+import { toast } from "react-toastify";
 
 function OrderForm (props) {
     const [price, setPrice] = useState({})
@@ -12,7 +13,14 @@ function OrderForm (props) {
     const [limit , setLimit] = useState({})
     const { latitude , longitude } = usePosition();
     const cart_catigory = props.type
-
+    let type = ""
+    if (cart_catigory==='shop'){
+        type = 'S'
+    }else if (cart_catigory==='worker'){
+        type = 'W'
+    }else {
+        type = 'H'
+    }
     const history = useHistory()
     const date = new Date().toLocaleString()
     // catigory of kind of users 
@@ -32,7 +40,7 @@ function OrderForm (props) {
             setPrice({ paper: 0.70 , metal: 1.5 , plastic: 1.5})
             setLimit({ min: 2 , max: 20 });
         }
-    },[])
+    },[cart_catigory])
 
     const paperPrice   = price.paper*quantity.paper;
     const plasticPrice = price.plastic*quantity.plastic;
@@ -138,21 +146,30 @@ function OrderForm (props) {
                 total_price: sum ,
                 latitude: latitude || null ,
                 longitude: latitude || null ,
-                user_id:user.id
+                user_id:user.id,
+                type:type
             }
             console.log(orderData)
             axios.post(url,orderData)
             .then ( req => {
                 console.log(req.data)
+                toast.success(`Your Order Was Sent Successfully`, {
+                    position: "bottom-left",
+                  });
                 history.push('/success_order')
-            })   
+            })
             .catch((err) => {
+                toast.error(`error in sending , please Try again`, {
+                    position: "bottom-left",
+                  });
                 console.log(err)
                 history.push('/error_404')
             })
         }else if(user === null){
             console.log('NOT VAL', valid)
-
+            toast.warning(`Make sure you are logged to be able to send your order`, {
+                position: "bottom-left",
+              });
             not_valid.style.display = 'block'
             setNotValid("Make sure you are logged to be able to send your order")
         }
