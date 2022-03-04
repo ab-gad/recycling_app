@@ -87,10 +87,9 @@ const RegisterForm = ({ signup, setForm, err, signUp}) => {
                 console.log('HI',err.password[0])
             }else if(err.email){
                 setNotValid(err.email[0])
+            }else{
+                history.push('/error_404')
             }
-        }else{
-            register_validation_mess && (register_validation_mess.style.display = 'block')
-            setNotValid(err)
         }
     }
     useEffect(()=>{
