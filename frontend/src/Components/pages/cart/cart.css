@@ -1,4 +1,6 @@
-#cart input , textarea  {
+#cart input ,
+#cart textarea ,
+#cart select  {
     display: inline-block;
     padding: .375rem .75rem;
     font-size: 1rem;
@@ -15,6 +17,10 @@
     outline: none;
 }
 
+#cart select {
+  -webkit-appearance: initial;
+  appearance: auto ;
+}
 #cart .input-group {
     flex-wrap: nowrap !important;
 }
@@ -41,4 +47,10 @@ input[type=number] {
   font-size: 30px;
   color: red ;
   display: none;
+}
+
+.success_img {
+  position: relative;
+  left: 50%;
+  transform: translatex(-50%) ;
 }

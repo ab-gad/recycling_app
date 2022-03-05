@@ -31,15 +31,21 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('user_api/', include('user_api.urls', namespace='user_api')),
     path('events_api/', include('events_api.urls')),
+    path('products_api/', include('products_api.urls')),
+    path('order_product_api/', include('order_product_api.urls')),
     path('comment_api_test/', include('comment_api_test.urls')),
     path('api/stripe/', include('payments.urls')),
-    path('auth/', include('authen.urls', namespace='authen')),
-
+    path('authen/', include('authen.urls', namespace='authen')),
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.jwt')),
+    path('auth/', include('djoser.social.urls')),
+    
     # for auth tokens
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
-    #orders API
+
+    # orders API
     path('orders_api/', include('orders_api.urls')),
 
 ]

@@ -6,14 +6,11 @@
 }
 :root {
   --color: #222327;
-  --bg_nav_Color: #2a004f;
+  --bg_nav_Color: #00a300;
   --nav_overlay: #eee;
   --nav_font_color: rgb(245 212 212);
 }
-body {
-  background-color: #ddd;
-  height: 2000px;
-}
+
 li {
   list-style: none !important;
 }
@@ -29,6 +26,9 @@ li {
 }
 nav {
   background-color: var(--bg_nav_Color);
+}
+.dropdown-item.active {
+  background-color: #eee !important;
 }
 @media (max-width: 991px) {
   nav {
@@ -98,7 +98,7 @@ nav {
     opacity: 0;
     transform: translateY(20px);
     top: 30px;
-    left: 13px;
+    left: 17px;
     color: var(--nav_font_color);
     font-size: 15px;
   }
@@ -106,7 +106,7 @@ nav {
   nav .nav_element li.active a .tex {
     opacity: 1;
     transition: 0.5s;
-    transform: translate(-6px, 10px);
+    transform: translate(-11px, 10px);
   }
   nav .indecator {
     position: absolute;
@@ -153,33 +153,73 @@ nav {
   nav ul li:nth-child(5).active ~ .indecator {
     transform: translateX(280px);
   }
+  nav ul li:nth-child(6).active ~ .indecator {
+    transform: translateX(350px);
+  }
 }
 .log_drop {
   left: -79px !important;
   color: green !important;
 }
-.log_icon {
+.log_icon ,
+.product_cart {
   position: absolute;
-  right: 70px;
-  top: 30px;
+  right: 201px;
+  top: 32px;
   transform: translatey(-50%);
   font-size: 32px;
 }
+.product_cart {
+  right: 161px;
+  color: var(--nav_font_color);
+}
+.product_cart:hover {
+  color: var(--nav_font_color);
+}
 
+.product_cart span {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 1px;
+  font-size: 16px;
+}
 nav .responsev_zon {
   width: 100px;
   margin: auto;
 }
 nav .nav_logo {
-  height: 60px;
-  position: absolute;
-  left: 20px;
+  max-height: 3.2em;
+  position: relative;
+  left: 5px;
   top: 0;
 }
+nav .nav_logo img {
+  width: inherit;
+  height: 51px;
+  top: 0;
+  left: 0;
+}
+nav .nav_logo span {
+  font-size: 1.5em;
+}
+nav .nav_logo span:first-child {
+  font-size: 1.6em;
+  font-family: "Oleo Script Swash Caps", cursive;
+}
+@media (max-width: 552px) {
+  nav .nav_logo span {
+    font-size: 1em;
+  }
+  nav .nav_logo {
+    left: -10px;
+  }
+}
+
 nav .language_button {
   position: absolute;
-  right: 37px;
-  top: 0;
+  right: 60px;
+  top: 8px;
 }
 
 body {
@@ -190,9 +230,9 @@ nav .toggel_icon {
   width: 2.2em;
   height: 2.2em;
   box-shadow: none !important;
-  position: fixed;
-  right: 16px;
-  top: 7px;
+  position: relative;
+  right: 5px;
+  top: 50%;
 }
 nav .line {
   width: 100%;

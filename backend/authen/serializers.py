@@ -1,6 +1,21 @@
 from rest_framework import serializers
 from user.models import User
 
+#djoser Settings
+from djoser.serializers import UserCreateSerializer
+from django.contrib.auth import get_user_model
+
+Djoser_user = get_user_model()
+
+class UserCreateSerializer(UserCreateSerializer):
+    class Meta(UserCreateSerializer.Meta):
+        model = Djoser_user
+        fields = ('id','email','password', 'first_name', 'last_name')
+
+class CurrentUserSerializer(UserCreateSerializer):
+    class Meta(UserCreateSerializer.Meta):
+        model = Djoser_user
+        fields = '__all__'
 
 class RegisterSerializer(serializers.ModelSerializer):
     class Meta:

@@ -6,7 +6,7 @@ from events.models import Events
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['first_name','last_name','phone','email','avatar','birthdate','city']
+        fields = ['first_name','last_name','phone','email','avatar','birthdate','city','id']
 
 class LocationSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,3 +17,10 @@ class EventsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Events
         fields = '__all__'
+
+class AuthedUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        exclude = ('password', )
+
+

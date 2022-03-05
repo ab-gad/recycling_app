@@ -12,8 +12,8 @@ const options = {
     touchDrag:true,
     nav: true,
     autoplay: false,
-    navText:['<i class="fas fa-long-arrow-alt-left fs-5 px-3 py-1 mx-1 mt-4 rounded-pill rounded-end "></i>'
-            ,'<i class="fas fa-long-arrow-alt-right fs-5 px-3 py-1 mt-4 mx-1 rounded-pill rounded-start"></i>'],
+    navText:[ '<i class="fas fa-long-arrow-alt-left fs-5 px-3  py-1 mx-1 mt-4 rounded-pill rounded-end "> Prev </i>'
+            , '<i class="fas fa-long-arrow-alt-right fs-5 px-3  py-1 mt-4 mx-1 rounded-pill rounded-start" > Next </i>'],
     smartSpeed: 1000,
     responsive: {
         0: {
@@ -29,8 +29,7 @@ const options = {
   };
 
 function News (){
-    
-    const [user, setUser] = useState([])
+
     const [news, setNews] = useState([])
     const [ref, setRef] = useState(false)
     
@@ -43,27 +42,17 @@ function News (){
         })
     }
 
-    const getUsers = () => {
-        fetch('http://localhost:8000/user_api/')
-        .then(res=>res.json())
-        .then(result => {
-            console.log("users", result)
-            setUser()
-        })
-    }
-
     useEffect(()=>{
         getNews()
-        getUsers()
     },[])
 
     
     return(
-        <section>
+        <section dir='ltr'>
             <div className="container py-5">
                 <div className="title mb-4">
                     <h2>
-                        Latest Recycling News:
+                        Latest Recycling News:                        
                     </h2>
                 </div>
                 <OwlCarousel className="slider-items owl-carousel" {...options}>

@@ -1,12 +1,17 @@
 import "./NavBar.css";
 import { NavLink } from "react-router-dom";
 import { Langcontext } from "../App";
-import { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { FaRegUserCircle ,FaSeedling , FaBoxOpen } from 'react-icons/fa';
 import { VscHome } from 'react-icons/vsc';
-import { BsBuilding , BsChatDots } from 'react-icons/bs';
+import { BsBuilding , BsChatDots  , BsShop , BsCart2 } from 'react-icons/bs';
+import { useSelector} from "react-redux"
+import { connect } from "react-redux";
+import { logout} from "../redux/actions/actions";
+import { useHistory } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const {cartTotalQuantity}=useSelector(state=>state.cart)
   const Arabic = {
     RecycleWebSite: "إعادة تدوير موقع",
     Home: "الرئيسية",
@@ -14,9 +19,12 @@ const Navbar = () => {
     Services: "خدمات",
     Events: "الأحداث",
     CountactUs: "اتصل بنا",
-    Login: "تسجيل",
-    Register: "إنشاء حساب",
+    Products: "منتجات",
+    Login: " تسجيل الدخول",
+    SignUp:"انشاء حساب",
     Profile: "الملف الشخصي",
+    settings: "الاعدادات",
+    logout:"تسجيل الخروج"
   };
   const English = {
     RecycleWebSite: "Recycle Web Site",
@@ -25,10 +33,12 @@ const Navbar = () => {
     Services: "Services",
     Events: "Events",
     CountactUs: "Contact ",
+    Products: "Products",
     Login: "Login",
     Register: "Register",
     Profile: "Profile",
-
+    settings: "Settings",
+    logout:"Logout"
   };
 
   const { langcont, Setlangcontext } = useContext(Langcontext);
@@ -51,35 +61,68 @@ const Navbar = () => {
       anmi_item.forEach( (item)=> {
         item.classList.remove('active');
         this.classList.add('active');
+        localStorage.setItem("navActive" , this.id )
       })
     }
-      
+    
+    const history = useHistory();
+    const logout_user = () => {
+      props.logout();
+      history.push('/auth/login');
+    } ;
+
+    // useEffect( ()=> {
+    //   document.getElementById("home").classList.remove('active');
+    //   document.getElementById(localStorage.getItem("navActive")).classList.add('active');
+    // })
+
   return (
     <>
      <div className="overlay">
-      <nav className="navbar navbar-expand-lg ">
+      <nav className="navbar navbar-expand-lg " dir='ltr'>
         <div className="container-fluid ">
-          <NavLink className="navbar-brand navbar-logo text-light" to="/" >
-            <img src={require('../Components/pages/Home/images/lo.png')} alt="Logo" className="nav_logo" />
-          </NavLink>
-         
 
-            <li className="nav-item mx-3 dropdown log_icon ">
+          <div className=" navbar-logo text-light" >
+            <div className="nav_logo" >
+              <img src={require('../Components/pages/Home/images/lo1.png')} alt="Logo" />
+              <span> C <span className="text-warning fw-bold"> 2 </span> R </span>
+            </div>
+          </div>
+
+          <button type="button" className="btn btn-outline-light shadow-none rounded-pill m-2 mx-3 language_button " onClick={() => language_zone() } >
+            {langcont}
+          </button>   
+
+            <li className="nav-item mx-3 dropdown log_icon d-flex align-items-center">
               <NavLink className="nav-link p-0 m-0 " to="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <FaRegUserCircle className="text-light" />
+                {props.user !== null? 
+                  <> 
+                  <span className="fs-5 mx-2 text-white">{`${props.user.first_name} ${props.user.last_name}`}</span>
+                  <img className="rounded-circle" src={`${props.user.avatar}`} width='40' height='40' alt='user Avatar'/> 
+                  </>
+                : 
+                  <FaRegUserCircle className="text-light" />
+                }
               </NavLink>
-              <button type="button" className="btn btn-outline-light shadow-none rounded-pill m-2 mx-3 language_button " onClick={() => language_zone() } >
-                    {langcont}
-                </button>
-
+              
+              {props.isAuthenticated ?
               <ul className="dropdown-menu log_drop" aria-labelledby="navbarDropdownMenuLink">
-                <li><NavLink className="dropdown-item text-center text-primary " to="/login" > {translation.Login} </NavLink></li>
-                <li><NavLink className="dropdown-item text-center text-primary " to="/register" > {translation.Register} </NavLink></li>
                 <li><NavLink className="dropdown-item text-center text-primary " to="/profile" > {translation.Profile} </NavLink></li>
+                <li><NavLink className="dropdown-item text-center text-primary " to="/settings" > {translation.settings} </NavLink></li>
+                <li><button className="dropdown-item text-center text-primary " onClick={logout_user}> {translation.logout} </button></li>
               </ul>
-            </li>
+              :
+              <ul className="dropdown-menu log_drop" aria-labelledby="navbarDropdownMenuLink">
+                <li><NavLink className="dropdown-item text-center text-primary " to="/auth/login" > {translation.Login} </NavLink></li>
+                <li><NavLink className="dropdown-item text-center text-primary " to="/auth/register" > {translation.Register} </NavLink></li>
+              </ul>
+              }
+            </li>       
             
-                
+                <NavLink to='/' className="nav-link product_cart " >
+                  <span> 3 </span>
+                  <BsCart2/>
+                </NavLink>
             <button className="navbar-toggler toggel_icon p-0" dir='rtl' type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">    
               <div>
                 <span className='line navbar-toggler-icon' > </span>
@@ -93,35 +136,42 @@ const Navbar = () => {
           <div className="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
       
             <ul className="navbar-nav nav_element " dir="ltr" >
-              <li className="nav-item anmi_item active">
-                <NavLink to="/" className="nav-link text-center d-flex gap-3 responsev_zon" aria-current="page" >
+              <li className="nav-item anmi_item active" id="home">
+                <NavLink to="/" className="nav-link text-center d-flex gap-3 responsev_zon" aria-current="page"  >
                   <span className="ico text-light"> <VscHome /> </span>
                   <span className="tex text-light " > {translation.Home} </span>  
                 </NavLink>
               </li>
 
-              <li className="nav-item  anmi_item">
+              <li className="nav-item  anmi_item" id="about" >
                 <NavLink to="/about" className="nav-link text-center  d-flex gap-3 responsev_zon" >
                   <span className="ico text-light"> <BsBuilding/> </span>
                   <span className="tex text-light" > {translation.About} </span>  
                 </NavLink>
               </li>
               
-              <li className="nav-item anmi_item">
+              <li className="nav-item anmi_item" id="services">
                 <NavLink to="/service" className="nav-link text-center  d-flex gap-3 responsev_zon" >
                   <span className="ico text-light"> <FaBoxOpen/> </span>
                   <span className="tex text-light" > {translation.Services} </span>  
                 </NavLink>
               </li>
 
-              <li className="nav-item anmi_item">
+              <li className="nav-item anmi_item" id="events">
                 <NavLink to="/events" className="nav-link text-center  d-flex gap-3 responsev_zon" >
                   <span className="ico text-light"> <FaSeedling/> </span>
                   <span className="tex text-light" > {translation.Events} </span>  
                 </NavLink>
               </li>
 
-              <li className="nav-item anmi_item">
+              <li className="nav-item anmi_item" id="product" >
+                <NavLink to="/Homeproduct" className="nav-link text-center  d-flex gap-3 responsev_zon" >
+                  <span className="ico text-light"> <BsShop/> </span>
+                  <span className="tex text-light" > {translation.Products} </span>  
+                </NavLink>
+              </li>
+
+              <li className="nav-item anmi_item" id="contact">
                 <NavLink to="/contact" className="nav-link text-center  d-flex gap-3 responsev_zon" >
                   <span className="ico text-light"> <BsChatDots/> </span>
                   <span className="tex text-light" > {translation.CountactUs} </span>  
@@ -138,4 +188,10 @@ const Navbar = () => {
     </>
   );
 };
-export default Navbar;
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.authReducer.isAuthenticated,
+  user: state.authReducer.user
+});
+
+export default connect(mapStateToProps, {logout})(Navbar);
