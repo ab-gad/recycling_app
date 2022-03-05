@@ -71,10 +71,9 @@ const Navbar = (props) => {
       history.push('/auth/login');
     } ;
 
-    // useEffect( ()=> {
-    //   document.getElementById("home").classList.remove('active');
-    //   document.getElementById(localStorage.getItem("navActive")).classList.add('active');
-    // })
+    useEffect( ()=> {
+      document.getElementById(localStorage.getItem("navActive")).classList.add('active');
+    } ,[])
 
   return (
     <>
@@ -136,7 +135,7 @@ const Navbar = (props) => {
           <div className="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
       
             <ul className="navbar-nav nav_element " dir="ltr" >
-              <li className="nav-item anmi_item active" id="home">
+              <li className="nav-item anmi_item " id="home">
                 <NavLink to="/" className="nav-link text-center d-flex gap-3 responsev_zon" aria-current="page"  >
                   <span className="ico text-light"> <VscHome /> </span>
                   <span className="tex text-light " > {translation.Home} </span>  
