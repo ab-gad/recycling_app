@@ -121,7 +121,7 @@ const RegisterForm = ({ signup, setForm, err, signUp}) => {
             />
         </div>
         <p className=" m-0 text-center validation_mess" id="register_validation_mess" > {notValid} ! </p>
-        <button className="btn btn_color w-100 mt-2 mp-0" type="submit"> Register </button>
+        <button className="btn btn_color w-100 mt-2 mp-0 shadow-none" type="submit"> Register </button>
     </form>
   );
 }

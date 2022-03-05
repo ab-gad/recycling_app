@@ -87,7 +87,7 @@ function Carousel (){
                 <h1 className="my-4 h2 animate__animated animate__zoomIn">
                   {translation.Slide_1_title}
                 </h1>
-                <p className="mb-0 col-8-md col-lg-7 fs-5 d-none text-capitalize d-md-block animate__animated animate__zoomIn">
+                <p className="mb-0 col-8-md col-lg-7 fs-5 d-none shadow-none  text-capitalize d-md-block animate__animated animate__zoomIn">
                   {translation.Slide_1_body} 
                 </p>
                 <div className="my-4  cus-bottons animate__animated animate__fadeInUpBig">
@@ -115,7 +115,7 @@ function Carousel (){
                 <h1 className="my-4 h2 text-capitalize  animate__animated animate__zoomIn">
                   {translation.Slide_2_title} 
                 </h1>
-                <p className="mb-0 text-capitalize  col-8-md col-lg-7 fs-5 d-none d-md-block animate__animated animate__zoomIn">
+                <p className="mb-0 text-capitalize  col-8-md col-lg-7 fs-5 d-none shadow-none  d-md-block animate__animated animate__zoomIn">
                   {translation.Slide_2_body} 
                 </p>
                 <div className="my-4 cus-bottons animate__animated animate__fadeInUpBig">
@@ -137,7 +137,7 @@ function Carousel (){
                 <h1 className="my-4 text-capitalize h2 animate__animated animate__zoomIn">
                   {translation.Slide_3_title}
                 </h1>
-                <p className="mb-0 text-capitalize col-8-md col-lg-7 fs-5 d-none d-md-block animate__animated animate__zoomIn">
+                <p className="mb-0 text-capitalize col-8-md col-lg-7 fs-5 d-none shadow-none  d-md-block animate__animated animate__zoomIn">
                   {translation.Slide_3_body} 
                 </p>
                 <div className="cus-bottons my-4 animate__animated animate__fadeInUpBig">
@@ -158,7 +158,7 @@ function Carousel (){
                 <h1 className="my-4 h2 text-capitalize animate__animated animate__zoomIn">
                   {translation.Slide_4_title}
                 </h1>
-                <p className="my-0 col-8-md text-capitalize col-lg-7 fs-5 d-none d-md-block animate__animated animate__zoomIn">
+                <p className="my-0 col-8-md text-capitalize col-lg-7 fs-5 d-none shadow-none  d-md-block animate__animated animate__zoomIn">
                   {translation.Slide_4_body} 
                 </p>
                 <div className="my-4 fw-light cus-bottons animate__animated animate__fadeInUpBig">        

@@ -58,6 +58,7 @@ a.cus-befor {
   position: relative;
   overflow: hidden;
   transition: 0.5s;
+  width: 160px;
 }
 a.cus-befor::before {
   content: "";
@@ -75,6 +76,9 @@ a.cus-befor::before {
 
 a.cus-befor:hover::before {
   left: 110%;
+}
+p.animate__animated {
+  max-width: 35%;
 }
 
 /*________________________________ responsive __________________________________*/

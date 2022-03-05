@@ -95,13 +95,16 @@ footer .below-footer {
     background-size: cover;
     height: 350px;
 }
-
+footer .below-footer a {
+    font-size: 18px;
+}
 footer .overlay {
     background-color: rgba(0, 0, 0, 0.651);
     height: 350px;
 }
 
 footer .quick-links li:hover a,
-footer .latest-nwes .card-title:hover{
+footer .latest-nwes .card-title:hover ,
+footer .copyright a:hover {
     color: #6fd33d;
 }
