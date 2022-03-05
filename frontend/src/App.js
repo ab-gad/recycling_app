@@ -155,8 +155,6 @@ const App = ({load_user,checkAuthenticated, user, isAuthenticated}) => {
                     <Cart />
                   </Route> */}
 
-                  
-
                   <Redirect to="/" />
                 </Switch>
               </ThemesContext.Provider>

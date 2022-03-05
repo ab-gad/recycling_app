@@ -12,8 +12,8 @@ function Card(props) {
                     <h4 className='my-3'> {title} </h4>
                 </div>
                 <div className="card-body text-white small py-3 ">
-                    <p className="card-text"> {text} </p>
-                    <a href={url} target="_blanck" className="btn shadow-none ">
+                    <p className="card-text" style={{height:'6rem',padding:'23px 0',overflow:'hidden'}}> {text} </p>
+                    <a href={url} target="_blanck" className="btn shadow-none btn-outline-light ">
                         Read More
                     </a>
                 </div>
