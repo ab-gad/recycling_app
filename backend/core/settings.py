@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'products',
     'products_api',
     'order_product',
+    'material_rate_and_price',
 ]
 
 MIDDLEWARE = [
