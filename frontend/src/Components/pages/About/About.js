@@ -1,10 +1,11 @@
 import React , { useContext } from "react";
+import { Langcontext } from "../../../App";
 import PageTitle from "../../page_title";
 import Footer from "../Footer/Footer";
 import { GiFeather, GiSpotedFlower } from "react-icons/gi";
 import { HiOutlineLightBulb, HiOutlineSun } from "react-icons/hi";
 import { FaHandHoldingHeart, FaCogs, FaRegGem } from "react-icons/fa";
-import { Langcontext } from "../../../App";
+import './about.css';
 
 const About = () => { 
   const Arabic = {
@@ -14,20 +15,20 @@ const About = () => {
     weAreTheBestParagraph:
       "علاقتنا المتميزة مع منافسينا هي ما يميزنا عن غيرنا. شغفنا وحبنا لما نقوم به هو ما يجعلنا نتحرك للأمام. إيماننا بأننا نستحق الأفضل دائمًا هو ما يجعلنا الأفضل حقًا. معًا ، يمكننا حماية البيئة وتحقيق المنافع المتبادلة. إذا كنت ترغب في بيع البلاستيك أو الألمنيوم أو الورق المستعمل ، فأنت في المكان الصحيح.",
     knowMore: "تعرف على المزيد عن ...",
-    dream: "الحلم",
+    dream: "حلمنا",
     dreamText: "نحلم بعالم نظيف خالٍ من الأمراض لنعيشه في سعادة دائمة.",
-    vision: "الرؤية",
+    vision: "رؤيتنا",
     visionText:
       "بناء فكرة إعادة التدوير في أذهان الأجيال القادمة لأنها مستقبلنا.",
-    passion: "الشغف",
+    passion: "شغفنا",
     passionText: "الشغف هو القوة الدافعة التي تدفعنا نحو النجاح والإبداع.",
-    benefit: "الفائدة",
+    benefit: "الفوائد",
     benefitText:
       "نعتقد أن العلاقة بين المنظمة وعملائها هي أهم فائدة لتحقيق التقدم.",
-    purpose: "الهدف",
+    purpose: "هدفنا",
     purposeText:
       "نسعى جاهدين من أجل مستقبل أفضل من خلال الاستخدام الأفضل للموارد والحفاظ على الصحة العامة.",
-    values: "القيم",
+    values: "قيمنا",
     valuesText:
       "الصدق والإخلاص وكسب رضا العملاء هي أعلى القيم التي تجعل قلوبنا مليئة بالحب لبعضنا البعض.",
   };
@@ -146,7 +147,7 @@ const About = () => {
                   key={i}
                   className=" ico_2 text-center col-sm-5 col-10 mt-5  d-block d-lg-none "
                 >
-                  <h3 className="mb-4"> {opj.text} </h3>
+                  <h3 className="mb-4 text-danger"> {opj.text} </h3>
                   <p> {opj.content} </p>
                 </div>
               );

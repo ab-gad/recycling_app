@@ -12,13 +12,7 @@ function OrderForm (props) {
     const [quantity, setQuantity] = useState({})
     const [limit , setLimit] = useState({})
     const { latitude , longitude } = usePosition();
-    const [data , setData] = useState({
-        firstName: '',
-        lastName: '',
-        phone: '',
-        city: '',
-        Address: '',
-    })
+  
     const [orderData , setOrderData] = useState({})
 
     const user = useSelector(state => state.authReducer.user )
@@ -76,49 +70,43 @@ function OrderForm (props) {
         }
     }
     
-    // form validation
     const [ not_valid_message , setNotValid ] = useState("");
-    let firstName = document.getElementById("firstName");
-    let lastName = document.getElementById("lastName");
-    let phone = document.getElementById("phone");
-    let city = document.getElementById("city");
-    let Address = document.getElementById("Address");
     let not_valid = document.getElementById("not_valid");
     let pattern = /[0-9]/
 
     function form_validation (){
-        if ( !firstName.value ||
-             firstName.value.match(pattern) || 
-             firstName.value.replace(/\s/g, "") === "" ) {
+        if ( !orderData.first_name ||
+            orderData.first_name.match(pattern) || 
+            orderData.first_name.replace(/\s/g, "") === "" ) {
 
             not_valid.style.display = 'block'
             setNotValid("First Name is Required and Mustn't be Numeric")
             return false
         } 
-        else if ( !lastName.value ||
-                  lastName.value.match(pattern) ||
-                  lastName.value.replace(/\s/g, "") === "" ) {
+        else if ( !orderData.last_name ||
+            orderData.last_name.match(pattern) ||
+            orderData.last_name.replace(/\s/g, "") === "" ) {
 
             not_valid.style.display = 'block'
             setNotValid("Last Name is Required and Mustn't be Numeric ")
             return false
         }
-        else if ( phone.value.length !== 11 || phone.value[0] !== '0' || phone.value[1] !== '1' ){
-            console.log('PHONE',phone.value.length,phone.value )
+        else if ( orderData.phone.length !== 11 || orderData.phone[0] !== '0' || orderData.phone[1] !== '1' ){
+            console.log('PHONE',orderData.phon.length,orderData.phone)
             not_valid.style.display = 'block'
             setNotValid("Phone Must be 11 Number and be Egyptian Phone Number")
             return false
         }
-        else if ( !city.value ||
-                  city.value.match(pattern) ||
-                  city.value.replace(/\s/g, "") === "" ) {
+        else if ( !orderData.city ||
+                orderData.city.match(pattern) ||
+                orderData.city.replace(/\s/g, "") === "" ) {
 
             not_valid.style.display = 'block'
             setNotValid(" City is Required and Mustn't be Numeric ")
             return false
         }
-        else if ( !Address.value ||
-                  Address.value.replace(/\s/g, "") === "" ) {
+        else if ( !orderData.address ||
+                orderData.address.replace(/\s/g, "") === "" ) {
 
             not_valid.style.display = 'block'
             setNotValid(" Address is Required and Must be Specified ")
@@ -133,37 +121,50 @@ function OrderForm (props) {
 
 
     // Axios Api
-    const url = `http://127.0.0.1:8000/orders_api/${order_id}`
+    const url = `http://127.0.0.1:8000/orders_api/${order_id}/`
     
-    function inputsData (e){
-        data[e.target.id] = e.target.value
-        setData(data)
-        // console.log(data)
-    }
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    const onDelete = (e) => {
+        e.preventDefault();
+        console.log('DELETE YES')
+        axios.delete(url)
+            .then ( res => {
+                console.log(res.data)
+                toast.success(`Your Order Was Deleted Successfully`, {
+                    position: "bottom-left",
+                  });
+                
+                history.push('/profile')
+            })
+            .catch((err) => {
+                toast.error(`error Updating , please Try again`, {
+                    position: "bottom-left",
+                  });
+                console.log(err)
+                history.push('/error_404')
+            })
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault()
         const valid = form_validation()
         console.log("USER",user, "Valid", valid )
         if (user !== null && valid){
             console.log('VAAALID')
-            const orderData = {
-                first_name: data.firstName ,
-                last_name: data.lastName ,
-                phone: data.phone ,
-                city: data.city ,
-                address: data.Address ,
+            const updatedOrderData = {
+                first_name: orderData.first_name ,
+                last_name: orderData.last_name ,
+                phone: orderData.phone ,
+                city: orderData.city ,
+                address: orderData.address ,
                 paper_q: quantity.paper ,
                 plastic_q: quantity.plastic ,
                 metal_q: quantity.metal ,
                 total_price: sum ,
                 latitude: latitude || null ,
                 longitude: latitude || null ,
-                user_id:user.id,
-                type:type
             }
-            console.log(orderData)
-            axios.put(url,orderData)
+            console.log(updatedOrderData)
+            axios.put(url,updatedOrderData)
             .then ( res => {
                 console.log(res.data)
                 toast.success(`Your Order Was Updated Successfully`, {
@@ -181,11 +182,11 @@ function OrderForm (props) {
             })
         }else if(user === null){
             console.log('NOT VAL', valid)
-            toast.warning(`Make sure you are logged to be able to send your order`, {
+            toast.warning(`Make sure you are logged to be able to update your order`, {
                 position: "bottom-left",
               });
             not_valid.style.display = 'block'
-            setNotValid("Make sure you are logged to be able to send your order")
+            setNotValid("Make sure you are logged to be able to upadate your order")
         }
     }
     
@@ -197,23 +198,23 @@ function OrderForm (props) {
                     <div className="my-3 row ">
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6  ">
                             <label htmlFor="firstName" > First Name </label>
-                            <input value={orderData.first_name} className="w-50" onChange={(e) => inputsData(e) } type="text" id="firstName" name="firstName" />
+                            <input value={orderData.first_name} className="w-50" onChange={(e) => setOrderData({...orderData,first_name:e.target.value}) } type="text" id="firstName" name="first_name" />
                         </div>
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6 ">
                             <label htmlFor="lastName" > Last Name </label>
-                            <input value={orderData.last_name} className="w-50" onChange={(e) => inputsData(e) }  type="text" id="lastName" name="lastName" />
+                            <input value={orderData.last_name} className="w-50" onChange={(e) => setOrderData({...orderData,last_name:e.target.value}) }  type="text" id="lastName" name="last_name" />
                         </div>
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6 ">
                             <label htmlFor="phone" > Phone </label>
-                            <input value={orderData.phone} className="w-50" onChange={(e) => inputsData(e) } type="number" id="phone" name="phone" />
+                            <input value={orderData.phone} className="w-50" onChange={(e) => setOrderData({...orderData,phone:e.target.value}) } type="number" id="phone" name="phone" />
                         </div>
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6 ">
                             <label htmlFor="city" > City </label>
-                            <input value={orderData.city} className="w-50" onChange={(e) => inputsData(e) } type="text" id="city" name="city" />
+                            <input value={orderData.city} className="w-50" onChange={(e) => setOrderData({...orderData,city:e.target.value}) } type="text" id="city" name="city" />
                         </div>
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 ">
                             <label htmlFor="Address" > Detailed Address <span className="text-muted mx-2"> This will help our representative reach you, so please enter the ( Street - Building No. - Floor No. - Apartment No. ) </span> </label>
-                            <textarea value={orderData.address} className="w-100" onChange={(e) => inputsData(e) } rows="5" id="Address" name="address" > </textarea>
+                            <textarea value={orderData.address} className="w-100" onChange={(e) => setOrderData({...orderData,address:e.target.value}) } rows="5" id="Address" name="address" > </textarea>
                         </div>
 
                         {/* hidden inputs */}
@@ -343,7 +344,9 @@ function OrderForm (props) {
                 
                 <div className="my-4 text-center">
                 {/* onClick={ (event) => handleSubmit(event)}  */}
-                    <button type="submit" className="btn btn-outline-success rounded-bill shadow-none"> Done </button>
+                    <button type="submit" className="btn btn-outline-success rounded-bill shadow-none"> Update My Order </button>
+                    <button className="btn btn-outline-danger rounded-bill shadow-none"
+                     onClick={(e) => { if (window.confirm('Are you sure you wish to delete this order?')) onDelete(e) } }> Delete Order </button>
                     <p className="text-danger my-3 m-auto p-3 rounded text-center border border-danger w-50" id="not_valid">
                         <BiError className="d-block my-2 m-auto h2 " />
                         { not_valid_message }

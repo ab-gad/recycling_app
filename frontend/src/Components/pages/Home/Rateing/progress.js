@@ -1,6 +1,6 @@
 
 import { CircularProgress } from '@material-ui/core';
-import '../Home/Home.css';
+import '../../Home/Home.css';
 
 function Progress(props) {
   return (

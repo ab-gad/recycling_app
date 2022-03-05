@@ -6,7 +6,7 @@ function NewsCard(props){
     const date = publishedAt.split("T")[0]
     const contentWithoutCount = content.split("[")[0]
     return(
-        <div className="item">
+        <div id="item">
             <div className="card h-100">
                 <img src={urlToImage} className="card-img-top" style={{minHeight: 240}} alt="..." />
                 <div className="card-body body_height">

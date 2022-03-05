@@ -18,22 +18,26 @@ console.log(authed_user)
     const [userData,updateData]=useState({})
     const handleChange=(e) => {
         // if ([e.target.name] == 'avatar'){
-        //     setImage({
-        //         avatar: e.target.files[0]
-        //     })
-        //     console.log(e.target.files)
-        // }
-
-        // console.log(e.target.value)
-        updateData({
-            ...userData,
-            [e.target.name]:e.target.value.trim()
-        })
-        
-    }
-
+            //     setImage({
+                //         avatar: e.target.files[0]
+                //     })
+                //     console.log(e.target.files)
+                // }
+                
+                // console.log(e.target.value)
+                updateData({
+                    ...userData,
+                    [e.target.name]:e.target.value.trim()
+                })
+                
+            }
+            
+    const [image,setImage] = useState(null);
     const updateUser=() => {
         console.log("without avatar",userData)
+        const formData = new FormData();
+        formData.append("image",image)
+        console.log(formData)
         axios.put(`http://localhost:8000/user_api/list/${authed_user.id}`,{
             email: userData.email,
             city: userData.city,
@@ -53,6 +57,10 @@ console.log(authed_user)
             console.log(err)
         })
     }
+    const handleFileSelect = (e) => {
+        setImage(e.target.files[0])
+    }
+
     const [user, setUser] = useState({})
     const getUser=() => {
         axios.get(`http://localhost:8000/user_api/list/${authed_user.id}`)
@@ -145,9 +153,6 @@ console.log(authed_user)
 
 
   return (
-
-    
-
 
 
         <div className='col-xl-5 m-auto' id='settings_container'>

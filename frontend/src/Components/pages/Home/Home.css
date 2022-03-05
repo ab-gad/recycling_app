@@ -91,12 +91,12 @@
   font-family: Ubuntu, "times new roman", times, roman, serif;
 }
 .cont {
-  margin-left: 27%;
-  margin-right: 15%;
   margin-top: 80px;
 }
 .lamp_effect {
-
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
   filter: drop-shadow(2px 4px 41px #fff);
 }
 .icons {
@@ -197,6 +197,7 @@
 #reat_section table {
   text-transform: capitalize;
   color: azure;
+  font-size: 18px;
 }
 
 #reat_section tr {
@@ -231,6 +232,7 @@
 }
 #reat_section h6 {
   margin-top: 3rem;
+  font-size: 18px;
 }
 
 #homeCard a {
@@ -265,150 +267,9 @@
   background: linear-gradient(0deg, #6fd33de8, #6fd33de8),
     url("../Home/images/bg.jpeg");
   background-size: cover;
+  min-height: 22rem;
 }
 
 #homeCard .card img {
   max-width: 30%;
-}
-/* --------------------------------------------------- About ----------------------------------------------- */
-#about {
-  font-size: 19px;
-}
-
-#about .about_info h2 {
-  margin-bottom: 1.5rem;
-  text-transform: capitalize;
-  color: #68ea30;
-  font-weight: bold;
-}
-#about .about_info p {
-  line-height: 1.8;
-}
-#about img {
-  width: 30rem;
-}
-
-#about .container_circle_icons {
-  /* background-color: #eee; */
-  padding: 3rem 0 7rem;
-}
-
-#about .circle_icons {
-  position: relative;
-  max-width: 600px;
-  margin: 3rem auto;
-  font-size: 7rem;
-}
-
-#about .circle_icons p {
-  font-size: initial;
-  color: #00000096;
-  font-weight: bold;
-  line-height: 2;
-}
-#about .circle_icons div {
-  font-size: 3.5rem;
-  color: darkcyan;
-}
-
-#about .circle_icons div .ico {
-  position: absolute;
-  color: rgba(0, 0, 0, 0.534);
-  border-radius: 8px;
-  max-width: 280px;
-  opacity: 0;
-  transition: 0.9s;
-  background-color: #eee;
-  box-shadow: 0 4px 15px 0 rgb(0 0 0 / 22%);
-}
-
-#about .circle_icons div:nth-child(1) .ico,
-#about .circle_icons div:nth-child(2) .ico,
-#about .circle_icons div:nth-child(3) .ico,
-#about .circle_icons div:nth-child(5) .ico,
-#about .circle_icons div:nth-child(6) .ico,
-#about .circle_icons div:nth-child(7) .ico {
-  padding: 0.5rem;
-}
-#about .circle_icons div:nth-child(1) .ico {
-  top: -5rem;
-  left: 9.5rem;
-}
-
-#about .circle_icons div:nth-child(2) {
-  position: absolute;
-  left: 3rem;
-  top: 8rem;
-}
-#about .circle_icons div:nth-child(2) .ico {
-  bottom: 0rem;
-  left: -21rem;
-}
-
-#about .circle_icons div:nth-child(3) {
-  position: absolute;
-  right: 3rem;
-  top: 8rem;
-}
-#about .circle_icons div:nth-child(3) .ico {
-  bottom: 0rem;
-  right: -21rem;
-}
-#about .circle_icons div:nth-child(4) {
-  margin: 7rem 0 9rem;
-  font-size: 6rem;
-  animation-name: flower;
-  animation-duration: 1.5s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-  animation-direction: alternate;
-  transition: 0.5s;
-}
-
-#about .circle_icons div:nth-child(4) span {
-  cursor: pointer;
-  position: relative;
-}
-
-#about .circle_icons div:nth-child(5) {
-  position: absolute;
-  left: 3rem;
-  bottom: 8rem;
-}
-#about .circle_icons div:nth-child(5) .ico {
-  bottom: -1rem;
-  left: -21rem;
-}
-
-#about .circle_icons div:nth-child(6) {
-  position: absolute;
-  right: 3rem;
-  bottom: 8rem;
-}
-#about .circle_icons div:nth-child(6) .ico {
-  right: -21rem;
-  bottom: 0rem;
-}
-#about .circle_icons div:nth-child(7) .ico {
-  bottom: -10.5rem;
-  left: 9.5rem;
-}
-#about .ico_2 {
-  box-shadow: 10px 10px 15px #00000026;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #77777729;
-  background-color: #eee;
-  color: #000;
-}
-
-@keyframes flower {
-  100% {
-    color: red;
-  }
-}
-
-#home_icons_data span {
-  color: #4cbb17;
-  font-weight: bold;
 }
