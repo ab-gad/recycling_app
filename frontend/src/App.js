@@ -38,6 +38,7 @@ import Homeproduct from "./Components/pages/Product/homeproduct";
 import Wagon from "./Components/pages/Product/cart";
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import LiveChat from "./Components/pages/LiveChat/LiveChat";
 
 // import { Langcontext } from './context/lang';
 export const Langcontext = React.createContext();
@@ -133,6 +134,9 @@ const App = ({load_user,checkAuthenticated, user, isAuthenticated}) => {
                   </Route>
                   <Route path="/contact" exact>
                     <Contact />
+                  </Route>
+                  <Route path="/live" exact>
+                    <LiveChat />
                   </Route>
                   <ProtectedRoute exact path="/service/cart/:name/:order_id"  component={SellCart}/>
                   <ProtectedRoute exact path="/success_order"  component={Success_order}/>
