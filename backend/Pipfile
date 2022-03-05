@@ -41,6 +41,7 @@ Pillow = "==9.0.1"
 PyJWT = "==2.3.0"
 Django = "==3.1.7"
 social-auth-app-django = "*"
+channels = "*"
 
 [dev-packages]
 
