@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -62,7 +63,12 @@ INSTALLED_APPS = [
     'products',
     'products_api',
     'order_product',
+<<<<<<< HEAD
     'material_rate_and_price',
+=======
+    'chat',
+    
+>>>>>>> 0c86d7dc25214be73a96d5da6ff306386bf722b0
 ]
 
 MIDDLEWARE = [
@@ -282,4 +288,10 @@ JAZZMIN_SETTINGS = {
     "default_icon_parents": "fas fa-chevron-circle-right",
     "default_icon_children": "fas fa-arrow-circle-right",
     "copyright": "Recycling - Team 4",
+}
+ASGI_APPLICATION = "core.routing.application"
+CHANNEL_LAYERS={
+    "default":{
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
 }

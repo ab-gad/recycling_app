@@ -1,9 +1,10 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import{useLocation,useHistory,Link}from'react-router-dom';
+import {API_URL} from '../../../config/index';
+import QueryString from 'query-string';
 import PageTitle from "../../page_title";
-import { useEffect ,useState} from "react";
-import { TiMinus,TiPlus } from "react-icons/ti";
-
+import { TiMinus, TiPlus } from "react-icons/ti";
 import { BsFillTrashFill } from "react-icons/bs";
 import {
   removeFromCart,
@@ -13,27 +14,41 @@ import {
   getTotals,
   updateCart,
 } from "../../../features/cartSlice";
-import { useHistory } from "react-router-dom";
 import "./homeproducts.css";
 
 const Wagon = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.authReducer.user);
   const cartItems = useSelector((state) => state.cart.cartItems);
-
-   useEffect(() => {
+  const location=useLocation();
+       useEffect(() => {
+          // Check to see if this is a redirect back from Checkout
+           const values = QueryString.parse(location.search);
+           console.log(values);
+  
+           if (values.success) {
+             console.log("Order placed! You will receive an email confirmation.");
+           }
+  
+           if (values.canceled) {
+               console.log(
+               "Order canceled -- continue to shop around and checkout when you're ready."
+             );
+           }
+         }, []);
+  useEffect(() => {
     const all = {};
 
-    if (user != null ) {
-      if(cartItems !=[]){
-      const user_id = user.id;
-      all[user_id] = cartItems;
-      localStorage.setItem("cartItems", JSON.stringify(all));
-     }else{
-      const user_id = user.id;
-      all[user_id] = cartItems;
-      localStorage.setItem("cartItems", JSON.stringify(all));
-     }
+    if (user != null) {
+      if (cartItems != []) {
+        const user_id = user.id;
+        all[user_id] = cartItems;
+        localStorage.setItem("cartItems", JSON.stringify(all));
+      } else {
+        const user_id = user.id;
+        all[user_id] = cartItems;
+        localStorage.setItem("cartItems", JSON.stringify(all));
+      }
     } else {
       const user_id = 0;
       all[user_id] = cartItems;
@@ -41,22 +56,20 @@ const Wagon = () => {
     }
   }, [cartItems]);
 
-useEffect(()=>{
-if(user!=null){
-  const usercart=JSON.parse(localStorage.getItem("cartItems"));
+  useEffect(() => {
+    if (user != null) {
+      const usercart = JSON.parse(localStorage.getItem("cartItems"));
 
-  dispatch(updateCart(usercart[user.id]));
-}else{
+      dispatch(updateCart(usercart[user.id]));
+    } else {
+      const usercart = JSON.parse(localStorage.getItem("any"));
 
-  const usercart=JSON.parse(localStorage.getItem("any"));
-
-  dispatch(updateCart(usercart[0]));
-}
-},[user]);
-
+      dispatch(updateCart(usercart[0]));
+    }
+  }, [user]);
 
   const cart = useSelector((state) => state.cart);
-  
+
   const handleRemoveFromCart = (cartItem) => {
     dispatch(removeFromCart(cartItem));
   };
@@ -76,48 +89,46 @@ if(user!=null){
     dispatch(getTotals());
   }, [cart, dispatch]);
 
-// api post
-const history = useHistory();
+  // api post
+  const history = useHistory();
 
-const checkout=()=>{
-if(user!=null){
-  fetch('http://127.0.0.1:8000/order_product_api/OrderProductList/', {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      "products": item,
-      "quantities": quantity,
-      "total_price": cart.cartTotalAmount,
-      "user":user.id
-    })
-  })
-}else{
-  history.push("/login");
+  const checkout = () => {
+    if (user != null) {
+      fetch("http://127.0.0.1:8000/order_product_api/OrderProductList/", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          products: item,
+          quantities: quantity,
+          total_price: cart.cartTotalAmount,
+          user: user.id,
+        }),
+      });
+    } else {
+      history.push("/login");
+    }
+  };
 
-}
-};
+  // const [users, setUsers] = useState([]);
 
-// const [users, setUsers] = useState([]);
+  // useEffect(() => {
+  //   axios
+  //     .get("http://127.0.0.1:8000/order_product_api/OrderProductList/")
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       setUsers(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
 
-// useEffect(() => {
-//   axios
-//     .get("http://127.0.0.1:8000/order_product_api/OrderProductList/")
-//     .then((res) => {
-//       console.log(res.data);
-//       setUsers(res.data);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// }, []);
-
-
-  const item=[]
-  const quantity=[]
-  const total=0
+  const item = [];
+  const quantity = [];
+  const total = 0;
   return (
     <div>
       {cart.cartItems.length === 0 ? (
@@ -139,14 +150,10 @@ if(user!=null){
                       <h5 className="mb-0">Cart -items</h5>
                     </div>
                     {cart.cartItems?.map((cartItem) => (
-                  
-
-             
-                       
                       <div key={cartItem.id}>
-                      <div className="visi">
-                      {item.push(cartItem.title)}
-                       {quantity.push(cartItem.cartQuantity)}
+                        <div className="visi">
+                          {item.push(cartItem.title)}
+                          {quantity.push(cartItem.cartQuantity)}
                         </div>
                         <div className="card-body">
                           <div className="row">
@@ -179,7 +186,7 @@ if(user!=null){
                                 data-mdb-toggle="tooltip"
                                 title="Remove item"
                               >
-                                <BsFillTrashFill/>
+                                <BsFillTrashFill />
                               </button>
                               {/* <button type="button" className="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip"
                      title="Move to the wish list">
@@ -193,7 +200,7 @@ if(user!=null){
                                   onClick={() => handleDecreaseCart(cartItem)}
                                   className="btn btn-primary px-3 me-2"
                                 >
-                                  <TiMinus/>
+                                  <TiMinus />
                                 </button>
 
                                 <div className="form-outline">
@@ -212,7 +219,7 @@ if(user!=null){
                                   onClick={() => handleIncreaseCart(cartItem)}
                                   className="btn btn-primary px-3 ms-2"
                                 >
-                                 <TiPlus/>
+                                  <TiPlus />
                                 </button>
                               </div>
 
@@ -227,9 +234,7 @@ if(user!=null){
                           <hr className="my-4" />
                         </div>
                       </div>
-                      
                     ))}
-          
                   </div>
                   <button
                     type="button"
@@ -274,14 +279,18 @@ if(user!=null){
                           </span>
                         </li>
                       </ul>
-
-                      <button
-                        type="button"
-                        className="btn btn-primary btn-lg btn-block"
-                        onClick={()=>checkout()}
+                      <form
+                        action={`${API_URL}/api/stripe/create-checkout-session`}
+                        method="POST"
                       >
-                        Go to checkout
-                      </button>
+                        <button
+                          type="submit"
+                          className="btn btn-primary btn-lg btn-block"
+                          onClick={() => checkout()}
+                        >
+                          Checkout
+                        </button>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -291,8 +300,6 @@ if(user!=null){
         </>
       )}
     </div>
-
   );
-  
 };
 export default Wagon;
