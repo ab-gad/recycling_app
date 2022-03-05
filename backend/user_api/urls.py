@@ -11,5 +11,7 @@ urlpatterns = [
     path('location/', LocationList.as_view(), name='locationlist'),
     path('event/<int:pk>/', EventDetails.as_view(), name='eventdetails'),
     path('profile/<int:id>',views.profile,name='user_profile'),
+    path('events/<int:id>',views.events,name='user_events'),
+
     
 ]

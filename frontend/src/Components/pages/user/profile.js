@@ -37,15 +37,9 @@ const Profile = () => {
   }, [authed_user]);
 
   return (
-    <>
-    <section id="profile">
-    <h1 className="text-center">
-        {" "}
-        {`Welcome ${authed_user && authed_user.first_name} ${
-          authed_user && authed_user.last_name
-        }`}{" "}
-      </h1>
-      <div className="row justify-content-center ">
+    <section id="profile_container">  
+        <h1 className="text-center"> {`Welcome ${authed_user.first_name} ${authed_user.last_name}`} </h1>
+        <div className="row justify-content-center " id="profile_container">
         {orders.map((order) => {
           return (
             <div className="card mt-2 me-2">
@@ -104,17 +98,6 @@ const Profile = () => {
                   </div>
                 </div>
               </div>
-              {order.type === "H" && (
-                <Link to={`/service/cart/home/${order.id}`}>More Details</Link>
-              )}
-              {order.type === "S" && (
-                <Link to={`/service/cart/shop/${order.id}`}>More Details</Link>
-              )}
-              {order.type === "W" && (
-                <Link to={`/service/cart/worker/${order.id}`}>
-                  More Details
-                </Link>
-              )}
               <div className="tracking">
                 <div className="title">Tracking Order</div>
               </div>
@@ -134,13 +117,22 @@ const Profile = () => {
                   </li>
                 </ul>
               </div>
+              {order.type === "H" && (
+                <Link to={`/service/cart/home/${order.id}`} className="btn btn-danger w-50 m-auto">More Details</Link>
+              )}
+              {order.type === "S" && (
+                <Link to={`/service/cart/shop/${order.id}`} className="btn btn-danger w-50 m-auto">More Details</Link>
+              )}
+              {order.type === "W" && (
+                <Link to={`/service/cart/worker/${order.id}`} className="btn btn-danger w-50 m-auto">
+                  More Details
+                </Link>
+              )}
             </div>
           );
         })}
       </div>
     </section>
-      
-    </>
   );
 };
 
