@@ -8,6 +8,7 @@ import Services from "./Components/pages/Service/Service";
 import Testimonial from "./Components/pages/Testimonial/Testimonial";
 import User from "./Components/pages/user/user";
 import Profile from "./Components/pages/user/profile";
+import Events from "./Components/pages/user/events";
 import Error_404 from "./Components/pages/Home/error_404";
 import Success_order from "./Components/pages/cart/success_order";
 // import Login from "./Components/pages/Registeration/login";
@@ -118,6 +119,9 @@ const App = ({load_user,checkAuthenticated, user, isAuthenticated}) => {
                   </Route>
                   <Route path="/settings" exact>
                     <User />
+                  </Route>
+                  <Route path="/user/events" exact>
+                    <Events />
                   </Route>
                   <Route path="/profile" exact>
                     <Profile />

@@ -108,6 +108,8 @@ const Navbar = (props) => {
               <ul className="dropdown-menu log_drop" aria-labelledby="navbarDropdownMenuLink">
                 <li><NavLink className="dropdown-item text-center text-primary " to="/profile" > {translation.Profile} </NavLink></li>
                 <li><NavLink className="dropdown-item text-center text-primary " to="/settings" > {translation.settings} </NavLink></li>
+                <li><NavLink className="dropdown-item text-center text-primary " to="/user/events" > {translation.Events} </NavLink></li>
+
                 <li><button className="dropdown-item text-center text-primary " onClick={logout_user}> {translation.logout} </button></li>
               </ul>
               :
