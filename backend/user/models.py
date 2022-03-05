@@ -22,36 +22,48 @@ PHONE_REGEX = RegexValidator(
 
 class UserManager(BaseUserManager):
 # we can use **other_fields as the last parameter in our fun. and when using self.model 
-    def create_user(self, email, first_name, last_name='', password=None, is_active=True, is_staff=False, is_superuser=False):
+    # def create_user(self, email, first_name='', last_name='', password=None, is_active=True, is_staff=False, is_superuser=False):
         
+
+    #     print(email, first_name, last_name, password)
+    #     if not email:
+    #         raise ValueError("Users must have an email address")
+    #     if not password:
+    #         raise ValueError("Users must have a password")
+    #     if not first_name:
+    #         raise ValueError("Users must have a first name")
+
+    #     # >>> 2nd
+        
+    #     email=self.normalize_email(email) 
+    #     user_obj = self.model(
+    #         email=email,
+    #         first_name=first_name,
+    #         last_name=last_name
+    #     )
+
+    #     user_obj.set_password(password)  # change user password
+    #     user_obj.is_staff = is_staff
+    #     user_obj.is_superuser = is_superuser
+    #     user_obj.is_active = is_active
+        
+    #     # >>> 3rd
+    #     user_obj.save(using=self._db)
+
+
+    #     # >>> don't forget to return the user Object
+    #     return user_obj
+    def create_user(self, email, password=None, **extra_fields):
         if not email:
-            raise ValueError("Users must have an email address")
-        if not password:
-            raise ValueError("Users must have a password")
-        if not first_name:
-            raise ValueError("Users must have a first name")
+            raise ValueError('Users must have an email address')
 
-        # >>> 2nd
-        
-        email=self.normalize_email(email) 
-        user_obj = self.model(
-            email=email,
-            first_name=first_name,
-            last_name=last_name
-        )
+        email = self.normalize_email(email)
+        user = self.model(email=email, **extra_fields)
 
-        user_obj.set_password(password)  # change user password
-        user_obj.is_staff = is_staff
-        user_obj.is_superuser = is_superuser
-        user_obj.is_active = is_active
-        
-        # >>> 3rd
-        user_obj.save(using=self._db)
+        user.set_password(password)
+        user.save()
 
-
-        # >>> don't forget to return the user Object
-        return user_obj
-
+        return user
     def create_staffuser(self, email, first_name, last_name, password=None):
         user = self.create_user(
             email,

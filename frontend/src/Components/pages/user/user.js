@@ -154,9 +154,6 @@ console.log(authed_user)
 
   return (
 
-    
-
-
 
         <div className='col-xl-5 m-auto' id='settings_container'>
                 <img src={`${user.avatar}`} className="rounded-circle border border-success border-4"/> 
@@ -183,11 +180,11 @@ console.log(authed_user)
                 <input type="date" name='birthdate' className="form-control" placeholder={`${user.birthdate}`}
                         onChange={(e)=>handleChange(e)}/>
                 </div>
-                <div className='form-group'>
+                {/* <div className='form-group'>
                 <input type="file" accept="image/*" name="avatar"  class="form-control form-control-alternative"
                         onChange={handleFileSelect}
                      />
-                </div>
+                </div> */}
                 <div className='form-group'>
                 <input name='phone' className="form-control" type="text" placeholder={`${user.phone}`}
                         onChange={(e)=>{handleChange(e);phoneVaildation(e)}}/>

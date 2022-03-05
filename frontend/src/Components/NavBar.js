@@ -7,7 +7,7 @@ import { VscHome } from 'react-icons/vsc';
 import { BsBuilding , BsChatDots  , BsShop , BsCart2 } from 'react-icons/bs';
 import { useSelector} from "react-redux"
 import { connect } from "react-redux";
-import { checkAuthenticated, load_user, logout} from "../redux/actions/actions";
+import { logout} from "../redux/actions/actions";
 import { useHistory } from 'react-router-dom';
 
 const Navbar = (props) => {
@@ -20,7 +20,8 @@ const Navbar = (props) => {
     Events: "الأحداث",
     CountactUs: "اتصل بنا",
     Products: "منتجات",
-    LoginSignUp: "تسجيل/إنشاء حساب",
+    Login: " تسجيل الدخول",
+    SignUp:"انشاء حساب",
     Profile: "الملف الشخصي",
     settings: "الاعدادات",
     logout:"تسجيل الخروج"
@@ -33,7 +34,8 @@ const Navbar = (props) => {
     Events: "Events",
     CountactUs: "Contact ",
     Products: "Products",
-    LoginSignUp: "Login/SignUp",
+    Login: "Login",
+    Register: "Register",
     Profile: "Profile",
     settings: "Settings",
     logout:"Logout"
@@ -43,9 +45,9 @@ const Navbar = (props) => {
   const translation = langcont === "ENGLISH" ? English : Arabic;
   const anmi_item = document.querySelectorAll('.anmi_item');
 
-    // anmi_item.forEach ( (item)=> {
-    //   item.addEventListener('click' , active )
-    // })
+    anmi_item.forEach ( (item)=> {
+      item.addEventListener('click' , active )
+    })
     
     const language_zone = () => {
       if ( langcont === "ENGLISH" ) {
@@ -55,25 +57,20 @@ const Navbar = (props) => {
       }
     }
 
-    // function active (){
-    //   anmi_item.forEach( (item)=> {
-    //     item.classList.remove('active');
-    //     this.classList.add('active');
-    //     localStorage.setItem("navActive" , this.id )
-    //   })
-    // }
+    function active (){
+      anmi_item.forEach( (item)=> {
+        item.classList.remove('active');
+        this.classList.add('active');
+        localStorage.setItem("navActive" , this.id )
+      })
+    }
     
     const history = useHistory();
     const logout_user = () => {
       props.logout();
-      history.push('/login');
+      history.push('/auth/login');
     } ;
 
-    useEffect(()=>{
-      props.checkAuthenticated()
-      props.load_user()
-    },[])
-      
     // useEffect( ()=> {
     //   document.getElementById("home").classList.remove('active');
     //   document.getElementById(localStorage.getItem("navActive")).classList.add('active');
@@ -116,8 +113,8 @@ const Navbar = (props) => {
               </ul>
               :
               <ul className="dropdown-menu log_drop" aria-labelledby="navbarDropdownMenuLink">
-                <li><NavLink className="dropdown-item text-center text-primary " to="/login" > {translation.LoginSignUp} </NavLink></li>
-                {/* <li><NavLink className="dropdown-item text-center text-primary " to="/register" > {translation.Register} </NavLink></li> */}
+                <li><NavLink className="dropdown-item text-center text-primary " to="/auth/login" > {translation.Login} </NavLink></li>
+                <li><NavLink className="dropdown-item text-center text-primary " to="/auth/register" > {translation.Register} </NavLink></li>
               </ul>
               }
             </li>       
@@ -197,4 +194,4 @@ const mapStateToProps = state => ({
   user: state.authReducer.user
 });
 
-export default connect(mapStateToProps, {checkAuthenticated, load_user, logout})(Navbar);
+export default connect(mapStateToProps, {logout})(Navbar);
