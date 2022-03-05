@@ -4,7 +4,7 @@ import { TiSocialLinkedin } from "react-icons/ti";
 
 function TeamCard(props) {
 
-    const {src, name, title, bgColor} = props
+    const {src, name, title, bgColor , facebook , github , linkedin } = props
 
     return(
         <div className="col">
@@ -12,9 +12,9 @@ function TeamCard(props) {
                 <div className='buttom-rounded position-relative pt-1' style={{backgroundColor:bgColor}}> 
                     <img src={src} className="card-img-top" alt="..." />
                     <div className='scial-icons buttom-rounded'>
-                        <a href="#"> <TiSocialLinkedin/> </a>   
-                        <a href="#"> <FaGithub/> </a>  
-                        <a href="#"> <GrFacebookOption/> </a>  
+                        <a href= {linkedin} target='_blank' > <TiSocialLinkedin/> </a>   
+                        <a href= {github} target='_blank' > <FaGithub/> </a>  
+                        <a href= {facebook} target='_blank' > <GrFacebookOption/> </a>  
                     </div>
                 </div>
                 <div className="card-body small py-3 ">
