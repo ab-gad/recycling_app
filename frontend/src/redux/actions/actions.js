@@ -268,7 +268,7 @@ export const verify = (uid, token) => async dispatch => {
 };
 
 export const googleAuthenticate = (state, code) => async dispatch => {
-    if (state && code && !localStorage.getItem('access')) {
+    if (state && code) {
         console.log("GOoGLE AURH START")
         const config = {
             headers: {
