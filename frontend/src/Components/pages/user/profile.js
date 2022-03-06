@@ -39,7 +39,7 @@ const Profile = () => {
   return (
     <section id="profile_container">  
         <h1 className="text-center"> {`Welcome ${authed_user.first_name} ${authed_user.last_name}`} </h1>
-        <div className="row justify-content-center " id="profile_container">
+        <div className="row justify-content-center ">
         {orders.map((order) => {
           return (
             <div className="card mt-2 me-2">
@@ -47,12 +47,12 @@ const Profile = () => {
               <div className="info">
                 <div className="row">
                   <div className="col-7">
-                    {" "}
+                    
                     <span id="heading">Date</span>
                     <br /> <span id="details">{order.order_date}</span>{" "}
                   </div>
                   <div className="col-5 pull-right">
-                    {" "}
+                    
                     <span id="heading">Order No.</span>
                     <br /> <span id="details">{order.id}</span>{" "}
                   </div>
@@ -61,31 +61,29 @@ const Profile = () => {
               <div className="pricing">
                 <div className="row">
                   <div className="col-9">
-                    {" "}
+                    
                     <span id="name">Paper Qty</span>{" "}
                   </div>
                   <div className="col-3">
-                    {" "}
+                    
                     <span id="price">£{order.paper_q}</span>{" "}
                   </div>
                 </div>
                 <div className="row">
                   <div className="col-9">
-                    {" "}
+                    
                     <span id="name">Plastic Qty</span>{" "}
                   </div>
                   <div className="col-3">
-                    {" "}
+                    
                     <span id="price">£{order.plastic_q}</span>{" "}
                   </div>
                 </div>
                 <div className="row">
                   <div className="col-9">
-                    {" "}
                     <span id="name">Metal Qty</span>{" "}
                   </div>
                   <div className="col-3">
-                    {" "}
                     <span id="price">£{order.metal_q}</span>{" "}
                   </div>
                 </div>
