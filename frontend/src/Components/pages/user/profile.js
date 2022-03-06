@@ -18,27 +18,29 @@ const Profile = () => {
   const [orders, setOrders] = useState([]);
   const dispatch = useDispatch();
   const getOrders = () => {
-    console.log(authed_user.id);
-    axios
-      .get(`http://localhost:8000/user_api/profile/${authed_user.id}`)
-      .then((result) => {
-        console.log("orders", result.data.orders);
-        setOrders(result.data.orders);
-        dispatch(setUserSellOrders(result.data.orders));
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (authed_user !== null) {
+      axios
+        .get(`http://localhost:8000/user_api/profile/${authed_user.id}`)
+        .then((result) => {
+          console.log("orders", result.data.orders);
+          setOrders(result.data.orders);
+          dispatch(setUserSellOrders(result.data.orders));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+    }
+
   };
   useEffect(() => {
-    if (authed_user !== null) {
       getOrders();
-    }
+    
   }, [authed_user]);
 
   return (
     <section id="profile_container">  
-        <h1 className="text-center"> {`Welcome ${authed_user.first_name} ${authed_user.last_name}`} </h1>
+        <h1 className="text-center"> {`Welcome ${authed_user && authed_user.first_name} ${authed_user && authed_user.last_name}`} </h1>
         <div className="row justify-content-center ">
         {orders.map((order) => {
           return (
