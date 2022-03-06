@@ -15,7 +15,7 @@ class StripeCheckoutView(APIView):
                 line_items=[
                     {
                         # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                        'price': 'price_1KXFBeJ336fqgY5lnpzLmN2c',
+                        'price': 'price_1KZcffJ336fqgY5l80sj5FGn',
                         'quantity': 1,
                     },
                 ],

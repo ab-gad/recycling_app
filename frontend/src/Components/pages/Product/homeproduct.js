@@ -91,7 +91,7 @@ const Homeproduct = () => {
                     <p className="card-text">{product.description}</p>
                     <button
                       onClick={() => handleAddToCart(product)}
-                      className="btn btn-primary"
+                      className="btn btn-success"
                     >
                       Add To Cart
                     </button>
