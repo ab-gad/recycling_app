@@ -7,7 +7,7 @@ import PageTitle from "../../page_title";
 import { Container, Row, Col } from "react-bootstrap";
 import "./showevent.css";
 const Show = (props) => {
-  const params = useParams();
+const params = useParams();
   // console.log(params.id, "params"); // params link
 
   const [userInfo, setInfo] = useState({});

@@ -1,14 +1,14 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import "./profile.css";
+import "./orders.css";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { GiCoinsPile } from "react-icons/gi";
 import { setUserSellOrders } from "../../../redux/actions/actions";
 import { useDispatch } from "react-redux";
 
-const Profile = () => {
+const Orders = () => {
   const history = useHistory();
   const authed_user = useSelector((state) => state.authReducer.user);
   console.log(authed_user);
@@ -18,34 +18,30 @@ const Profile = () => {
   const [orders, setOrders] = useState([]);
   const dispatch = useDispatch();
   const getOrders = () => {
-    console.log(authed_user.id);
-    axios
-      .get(`http://localhost:8000/user_api/profile/${authed_user.id}`)
-      .then((result) => {
-        console.log("orders", result.data.orders);
-        setOrders(result.data.orders);
-        dispatch(setUserSellOrders(result.data.orders));
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (authed_user !== null) {
+      axios
+        .get(`http://localhost:8000/user_api/orders/${authed_user.id}`)
+        .then((result) => {
+          console.log("orders", result.data.orders);
+          setOrders(result.data.orders);
+          dispatch(setUserSellOrders(result.data.orders));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+    }
+
   };
   useEffect(() => {
-    if (authed_user !== null) {
       getOrders();
-    }
+    
   }, [authed_user]);
 
   return (
-    <>
-    <section id="profile">
-    <h1 className="text-center">
-        {" "}
-        {`Welcome ${authed_user && authed_user.first_name} ${
-          authed_user && authed_user.last_name
-        }`}{" "}
-      </h1>
-      <div className="row justify-content-center ">
+    <section id="orders_container">  
+        <h1 className="text-center"> {`Welcome ${authed_user && authed_user.first_name} ${authed_user && authed_user.last_name}`} </h1>
+        <div className="row justify-content-center ">
         {orders.map((order) => {
           return (
             <div className="card mt-2 me-2">
@@ -53,12 +49,12 @@ const Profile = () => {
               <div className="info">
                 <div className="row">
                   <div className="col-7">
-                    {" "}
+                    
                     <span id="heading">Date</span>
                     <br /> <span id="details">{order.order_date}</span>{" "}
                   </div>
                   <div className="col-5 pull-right">
-                    {" "}
+                    
                     <span id="heading">Order No.</span>
                     <br /> <span id="details">{order.id}</span>{" "}
                   </div>
@@ -67,31 +63,29 @@ const Profile = () => {
               <div className="pricing">
                 <div className="row">
                   <div className="col-9">
-                    {" "}
+                    
                     <span id="name">Paper Qty</span>{" "}
                   </div>
                   <div className="col-3">
-                    {" "}
+                    
                     <span id="price">£{order.paper_q}</span>{" "}
                   </div>
                 </div>
                 <div className="row">
                   <div className="col-9">
-                    {" "}
+                    
                     <span id="name">Plastic Qty</span>{" "}
                   </div>
                   <div className="col-3">
-                    {" "}
+                    
                     <span id="price">£{order.plastic_q}</span>{" "}
                   </div>
                 </div>
                 <div className="row">
                   <div className="col-9">
-                    {" "}
                     <span id="name">Metal Qty</span>{" "}
                   </div>
                   <div className="col-3">
-                    {" "}
                     <span id="price">£{order.metal_q}</span>{" "}
                   </div>
                 </div>
@@ -104,17 +98,6 @@ const Profile = () => {
                   </div>
                 </div>
               </div>
-              {order.type === "H" && (
-                <Link to={`/service/cart/home/${order.id}`}>More Details</Link>
-              )}
-              {order.type === "S" && (
-                <Link to={`/service/cart/shop/${order.id}`}>More Details</Link>
-              )}
-              {order.type === "W" && (
-                <Link to={`/service/cart/worker/${order.id}`}>
-                  More Details
-                </Link>
-              )}
               <div className="tracking">
                 <div className="title">Tracking Order</div>
               </div>
@@ -134,14 +117,23 @@ const Profile = () => {
                   </li>
                 </ul>
               </div>
+              {order.type === "H" && (
+                <Link to={`/service/cart/home/${order.id}`} className="btn btn-danger w-50 m-auto">More Details</Link>
+              )}
+              {order.type === "S" && (
+                <Link to={`/service/cart/shop/${order.id}`} className="btn btn-danger w-50 m-auto">More Details</Link>
+              )}
+              {order.type === "W" && (
+                <Link to={`/service/cart/worker/${order.id}`} className="btn btn-danger w-50 m-auto">
+                  More Details
+                </Link>
+              )}
             </div>
           );
         })}
       </div>
     </section>
-      
-    </>
   );
 };
 
-export default Profile;
+export default Orders;

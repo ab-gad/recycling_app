@@ -35,7 +35,7 @@ const Testimonial = () => {
                   <Card.Body>
                     <Card.Title>{user.title}</Card.Title>
                     <Card.Text id="content">{user.details}</Card.Text>
-                    <Button variant="primary"> {user.location}</Button>
+                    <Button variant="success"> {user.location}</Button>
                   </Card.Body>
                 </Card>
               </div>
