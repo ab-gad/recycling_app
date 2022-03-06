@@ -39,7 +39,7 @@ const Orders = () => {
   }, [authed_user]);
 
   return (
-    <section id="profile_container">  
+    <section id="orders_container">  
         <h1 className="text-center"> {`Welcome ${authed_user && authed_user.first_name} ${authed_user && authed_user.last_name}`} </h1>
         <div className="row justify-content-center ">
         {orders.map((order) => {
