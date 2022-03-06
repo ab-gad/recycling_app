@@ -197,6 +197,7 @@
 #reat_section table {
   text-transform: capitalize;
   color: azure;
+  font-size: 18px;
 }
 
 #reat_section tr {
@@ -231,6 +232,7 @@
 }
 #reat_section h6 {
   margin-top: 3rem;
+  font-size: 18px;
 }
 
 #homeCard a {

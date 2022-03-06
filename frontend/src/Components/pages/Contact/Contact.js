@@ -132,7 +132,7 @@ const Contact = () => {
                 <h3>
                   <b>{translation.EmailUs}</b>
                 </h3>
-                <p>adham.atef45@gmail.com</p>
+                <p>call2recycle@gmail.com</p>
               </div>
             </div>
             <div className="col-md-6 mt-4 d-flex align-items-stretch">

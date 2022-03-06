@@ -8,7 +8,7 @@ import { Langcontext } from "../../../../App";
 function Lamp_section () {
 
   const Arabic = {
-    title : "اسعى لمستقبل أفضل",
+    title : "نسعى لمستقبلٍ أفضل",
     title_body : "نسعى أن يكون لدينا أكثر من 20،000 متطوع فى مختلف المحافظات لاننا نؤمن تماماً ان المستقبل سيبنى بالعمل الدؤوب و الشغف نحو الافضل  ",
     head_1: "يمكنك ان تشارك معنا فى ",
     head_strong: "الاحداث ",
@@ -84,8 +84,7 @@ function Lamp_section () {
                   src={lamp}
                   alt="Tree inside lamp!"
                   width="200"
-                  className="lamp_effect mt-sm-5"
-                 
+                  className="lamp_effect "  
                 />
               </Col>
             </Row>
