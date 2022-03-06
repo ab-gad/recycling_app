@@ -189,7 +189,6 @@ function OrderForm (props) {
             setNotValid("Make sure you are logged to be able to upadate your order")
         }
     }
-    
     return(
         <>
             <section id="cart" className="container">

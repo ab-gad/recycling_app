@@ -88,7 +88,7 @@ const LoginForm = ({ login, loginErr  }) => {
                 </p>
             </div>    
             <p className=" m-0 text-center text-danger validation_mess" id="login_validation_mess" > {notValid} ! </p>
-            <button className="btn btn_color w-100 mt-3 shadow-none" type="submit"> Lgoin </button>         
+            <button className="btn btn_color w-100 mt-3 shadow-none" type="submit"> Login </button>         
         </form>
 
     );
