@@ -6,3 +6,4 @@ class ProductsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = '__all__'
+# fixing
