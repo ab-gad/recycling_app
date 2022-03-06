@@ -52,7 +52,7 @@ class EventDetails(generics.RetrieveUpdateDestroyAPIView, EventWritePerm):
     serializer_class =  EventsSerializer
 
 @api_view(['Get'])
-def profile(request,id):
+def orders(request,id):
     user_orders_query=Orders.objects.filter(user_id_id=id)
     user_orders=OrderSerializer(user_orders_query,many=True).data
     return Response({'orders':user_orders})
