@@ -13,7 +13,11 @@ from .credentials import *
 from pathlib import Path
 import os
 from datetime import timedelta
+import django_heroku
+import environ
 
+env = environ.Env()
+environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,8 +26,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-u$6-g3=bl*z)2f$i)=r-jqfu%6h59#l-tq3o7x6c85*98zq0!s'
-
+SECRET_KEY = os.environ('SECRET_KEY')
+# SECRET_KEY = 'django-insecure-u$6-g3=bl*z)2f$i)=r-jqfu%6h59#l-tq3o7x6c85*98zq0!s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -69,6 +73,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     "corsheaders.middleware.CorsMiddleware",  # our cors middleware
     'django.middleware.common.CommonMiddleware',
@@ -291,3 +296,5 @@ CHANNEL_LAYERS={
         "BACKEND": "channels.layers.InMemoryChannelLayer"
     }
 }
+
+django_heroku.settings(locals())

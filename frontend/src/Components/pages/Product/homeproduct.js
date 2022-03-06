@@ -19,6 +19,7 @@ const Homeproduct = () => {
     if(user!=null){
     dispatch(addToCart(product));
     }else{
+      
       history.push("/login")
     }
     // const all = {};
@@ -91,7 +92,7 @@ const Homeproduct = () => {
                     <p className="card-text">{product.description}</p>
                     <button
                       onClick={() => handleAddToCart(product)}
-                      className="btn btn-success"
+                      className="btn btn-primary"
                     >
                       Add To Cart
                     </button>
