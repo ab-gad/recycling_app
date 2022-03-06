@@ -1,13 +1,9 @@
 import React , { useState, useEffect} from "react";
 import { usePosition } from 'use-position';
 import { BiError } from 'react-icons/bi';
-<<<<<<< HEAD:frontend/src/Components/pages/cart/order_form.js
-import axios from 'axios';
-=======
 import axios from "axios";
 import { useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
->>>>>>> 5e13184bf1e8f787b4e9d30df7a1cedfb74360f1:frontend/src/Components/pages/cart/Edit_order.js
 import "./cart.css";
 import { toast } from "react-toastify";
 
@@ -16,52 +12,11 @@ function OrderForm (props) {
     const [quantity, setQuantity] = useState({})
     const [limit , setLimit] = useState({})
     const { latitude , longitude } = usePosition();
-<<<<<<< HEAD:frontend/src/Components/pages/cart/order_form.js
-    const date = new Date().toLocaleString()
-    const paperPrice   = price.paper*quantity.paper;
-    const plasticPrice = price.plastic*quantity.plastic;
-    const metalPrice   = price.metal*quantity.metal;
-    const sum = paperPrice + plasticPrice + metalPrice;
-    
-    // Axios API 
-    const orders_api = `http://localhost:8000/orders_api/orders_api/` 
-    const [data , setData] = useState ({
-        first_name: '',
-        last_name: '',
-        phone: '',
-        city: '',
-        address: '',
-    })
-    function inputs_data (e){
-        
-    }
-
-    axios.post(orders_api , {
-        first_name: firstName.value ,
-        last_name : lastName.value ,
-        phone : phone.value ,
-        city : city.value ,
-        address : Address.value ,
-        paper_q : quantity.paper ,
-        plastic_q : quantity.plastic ,
-        metal_q : quantity.metal ,
-        total_price : sum.toFixed(2) ,
-        latitude : latitude ,
-        longitude : longitude ,
-        })
-        .then(function (response) {
-            console.log("done");
-        })
-        .catch(function (error) {
-        console.log(error);
-        });
-=======
   
     const [orderData , setOrderData] = useState({})
 
     const user = useSelector(state => state.authReducer.user )
     const userSellOrders = useSelector(state => state.sellOrders )
->>>>>>> 5e13184bf1e8f787b4e9d30df7a1cedfb74360f1:frontend/src/Components/pages/cart/Edit_order.js
 
     const order_id =  props.order_id
     const cart_catigory = props.type
@@ -80,15 +35,6 @@ function OrderForm (props) {
         if ( cart_catigory === 'shop' ) {
             setPrice({ paper: 0.50 , metal: 1.3 , plastic: 1.3})
             setLimit({  min: 10 , max: 80 });
-<<<<<<< HEAD:frontend/src/Components/pages/cart/order_form.js
-            // if ( order_id  ) {
-            //     console.log(order_id)
-            // }else {
-            //     console.log("No ID")
-
-            // }
-=======
->>>>>>> 5e13184bf1e8f787b4e9d30df7a1cedfb74360f1:frontend/src/Components/pages/cart/Edit_order.js
         }
         else if ( cart_catigory === 'worker' ){
             setPrice({ paper: 0.45 , metal: 1.1 , plastic: 1.1})
@@ -173,13 +119,6 @@ function OrderForm (props) {
         }
     }
 
-<<<<<<< HEAD:frontend/src/Components/pages/cart/order_form.js
-    function predefult (event) {
-
-        if ( !(form_validation()) ) {
-            event.preventDefault()
-
-=======
 
     // Axios Api
     const url = `http://127.0.0.1:8000/orders_api/${order_id}/`
@@ -248,7 +187,6 @@ function OrderForm (props) {
               });
             not_valid.style.display = 'block'
             setNotValid("Make sure you are logged to be able to upadate your order")
->>>>>>> 5e13184bf1e8f787b4e9d30df7a1cedfb74360f1:frontend/src/Components/pages/cart/Edit_order.js
         }
     }
     return(
@@ -259,25 +197,6 @@ function OrderForm (props) {
                     <div className="my-3 row ">
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6  ">
                             <label htmlFor="firstName" > First Name </label>
-<<<<<<< HEAD:frontend/src/Components/pages/cart/order_form.js
-                            <input className="w-50" onChange={(e)=> inputs_data(e)} value={data.first_name} type="text" id="firstName" name="firstName" />
-                        </div>
-                        <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6 ">
-                            <label htmlFor="lastName" > Last Name </label>
-                            <input className="w-50" onChange={(e)=> inputs_data(e)} value={data.last_name} type="text" id="lastName" name="lastName" />
-                        </div>
-                        <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6 ">
-                            <label htmlFor="phone" > Phone </label>
-                            <input className="w-50" onChange={(e)=> inputs_data(e)} value={data.phone} type="number" id="phone" name="phone" />
-                        </div>
-                        <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6 ">
-                            <label htmlFor="city" > City </label>
-                            <input className="w-50" onChange={(e)=> inputs_data(e)} value={data.city} type="text" id="city" name="city" />
-                        </div>
-                        <div className="d-flex flex-wrap justify-content-between my-2 col-12 ">
-                            <label htmlFor="Address" > Detailed Address <span className="text-muted mx-2"> This will help our representative reach you, so please enter the ( Street - Building No. - Floor No. - Apartment No. ) </span> </label>
-                            <textarea className="w-100" onChange={(e)=> inputs_data(e)} value={data.address} rows="5" id="Address" name="address" > </textarea>
-=======
                             <input value={orderData.first_name} className="w-50" onChange={(e) => setOrderData({...orderData,first_name:e.target.value}) } type="text" id="firstName" name="first_name" />
                         </div>
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6 ">
@@ -295,7 +214,6 @@ function OrderForm (props) {
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 ">
                             <label htmlFor="Address" > Detailed Address <span className="text-muted mx-2"> This will help our representative reach you, so please enter the ( Street - Building No. - Floor No. - Apartment No. ) </span> </label>
                             <textarea value={orderData.address} className="w-100" onChange={(e) => setOrderData({...orderData,address:e.target.value}) } rows="5" id="Address" name="address" > </textarea>
->>>>>>> 5e13184bf1e8f787b4e9d30df7a1cedfb74360f1:frontend/src/Components/pages/cart/Edit_order.js
                         </div>
 
                         {/* hidden inputs */}

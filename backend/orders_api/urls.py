@@ -1,5 +1,4 @@
 from django import http
-# from . import views
 from django.urls import path 
 from . import api
 
