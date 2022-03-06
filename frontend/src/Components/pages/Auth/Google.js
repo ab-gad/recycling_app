@@ -19,8 +19,9 @@ const Google = ({ googleAuthenticate }) => {
 
         if (state && code) {
             try {
+                console.log("I'm IN")
                 googleAuthenticate(state, code);
-                history.push('/')
+                // history.push('/')
             } catch (error) {
                 console.log(error)
                 history.push('/login')

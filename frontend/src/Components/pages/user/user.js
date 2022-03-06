@@ -14,41 +14,48 @@ const User=()=> {
 const authed_user = useSelector((state)=> state.authReducer.user)
 console.log(authed_user)
     
-    
-    const [userData,updateData]=useState({})
+
+const [userData,updateData]=useState({})
+const [avatar,setAvatar] = useState(null);
     const handleChange=(e) => {
-        // if ([e.target.name] == 'avatar'){
-            //     setImage({
-                //         avatar: e.target.files[0]
-                //     })
-                //     console.log(e.target.files)
-                // }
-                
-                // console.log(e.target.value)
+        if ([e.target.name] == 'avatar'){
+                setAvatar({
+                    avatar: e.target.files[0]
+                })
+                console.log("FILES",e.target.files)
+        }else{
+            // console.log(e.target.value)
                 updateData({
                     ...userData,
                     [e.target.name]:e.target.value.trim()
                 })
-                
-            }
+        }
+    }
             
-    const [image,setImage] = useState(null);
-    const updateUser=() => {
+    const updateUser=(e) => {
+        e.preventDefault();
+        let formData = new FormData();
+        const config = { headers: { 'Content-Type': 'multipart/form-data' } };
+
         console.log("without avatar",userData)
-        const formData = new FormData();
-        formData.append("image",image)
-        console.log(formData)
-        axios.put(`http://localhost:8000/user_api/list/${authed_user.id}`,{
-            email: userData.email,
-            city: userData.city,
-            first_name: userData.first_name,
-            last_name: userData.last_name,
-            phone:userData.phone,
-            birthdate:userData.birthdate,
+        formData.append("avatar",avatar?.avatar)
+        formData.append('email', userData.email)
+        formData.append('first_name', userData.first_name)
+        formData.append('last_name', userData.last_name)
+        formData.append('phone', userData.phone)
+        formData.append('birthdate', userData.birthdate)
+        console.log(formData, "FORM DATA")
+        axios.put(`http://localhost:8000/user_api/list/${authed_user.id}`,formData, config)
+            // email: userData.email,
+            // city: userData.city,
+            // first_name: userData.first_name,
+            // last_name: userData.last_name,
+            // phone:userData.phone,
+            // birthdate:userData.birthdate,
             // avatar:image.avatar
-        })
+        
         .then((response) => {
-            console.log(response.data)
+            console.log("UPDATE RES" ,response.data)
             setUser(response.data)
             // history.push('/settings')
         })
@@ -57,9 +64,9 @@ console.log(authed_user)
             console.log(err)
         })
     }
-    const handleFileSelect = (e) => {
-        setImage(e.target.files[0])
-    }
+    // const handleFileSelect = (e) => {
+    //     setAvatar(e.target.files[0])
+    // }
 
     const [user, setUser] = useState({})
     const getUser=() => {
@@ -86,9 +93,11 @@ console.log(authed_user)
 
     }
     useEffect(()=>{
-        getUser()   
+        if (authed_user !== null){
+            getUser()
+        }   
 
-    },[])
+    },[authed_user])
 
 
     // input validations
@@ -180,11 +189,10 @@ console.log(authed_user)
                 <input type="date" name='birthdate' className="form-control" placeholder={`${user.birthdate}`}
                         onChange={(e)=>handleChange(e)}/>
                 </div>
-                {/* <div className='form-group'>
+                <div className='form-group'>
                 <input type="file" accept="image/*" name="avatar"  class="form-control form-control-alternative"
-                        onChange={handleFileSelect}
-                     />
-                </div> */}
+                         onChange={(e)=>handleChange(e)}/>
+                </div>
                 <div className='form-group'>
                 <input name='phone' className="form-control" type="text" placeholder={`${user.phone}`}
                         onChange={(e)=>{handleChange(e);phoneVaildation(e)}}/>
@@ -195,7 +203,7 @@ console.log(authed_user)
                         onChange={(e)=>handleChange(e)}/>
                 </div>
                 <div className="btn_container px-0 d-flex justify-content-between buttons">
-                    <button className="btn btn_color " onClick={e => {updateUser()} }  id="login_button" > Edit </button>
+                    <button className="btn btn_color " onClick={e => {updateUser(e)} }  id="login_button" > Edit </button>
                     <button className="btn btn_color " onClick={e => {deleteUser()} }  id="register_button" > Delete </button>
                 </div>
                 
