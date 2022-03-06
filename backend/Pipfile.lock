@@ -1,11 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "ff212a60911a791aafc8c6855eacb4bb869ec67106e0dcbb063cf52da65034ff"
+            "sha256": "693bd74ab74e69c880f2e579c6258152ae79c81decdff307734b83c0eb0c5b02"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.10"
+            "python_version": "3.8"
         },
         "sources": [
             {
@@ -116,6 +116,7 @@
                 "sha256:6881edbebdb17b39b4eaaa821b438bf6eddffb4468cf344f09f89def34a8b1df"
             ],
             "index": "pypi",
+            "markers": "python_version >= '3'",
             "version": "==2.0.12"
         },
         "coreapi": {
@@ -238,6 +239,7 @@
                 "sha256:9d643ff0a55b762d5cdb124b8eaa99c66322e2157b69160bc32796e824360e6d"
             ],
             "index": "pypi",
+            "markers": "python_version >= '3'",
             "version": "==3.3"
         },
         "itypes": {
@@ -406,6 +408,7 @@
                 "sha256:f22fa1e554c9ddfd16e6e41ac79759e17be9e492b3587efa038054674760e72d"
             ],
             "index": "pypi",
+            "markers": "python_version >= '3.0'",
             "version": "==2.27.1"
         },
         "requests-oauthlib": {

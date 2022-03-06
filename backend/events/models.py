@@ -26,6 +26,7 @@ class Events(models.Model):
         valid = True
         start_date = self.start_date
         end_date = self.end_date
+        
         self.errors = {}
         if str(start_date) < str(datetime.date.today()):
             self.errors['date'] = 'invalid date'

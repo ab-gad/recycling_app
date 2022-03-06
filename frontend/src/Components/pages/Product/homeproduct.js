@@ -16,8 +16,11 @@ const Homeproduct = () => {
 
   const history = useHistory();
   const handleAddToCart = (product) => {
+    if(user!=null){
     dispatch(addToCart(product));
-
+    }else{
+      history.push("/login")
+    }
     // const all = {};
 
     // if (user != null) {
