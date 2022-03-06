@@ -164,7 +164,7 @@ nav {
 .log_icon ,
 .product_cart {
   position: absolute;
-  right: 201px;
+  right: 240px;
   top: 32px;
   transform: translatey(-50%);
   font-size: 32px;
@@ -249,6 +249,17 @@ nav .toggel_icon:hover .line:nth-child(odd) {
 }
 nav .toggel_icon:hover .line:nth-child(even) {
   width: 50%;
+}
+.nav-link:focus {
+  color: var(--nav_font_color);
+}
+.dropdown-item:focus{
+  background-color: var(--nav_font_color);
+}
+.user_chat {
+  right: 215px;
+  font-size: 36px;
+  top: 34px;
 }
 /* -----------------------------------------------------Themes------------------------------------------- */
 

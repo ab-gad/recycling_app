@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Langcontext } from "../App";
 import React, { useContext, useState, useEffect } from "react";
 import { FaRegUserCircle ,FaSeedling , FaBoxOpen } from 'react-icons/fa';
+import { RiMessengerLine } from 'react-icons/ri';
 import { VscHome } from 'react-icons/vsc';
 import { BsBuilding , BsChatDots  , BsShop , BsCart2 } from 'react-icons/bs';
 import { useSelector} from "react-redux"
@@ -119,7 +120,10 @@ const Navbar = (props) => {
               </ul>
               }
             </li>       
-            
+              
+                <NavLink to='/' >
+                  <RiMessengerLine className="product_cart user_chat" />
+                </NavLink>
                 <NavLink to='/' className="nav-link product_cart " >
                   <span> 3 </span>
                   <BsCart2/>
@@ -131,12 +135,11 @@ const Navbar = (props) => {
                 <span className='line navbar-toggler-icon' > </span>
                 <span className='line navbar-toggler-icon' > </span>
               </div>
-
             </button>
 
-          <div className="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
-      
+          <div className="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">     
             <ul className="navbar-nav nav_element " dir="ltr" >
+
               <li className="nav-item anmi_item  " id="home">
                 <NavLink to="/" className="nav-link text-center d-flex gap-3 responsev_zon" aria-current="page"  >
                   <span className="ico text-light"> <VscHome /> </span>
