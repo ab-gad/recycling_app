@@ -23,7 +23,7 @@ const Navbar = (props) => {
     Products: "منتجات",
     Login: " تسجيل الدخول",
     SignUp:"انشاء حساب",
-    Orders: "الطلبات",
+    Profile: "الملف الشخصي",
     settings: "الاعدادات",
     logout:"تسجيل الخروج"
   };
@@ -37,7 +37,7 @@ const Navbar = (props) => {
     Products: "Products",
     Login: "Login",
     Register: "Register",
-    Orders: "Orders",
+    Profile: "Profile",
     settings: "Settings",
     logout:"Logout"
   };
@@ -107,7 +107,7 @@ const Navbar = (props) => {
               
               {props.isAuthenticated ?
               <ul className="dropdown-menu log_drop" aria-labelledby="navbarDropdownMenuLink">
-                <li><NavLink className="dropdown-item text-center text-primary " to="/orders" > {translation.Orders} </NavLink></li>
+                <li><NavLink className="dropdown-item text-center text-primary " to="/profile" > {translation.Profile} </NavLink></li>
                 <li><NavLink className="dropdown-item text-center text-primary " to="/settings" > {translation.settings} </NavLink></li>
                 <li><NavLink className="dropdown-item text-center text-primary " to="/user/events" > {translation.Events} </NavLink></li>
 
@@ -139,8 +139,9 @@ const Navbar = (props) => {
 
           <div className="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">     
             <ul className="navbar-nav nav_element " dir="ltr" >
-              <li className="nav-item anmi_item " id="home">
-                <NavLink to="/" className="nav-link text-center d-flex gap-3 responsev_zon " aria-current="page"  >
+
+              <li className="nav-item anmi_item  " id="home">
+                <NavLink to="/" className="nav-link text-center d-flex gap-3 responsev_zon" aria-current="page"  >
                   <span className="ico text-light"> <VscHome /> </span>
                   <span className="tex text-light " > {translation.Home} </span>  
                 </NavLink>
