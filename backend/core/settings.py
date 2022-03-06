@@ -63,12 +63,9 @@ INSTALLED_APPS = [
     'products',
     'products_api',
     'order_product',
-<<<<<<< HEAD
     'material_rate_and_price',
-=======
+    'material_api',
     'chat',
-    
->>>>>>> 0c86d7dc25214be73a96d5da6ff306386bf722b0
 ]
 
 MIDDLEWARE = [
