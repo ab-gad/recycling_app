@@ -63,15 +63,18 @@ console.log(authed_user)
 
     const [user, setUser] = useState({})
     const getUser=() => {
-        axios.get(`http://localhost:8000/user_api/list/${authed_user.id}`)
-        .then((result) => {
-            console.log("user",result.data)
-            setUser(result.data)
-            updateData(result.data)
-        })
-        .catch((err) => {
-            console.log(err)
-        })    
+        if (authed_user !== null){
+            axios.get(`http://localhost:8000/user_api/list/${authed_user.id}`)
+            .then((result) => {
+                console.log("user",result.data)
+                setUser(result.data)
+                updateData(result.data)
+            })
+            .catch((err) => {
+                console.log(err)
+            })    
+
+        }
 
     }
     const deleteUser=() => {
@@ -88,7 +91,7 @@ console.log(authed_user)
     useEffect(()=>{
         getUser()   
 
-    },[])
+    },[authed_user])
 
 
     // input validations
@@ -157,7 +160,7 @@ console.log(authed_user)
 
         <div className='col-xl-5 m-auto' id='settings_container'>
                 <img src={`${user.avatar}`} className="rounded-circle border border-success border-4"/> 
-            <h2 className="mb-5 text-center">{`${user.first_name}`} {`${user.last_name}`}</h2>
+            <h2 className="mb-5 text-center">{`${authed_user && user.first_name}`} {`${authed_user && user.last_name}`}</h2>
             
             <form >
                 <div className='form-group form_inputs'>
