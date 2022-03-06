@@ -261,6 +261,29 @@ nav .toggel_icon:hover .line:nth-child(even) {
   font-size: 36px;
   top: 34px;
 }
+@media (max-width: 992px) {
+  nav .language_button{
+    font-size: 12px;
+    right: 48px;
+  }
+  .log_icon ,
+  .product_cart {
+    font-size: 25px;
+  }
+  .log_icon{
+    right: 205px;
+  }
+  .product_cart {
+    right: 133px;
+  }
+  .user_chat {
+    right: 181px;
+    font-size: 30px;
+  }
+  nav .toggel_icon  {
+    right: -3px;
+  }
+}
 /* -----------------------------------------------------Themes------------------------------------------- */
 
 #box_theme {
