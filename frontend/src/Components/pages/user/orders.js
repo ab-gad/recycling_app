@@ -1,14 +1,14 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import "./profile.css";
+import "./orders.css";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { GiCoinsPile } from "react-icons/gi";
 import { setUserSellOrders } from "../../../redux/actions/actions";
 import { useDispatch } from "react-redux";
 
-const Profile = () => {
+const Orders = () => {
   const history = useHistory();
   const authed_user = useSelector((state) => state.authReducer.user);
   console.log(authed_user);
@@ -20,7 +20,7 @@ const Profile = () => {
   const getOrders = () => {
     if (authed_user !== null) {
       axios
-        .get(`http://localhost:8000/user_api/profile/${authed_user.id}`)
+        .get(`http://localhost:8000/user_api/orders/${authed_user.id}`)
         .then((result) => {
           console.log("orders", result.data.orders);
           setOrders(result.data.orders);
@@ -39,7 +39,7 @@ const Profile = () => {
   }, [authed_user]);
 
   return (
-    <section id="profile_container">  
+    <section id="orders_container">  
         <h1 className="text-center"> {`Welcome ${authed_user && authed_user.first_name} ${authed_user && authed_user.last_name}`} </h1>
         <div className="row justify-content-center ">
         {orders.map((order) => {
@@ -136,4 +136,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Orders;

@@ -10,7 +10,7 @@ urlpatterns = [
     path('list/<int:id>', views.UserDetail.as_view(), name='userDetails'),
     path('location/', LocationList.as_view(), name='locationlist'),
     path('event/<int:pk>/', EventDetails.as_view(), name='eventdetails'),
-    path('profile/<int:id>',views.profile,name='user_profile'),
+    path('orders/<int:id>',views.orders,name='user_orders'),
     path('events/<int:id>',views.events,name='user_events'),
 
     
