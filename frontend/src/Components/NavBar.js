@@ -22,7 +22,7 @@ const Navbar = (props) => {
     Products: "منتجات",
     Login: " تسجيل الدخول",
     SignUp:"انشاء حساب",
-    Profile: "الملف الشخصي",
+    Orders: "الطلبات",
     settings: "الاعدادات",
     logout:"تسجيل الخروج"
   };
@@ -36,7 +36,7 @@ const Navbar = (props) => {
     Products: "Products",
     Login: "Login",
     Register: "Register",
-    Profile: "Profile",
+    Orders: "Orders",
     settings: "Settings",
     logout:"Logout"
   };
@@ -72,9 +72,8 @@ const Navbar = (props) => {
     } ;
 
     // useEffect( ()=> {
-    //   document.getElementById("home").classList.remove('active');
     //   document.getElementById(localStorage.getItem("navActive")).classList.add('active');
-    // })
+    // } ,[])
 
   return (
     <>
@@ -107,8 +106,10 @@ const Navbar = (props) => {
               
               {props.isAuthenticated ?
               <ul className="dropdown-menu log_drop" aria-labelledby="navbarDropdownMenuLink">
-                <li><NavLink className="dropdown-item text-center text-primary " to="/profile" > {translation.Profile} </NavLink></li>
+                <li><NavLink className="dropdown-item text-center text-primary " to="/orders" > {translation.Orders} </NavLink></li>
                 <li><NavLink className="dropdown-item text-center text-primary " to="/settings" > {translation.settings} </NavLink></li>
+                <li><NavLink className="dropdown-item text-center text-primary " to="/user/events" > {translation.Events} </NavLink></li>
+
                 <li><button className="dropdown-item text-center text-primary " onClick={logout_user}> {translation.logout} </button></li>
               </ul>
               :
@@ -136,7 +137,7 @@ const Navbar = (props) => {
           <div className="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
       
             <ul className="navbar-nav nav_element " dir="ltr" >
-              <li className="nav-item anmi_item active" id="home">
+              <li className="nav-item anmi_item " id="home">
                 <NavLink to="/" className="nav-link text-center d-flex gap-3 responsev_zon" aria-current="page"  >
                   <span className="ico text-light"> <VscHome /> </span>
                   <span className="tex text-light " > {translation.Home} </span>  

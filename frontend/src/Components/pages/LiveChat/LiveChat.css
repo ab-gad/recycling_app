@@ -1,0 +1,10 @@
+#chat .startchatting {
+  background-color: #00a300;
+}
+
+#chat .startchatting:hover {
+  background-color: #000000a6;
+}
+#chat .txt {
+  color: aliceblue;
+}

@@ -18,22 +18,26 @@ console.log(authed_user)
     const [userData,updateData]=useState({})
     const handleChange=(e) => {
         // if ([e.target.name] == 'avatar'){
-        //     setImage({
-        //         avatar: e.target.files[0]
-        //     })
-        //     console.log(e.target.files)
-        // }
-
-        // console.log(e.target.value)
-        updateData({
-            ...userData,
-            [e.target.name]:e.target.value.trim()
-        })
-        
-    }
-
+            //     setImage({
+                //         avatar: e.target.files[0]
+                //     })
+                //     console.log(e.target.files)
+                // }
+                
+                // console.log(e.target.value)
+                updateData({
+                    ...userData,
+                    [e.target.name]:e.target.value.trim()
+                })
+                
+            }
+            
+    const [image,setImage] = useState(null);
     const updateUser=() => {
         console.log("without avatar",userData)
+        const formData = new FormData();
+        formData.append("image",image)
+        console.log(formData)
         axios.put(`http://localhost:8000/user_api/list/${authed_user.id}`,{
             email: userData.email,
             city: userData.city,
@@ -53,17 +57,24 @@ console.log(authed_user)
             console.log(err)
         })
     }
+    const handleFileSelect = (e) => {
+        setImage(e.target.files[0])
+    }
+
     const [user, setUser] = useState({})
     const getUser=() => {
-        axios.get(`http://localhost:8000/user_api/list/${authed_user.id}`)
-        .then((result) => {
-            console.log("user",result.data)
-            setUser(result.data)
-            updateData(result.data)
-        })
-        .catch((err) => {
-            console.log(err)
-        })    
+        if (authed_user !== null){
+            axios.get(`http://localhost:8000/user_api/list/${authed_user.id}`)
+            .then((result) => {
+                console.log("user",result.data)
+                setUser(result.data)
+                updateData(result.data)
+            })
+            .catch((err) => {
+                console.log(err)
+            })    
+
+        }
 
     }
     const deleteUser=() => {
@@ -80,7 +91,7 @@ console.log(authed_user)
     useEffect(()=>{
         getUser()   
 
-    },[])
+    },[authed_user])
 
 
     // input validations
@@ -149,7 +160,7 @@ console.log(authed_user)
 
         <div className='col-xl-5 m-auto' id='settings_container'>
                 <img src={`${user.avatar}`} className="rounded-circle border border-success border-4"/> 
-            <h2 className="mb-5 text-center">{`${user.first_name}`} {`${user.last_name}`}</h2>
+            <h2 className="mb-5 text-center">{`${authed_user && user.first_name}`} {`${authed_user && user.last_name}`}</h2>
             
             <form >
                 <div className='form-group form_inputs'>

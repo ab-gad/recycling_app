@@ -55,7 +55,7 @@ function News (){
                         Latest Recycling News:                        
                     </h2>
                 </div>
-                <OwlCarousel className="slider-items owl-carousel" {...options}>
+                <OwlCarousel className="slider-items text-dark owl-carousel" {...options}>
                     {news.map((n) => <NewsCard key={n.url} aNew={n}/>)}
                 </OwlCarousel>
                 {/* <div className="row row-cols-1 row-cols-md-3 g-4">

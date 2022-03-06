@@ -52,12 +52,16 @@ class EventDetails(generics.RetrieveUpdateDestroyAPIView, EventWritePerm):
     serializer_class =  EventsSerializer
 
 @api_view(['Get'])
-def profile(request,id):
+def orders(request,id):
     user_orders_query=Orders.objects.filter(user_id_id=id)
     user_orders=OrderSerializer(user_orders_query,many=True).data
     return Response({'orders':user_orders})
 
-
+@api_view(['Get'])
+def events(request,id):
+    user_events_query=Events.objects.filter(useradmin_id=id)
+    user_events=EventsSerializer(user_events_query,many=True).data
+    return Response({'events':user_events})
 
 """ Concrete View Classes
 #CreateAPIView

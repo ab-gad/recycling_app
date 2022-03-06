@@ -38,13 +38,13 @@ const Login_Register = () => {
 
         <h2 className="mb-5 text-center " > {page==="login"? 'Login' : 'Register'} </h2>
         <div className="btn_container px-0 d-flex justify-content-between">
-          <Link to='/auth/login' className="btn btn_color " id="login_button"> Login </Link>
-          <Link to='/auth/register' className="btn btn_color " id="register_button"> Sign Up </Link> 
+          <Link to='/auth/login' className="btn btn_color shadow-none " id="login_button"> Login </Link>
+          <Link to='/auth/register' className="btn btn_color shadow-none " id="register_button"> Sign Up </Link> 
         </div>
 
           {page==='login'? <LoginForm/> : <RegisterForm/>}
           
-          <button  onClick={continueWithGoogle} className="btn btn_color bg-light w-100 mt-3 text-dark" > <FcGoogle/> Continue With Google Account </button>
+          <button  onClick={continueWithGoogle} className="btn btn_color bg-light w-100 mt-3 text-dark shadow-none" > <FcGoogle/> Continue With Google Account </button>
 
       </div>
     </div>

@@ -1,10 +1,10 @@
 import React , { useContext } from "react";
+import { Langcontext } from "../../../App";
 import PageTitle from "../../page_title";
 import Footer from "../Footer/Footer";
 import { GiFeather, GiSpotedFlower } from "react-icons/gi";
 import { HiOutlineLightBulb, HiOutlineSun } from "react-icons/hi";
 import { FaHandHoldingHeart, FaCogs, FaRegGem } from "react-icons/fa";
-import { Langcontext } from "../../../App";
 import './about.css';
 
 const About = () => { 

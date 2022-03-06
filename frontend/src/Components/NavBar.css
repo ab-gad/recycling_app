@@ -190,9 +190,9 @@ nav .responsev_zon {
 }
 nav .nav_logo {
   max-height: 3.2em;
-  position: relative;
-  left: 5px;
-  top: 0;
+  position: absolute;
+  left: 8px;
+  top: 3px;
 }
 nav .nav_logo img {
   width: inherit;
@@ -210,9 +210,6 @@ nav .nav_logo span:first-child {
 @media (max-width: 552px) {
   nav .nav_logo span {
     font-size: 1em;
-  }
-  nav .nav_logo {
-    left: -10px;
   }
 }
 
