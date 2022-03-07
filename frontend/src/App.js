@@ -5,7 +5,7 @@ import About from "./Components/pages/About/About";
 import Contact from "./Components/pages/Contact/Contact";
 import Home from "./Components/pages/Home/Home";
 import Services from "./Components/pages/Service/Service";
-import Testimonial from "./Components/pages/Events/Events";
+import Testimonial from "./Components/pages/Events/AllEvents";
 import User from "./Components/pages/user/user";
 import Orders from "./Components/pages/user/orders";
 import Events from "./Components/pages/user/events";
