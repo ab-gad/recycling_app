@@ -1,0 +1,16 @@
+setup:
+  addons:
+    - plan: 'heroku-postgresql:hobby-dev'
+      as: DATABASE
+  config:
+    DISABLE_COLLECTSTATIC: '1'
+build:
+  packages:
+    - gdal-bin
+  languages:
+    - >-
+      https://buildpack-registry.s3.amazonaws.com/buildpacks/heroku-community/apt.tgz
+    - nodejs
+    - python
+run:
+  web: gunicorn core.wsgi --log-file -
