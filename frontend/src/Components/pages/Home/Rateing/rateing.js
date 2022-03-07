@@ -75,7 +75,7 @@ function Rateing (){
           </thead>
           <tbody>
             <tr className=" row justify-content-between align-items-centermt-md-2">
-              <td className="col-12 col-sm-3 mb-3 mb-sm-0"> {rate[1]?.material} </td>
+              <td className="col-12 col-sm-3 mb-3 mb-sm-0"> {translation.Aluminum} </td>
               <td className="col-4 col-sm-3">
                 <Progress value={rate[1]?.annual_production} />
                  <span>{rate[1]?.annual_production}%</span>
@@ -91,7 +91,7 @@ function Rateing (){
             </tr>
             <tr className=" row justify-content-between align-items-center mt-5 mt-md-2">
               <td className="col-12 col-sm-3 mb-3 mb-sm-0">
-              {rate[0]?.material}
+              {translation.papers}
               </td>
               <td className="col-4 col-sm-3">
                 <Progress value={rate[0]?.annual_production}  />
@@ -107,7 +107,7 @@ function Rateing (){
               </td>
             </tr>
             <tr className=" row justify-content-between align-items-center mt-5 mt-md-2">
-              <td className="col-12 col-sm-3 mb-3 mb-sm-0"> {rate[2]?.material} </td>
+              <td className="col-12 col-sm-3 mb-3 mb-sm-0"> {translation.plastic} </td>
               <td className="col-4 col-sm-3">
                 <Progress value={rate[2]?.annual_production} />
                 <span>{rate[2]?.annual_production}%</span>
