@@ -8,7 +8,7 @@ from rest_framework.permissions import BasePermission, SAFE_METHODS, IsAuthentic
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from orders_api.serializers import OrderSerializer
-
+from rest_framework.parsers import MultiPartParser, FormParser
 # Create your views here.
 
 class EventWritePerm(BasePermission):
@@ -37,6 +37,7 @@ def getAuthedUser(request):
 
     #class based views  
 class UserDetail(generics.RetrieveUpdateDestroyAPIView):
+    parser_classes = [MultiPartParser, FormParser]
     queryset=User.objects.all()
     serializer_class=UserSerializer
     lookup_field='id'
@@ -52,7 +53,7 @@ class EventDetails(generics.RetrieveUpdateDestroyAPIView, EventWritePerm):
     serializer_class =  EventsSerializer
 
 @api_view(['Get'])
-def orders(request,id):
+def profile(request,id):
     user_orders_query=Orders.objects.filter(user_id_id=id)
     user_orders=OrderSerializer(user_orders_query,many=True).data
     return Response({'orders':user_orders})
