@@ -56,7 +56,7 @@ function Rateing (){
   // console.log('material',material[0].annual_production)
 
     return (
-      
+
       <section id="reat_section" className=" my-5 p-3 fs-sm-6 fs-md-1 text-light">
         <table className="table table-borderless text-center">
           <thead className="">
@@ -143,6 +143,5 @@ export default Rateing;
 
 
 
-// test
 
  
