@@ -68,7 +68,9 @@ function Rateing (){
               <th className="col-4 col-sm-3">
                 {translation.annual} <br /> {translation.consumption}
               </th>
-              <th className="col-4 col-sm-3"> {translation.recycling} </th>
+              <th className="col-4 col-sm-3">
+                 {translation.annual} <br /> {translation.recycling} 
+              </th>
             </tr>
           </thead>
           <tbody>
