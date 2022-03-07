@@ -20,7 +20,7 @@ const Login_Register = () => {
 
     const continueWithGoogle = async () => {
         try {
-            const res = await axios.get(`http://127.0.0.1:8000/auth/o/google-oauth2/?redirect_uri=http://127.0.0.1:3000/google`)
+            const res = await axios.get(`http://127.0.0.1:8000/auth/o/google-oauth2/?redirect_uri=http://127.0.0.1:8000/google`)
 
             window.location.replace(res.data.authorization_url);
         } catch (err) {

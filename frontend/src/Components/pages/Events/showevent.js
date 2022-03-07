@@ -118,7 +118,7 @@ const Show = (props) => {
     //      handleVoluntee/<int:userId>/<int:eventId>
 // handleInterests/<int:userId>/<int:eventId></int:eventId>
    useEffect(() => {
-     axios.get(`http://127.0.0.1:8000/events_api/Events/${params.id}`)
+     axios.get(`http://127.0.0.1:8000/events_api/Events/${params.id}/`)
       .then((res) => {
         console.log(res.data, "here");
         setInfo(res.data);

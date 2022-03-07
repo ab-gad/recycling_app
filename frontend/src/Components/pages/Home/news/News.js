@@ -34,7 +34,7 @@ function News (){
     const [ref, setRef] = useState(false)
     
     const getNews = () => {
-        fetch('https://newsapi.org/v2/everything?q=recycling&language=en&pageSize=6&page=1&apiKey=a1394438cdcb448bad9714c7ae21424b')
+        fetch('https://newsapi.org/v2/everything?q=recycling&language=en&pageSize=6&page=1&apiKey=a1394438cdcb448bad9714c7ae21424b/')
         .then(res=>res.json())
         .then(result => {
             setNews(result.articles)
@@ -46,7 +46,7 @@ function News (){
         getNews()
     },[])
 
-    
+    if(!news){return null}
     return(
         <section dir='ltr'>
             <div className="container py-5">
