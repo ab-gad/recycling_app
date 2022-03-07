@@ -5,6 +5,7 @@ import About from "./Components/pages/About/About";
 import Contact from "./Components/pages/Contact/Contact";
 import Home from "./Components/pages/Home/Home";
 import Services from "./Components/pages/Service/Service";
+import Settings from "./Components/pages/user/settings";
 import Testimonial from "./Components/pages/Events/AllEvents";
 import User from "./Components/pages/user/user";
 import Orders from "./Components/pages/user/orders";
@@ -119,7 +120,7 @@ const App = ({load_user,checkAuthenticated, user, isAuthenticated}) => {
                     <Testimonial />
                   </Route>
                   <Route path="/settings" exact>
-                    <User />
+                    <Settings />
                   </Route>
                   <Route path="/user/events" exact>
                     <Events />
