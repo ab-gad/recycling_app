@@ -5,16 +5,24 @@ from django.db import models
 from django.utils import timezone
 import datetime
 from user.models import User
+from datetime import timedelta
 
+
+def in_fourteen_days():
+    return timezone.now() + timedelta(days=14)
 
 class Events(models.Model):
     title = models.CharField(max_length=50, unique=True)
     details = models.TextField(max_length=2000)
+    target = models.PositiveIntegerField(null=True)
     start_date = models.DateTimeField(default=timezone.now)
-    end_date = models.DateTimeField()
+    end_date = models.DateTimeField(default=in_fourteen_days)
+    creation_date = models.DateTimeField(default=timezone.now)
     location = models.CharField(max_length=400)
     img = models.ImageField(upload_to='Events', verbose_name='Image')
     useradmin = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    volunteers = models.ManyToManyField('user.User',related_name='myevents')
+    interests = models.ManyToManyField('user.User',related_name='myinterests')
 
     def __str__(self):
         return str(self.title)

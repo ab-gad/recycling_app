@@ -1,6 +1,6 @@
 import React from "react";
 import PageTitle from "../../page_title";
-import "./Testimonial.css";
+import "./events.css";
 import { Link } from "react-router-dom";
 
 import axios from "axios";
