@@ -1,7 +1,7 @@
 import "./NavBar.css";
 import { NavLink } from "react-router-dom";
 import { Langcontext } from "../App";
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { FaRegUserCircle ,FaSeedling , FaBoxOpen } from 'react-icons/fa';
 import { RiMessengerLine } from 'react-icons/ri';
 import { VscHome } from 'react-icons/vsc';
@@ -12,7 +12,7 @@ import { logout} from "../redux/actions/actions";
 import { useHistory } from 'react-router-dom';
 
 const Navbar = (props) => {
-  const {cartTotalQuantity}=useSelector(state=>state.cart)
+  const {cartItems}=useSelector(state=>state.cart)
   const Arabic = {
     RecycleWebSite: "إعادة تدوير موقع",
     Home: "الرئيسية",
@@ -23,7 +23,7 @@ const Navbar = (props) => {
     Products: "منتجات",
     Login: " تسجيل الدخول",
     SignUp:"انشاء حساب",
-    Profile: "الملف الشخصي",
+    Orders: "الطلبات",
     settings: "الاعدادات",
     logout:"تسجيل الخروج"
   };
@@ -37,7 +37,7 @@ const Navbar = (props) => {
     Products: "Products",
     Login: "Login",
     Register: "Register",
-    Profile: "Profile",
+    Orders: "Orders",
     settings: "Settings",
     logout:"Logout"
   };
@@ -72,9 +72,11 @@ const Navbar = (props) => {
       history.push('/auth/login');
     } ;
 
-    // useEffect( ()=> {
-    //   document.getElementById(localStorage.getItem("navActive")).classList.add('active');
-    // } ,[])
+    useEffect( ()=> {
+      localStorage.getItem("navActive") ? 
+      document.getElementById(localStorage.getItem("navActive")).classList.add('active'):
+      document.getElementById('home').classList.add('active')
+    } ,[])
 
   return (
     <>
@@ -89,8 +91,8 @@ const Navbar = (props) => {
             </div>
           </div>
 
-          <button type="button" className="btn btn-outline-light shadow-none rounded-pill m-2 mx-3 language_button " onClick={() => language_zone() } >
-            {langcont}
+          <button type="button" className="btn btn-outline-light shadow-none m-2 mx-3 language_button " onClick={() => language_zone() } >
+            {langcont==="ENGLISH"?"EN":"AR"}
           </button>   
 
             <li className="nav-item mx-3 dropdown log_icon d-flex align-items-center">
@@ -107,7 +109,7 @@ const Navbar = (props) => {
               
               {props.isAuthenticated ?
               <ul className="dropdown-menu log_drop" aria-labelledby="navbarDropdownMenuLink">
-                <li><NavLink className="dropdown-item text-center text-primary " to="/profile" > {translation.Profile} </NavLink></li>
+                <li><NavLink className="dropdown-item text-center text-primary " to="/Orders" > {translation.Orders} </NavLink></li>
                 <li><NavLink className="dropdown-item text-center text-primary " to="/settings" > {translation.settings} </NavLink></li>
                 <li><NavLink className="dropdown-item text-center text-primary " to="/user/events" > {translation.Events} </NavLink></li>
 
@@ -124,8 +126,8 @@ const Navbar = (props) => {
                 <NavLink to='/live' >
                   <RiMessengerLine className="product_cart user_chat" />
                 </NavLink>
-                <NavLink to='/' className="nav-link product_cart " >
-                  <span> 3 </span>
+                <NavLink to='/wagon' className="nav-link product_cart " >
+                  <span> {cartItems.length} </span>
                   <BsCart2/>
                 </NavLink>
             <button className="navbar-toggler toggel_icon p-0" dir='rtl' type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">    
@@ -140,7 +142,7 @@ const Navbar = (props) => {
           <div className="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">     
             <ul className="navbar-nav nav_element " dir="ltr" >
 
-              <li className="nav-item anmi_item  " id="home">
+              <li className="nav-item anmi_item" id="home">
                 <NavLink to="/" className="nav-link text-center d-flex gap-3 responsev_zon" aria-current="page"  >
                   <span className="ico text-light"> <VscHome /> </span>
                   <span className="tex text-light " > {translation.Home} </span>  
