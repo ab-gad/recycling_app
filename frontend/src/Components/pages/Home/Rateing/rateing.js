@@ -42,9 +42,9 @@ function Rateing (){
             axios.get(`http://localhost:8000/material_api/rate/`)
             .then((result) => {
                 console.log('rate',result.data.filter((e)=>e.id == 3)[0])
-                setPaperRate(result.data.filter((e)=>e.id == 1)[0])
-                setPlasticRate(result.data.filter((e)=>e.id == 2)[0])
-                setAluminuimRate(result.data.filter((e)=>e.id == 3)[0])
+                setPaperRate(result.data.filter((e)=>e.material === 'paper')[0])
+                setPlasticRate(result.data.filter((e)=>e.material === 'plastic')[0])
+                setAluminuimRate(result.data.filter((e)=>e.material === 'metal')[0])
                 
             })
             .catch((err) => {
