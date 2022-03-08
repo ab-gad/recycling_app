@@ -8,3 +8,33 @@
 #chat .txt {
   color: aliceblue;
 }
+#chat .t1 {
+  color: #00a300;
+}
+#chat .form-title {
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  font-weight: bolder;
+  font-family: "Oleo Script Swash Caps", cursive;
+  color: #00a300;
+  text-align: center;
+}
+#chat .form-h1 {
+  font-size: 40px;
+}
+#chat .btn[type="submit"] {
+  background: #3a413d;
+  border: 10;
+  width: 100%;
+  padding: 10px 30px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 4px;
+}
+
+#chat .btn[type="submit"]:hover {
+  background: #00a300;
+}
