@@ -1,6 +1,6 @@
-from events.models import Events
+from events.models import Events, Comments
 from rest_framework import generics, viewsets
-from .serializers import EventsSerializer, UserSerializer
+from .serializers import EventsSerializer, UserSerializer, CommentsSerializer
 # Create your views here.
 from rest_framework.decorators import api_view
 from user.models import User
@@ -11,20 +11,28 @@ class EventsList(viewsets.ModelViewSet):
     queryset = Events.objects.all()
     serializer_class = EventsSerializer
 
-    # select events_comments.user_id,comment,user_user.id ,user_user.avatar,user_user.first_name from user_user inner join events_comments on  events_comments.user_id=user_user.id;
+class Comments(viewsets.ModelViewSet):
+    queryset = Comments.objects.all()
+    serializer_class = CommentsSerializer
+
+@api_view(['Get'])
+def getEventComments(request, eventId):
+    try:
+        event = get_object_or_404(Events, pk=eventId)
+        querySet = event.comments.all()
+        commentsData= CommentsSerializer(querySet, many=True).data
+        return Response({'comments':commentsData})
+    except:
+        return Response({'data':"Sorry we can't get event's comments right now, please try again later"})
 
 @api_view(['Get'])
 def handleVolunteer(request, userId, eventId):
     try:
         event = get_object_or_404(Events, pk=eventId)
         user = get_object_or_404(User, pk=userId)
-        print('_________________EVENT', event, eventId)
-        print('_________________USER', user, userId)
 
         oldEvent = EventsSerializer(event, many=False).data
-        
         oldVoluntees = oldEvent['volunteers']
-        print('_________________OLD VOLUNTEERS',oldVoluntees)
 
         if userId in oldVoluntees :
             event.volunteers.remove(user)
@@ -41,13 +49,9 @@ def handleInterests(request, userId, eventId):
     try:
         event = get_object_or_404(Events, pk=eventId)
         user = get_object_or_404(User, pk=userId)
-        print('_________________EVENT', event, eventId)
-        print('_________________USER', user, userId)
 
         oldEvent = EventsSerializer(event, many=False).data
-        
         oldInterests = oldEvent['interests']
-        print('_________________OLD VOLUNTEERS',oldInterests)
 
         if userId in oldInterests :
             event.interests.remove(user)
@@ -63,11 +67,8 @@ def handleInterests(request, userId, eventId):
 def getUserEvents(request, userId):
     try:
         user = get_object_or_404(User, pk=userId)
-        print('_________________USER', user, userId)
         querySet = user.myevents.all()
-        print('_________________USER EVENTS',querySet)
         eventsData= EventsSerializer(querySet, many=True).data
-        print('_________________USER EVENTS',eventsData)
         return Response({'data':eventsData})
     except:
         return Response({'data':"Sorry we can't get your event right now, please try again later"})
@@ -77,11 +78,8 @@ def getUserEvents(request, userId):
 def getUserInterests(request, userId):
     try:
         user = get_object_or_404(User, pk=userId)
-        print('_________________USER', user, userId)
         querySet = user.myinterests.all()
-
         eventsData= EventsSerializer(querySet, many=True).data
-        print('_________________USER EVENTS',eventsData)
         return Response({'data':eventsData})
     except:
         return Response({'data':"Sorry we can't get your event right now, please try again later"})
