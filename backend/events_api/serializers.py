@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from events.models import Events
+from events.models import Events, Comments
 from user.models import User
 
 class EventsSerializer(serializers.ModelSerializer):
@@ -13,3 +13,8 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = '__all__'
 
+
+class CommentsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comments
+        fields = '__all__'
