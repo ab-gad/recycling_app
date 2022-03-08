@@ -4,10 +4,10 @@ import "./spinner.css";
 
 function Spinner() {
 
-  useEffect ( ()=> {
-      let spinner = document.getElementById("load_animation");
-      spinner.style.display = "none";
-    } , []);
+  // useEffect ( ()=> {
+  //     let spinner = document.getElementById("load_animation");
+  //     spinner.style.display = "none";
+  //   } , []);
 
   return (
     <div id="load_animation" >

@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <section  >
 
-      <Spinner />
+      {/* <Spinner /> */}
 
       {/* _____________________________ Carouser Section ______________________________ */}
 

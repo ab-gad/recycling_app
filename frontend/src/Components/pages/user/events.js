@@ -20,10 +20,11 @@ const Events = (props) => {
             const id = authed_user.id
             console.log(authed_user.id,"user id");
             axios
-            .get(`http://localhost:8000/user_api/events/${id}`)
+            .get(`http://localhost:8000/events_api/getUserEvents/${id}`)
             .then((result) => {
-                console.log("events",result.data.events);
-                setEvents(result.data.events);
+
+                console.log("events",result);
+                setEvents(result.data.data);
             })
             .catch((err) => {
               console.log(err);

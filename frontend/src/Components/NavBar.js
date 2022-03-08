@@ -1,7 +1,7 @@
 import "./NavBar.css";
 import { NavLink } from "react-router-dom";
 import { Langcontext } from "../App";
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { FaRegUserCircle ,FaSeedling , FaBoxOpen } from 'react-icons/fa';
 import { RiMessengerLine } from 'react-icons/ri';
 import { VscHome } from 'react-icons/vsc';
@@ -72,9 +72,11 @@ const Navbar = (props) => {
       history.push('/auth/login');
     } ;
 
-    // useEffect( ()=> {
-    //   document.getElementById(localStorage.getItem("navActive")).classList.add('active');
-    // } ,[])
+    useEffect( ()=> {
+      localStorage.getItem("navActive") ? 
+      document.getElementById(localStorage.getItem("navActive")).classList.add('active'):
+      document.getElementById('home').classList.add('active')
+    } ,[])
 
   return (
     <>
@@ -89,8 +91,8 @@ const Navbar = (props) => {
             </div>
           </div>
 
-          <button type="button" className="btn btn-outline-light shadow-none rounded-pill m-2 mx-3 language_button " onClick={() => language_zone() } >
-            {langcont}
+          <button type="button" className="btn btn-outline-light shadow-none m-2 mx-3 language_button " onClick={() => language_zone() } >
+            {langcont==="ENGLISH"?"EN":"AR"}
           </button>   
 
             <li className="nav-item mx-3 dropdown log_icon d-flex align-items-center">
@@ -140,7 +142,7 @@ const Navbar = (props) => {
           <div className="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">     
             <ul className="navbar-nav nav_element " dir="ltr" >
 
-              <li className="nav-item anmi_item  " id="home">
+              <li className="nav-item anmi_item" id="home">
                 <NavLink to="/" className="nav-link text-center d-flex gap-3 responsev_zon" aria-current="page"  >
                   <span className="ico text-light"> <VscHome /> </span>
                   <span className="tex text-light " > {translation.Home} </span>  

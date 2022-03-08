@@ -135,7 +135,7 @@ const Show = (props) => {
     if (authed_user && authed_user.id && eventInfo?.interests?.includes(authed_user.id)){
       setInterest(true)
     }
-  },[authed_user])
+  },[eventInfo])
 
 
 
