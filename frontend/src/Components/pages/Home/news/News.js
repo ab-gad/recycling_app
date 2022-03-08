@@ -4,7 +4,8 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import "./news.css";
-
+import Spinner from "../../../../spinner/spinner";
+    
 const options = {
     margin: 30,
     responsiveClass: true,
@@ -31,21 +32,24 @@ const options = {
 function News (){
 
     const [news, setNews] = useState([])
-    const [ref, setRef] = useState(false)
-    
+    const [loading, setloading] = useState(true);
+
     const getNews = () => {
         fetch('https://newsapi.org/v2/everything?q=recycling&language=en&pageSize=6&page=1&apiKey=a1394438cdcb448bad9714c7ae21424b')
         .then(res=>res.json())
         .then(result => {
             setNews(result.articles)
-            setRef(true)
+            setloading(false)
         })
     }
 
     useEffect(()=>{
         getNews()
     },[])
-
+    
+    if(loading){
+        return <Spinner/>
+    }
     
     return(
         <section dir='ltr'>
