@@ -6,7 +6,6 @@ import Card_in_home from "./Card_home/card_in_home";
 import Carousel from "./carousel/carousel";
 import Footer from "../Footer/Footer";
 import Home_icon_data from './home_icon_section/home_icon_data';
-import Spinner from "../../../spinner/spinner";
 import Rateing from "./Rateing/rateing";
 import News from "./news/News";
 
@@ -14,8 +13,6 @@ const Home = () => {
   
   return (
     <section  >
-
-      {/* <Spinner /> */}
 
       {/* _____________________________ Carouser Section ______________________________ */}
 

@@ -6,11 +6,15 @@ import { useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import "./cart.css";
 import { toast } from "react-toastify";
+import Spinner from "../../../spinner/spinner";
 
 function OrderForm (props) {
     const [price, setPrice] = useState({})
     const [quantity, setQuantity] = useState({})
     const [limit , setLimit] = useState({})
+    const [loader1 , setLoader1] = useState(true)
+    const [loader2 , setLoader2] = useState(true)
+    const [ not_valid_message , setNotValid ] = useState("");
     const { latitude , longitude } = usePosition();
   
     const [orderData , setOrderData] = useState({})
@@ -33,16 +37,17 @@ function OrderForm (props) {
     
     useEffect(()=>{
         if ( cart_catigory === 'shop' ) {
-            setPrice({ paper: 0.50 , metal: 1.3 , plastic: 1.3})
+            setPrice({ paper: props.paperPrice.shop_price , metal: props.metalPrice.shop_price , plastic: props.plasticPrice.shop_price})
             setLimit({  min: 10 , max: 80 });
         }
         else if ( cart_catigory === 'worker' ){
-            setPrice({ paper: 0.45 , metal: 1.1 , plastic: 1.1})
+            setPrice({ paper: props.paperPrice.workers_price , metal: props.metalPrice.workers_price , plastic: props.plasticPrice.workers_price})
             setLimit({ min: 80 , max: 200 });
         }else{
-            setPrice({ paper: 0.70 , metal: 1.5 , plastic: 1.5})
+            setPrice({ paper: props.paperPrice.home_price , metal: props.metalPrice.home_price , plastic: props.plasticPrice.home_price})
             setLimit({ min: 2 , max: 20 });
         }
+        setLoader1(false)
     },[cart_catigory])
 
     useEffect(()=>{
@@ -53,8 +58,14 @@ function OrderForm (props) {
         setQuantity({
             paper: myOrder.paper_q , 
             metal: myOrder.metal_q , 
-            plastic: myOrder.plastic_q}) ;
+            plastic: myOrder.plastic_q
+        })
+        setLoader2(false)
     },[])
+
+    if(loader1 || loader2){
+        return <Spinner/>
+    }
 
     const paperPrice   = price.paper*quantity.paper;
     const plasticPrice = price.plastic*quantity.plastic;
@@ -70,7 +81,6 @@ function OrderForm (props) {
         }
     }
     
-    const [ not_valid_message , setNotValid ] = useState("");
     let not_valid = document.getElementById("not_valid");
     let pattern = /[0-9]/
 
@@ -134,7 +144,7 @@ function OrderForm (props) {
                     position: "bottom-left",
                   });
                 
-                history.push('/profile')
+                history.push('/Orders')
             })
             .catch((err) => {
                 toast.error(`error Updating , please Try again`, {

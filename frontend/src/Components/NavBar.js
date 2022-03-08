@@ -12,7 +12,7 @@ import { logout} from "../redux/actions/actions";
 import { useHistory } from 'react-router-dom';
 
 const Navbar = (props) => {
-  const {cartTotalQuantity}=useSelector(state=>state.cart)
+  const {cartItems}=useSelector(state=>state.cart)
   const Arabic = {
     RecycleWebSite: "إعادة تدوير موقع",
     Home: "الرئيسية",
@@ -126,8 +126,8 @@ const Navbar = (props) => {
                 <NavLink to='/' >
                   <RiMessengerLine className="product_cart user_chat" />
                 </NavLink>
-                <NavLink to='/' className="nav-link product_cart " >
-                  <span> 3 </span>
+                <NavLink to='/wagon' className="nav-link product_cart " >
+                  <span> {cartItems.length} </span>
                   <BsCart2/>
                 </NavLink>
             <button className="navbar-toggler toggel_icon p-0" dir='rtl' type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">    
