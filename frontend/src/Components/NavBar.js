@@ -123,7 +123,7 @@ const Navbar = (props) => {
               }
             </li>       
               
-                <NavLink to='/' >
+                <NavLink to='/live' >
                   <RiMessengerLine className="product_cart user_chat" />
                 </NavLink>
                 <NavLink to='/wagon' className="nav-link product_cart " >
