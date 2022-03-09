@@ -14,7 +14,7 @@ cryptography==36.0.1
 daphne==3.0.2
 defusedxml==0.7.1
 dj-database-url==0.5.0
-Django==2.2.13
+Django==3.1.7
 django-comments-dab==2.7.1
 django-cors-headers==3.11.0
 django-heroku==0.3.1
