@@ -160,6 +160,25 @@ const Show = (props) => {
     }
   }
 
+  const handleDeleteComment = (commentId) => {
+    axios
+      .delete(`http://127.0.0.1:8000/events_api/comments/${commentId}/`)
+      .then((res)=>{
+        const deletedComment = res.data
+        console.log(deletedComment)
+        setcomments(comments.filter((c)=>c.id !== commentId))
+        toast.success(`Your comment was deleted successfully`, {
+          position: "bottom-left",
+        })
+      })
+      .catch((err)=>{
+        console.log(err)
+        toast.error(`Sorry, problem wihle deleting your comment, Please try again`, {
+          position: "bottom-left",
+        })
+      })
+  }
+
   useEffect(() => {
     getEvent();
     getComments();
@@ -172,7 +191,7 @@ const Show = (props) => {
     if (authed_user && authed_user.id && eventInfo?.interests?.includes(authed_user.id)) {
       setInterest(true)
     }
-  }, [eventInfo])
+  }, [eventInfo, authed_user])
 
   if(loader1 || loader2){
     return <Spinner/>
@@ -230,7 +249,7 @@ const Show = (props) => {
                   }
                   {
                     interest ?
-                      <button onClick={(e) => { handleInterest('delete') }} className="btn btn-outline-warning py-3 px-4 fs-5 mx-2"><BsFillBookmarkStarFill className="float-start fs-4 me-1" />Remove Interest</button>
+                      <button onClick={(e) => { handleInterest('delete') }} className="btn btn-warning py-3 px-4 fs-5 mx-2"><BsFillBookmarkStarFill className="float-start fs-4 me-1" />Remove Interest</button>
                       :
                       <button onClick={(e) => { handleInterest('add') }} className="btn btn-primary py-3 px-4 fs-5 mx-2"><BsFillBookmarkStarFill className="float-start fs-4 me-1" />Interest Event</button>
                   }
@@ -242,7 +261,7 @@ const Show = (props) => {
             <div className="">
               <h2>Comments:</h2>
               <div className="overflow-auto" style={{maxHeight:'100vh'}}>
-                {comments && comments.map((c)=><Comment key={c.id} comment={c}/>)}
+                {comments && comments.map((c)=><Comment key={c.id} comment={c} handleDeleteComment={handleDeleteComment}/>)}
               </div>    
             </div>
             <div className="mt-1 mb-0 pt-3 border-top ">
