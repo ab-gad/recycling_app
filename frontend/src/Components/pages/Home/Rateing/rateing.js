@@ -41,21 +41,24 @@ function Rateing (){
    const getRate=() => {
             axios.get(`http://localhost:8000/material_api/rate/`)
             .then((result) => {
-                console.log('rate',result.data.filter((e)=>e.id == 3)[0])
                 setPaperRate(result.data.filter((e)=>e.material === 'paper')[0])
                 setPlasticRate(result.data.filter((e)=>e.material === 'plastic')[0])
                 setAluminuimRate(result.data.filter((e)=>e.material === 'metal')[0])
-                
             })
             .catch((err) => {
                 console.log(err)
             })
     }
 
+    // Conservation Rate
+    const loss_rate_paper = paperRate.annual_consumption - paperRate.annual_recycling
+    const loss_rate_plastic = plasticRate.annual_consumption - plasticRate.annual_recycling
+    const loss_rate_aluminum = aluminuimRate.annual_consumption - aluminuimRate.annual_recycling
+    const average_loss_rate = ( loss_rate_paper + loss_rate_plastic + loss_rate_aluminum ) / 3
+    const average_Keeping_rate = 100 - average_loss_rate
+
     useEffect(()=>{      
-      getRate()
-      
-      
+      getRate() 
   },[])
 
 
@@ -128,11 +131,11 @@ function Rateing (){
           <tfoot>
             <tr>
               <td colSpan={4} className="ssss">
-                <h6> {translation.environmental_rate} </h6>
+                <h6> {translation.environmental_rate}: {average_Keeping_rate.toFixed(1)} </h6>
                 <LinearProgress
                   className="env_rate"
                   variant="determinate"
-                  value={80}
+                  value={average_Keeping_rate.toFixed(1)}
                 />
               </td>
             </tr>

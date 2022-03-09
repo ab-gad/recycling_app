@@ -166,56 +166,103 @@ const [avatar,setAvatar] = useState(null);
 
   return (
 
+  
+    <form id='settings_container'>
+    <div class='d-flex justify-content-between flex-column flex-md-row' >
+      <div class="d-flex flex-column align-items-center left_container">
+        <img src={`${user.avatar}`}  class="rounded-circle border border-muted border-2 " width="200" />    
+        <h3 class="my-3 text-center">  {`${authed_user && user.first_name}`} {`${authed_user && user.last_name}`} </h3> 
+        <small class="align-self-start mx-4 px-2">Change image</small> 
+        
+        <input type="file" accept="image/*" name="avatar" class=" w-75 form-control form-control-alternative shadow-none" onChange={(e)=>handleChange(e)}/>
+        <small class="align-self-start mx-4 px-2">Birth Date</small> 
+        <input type="date" name='birthdate' class="form-control w-75 shadow-none" placeholder={`${user.birthdate}`} onChange={(e)=>handleChange(e)}  />   
+      </div>
 
-        <div className='col-xl-5 m-auto' id='settings_container'>
-                <img src={`${user.avatar}`} className="rounded-circle border border-success border-4"/> 
-            <h2 className="mb-5 text-center">{`${authed_user && user.first_name}`} {`${authed_user && user.last_name}`}</h2>
+      <div class="row row-cols-1 row-cols-lg-2 mt-3 mt-md-0 mx-5 right_container justify-content-center align-items-center">
+  
+          <div class='form-group '>
+            <input name='first_name' class="form-control" type="text" placeholder={`${user.first_name}`} onChange={(e)=>{handleChange(e);fNameVaildation(e)}} />
+            <small> {fNameError} </small> 
+          </div>
+  
+          <div class='form-group'>
+            <input name='last_name' class="form-control" type="text" placeholder={`${user.last_name}`} onChange={(e)=>{handleChange(e);lNameVaildation(e)}}  />
+            <small> {lNameError} </small>
+          </div>
+        
+          <div class='form-group'>
+            <input name='email' class="form-control" type="email"  placeholder={`${user.email}`} onChange={(e)=>{handleChange(e);mailVaildation(e)}}  />       
+            <small> {mailError} </small>
+          </div>
+  
+          <div class='form-group'>
+            <input name='phone' class="form-control" type="text"  placeholder={`${user.phone}`} onChange={(e)=>{handleChange(e);phoneVaildation(e)}} />        
+            <small> {phoneError} </small>
+          </div>
+  
+          <div class='form-group'>
+            <input name='city' class="form-control" type="text"  placeholder={`${user.city}`} onChange={(e)=>handleChange(e)} />   
+          </div>
+
+      </div>
+    </div>
+    <div class="d-flex justify-content-evenly mt-5 m-auto button_container gap-0 gap-md-5 w-50 flex-column flex-md-row">
+      <button class="btn btn-info  my-2 text-light shadow-none" id="login_button" onClick={e=> {updateUser(e)} }  > Edit </button>
+      <button class="btn btn-info my-2 text-light shadow-none" id="register_button"  onClick={e=> {deleteUser()}}> Delete </button>
+    </div>
+    </form>
+
+
+
+
+
+    //     <div className='col-xl-5 m-auto' id='settings_container'>
+    //             <img src={`${user.avatar}`} className="rounded-circle border border-success border-4"/> 
+    //         <h2 className="mb-5 text-center">{`${authed_user && user.first_name}`} {`${authed_user && user.last_name}`}</h2>
             
-            <form >
-                <div className='form-group form_inputs'>
-                <input name='first_name' className="form-control" type="text" placeholder={`${user.first_name}`}
-                        onChange={(e)=>{handleChange(e);fNameVaildation(e)}}/>
-                         <small>{fNameError}</small> 
-                </div>
-                <div className='form-group'>
-                <input name='last_name' className="form-control" type="text" placeholder={`${user.last_name}`}
-                        onChange={(e)=>{handleChange(e);lNameVaildation(e)}}/>
-                         <small>{lNameError}</small> 
+    //         <form >
+    //             <div className='form-group form_inputs'>
+    //             <input name='first_name' className="form-control" type="text" placeholder={`${user.first_name}`}
+    //                     onChange={(e)=>{handleChange(e);fNameVaildation(e)}}/>
+    //                      <small>{fNameError}</small> 
+    //             </div>
+    //             <div className='form-group'>
+    //             <input name='last_name' className="form-control" type="text" placeholder={`${user.last_name}`}
+    //                     onChange={(e)=>{handleChange(e);lNameVaildation(e)}}/>
+    //                      <small>{lNameError}</small> 
 
-                </div>
-                <div className='form-group'>
-                <input name='email' className="form-control" type="email" placeholder={`${user.email}`}
-                        onChange={(e)=>{handleChange(e);mailVaildation(e)}}/>
-                         <small>{mailError}</small> 
-                </div>
-                <div className='form-group'>
-                <input type="date" name='birthdate' className="form-control" placeholder={`${user.birthdate}`}
-                        onChange={(e)=>handleChange(e)}/>
-                </div>
-                <div className='form-group'>
-                <input type="file" accept="image/*" name="avatar"  class="form-control form-control-alternative"
-                         onChange={(e)=>handleChange(e)}/>
-                </div>
-                <div className='form-group'>
-                <input name='phone' className="form-control" type="text" placeholder={`${user.phone}`}
-                        onChange={(e)=>{handleChange(e);phoneVaildation(e)}}/>
-                         <small>{phoneError}</small> 
-                </div>
-                <div className='form-group'>
-                <input name='city' className="form-control" type="text" placeholder={`${user.city}`}
-                        onChange={(e)=>handleChange(e)}/>
-                </div>
-                <div className="btn_container px-0 d-flex justify-content-between buttons">
-                    <button className="btn btn_color " onClick={e => {updateUser(e)} }  id="login_button" > Edit </button>
-                    <button className="btn btn_color " onClick={e => {deleteUser()} }  id="register_button" > Delete </button>
-                </div>
+    //             </div>
+    //             <div className='form-group'>
+    //             <input name='email' className="form-control" type="email" placeholder={`${user.email}`}
+    //                     onChange={(e)=>{handleChange(e);mailVaildation(e)}}/>
+    //                      <small>{mailError}</small> 
+    //             </div>
+    //             <div className='form-group'>
+    //             <input type="date" name='birthdate' className="form-control" placeholder={`${user.birthdate}`}
+    //                     onChange={(e)=>handleChange(e)}/>
+    //             </div>
+    //             <div className='form-group'>
+    //             <input type="file" accept="image/*" name="avatar"  class="form-control form-control-alternative"
+    //                      onChange={(e)=>handleChange(e)}/>
+    //             </div>
+    //             <div className='form-group'>
+    //             <input name='phone' className="form-control" type="text" placeholder={`${user.phone}`}
+    //                     onChange={(e)=>{handleChange(e);phoneVaildation(e)}}/>
+    //                      <small>{phoneError}</small> 
+    //             </div>
+    //             <div className='form-group'>
+    //             <input name='city' className="form-control" type="text" placeholder={`${user.city}`}
+    //                     onChange={(e)=>handleChange(e)}/>
+    //             </div>
+    //             <div className="btn_container px-0 d-flex justify-content-between buttons">
+    //                 <button className="btn btn_color " onClick={e => {updateUser(e)} }  id="login_button" > Edit </button>
+    //                 <button className="btn btn_color " onClick={e => {deleteUser()} }  id="register_button" > Delete </button>
+    //             </div>
                 
-            </form>
-       </div>
+    //         </form>
+    //    </div>
        
-    
-
-
   );
 };
 

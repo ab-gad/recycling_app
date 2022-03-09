@@ -7,6 +7,44 @@
     box-sizing: border-box;
 }
 #settings_container {
+    max-width: 75%;
+    margin: 3rem auto;
+    padding: 1.5rem 1rem ;
+    border: 1px solid #00000028;
+    border-radius: 7px;
+  }
+  @media (max-width: 552px){
+  #settings_container  {
+    max-width: 90%;
+  }
+  }
+  #settings_container .right_container{
+    max-width: 35rem;
+  }
+  #settings_container .right_container input {
+    margin: 1rem 0;
+    padding: .5rem;  
+    border-color: transparent transparent rgba(121, 130, 204, 0.329) transparent ;
+    border-radius: 0;
+    box-shadow: none;
+    text-align: center;
+}
+#settings_container input:focus {
+  border-color: #00a300a2 ;
+  border-radius: 5px;
+}
+
+#settings_container .left_container input {
+  margin: .5rem 0;
+  padding: .5rem;  
+}
+
+#settings_container .button_container button{
+  width: 100%;
+}
+
+
+/* #settings_container {
     height: 100vh !important ;
     max-width: 24rem;
     padding: 1.5rem 1rem ;
@@ -65,10 +103,9 @@
 
 #settings_container input {
     margin: 1rem 0;
-    padding: .5rem;
-    
+    padding: .5rem;  
 }
 #settings_container small{
     color:red;
     font-weight: 100;
-}
+} */
