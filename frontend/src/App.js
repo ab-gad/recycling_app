@@ -128,6 +128,7 @@ const App = ({load_user,checkAuthenticated, user, isAuthenticated}) => {
                   <Route path="/Wagon/" exact >
                   <Wagon/>
                   </Route>
+
                   <Route path="/contact" exact>
                     <Contact />
                   </Route>
@@ -149,11 +150,6 @@ const App = ({load_user,checkAuthenticated, user, isAuthenticated}) => {
                   <Route exact path='/reset-password' component={ResetPassword} />
                   <Route exact path='/password/reset/confirm/:uid/:token' component={ResetPasswordConfirm} />
                   <Route exact path='/activate/:uid/:token' component={Activate} />
-
-                  {/* <Route path="/service/cart/:id" exact> 
-                    <Cart />
-                  </Route> */}
-
                   <Redirect to="/" />
                 </Switch>
               </ThemesContext.Provider>

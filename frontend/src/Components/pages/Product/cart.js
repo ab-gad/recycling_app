@@ -4,8 +4,6 @@ import{useLocation,useHistory,Link}from'react-router-dom';
 import {API_URL} from '../../../config/index';
 import QueryString from 'query-string';
 import PageTitle from "../../page_title";
-import "./cart.css";
-
 import { TiMinus, TiPlus } from "react-icons/ti";
 import { BsFillTrashFill } from "react-icons/bs";
 import {
@@ -17,6 +15,9 @@ import {
   updateCart,
 } from "../../../features/cartSlice";
 import "./homeproducts.css";
+import "./cart.css";
+
+
 
 const Wagon = () => {
   const dispatch = useDispatch();
