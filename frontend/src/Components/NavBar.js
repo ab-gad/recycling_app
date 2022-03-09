@@ -112,7 +112,6 @@ const Navbar = (props) => {
                 <li><NavLink className="dropdown-item text-center text-primary " to="/Orders" > {translation.Orders} </NavLink></li>
                 <li><NavLink className="dropdown-item text-center text-primary " to="/settings" > {translation.settings} </NavLink></li>
                 <li><NavLink className="dropdown-item text-center text-primary " to="/user/events" > {translation.Events} </NavLink></li>
-
                 <li><button className="dropdown-item text-center text-primary " onClick={logout_user}> {translation.logout} </button></li>
               </ul>
               :
