@@ -65,8 +65,7 @@
 
 #settings_container input {
     margin: 1rem 0;
-    padding: .5rem;
-    
+    padding: .5rem;  
 }
 #settings_container small{
     color:red;
