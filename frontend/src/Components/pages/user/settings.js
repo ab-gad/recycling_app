@@ -4,6 +4,7 @@ import {useState, useEffect}  from  "react"
 import './settings.css'
 // import { useHistory } from 'react-router-dom';
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 
 
@@ -46,28 +47,20 @@ const [avatar,setAvatar] = useState(null);
         formData.append('birthdate', userData.birthdate)
         console.log(formData, "FORM DATA")
         axios.put(`http://localhost:8000/user_api/list/${authed_user.id}`,formData, config)
-            // email: userData.email,
-            // city: userData.city,
-            // first_name: userData.first_name,
-            // last_name: userData.last_name,
-            // phone:userData.phone,
-            // birthdate:userData.birthdate,
-            // avatar:image.avatar
-        
         .then((response) => {
             console.log("UPDATE RES" ,response.data)
             setUser(response.data)
+            toast.success("Edit done successfully",{position:"bottom-left"})
             // history.push('/settings')
         })
         
         .catch((err) => {
             console.log(err)
+            toast.error("Error in editing!,try again!",{position:"bottom-left"})
+
         })
     }
-    // const handleFileSelect = (e) => {
-    //     setAvatar(e.target.files[0])
-    // }
-
+    
     const [user, setUser] = useState({})
     const getUser=() => {
         if (authed_user !== null){

@@ -1,8 +1,5 @@
-import React from "react";
-import axios from "axios";
-import { useState, useEffect } from "react";
+import React ,{ useContext } from "react";
 import "./events.css";
-import { useHistory,Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import Volunteer from "./event_components/volunteer";
 import Interest from "./event_components/interest";
@@ -14,12 +11,11 @@ import Interest from "./event_components/interest";
 
 const Events = () => {
     const authed_user = useSelector((state) => state.authReducer.user);
-
     
   
     return (
         <section id="events_container">
-            <h1 className="text-center"> {`Welcome ${authed_user && authed_user.first_name} ${authed_user && authed_user.last_name}`} </h1>
+            <h1 className="text-center"> {`welcome ${authed_user && authed_user.first_name} ${authed_user && authed_user.last_name}`} </h1>
                 <div className="tabs_container">
                     <ul className="nav nav-pills d-flex justify-content-center mt-4" id="pills-tab" role="tablist " >
                         <li className="nav-item me-2  " role="presentation">
