@@ -1,4 +1,4 @@
-import React , { useContext } from "react";
+import React , { useContext, useState, useEffect } from "react";
 import PageTitle from "../../page_title";
 import Footer from '../Footer/Footer';
 import { Langcontext } from "../../../App";
@@ -7,6 +7,8 @@ import EditOrder from "./Edit_order";
 import "./cart.css";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import Spinner from "../../../spinner/spinner";
 
 
 function SellCart () {
@@ -41,13 +43,36 @@ function SellCart () {
         
     }
 
-    const { langcont, Setlangcontext } = useContext(Langcontext);
+    const { langcont } = useContext(Langcontext);
+    const [materialPrice, setMaterialPrice] = useState([])
+    const [loading, setLoading] = useState(true)
     const translation = langcont === "ENGLISH" ? English : Arabic;
-     
+
+    const getMaterialPrice=() => {
+        axios.get(`http://localhost:8000/material_api/price/`)
+        .then((result) => {
+            console.log('Price',result.data)
+            setMaterialPrice(result.data)
+            setLoading(false)
+            
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+}
 
     const {name, order_id} = useParams()
     console.log(name, "name from sell cart")
     console.log(order_id, "ORDER_ID from sell cart")
+
+    useEffect(()=>{
+        getMaterialPrice()
+    },[])
+
+    if (loading){
+        return <Spinner/>
+    }
+
     return(
         <>
             <section id="cart">
@@ -70,10 +95,24 @@ function SellCart () {
                             <li> {translation.element_5} </li>
                             <li> {translation.element_6} </li>
                         </ul>  
-                    </div>
-                    <Link to='/service/cart/shop/1' >TESTME</Link>
-                    
-                    {order_id ? <EditOrder type={name} order_id={order_id} /> : <OrderForm type={name}/>}
+                    </div>                    
+                    {
+                        order_id ? 
+                        <EditOrder 
+                            catigory={name}
+                            order_id={order_id}
+                            paperPrice = {materialPrice.filter((e)=>e.material === 'paper')[0]}
+                            plasticPrice ={materialPrice.filter((e)=>e.material === 'plastic')[0]}
+                            metalPrice ={materialPrice.filter((e)=>e.material === 'metal')[0] }
+                        /> 
+                        :
+                        <OrderForm 
+                            catigory={name}
+                            paperPrice = {materialPrice.filter((e)=>e.material === 'paper')[0]}
+                            plasticPrice ={materialPrice.filter((e)=>e.material === 'plastic')[0]}
+                            metalPrice ={materialPrice.filter((e)=>e.material === 'metal')[0] }
+                        />
+                    }
                 </div>
             </section> 
         <Footer/>

@@ -1,5 +1,4 @@
 import React , { useEffect , useState , useContext} from "react";
-import { useParams  } from "react-router-dom";
 import { usePosition } from 'use-position';
 import { BiError } from 'react-icons/bi';
 import axios from "axios";
@@ -11,7 +10,6 @@ import { toast } from "react-toastify";
 
 
 function OrderForm (props) {
-    
     const Arabic = {
         first_name: "الأسم الأول",
         last_name: "الأسم الثاني",
@@ -60,15 +58,14 @@ function OrderForm (props) {
         Minia: "Minia",
         Alexandria: "Alexandria",
     }
-    const { langcont, Setlangcontext } = useContext(Langcontext);
+    const { langcont } = useContext(Langcontext);
     const translation = langcont === "ENGLISH" ? English : Arabic;
 
-    const order_id = props.order_id
     const [price, setPrice] = useState({})
     const [quantity, setQuantity] = useState({})
     const [limit , setLimit] = useState({})
     const { latitude , longitude } = usePosition();
-    const cart_catigory = props.type
+    const cart_catigory = props.catigory
     let type = ""
     if (cart_catigory==='shop'){
         type = 'S'
@@ -84,16 +81,16 @@ function OrderForm (props) {
     useEffect(()=>{
         if ( cart_catigory === 'shop' ) {
             setQuantity({paper: 10 , metal: 10 , plastic: 10 }) ;
-            setPrice({ paper: 0.50 , metal: 1.3 , plastic: 1.3})
+            setPrice({ paper: props.paperPrice.shop_price , metal: props.metalPrice.shop_price , plastic: props.plasticPrice.shop_price})
             setLimit({  min: 10 , max: 80 });
         }
         else if ( cart_catigory === 'worker' ){
             setQuantity({paper: 80 , metal: 80 , plastic: 80 }) ;
-            setPrice({ paper: 0.45 , metal: 1.1 , plastic: 1.1})
+            setPrice({ paper: props.paperPrice.workers_price , metal: props.metalPrice.workers_price , plastic: props.plasticPrice.workers_price})
             setLimit({ min: 80 , max: 200 });
         }else{
             setQuantity({ paper: 2 , metal: 2 , plastic: 2}) ;
-            setPrice({ paper: 0.70 , metal: 1.5 , plastic: 1.5})
+            setPrice({ paper: props.paperPrice.home_price , metal: props.metalPrice.home_price , plastic: props.plasticPrice.home_price})
             setLimit({ min: 2 , max: 20 });
         }
     },[cart_catigory])
@@ -174,7 +171,7 @@ function OrderForm (props) {
         firstName: '',
         lastName: '',
         phone: '',
-        city: '',
+        city: 'Cairo',
         Address: '',
     })
     function inputsData (e){
@@ -248,7 +245,7 @@ function OrderForm (props) {
                         </div>
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 col-sm-6 ">
                             <label htmlFor="city" > {translation.city} </label>
-                            <select className="w-50" id="city" name="city" onChange={(e) => inputsData(e) } >
+                            <select className="w-50" id="city" name="city" defaultValue='Cairo' onChange={(e) => inputsData(e) } >
                                 <option value="Cairo"> {translation.cairo} </option>
                                 <option value="Alexandria"> {translation.Alexandria} </option>
                                 <option value="Minia"> {translation.Minia} </option>

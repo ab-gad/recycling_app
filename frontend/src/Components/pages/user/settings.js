@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from "axios"
 import {useState, useEffect}  from  "react"
-import './user.css'
+import './settings.css'
 // import { useHistory } from 'react-router-dom';
 import { useSelector } from "react-redux";
 
@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 
 
 
-const User=()=> {
+const Settings=()=> {
 // const history=useHistory()
 const authed_user = useSelector((state)=> state.authReducer.user)
 console.log(authed_user)
@@ -219,4 +219,4 @@ const [avatar,setAvatar] = useState(null);
   );
 };
 
-export default User;
+export default Settings;

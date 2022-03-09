@@ -5,16 +5,24 @@ from django.db import models
 from django.utils import timezone
 import datetime
 from user.models import User
+from datetime import timedelta
 
+
+def in_fourteen_days():
+    return timezone.now() + timedelta(days=14)
 
 class Events(models.Model):
     title = models.CharField(max_length=50, unique=True)
     details = models.TextField(max_length=2000)
+    target = models.PositiveIntegerField(null=True)
     start_date = models.DateTimeField(default=timezone.now)
-    end_date = models.DateTimeField()
+    end_date = models.DateTimeField(default=in_fourteen_days)
+    creation_date = models.DateTimeField(default=timezone.now)
     location = models.CharField(max_length=400)
     img = models.ImageField(upload_to='Events', verbose_name='Image')
     useradmin = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    volunteers = models.ManyToManyField('user.User',related_name='myevents')
+    interests = models.ManyToManyField('user.User',related_name='myinterests')
 
     def __str__(self):
         return str(self.title)
@@ -54,15 +62,18 @@ class Events(models.Model):
 
 class Comments(models.Model):
     comment = models.TextField(max_length=500)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
-    # avata = models.ImageField(upload_to='comments',
-    #                         verbose_name='Imag', default=None)
-    #first = models.CharField(max_length=50)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments', default=None)
+    event = models.ForeignKey(Events, on_delete=models.CASCADE, related_name='comments', default=None)
+    creation_date = models.DateTimeField(default=timezone.now)
 
-    # @property
-    # def avatar(self):
-    #     self.user.avatar
+    avatar = models.ImageField( blank=True, null=True,
+        upload_to="profile_images", verbose_name='profile picture', default='profile_images/default-pic.jpeg')
+    userName= models.CharField(max_length=100, verbose_name='first name', default=None, blank=True, null=True)
+    
+    def save(self, *args, **kwargs):
+        self.avatar = self.user.avatar
+        self.userName = self.user
+        super(Comments, self).save(*args, **kwargs)
 
-    # @property
-    # def first_name(self):
-    #     self.user.first_name
+    def __str__(self):
+        return f'{self.id} || {self.userName}'

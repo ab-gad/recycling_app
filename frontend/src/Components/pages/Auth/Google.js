@@ -21,10 +21,10 @@ const Google = ({ googleAuthenticate }) => {
             try {
                 console.log("I'm IN")
                 googleAuthenticate(state, code);
-                // history.push('/')
+                history.push('auth/login')
             } catch (error) {
                 console.log(error)
-                history.push('/login')
+                history.push('auth/login')
             }
             
         }

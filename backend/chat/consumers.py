@@ -39,6 +39,7 @@ class ChatConsumer(WebsocketConsumer):
                 'name': name
             }
         )
+        print(message)
 
     # Receive message from room group
     def chat_message(self, event):

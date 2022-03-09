@@ -5,19 +5,13 @@ import About from "./Components/pages/About/About";
 import Contact from "./Components/pages/Contact/Contact";
 import Home from "./Components/pages/Home/Home";
 import Services from "./Components/pages/Service/Service";
-import Testimonial from "./Components/pages/Testimonial/Testimonial";
-import User from "./Components/pages/user/user";
+import Settings from "./Components/pages/user/settings";
+import Testimonial from "./Components/pages/Events/AllEvents";
 import Orders from "./Components/pages/user/orders";
 import Events from "./Components/pages/user/events";
 import Error_404 from "./Components/pages/Home/error_404";
 import Success_order from "./Components/pages/cart/success_order";
-// import Login from "./Components/pages/Registeration/login";
-// import Register from "./Components/pages/Registeration/register";
-// import SignUp from "./Components/pages/Auth/register";
-// import SignIn from "./Components/pages/Auth/login";
-// import SignOut from "./Components/pages/Auth/logout";
 import Login_Register from "./Components/pages/Auth/NewLogin";
-// import Register from "./Components/pages/Auth/NewRegister";
 import Activate from "./Components/pages/Auth/Activate";
 import ResetPassword from "./Components/pages/Auth/ResetPassword";
 import ResetPasswordConfirm from "./Components/pages/Auth/ResetPasswordConfirm";
@@ -26,7 +20,6 @@ import Google from "./Components/pages/Auth/Google";
 import { checkAuthenticated, load_user} from "./redux/actions/actions";
 import { connect } from "react-redux";
 import ProtectedRoute from "./Components/ProtectedRoute";
-
 import Navbar from "./Components/NavBar";
 import Chat from "./Components/pages/ChatBot/Chat";
 import SellCart from "./Components/pages/cart/SellCart";
@@ -34,14 +27,13 @@ import ScrollButton from "./Components/ScrollButton";
 import ThemesContext , {themes} from  './Components/themes';
 import {BsFillMoonStarsFill , BsFillSunFill} from  'react-icons/bs';
 import { useEffect } from "react";
-import Show from "./Components/pages/Testimonial/showevent";
+import Show from "./Components/pages/Events/showevent";
 import Homeproduct from "./Components/pages/Product/homeproduct";
 import Wagon from "./Components/pages/Product/cart";
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import LiveChat from "./Components/pages/LiveChat/LiveChat";
 
-// import { Langcontext } from './context/lang';
 export const Langcontext = React.createContext();
 
 const App = ({load_user,checkAuthenticated, user, isAuthenticated}) => {
@@ -119,7 +111,7 @@ const App = ({load_user,checkAuthenticated, user, isAuthenticated}) => {
                     <Testimonial />
                   </Route>
                   <Route path="/settings" exact>
-                    <User />
+                    <Settings />
                   </Route>
                   <Route path="/user/events" exact>
                     <Events />
@@ -154,7 +146,6 @@ const App = ({load_user,checkAuthenticated, user, isAuthenticated}) => {
                   <Route exact path='/facebook' component={Facebook} />
                   <Route exact path='/google' component={Google} />
                   <Route exact path='/auth/:page' component={Login_Register} />
-                  {/* <Route exact path='/register' component={Login_Register} /> */}
                   <Route exact path='/reset-password' component={ResetPassword} />
                   <Route exact path='/password/reset/confirm/:uid/:token' component={ResetPasswordConfirm} />
                   <Route exact path='/activate/:uid/:token' component={Activate} />

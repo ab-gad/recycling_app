@@ -4,68 +4,37 @@ import { useState, useEffect } from "react";
 import "./events.css";
 import { useHistory,Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
-import {BsFillCursorFill} from "react-icons/bs"
-import {BsFillAlarmFill} from "react-icons/bs"
+import Volunteer from "./event_components/volunteer";
+import Interest from "./event_components/interest";
 
 
 
 
-const Events = (props) => {
-    const history=useHistory()
-    const [events, setEvents] = useState([]);
+
+
+const Events = () => {
     const authed_user = useSelector((state) => state.authReducer.user);
+
     
-    const getEvents = () => {
-        if (authed_user !== null){
-            const id = authed_user.id
-            console.log(authed_user.id,"user id");
-            axios
-            .get(`http://localhost:8000/user_api/events/${id}`)
-            .then((result) => {
-                console.log("events",result.data.events);
-                setEvents(result.data.events);
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-
-        }
-    };
-
-    useEffect(() => {
-        getEvents();
-        
-    }, [authed_user]);
   
     return (
-        <section id="events_container">  
+        <section id="events_container">
             <h1 className="text-center"> {`Welcome ${authed_user && authed_user.first_name} ${authed_user && authed_user.last_name}`} </h1>
-            <div className="row justify-content-center ">
-            {events.map((E) =>{
-                return (
-                    <div className="card mt-2 me-2">
-                            <div className="photo">
-                                <img src={`http://localhost:8000${E.img}`}/>
-                                <div className="event_no">{E.id}</div>
-                            </div>
-                            <div className="content">
-                                <p className="title">{E.title}</p>
-                                <p className="subtitle">{`${E.title} details`}</p>
-                                <p className="details">{E.details}</p>
-                            </div>
-                            <div className="footer">
-                                <p>
-                                    <Link to={`/show/${E.id}`} className="btn btn-success w-50 m-auto">Event Details</Link>
-                                    <span className="location"><BsFillCursorFill className="lo_icon" />{E.location}</span>
-                                </p>
-                                <p className="date"> <BsFillAlarmFill className="date_icon" /> {`${E.start_date}`} <span className="end_date">{`To: ${E.end_date}`}</span></p>
-                            </div>
-                    </div>
-
-                );
-            })}
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="volunteer-tab" data-bs-toggle="tab" data-bs-target="#volunteer" type="button" role="tab" aria-controls="volunteer" aria-selected="true">Volunteer</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="interested-tab" data-bs-toggle="tab" data-bs-target="#interested" type="button" role="tab" aria-controls="interested" aria-selected="false">Interested</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="volunteer" role="tabpanel" aria-labelledby="volunteer-tab"><Volunteer/> </div>
+                <div class="tab-pane fade" id="interested" role="tabpanel" aria-labelledby="interested-tab"><Interest/></div>
             </div>
         </section>
+
+        
 
     
     );

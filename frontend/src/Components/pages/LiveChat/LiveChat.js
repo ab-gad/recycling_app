@@ -25,7 +25,7 @@ const useStyles = (theme) => ({
   },
   form: {
     width: "100%",
-    marginTop: theme.spacing(1),
+    marginTop: theme.spacing(3),
   },
   submit: {
     margin: theme.spacing(3, 2, 0),
@@ -47,13 +47,14 @@ class LiveChat extends Component {
   );
 
   onButtonClicked = (e) => {
+    e.preventDefault();
       this.client.send(JSON.stringify({
           type: "message",
           message: this.state.value,
           name: this.state.name
       }));
       this.state.value = ''
-      e.preventDefault();
+      
   }
   componentDidMount() {
     this.client.onopen = () => {
@@ -81,8 +82,8 @@ class LiveChat extends Component {
         <section id="chat">
 <Container component="main" maxWidth="xs">
         {this.state.isLoggedIn ? (
-          <div style={{ marginTop: 50 }}>
-            Room Name: {this.state.room}
+          <div className="t1" style={{ marginTop: 50 }}>
+            <b>Room Name: {this.state.room}</b>
             <Paper
               style={{
                 height: 500,
@@ -105,51 +106,48 @@ class LiveChat extends Component {
             </Paper>
             <form
               className={classes.form}
-              noValidate
               onSubmit={this.onButtonClicked}
             >
               <TextField
                 id="outlined-helperText"
-                label="Make a comment"
+                placeholder="Make a comment"
                 defaultValue="Default Value"
                 variant="outlined"
                 value={this.state.value}
                 fullWidth
+                required
                 onChange={(e) => {
                   this.setState({ value: e.target.value });
                   this.value = this.state.value;
                 }}
               />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                className="startchatting"
-                
-              >
-                <b className="txt">Start Chatting</b>
-              </Button>
+              <hr></hr>
+              <button className="btn" type="submit">
+                Start Chatting
+              </button>
             </form>
           </div>
         ) : (
           <div>
             <CssBaseline />
             <div className={classes.paper}>
-              <Typography component="h1" variant="h5">
-                <b>Recycle Chatty Rooms</b>
-              </Typography>
+            <div className="form-title">
+            <h1 className="form-h1">
+              <b>Recycle Chatty Rooms</b>
+            </h1>
+          </div>
               <form
                 className={classes.form}
-                noValidate
                 onSubmit={(value) => this.setState({ isLoggedIn: true })}
               >
                 <TextField
                   variant="outlined"
                   margin="normal"
+                  className="t1"
                   required
                   fullWidth
                   id="email"
-                  label="Chatroom Name"
+                  placeholder="Chatroom Name"
                   name="Chatroom Name"
                   autoFocus
                   value={this.state.room}
@@ -164,7 +162,7 @@ class LiveChat extends Component {
                   required
                   fullWidth
                   name="Username"
-                  label="Username"
+                  placeholder="UserName"
                   type="Username"
                   id="Username"
                   value={this.state.name}
@@ -173,14 +171,9 @@ class LiveChat extends Component {
                     this.value = this.state.name;
                   }}
                 />
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  className="startchatting"
-                >
-                 <b className="txt">Start Chatting</b>
-                </Button>
+                <button className="btn" type="submit">
+                Start Chatting
+              </button>
                 
               </form>
             </div>
