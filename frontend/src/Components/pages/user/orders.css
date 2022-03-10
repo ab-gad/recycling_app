@@ -60,7 +60,13 @@
 #orders_container .total .col-3 {
     padding: 0
 }
-
+#orders_container .status {
+    padding: 2vh 8%;
+}
+#orders_container .status #order_status {
+    color: rgb(252, 103, 49);
+    font-weight: bold
+}
 #orders_container #progressbar {
     margin-bottom: 3vh;
     overflow: hidden;

@@ -49,12 +49,12 @@ const Orders = () => {
                   <div className="col-7">
                     
                     <span id="heading">Date</span>
-                    <br /> <span id="details">{order.order_date}</span>{" "}
+                    <br /> <span id="details">{order.order_date}</span>
                   </div>
                   <div className="col-5 pull-right">
                     
                     <span id="heading">Order No.</span>
-                    <br /> <span id="details">{order.id}</span>{" "}
+                    <br /> <span id="details">{order.id}</span>
                   </div>
                 </div>
               </div>
@@ -62,26 +62,26 @@ const Orders = () => {
                 <div className="row">
                   <div className="col-9">
                     
-                    <span id="name">Paper Qty</span>{" "}
+                    <span id="name">Paper Qty</span>
                   </div>
                   <div className="col-3">
                     
-                    <span id="price">£{order.paper_q}</span>{" "}
+                    <span id="price">£{order.paper_q}</span>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col-9">
                     
-                    <span id="name">Plastic Qty</span>{" "}
+                    <span id="name">Plastic Qty</span>
                   </div>
                   <div className="col-3">
-                    
-                    <span id="price">£{order.plastic_q}</span>{" "}
+                
+                    <span id="price">£{order.plastic_q}</span>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col-9">
-                    <span id="name">Metal Qty</span>{" "}
+                    <span id="name">Metal Qty</span>
                   </div>
                   <div className="col-3">
                     <span id="price">£{order.metal_q}</span>{" "}
@@ -96,20 +96,29 @@ const Orders = () => {
                   </div>
                 </div>
               </div>
+              <div className="status">
+                <div className="row">
+                    <div className="col-9">
+                      <span id="name">Status</span>
+                    </div>
+                    <div className="col-3">
+                      <span id="order_status">{order.status}</span>
+                    </div>
+                </div>
+              </div>
               <div className="tracking">
                 <div className="title">Tracking Order</div>
               </div>
               <div className="progress-track">
                 <ul id="progressbar">
                   <li className="step0 active " id="step1">
-                    Ordered
+                    Pending
                   </li>
                   <li className="step0 active text-center" id="step2">
-                    Shipped
+                    Approved
                   </li>
                   <li className="step0 active text-right" id="step3">
-                    On the way
-                  </li>
+                    Shipping                  </li>
                   <li className="step0 text-right" id="step4">
                     Delivered
                   </li>
