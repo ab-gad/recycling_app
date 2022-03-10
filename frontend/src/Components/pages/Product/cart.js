@@ -15,6 +15,9 @@ import {
   updateCart,
 } from "../../../features/cartSlice";
 import "./homeproducts.css";
+import "./cart.css";
+
+
 
 const Wagon = () => {
   const dispatch = useDispatch();
@@ -107,6 +110,9 @@ const Wagon = () => {
           user: user.id,
         }),
       });
+    
+      // localStorage.removeItem("cartItems");
+
     } else {
       history.push("/login");
     }
@@ -129,16 +135,18 @@ const Wagon = () => {
   const item = [];
   const quantity = [];
   const total = 0;
+  var d = new Date()
+console.log(d);
   return (
     <div>
       {cart.cartItems.length === 0 ? (
-        <>
+        <div className="text-center ">
           <div>your cart is Empty </div>
           <Link to="/">
             {" "}
             <span>Start Shopping</span>
           </Link>
-        </>
+        </div>
       ) : (
         <>
           <section className="h-100 gradient-custom">
@@ -175,9 +183,9 @@ const Wagon = () => {
 
                             <div className="col-lg-5 col-md-6 mb-4 mb-lg-0">
                               <p>
-                                <strong>{cartItem.title}</strong>
+                                <strong><span className="big">Name:</span>{cartItem.title}</strong>
                               </p>
-                              <p>{cartItem.description}</p>
+                              <p><span className="big">description:</span>{cartItem.description}</p>
                               <p></p>
                               <button
                                 type="button"
@@ -198,7 +206,7 @@ const Wagon = () => {
                               <div className="d-flex mb-4">
                                 <button
                                   onClick={() => handleDecreaseCart(cartItem)}
-                                  className="btn btn-primary px-3 me-2"
+                                  className="btn btn-primary px-3 me-2 test"
                                 >
                                   <TiMinus />
                                 </button>
@@ -217,7 +225,7 @@ const Wagon = () => {
 
                                 <button
                                   onClick={() => handleIncreaseCart(cartItem)}
-                                  className="btn btn-primary px-3 ms-2"
+                                  className="btn btn-primary px-3 ms-2 test"
                                 >
                                   <TiPlus />
                                 </button>
@@ -225,7 +233,7 @@ const Wagon = () => {
 
                               <p className="text-start text-md-center">
                                 <strong>
-                                  ${cartItem.price * cartItem.cartQuantity}
+                                  Price:{cartItem.price}$
                                 </strong>
                               </p>
                             </div>
