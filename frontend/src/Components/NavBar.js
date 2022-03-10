@@ -83,7 +83,7 @@ const Navbar = (props) => {
   return (
     <>
      <div className="overlay">
-      <nav className="navbar navbar-expand-lg " dir='ltr'>
+      <nav className="navbar navbar-expand-xl " dir='ltr'>
         <div className="container-fluid ">
 
           <div className=" navbar-logo text-light" >
@@ -101,7 +101,7 @@ const Navbar = (props) => {
               <NavLink className="nav-link p-0 m-0 " to="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 {props.user !== null? 
                   <> 
-                  <span className="fs-5 mx-2 text-white">{`${props.user.first_name} ${props.user.last_name}`}</span>
+                  <span className="fs-5 mx-2 text-white d-none d-md-inline">{`${props.user.first_name} ${props.user.last_name}`}</span>
                   <img className="rounded-circle" src={`${props.user.avatar}`} width='40' height='40' alt='user Avatar'/> 
                   </>
                 : 
