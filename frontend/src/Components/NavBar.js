@@ -110,7 +110,7 @@ const Navbar = (props) => {
                 }
               </NavLink>
               
-              {props.isAuthenticated ?
+              {props.user ?
               <ul className="dropdown-menu log_drop" aria-labelledby="navbarDropdownMenuLink">
                 <li><NavLink className="dropdown-item text-center text-primary " to="/Orders" > {translation.Orders} </NavLink></li>
                 <li><NavLink className="dropdown-item text-center text-primary " to="/settings" > {translation.settings} </NavLink></li>
