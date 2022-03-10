@@ -10,9 +10,12 @@ import { useSelector} from "react-redux"
 import { connect } from "react-redux";
 import { logout} from "../redux/actions/actions";
 import { useHistory } from 'react-router-dom';
+import {cartTotalQuantity} from '../features/cartSlice';
 
 const Navbar = (props) => {
   const {cartItems}=useSelector(state=>state.cart)
+
+  // const {cartTotalQuantity}=useSelector(state=>state.cart)
   const Arabic = {
     RecycleWebSite: "إعادة تدوير موقع",
     Home: "الرئيسية",

@@ -33,7 +33,7 @@ const AllEvents = (props) => {
     }
 
     return (
-        <section id="allEvents" className="py-5">
+        <section id="allEvents " className="py-5">
             {console.log('RENDER')}  
             <div className="container row row-cols-1 row-cols-md-3 g-4">
             {events.map((e) =>{
