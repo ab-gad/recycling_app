@@ -10,7 +10,6 @@ import { useSelector} from "react-redux"
 import { connect } from "react-redux";
 import { logout} from "../redux/actions/actions";
 import { useHistory } from 'react-router-dom';
-import {cartTotalQuantity} from '../features/cartSlice';
 
 const Navbar = (props) => {
   const {cartItems}=useSelector(state=>state.cart)
