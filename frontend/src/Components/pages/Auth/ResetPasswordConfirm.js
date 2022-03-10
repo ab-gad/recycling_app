@@ -55,7 +55,7 @@ const ResetPasswordConfirm = ({ match, reset_password_confirm }) => {
                         required
                     />
                 </div>
-                <button className='btn btn-primary' type='submit'>Reset Password</button>
+                <button className='btn btn-success' type='submit'>Reset Password</button>
             </form>
         </div>
     );
