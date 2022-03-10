@@ -5,7 +5,7 @@
     margin-top: 10px;
 }
 #orders_container .card {
-    max-width: 300px;
+    max-width: 350px;
     padding: 4vh 0;
     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-top: 3px solid rgb(252, 103, 49);
