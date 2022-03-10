@@ -12,9 +12,6 @@ const Orders = () => {
   const history = useHistory();
   const authed_user = useSelector((state) => state.authReducer.user);
   console.log(authed_user);
-  //   if (authed_user === null){
-  //     history.push('/login')
-  //   }
   const [orders, setOrders] = useState([]);
   const dispatch = useDispatch();
   const getOrders = () => {
@@ -28,6 +25,7 @@ const Orders = () => {
         })
         .catch((err) => {
           console.log(err);
+          
         });
 
     }

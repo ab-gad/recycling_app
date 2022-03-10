@@ -24,6 +24,8 @@ const [avatar,setAvatar] = useState(null);
                     avatar: e.target.files[0]
                 })
                 console.log("FILES",e.target.files)
+
+
         }else{
                 updateData({
                     ...userData,
