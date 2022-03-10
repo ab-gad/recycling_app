@@ -81,7 +81,7 @@ const [avatar,setAvatar] = useState(null);
         e.preventDefault()
         axios.delete(`http://localhost:8000/user_api/list/${authed_user.id}`)
         .then((result) => {
-            console.log("delete",result)
+            console.log("delete",result.data)
             dispatch(logout())
             toast.success("Delete done successfully",{position:"bottom-left"})
             history.push('/auth/login')
