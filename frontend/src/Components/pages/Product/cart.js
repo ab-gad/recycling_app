@@ -190,11 +190,11 @@ console.log(d);
                               <button
                                 type="button"
                                 onClick={() => handleRemoveFromCart(cartItem)}
-                                className="btn btn-primary btn-sm me-1 mb-2"
+                                className="btn btn-sm me-1 mb-2"
                                 data-mdb-toggle="tooltip"
                                 title="Remove item"
                               >
-                                <BsFillTrashFill />
+                                <BsFillTrashFill className="BsFillTrashFill"/>
                               </button>
                               {/* <button type="button" className="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip"
                      title="Move to the wish list">
@@ -206,9 +206,9 @@ console.log(d);
                               <div className="d-flex mb-4">
                                 <button
                                   onClick={() => handleDecreaseCart(cartItem)}
-                                  className="btn btn-primary px-3 me-2 test"
+                                  className="btn px-3 me-2 test"
                                 >
-                                  <TiMinus />
+                                  <TiMinus className="BsFillTrashFill"/>
                                 </button>
 
                                 <div className="form-outline">
@@ -225,9 +225,9 @@ console.log(d);
 
                                 <button
                                   onClick={() => handleIncreaseCart(cartItem)}
-                                  className="btn btn-primary px-3 ms-2 test"
+                                  className="btn px-3 ms-2 test"
                                 >
-                                  <TiPlus />
+                                  <TiPlus className="BsFillTrashFill"/>
                                 </button>
                               </div>
 
@@ -244,13 +244,17 @@ console.log(d);
                       </div>
                     ))}
                   </div>
+                  <div className="text-center">
                   <button
                     type="button"
                     onClick={() => handleClearCart()}
-                    className="btn btn-primary btn-lg btn-block"
+                    className="btn btn-success btn-lg btn-block"
                   >
                     Clear cart
                   </button>
+                  </div>
+                  
+                  <hr></hr>
                   <div className="card mb-4">
                     <div className="card-body">
                       <p>
@@ -293,7 +297,7 @@ console.log(d);
                       >
                         <button
                           type="submit"
-                          className="btn btn-primary btn-lg btn-block"
+                          className="btn btn-success btn-lg btn-block"
                           onClick={() => checkout()}
                         >
                           Checkout
