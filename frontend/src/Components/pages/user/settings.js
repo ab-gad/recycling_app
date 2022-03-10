@@ -19,7 +19,7 @@ console.log(authed_user)
 const [userData,updateData]=useState({})
 const [avatar,setAvatar] = useState(null);
     const handleChange=(e) => {
-        if ([e.target.name] == 'avatar'){
+        if ([e.target.name] === 'avatar'){
                 setAvatar({
                     avatar: e.target.files[0]
                 })
@@ -111,7 +111,6 @@ const [avatar,setAvatar] = useState(null);
         if(e.target.name === "email") {
             setmailName(e.target.value);
             if(e.target.value.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)){
-
                 setmailError (" ");
             }else {
                 setmailError ("Please enter a vaild email format");

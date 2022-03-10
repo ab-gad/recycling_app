@@ -1,14 +1,10 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useHistory,Link } from 'react-router-dom';
-import {BsFillCursorFill} from "react-icons/bs"
-import {BsFillAlarmFill} from "react-icons/bs"
 import AnEvent from "./AnEvent";
 import Spinner from "../../../spinner/spinner";
 
-const AllEvents = (props) => {
-    const history=useHistory()
+const AllEvents = () => {
     const [events, setEvents] = useState([]);
     const [loading, setloading] = useState(true);
     const getEvents = () => {

@@ -2,14 +2,12 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "./orders.css";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { GiCoinsPile } from "react-icons/gi";
 import { setUserSellOrders } from "../../../redux/actions/actions";
 import { useDispatch } from "react-redux";
 
 const Orders = () => {
-  const history = useHistory();
   const authed_user = useSelector((state) => state.authReducer.user);
   console.log(authed_user);
   const [orders, setOrders] = useState([]);
