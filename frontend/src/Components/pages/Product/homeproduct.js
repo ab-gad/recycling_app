@@ -76,7 +76,7 @@ const Homeproduct = () => {
     <>
       <PageTitle title="Products" description="Home/Products" />
 
-      <div className="container">
+      <div className="container" id="homeproduct">
         {isLoading ? (
           <p>loading...</p>
         ) : error ? (
