@@ -6,9 +6,14 @@ import { Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import {BsFillCursorFill} from "react-icons/bs"
 import {BsFillAlarmFill} from "react-icons/bs"
+import Spinner from '../../../../spinner/spinner'  
+import { useHistory } from 'react-router-dom';
+
 
 
 const Volunteer = (props) => {
+    const history = useHistory()
+    const [loading,setLoading]=useState(true) 
     const [volEvents, setVolEvents] = useState([]);
     const authed_user = useSelector((state) => state.authReducer.user);
     
@@ -19,9 +24,9 @@ const Volunteer = (props) => {
             axios
             .get(`http://localhost:8000/events_api/getUserEvents/${id}`)
             .then((result) => {
-
                 console.log("volunteer",result.data.data);
                 setVolEvents(result.data.data);
+                setLoading(false)
             })
             .catch((err) => {
               console.log(err);
@@ -33,8 +38,18 @@ const Volunteer = (props) => {
 
     
     useEffect(() => {
-        getVolunteeringEvents();
+        if (localStorage.getItem('access')){
+            if (authed_user !== null){
+                getVolunteeringEvents()
+            }
+        }else{
+            history.push('error_404')
+        }   
     }, [authed_user]);
+
+    if (loading){
+        return <Spinner/>
+    }
   
     return (
         <section id="events_container">  

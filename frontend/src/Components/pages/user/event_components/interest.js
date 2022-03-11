@@ -6,11 +6,12 @@ import { Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import {BsFillCursorFill} from "react-icons/bs"
 import {BsFillAlarmFill} from "react-icons/bs"
-
-
-
+import Spinner from '../../../../spinner/spinner'  
+import { useHistory } from 'react-router-dom';
 
 const Interest = (props) => {
+    const history = useHistory()
+    const [loading,setLoading]=useState(true) 
     const [intEvents, setIntEvents] = useState([]);
     const authed_user = useSelector((state) => state.authReducer.user);
     
@@ -21,9 +22,9 @@ const Interest = (props) => {
             axios
             .get(`http://localhost:8000/events_api/getUserInterests/${id}`)
             .then((result) => {
-
                 console.log("interested",result.data.data);
                 setIntEvents(result.data.data);
+                setLoading(false)
             })
             .catch((err) => {
               console.log(err);
@@ -35,8 +36,21 @@ const Interest = (props) => {
 
     
     useEffect(() => {
-        getInterestedEvents();
+        if (localStorage.getItem('access')){
+            if (authed_user !== null){
+            getInterestedEvents()
+            }
+        }else{
+            history.push('error_404')
+        }
+
     }, [authed_user]);
+
+    if (loading){
+        return <Spinner/>
+    }
+    
+    
   
     return (
         <section id="events_container">  
