@@ -30,6 +30,7 @@ import { useEffect } from "react";
 import Show from "./Components/pages/Events/showevent";
 import Homeproduct from "./Components/pages/Product/homeproduct";
 import Wagon from "./Components/pages/Product/cart";
+import Payment from "./Components/pages/Product/payment";
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import LiveChat from "./Components/pages/LiveChat/LiveChat";
@@ -137,7 +138,10 @@ const App = ({load_user,checkAuthenticated, user, isAuthenticated}) => {
                   </Route>
                   <ProtectedRoute exact path="/service/cart/:name/:order_id"  component={SellCart}/>
                   <ProtectedRoute exact path="/success_order"  component={Success_order}/>
-
+                  <ProtectedRoute exact path="/Payment"  component={Payment}/>
+                  {/* <Route path="/Payment" exact>
+                    <Payment />
+                  </Route> */}
                   <Route path="/service/cart/:name/" exact> 
                     <SellCart/>
                   </Route>

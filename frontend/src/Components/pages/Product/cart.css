@@ -1,6 +1,28 @@
-.test {
-  height: 40px;
+ .visi{
+    visibility: hidden;
 }
+#centeremptycart{
+position:absolute;
+top: 40%;
+left: 50%;
+transform: translate(-50%,-50%);
+font-size: larger;
+}
+
+#centeremptycart img {
+    filter:drop-shadow(1px 1px 50px rgba(238, 238, 238, 0.582));
+    
+}
+#centeremptycart .startshoping{
+    background-color: #00a300c7;
+    color:white;
+    
+}
+#centeremptycart .startshoping:hover{
+    background-color: #00a300;
+    
+}
+
 .big {
   font-family: "Courier New", Courier, monospace;
   font-size: 20px;
@@ -8,5 +30,8 @@
   font-weight: bold;
 }
 .BsFillTrashFill {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 30px;
   color: #00a300;
 }
