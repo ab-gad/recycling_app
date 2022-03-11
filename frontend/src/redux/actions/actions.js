@@ -299,9 +299,6 @@ export const googleAuthenticate = (state, code) => async dispatch => {
             dispatch({
                 type: GOOGLE_AUTH_FAIL
             });
-            toast.error(`Social Authentication with Google fail, Try again`, {
-                position: "bottom-left",
-              });
         }
     }
 };

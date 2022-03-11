@@ -21,7 +21,7 @@ body {
 #type_container {
     max-width: 24rem;
     padding: 1.5rem 1rem ;
-    border: 1px solid #00000028;
+    border: 1px solid #00a30057;
     max-width: 24rem;
     border-radius: 5px;
 }
@@ -47,7 +47,7 @@ body {
 }
 #form_container .btn {
     min-width: 45%;
-    font-weight: 100 !important ;
+    font-weight: 400 !important ;
 }
 
 #type_container button svg {
@@ -57,7 +57,7 @@ body {
 
 #type_container .btn_color {
     background-color: #00a300c5;
-    color: #fff;
+    color: #fff ;
     padding: 10px;
 }
 #type_container .btn_color:hover {
@@ -85,9 +85,11 @@ body {
     background-color: #00a300c5;
     color: #fff;
     padding: 10px;
-    height: 43px;
+    height: 42px;
     border-bottom-left-radius: 5px;
     border-top-left-radius: 5px;
+    position: relative;
+    top: -2px;
 }
 #login_form .login_input {
     width: 85%;

@@ -169,7 +169,7 @@ const [avatar,setAvatar] = useState(null);
     <form id='settings_container'>
     <div class='d-flex justify-content-between flex-column flex-md-row' >
       <div class="d-flex flex-column align-items-center left_container">
-        <img src={`${user.avatar}`}  class="rounded-circle border border-muted border-2 " width="200" />    
+        <img src={`${user.avatar}`} class="rounded-circle border border-muted border-2 setting_img " width="200" height="200" />    
         <h3 class="my-3 text-center">  {`${authed_user && user.first_name}`} {`${authed_user && user.last_name}`} </h3> 
         <small class="align-self-start mx-4 px-2">Change image</small> 
         
