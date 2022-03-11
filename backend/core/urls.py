@@ -33,7 +33,6 @@ urlpatterns = [
     path('events_api/', include('events_api.urls')),
     path('products_api/', include('products_api.urls')),
     path('order_product_api/', include('order_product_api.urls')),
-    path('comment_api_test/', include('comment_api_test.urls')),
     path('api/stripe/', include('payments.urls')),
     path('authen/', include('authen.urls', namespace='authen')),
     path('auth/', include('djoser.urls')),

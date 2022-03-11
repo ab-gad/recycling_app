@@ -3,13 +3,10 @@ import "./order_component/sell.css";
 import { useSelector } from "react-redux";
 import Buy from "./order_component/buy";
 import Sell from "./order_component/sell";
-
-
-
-
-
-
 const Orders = () => {
+  const authed_user = useSelector((state) => state.authReducer.user);    
+  
+    const Orders = () => {
     const authed_user = useSelector((state) => state.authReducer.user);
     
   
@@ -42,3 +39,4 @@ const Orders = () => {
   };
   
   export default Orders;
+

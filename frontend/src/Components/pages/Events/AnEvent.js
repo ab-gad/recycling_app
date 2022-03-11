@@ -1,4 +1,4 @@
-import {BsListStars, BsFillBookmarkStarFill,BsFillAlarmFill, BsFillCursorFill } from "react-icons/bs"
+import {BsListStars, BsFillAlarmFill, BsFillCursorFill } from "react-icons/bs"
 import { Link } from "react-router-dom"
 
 // BsFillBookmarkStarFill
@@ -9,9 +9,6 @@ const AnEvent = (props) => {
         title,
         details,
         location,
-        target,
-        interests,
-        volunteers,
         creation_date,
         start_date,
         end_date

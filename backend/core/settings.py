@@ -16,8 +16,6 @@ from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -50,7 +48,6 @@ INSTALLED_APPS = [
     'user',
     'user_api',
     'events_api',
-    'comment_api_test',
     'social_django',
     'rest_framework',
     'rest_framework_simplejwt',

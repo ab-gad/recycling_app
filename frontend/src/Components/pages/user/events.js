@@ -1,4 +1,4 @@
-import React ,{ useContext } from "react";
+import React from "react";
 import "./events.css";
 import { useSelector } from "react-redux";
 import Volunteer from "./event_components/volunteer";
