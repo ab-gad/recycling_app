@@ -7,8 +7,9 @@ import { useGetAllProductsQuery } from "../../../features/productsApi";
 import { addToCart, updateCart } from "../../../features/cartSlice";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { Modal , Button } from 'react-bootstrap';
+import { Modal, Button } from "react-bootstrap";
 
+import Footer from "../Footer/Footer";
 
 const Homeproduct = () => {
   const [modalShow, setModalShow] = React.useState(false);
@@ -22,13 +23,13 @@ const Homeproduct = () => {
 
   const history = useHistory();
   const handleAddToCart = (product) => {
-    if(user!=null){
-    dispatch(addToCart(product));
-    }else{
+    if (user != null) {
+      dispatch(addToCart(product));
+    } else {
       toast.error(`login in order to add product to cart`, {
         position: "top-center",
       });
-      console.log("login????")
+      console.log("login????");
     }
     // const all = {};
 
@@ -61,15 +62,15 @@ const Homeproduct = () => {
 
     if (user != null) {
       if (!localStorage.getItem("cartItems")) {
-        console.log("carttttt")
+        console.log("carttttt");
         const user_id = user.id;
         all[user_id] = cartItems;
         localStorage.setItem("cartItems", JSON.stringify(all));
       } else {
-        const cart= JSON.parse(localStorage.getItem("cartItems"));
+        const cart = JSON.parse(localStorage.getItem("cartItems"));
 
         const user_id = user.id;
-        cart[user_id]=cartItems;
+        cart[user_id] = cartItems;
         // all[user_id] = cartItems;
         localStorage.setItem("cartItems", JSON.stringify(cart));
       }
@@ -90,29 +91,51 @@ const Homeproduct = () => {
         ) : error ? (
           <p>error occured</p>
         ) : (
-          <div className="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3 " >
-          {data?.map((product) => (
-            <div key={product.id} className="col cont">
-                <div className="card h-100 shadow-sm"> <img src={product.image} className="card-img-top" alt={product.title}/>
-                   <hr/>
-                    <div className="card-body productbodycolor">
-                        <div className=" mb-3"> <span className="float-start badge rounded-pill bg-primary"></span> <span className="float-end price-hp">{product.price}$</span> </div>
-                        <h2 className=" text-center">{product.title}</h2>
-                        <h5 className="">{product.description}.</h5>
-                        <div className="text-center my-4"> <button    onClick={() => handleAddToCart(product)}  className="btn1 btn-warning">Add To Cart</button> </div>
-                        {/*  */}
-                        {/* <MyVerticallyCenteredModal
+          <div className="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3 ">
+            {data?.map((product) => (
+              <div key={product.id} className="col cont">
+                <div className="card h-100 shadow-sm">
+                  {" "}
+                  <img
+                    src={product.image}
+                    className="card-img-top"
+                    alt={product.title}
+                  />
+                  <hr />
+                  <div className="card-body productbodycolor">
+                    <div className=" mb-3">
+                      {" "}
+                      <span className="float-start badge rounded-pill bg-primary"></span>{" "}
+                      <span className="float-end price-hp">
+                        {product.price}$
+                      </span>{" "}
+                    </div>
+                    <h2 className=" text-center">{product.title}</h2>
+                    <h5 className="">{product.description}.</h5>
+                    <div className="text-center my-4">
+                      {" "}
+                      <button
+                        onClick={() => handleAddToCart(product)}
+                        className="btn1 btn-warning"
+                      >
+                        Add To Cart
+                      </button>{" "}
+                    </div>
+                    {/*  */}
+                    {/* <MyVerticallyCenteredModal
         show={modalShow}
         data={product}
         onHide={() => setModalShow(false)}
       /> */}
-                    </div>
+                  </div>
                 </div>
-            </div>
-
+              </div>
             ))}
           </div>
         )}
+      </div>
+      <div className="mt-5">
+        <Footer />
       </div>
     </>
   );
