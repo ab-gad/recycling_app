@@ -18,7 +18,6 @@ import "./homeproducts.css";
 import "./cart.css";
 import Footer from "../Footer/Footer";
 
-
 const Wagon = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.authReducer.user);
@@ -128,177 +127,185 @@ const Wagon = () => {
 
   return (
     <div>
-    {cart.cartItems.length === 0 ? (
-      <div className="text-center" id="centeremptycart">
-                <img src={require('./img/cart.png')} alt="Empty cart img" />
+      {cart.cartItems.length === 0 ? (
+        <div className="text-center" id="centeremptycart">
+          <img src={require("./img/cart.png")} alt="Empty cart img" />
 
-        <h3 className="text-capitalize">your cart is Empty </h3>
-        <Link to="/">
-          {" "}
-          <span className="btn startshoping">Start Shopping</span>
-        </Link>
-
-      </div>
-    ) : (
-      <>
-        <section className="h-100 gradient-custom">
-          <div className="container py-5">
-            <div className="row d-flex justify-content-center my-4">
-              <div className="col-md-8">
-                <div className="card mb-4">
-                  <div className="card-headercartItem py-3">
-                    <h5 className="mb-0">Cart Items</h5>
-                  </div>
-                  {cart.cartItems?.map((cartItem) => (
-                    <div key={cartItem.id}>
-                      <div className="visi">
-                        {item.push(cartItem.title)}
-                        {quantity.push(cartItem.cartQuantity)}
-                      </div>
-                      <div className="card-body">
-                        <div className="row">
-                          <div className="col-lg-3 col-md-12 mb-4 mb-lg-0">
-                      
-
-                            <div
-                  class="bg-image hover-overlay hover-zoom ripple rounded"
-                  data-mdb-ripple-color="light"
-                >
-                  <img
-                    src={cartItem.image}
-                    class="w-100 h-100"
-                  />
-                  <a href="#!">
-                    <div
-                      class="mask"
-                    ></div>
-                  </a>
-                </div>
-                          </div>
-
-                          <div className="col-lg-5 col-md-6 mb-4 mb-lg-0">
-                            <p>
-                              <strong><span className="">Name:</span>{cartItem.title}</strong>
-                            </p>
-                            <p><span className="">price:</span>{cartItem.price}</p>
-                            <p></p>
-                            <button
-                              type="button"
-                              onClick={() => handleRemoveFromCart(cartItem)}
-                              className="btn btn-sm me-1 mb-2"
-                              data-mdb-toggle="tooltip"
-                              title="Remove item"
-                            >
-                              <BsFillTrashFill className="BsFillTrashFill"/>
-                            </button>
-                     
-                          </div>
-
-                          <div className="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                            <div className="d-flex mb-4">
-                              <button
-                                onClick={() => handleDecreaseCart(cartItem)}
-                                className="btn px-3 me-2 test"
+          <h3 className="text-capitalize">your cart is Empty </h3>
+          <Link to="/">
+            {" "}
+            <span className="btn startshoping">Start Shopping</span>
+          </Link>
+        </div>
+      ) : (
+        <>
+          <section className="h-100 gradient-custom">
+            <div className="container py-5">
+              <div className="row d-flex justify-content-center my-4">
+                <div className="col-md-8">
+                  <div className="card mb-4">
+                    <div className="card-headercartItem py-3">
+                      <h5 className="mb-0">Cart Items</h5>
+                    </div>
+                    {cart.cartItems?.map((cartItem) => (
+                      <div key={cartItem.id}>
+                        <div className="visi">
+                          {item.push(cartItem.title)}
+                          {quantity.push(cartItem.cartQuantity)}
+                        </div>
+                        <div className="card-body">
+                          <div className="row">
+                            <div className="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                              <div
+                                class="bg-image hover-overlay hover-zoom ripple rounded"
+                                data-mdb-ripple-color="light"
                               >
-                                <TiMinus className="BsFillTrashFill"/>
-                              </button>
-
-                              <div className="form-outline">
-                                <input
-                                  id="form1"
-                                  min="0"
-                                  name="quantity"
-                                  value={cartItem.cartQuantity}
-                                  type="number"
-                                  className="form-control"
-                                />
-                                <label className="form-label">Quantity</label>
+                                <img src={cartItem.image} class="w-100 h-100" />
+                                <a href="#!">
+                                  <div class="mask"></div>
+                                </a>
                               </div>
+                            </div>
 
+                            <div className="col-lg-5 col-md-6 mb-4 mb-lg-0">
+                              <p>
+                                <strong>
+                                  <span className="">Name:</span>
+                                  {cartItem.title}
+                                </strong>
+                              </p>
+                              <p>
+                                <span className="">price:</span>
+                                {cartItem.price}
+                              </p>
+                              <p></p>
                               <button
-                                onClick={() => handleIncreaseCart(cartItem)}
-                                className="btn px-3 ms-2 test"
+                                type="button"
+                                onClick={() => handleRemoveFromCart(cartItem)}
+                                className="btn btn-sm me-1 mb-2"
+                                data-mdb-toggle="tooltip"
+                                title="Remove item"
                               >
-                                <TiPlus className="BsFillTrashFill"/>
+                                <BsFillTrashFill className="BsFillTrashFill" />
                               </button>
                             </div>
 
-                            <p className="text-start text-md-center">
-                              <strong>
-                                Price:{cartItem.price*cartItem.cartQuantity}$
-                              </strong>
-                            </p>
-                          </div>
-                        </div>
+                            <div className="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                              <div className="d-flex mb-4">
+                                <button
+                                  onClick={() => handleDecreaseCart(cartItem)}
+                                  className="btn px-3 me-2 test"
+                                >
+                                  <TiMinus className="BsFillTrashFill" />
+                                </button>
 
-                        <hr className="my-4" />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="text-center">
-                <button
-                  type="button"
-                  onClick={() => handleClearCart()}
-                  className="btn btn-success btn-lg btn-block"
-                >
-                  Clear cart
-                </button>
-                </div>
-                
-                <hr></hr>
-                <div className="card mb-4">
-                  <div className="card-body">
-                    <p>
-                      <strong>Expected shipping delivery</strong>
-                    </p>
-                    <p className="mb-0">12.3.2022 - 22.3.2022</p>
-                  </div>
-                </div>
-                <div class="card mb-4 mb-lg-0">
-          <div class="card-body">
-            <p><strong>We accept</strong></p>
-            <img class="me-2" width="45px"
-              src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
-              alt="Visa" />
-            <img class="me-2" width="45px"
-              src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
-              alt="American Express" />
-            <img class="me-2" width="45px"
-              src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
-              alt="Mastercard" />
-            
-          </div>
-        </div>
-              </div>
-              <div className="col-md-4">
-                <div className="card mb-4">
-                  <div className="card-header py-3">
-                    <h5 className="mb-0">Summary</h5>
-                  </div>
-                  <div className="card-body">
-                    <ul className="list-group list-group-flush">
-                      <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                        Products
-                        <span>${cart.cartTotalAmount}</span>
-                      </li>
-                      <li className="list-group-item d-flex justify-content-between align-items-center px-0">
-                        Shipping
-                        <span>Gratis</span>
-                      </li>
-                      <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-                        <div>
-                          <strong>Total amount</strong>
-                          <strong>
-                            <p className="mb-0">(including VAT)</p>
-                          </strong>
+                                <div className="form-outline">
+                                  <input
+                                    id="form1"
+                                    min="0"
+                                    name="quantity"
+                                    value={cartItem.cartQuantity}
+                                    type="number"
+                                    className="form-control"
+                                  />
+                                  <label className="form-label">Quantity</label>
+                                </div>
+
+                                <button
+                                  onClick={() => handleIncreaseCart(cartItem)}
+                                  className="btn px-3 ms-2 test"
+                                >
+                                  <TiPlus className="BsFillTrashFill" />
+                                </button>
+                              </div>
+
+                              <p className="text-start text-md-center">
+                                <strong>
+                                  Price:{cartItem.price * cartItem.cartQuantity}
+                                  $
+                                </strong>
+                              </p>
+                            </div>
+                          </div>
+
+                          <hr className="my-4" />
                         </div>
-                        <span>
-                          <strong>${cart.cartTotalAmount}</strong>
-                        </span>
-                      </li>
-                    </ul>
-                    {/* <form
+                      </div>
+                    ))}
+                  </div>
+                  <div className="text-center">
+                    <button
+                      type="button"
+                      onClick={() => handleClearCart()}
+                      className="btn btn-success btn-lg btn-block"
+                    >
+                      Clear cart
+                    </button>
+                  </div>
+
+                  <hr></hr>
+                  <div className="card mb-4">
+                    <div className="card-body">
+                      <p>
+                        <strong>Expected shipping delivery</strong>
+                      </p>
+                      <p className="mb-0">12.3.2022 - 22.3.2022</p>
+                    </div>
+                  </div>
+                  <div class="card mb-4 mb-lg-0">
+                    <div class="card-body">
+                      <p>
+                        <strong>We accept</strong>
+                      </p>
+                      <img
+                        class="me-2"
+                        width="45px"
+                        src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
+                        alt="Visa"
+                      />
+                      <img
+                        class="me-2"
+                        width="45px"
+                        src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
+                        alt="American Express"
+                      />
+                      <img
+                        class="me-2"
+                        width="45px"
+                        src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
+                        alt="Mastercard"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-4">
+                  <div className="card mb-4">
+                    <div className="card-header py-3">
+                      <h5 className="mb-0">Summary</h5>
+                    </div>
+                    <div className="card-body">
+                      <ul className="list-group list-group-flush">
+                        <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                          Products
+                          <span>${cart.cartTotalAmount}</span>
+                        </li>
+                        <li className="list-group-item d-flex justify-content-between align-items-center px-0">
+                          Shipping
+                          <span>Gratis</span>
+                        </li>
+                        <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                          <div>
+                            <strong>Total amount</strong>
+                            <strong>
+                              <p className="mb-0">(including VAT)</p>
+                            </strong>
+                          </div>
+                          <span>
+                            <strong>${cart.cartTotalAmount}</strong>
+                          </span>
+                        </li>
+                      </ul>
+                      {/* <form
                       action={`${API_URL}/api/stripe/create-checkout-session`}
                       method="POST"
                     > */}
@@ -309,19 +316,17 @@ const Wagon = () => {
                       >
                         Checkout
                       </button>
-                    {/* </form> */}
+                      {/* </form> */}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-      </>
-    )}
-      <div className="mt-5">
-        <Footer />
-      </div>
-  </div>
+          </section>
+        </>
+      )}
+      <Footer />
+    </div>
   );
 };
 export default Wagon;
