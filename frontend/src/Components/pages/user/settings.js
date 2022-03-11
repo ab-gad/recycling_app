@@ -208,7 +208,7 @@ const [avatar,setAvatar] = useState(null);
     </div>
     <div class="d-flex justify-content-evenly mt-5 m-auto button_container gap-0 gap-md-5 w-50 flex-column flex-md-row">
       <button class="btn btn-info  my-2 text-light shadow-none" id="login_button" onClick={e=> {updateUser(e)} }  > Edit </button>
-      <button class="btn btn-info my-2 text-light shadow-none" id="register_button"  onClick={e=> {deleteUser()}}> Delete </button>
+      <button class="btn btn-info my-2 text-light shadow-none" id="register_button"  onClick={e=> {deleteUser(e)}}> Delete </button>
     </div>
     </form>
 
