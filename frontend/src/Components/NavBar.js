@@ -72,6 +72,7 @@ const Navbar = (props) => {
     const logout_user = () => {
       props.logout();
       history.push('/auth/login');
+      window.location.reload();
     } ;
 
     useEffect( ()=> {
@@ -128,7 +129,7 @@ const Navbar = (props) => {
                   <RiMessengerLine className="product_cart user_chat" />
                 </NavLink>
                 <NavLink to='/wagon' className="nav-link product_cart " >
-                  <span> {cartItems.length} </span>
+                  <span>  {cartItems ? cartItems.length : 0} </span>
                   <BsCart2/>
                 </NavLink>
             <button className="navbar-toggler toggel_icon p-0" dir='rtl' type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">    
