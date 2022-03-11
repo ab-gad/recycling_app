@@ -175,33 +175,33 @@ const [avatar,setAvatar] = useState(null);
         
         <input type="file" accept="image/*" name="avatar" class=" w-75 form-control form-control-alternative shadow-none" onChange={(e)=>handleChange(e)}/>
         <small class="align-self-start mx-4 px-2">Birth Date</small> 
-        <input type="date" name='birthdate' class="form-control w-75 shadow-none" placeholder={`${user.birthdate}`} onChange={(e)=>handleChange(e)}  />   
+        <input type="date" name='birthdate' class="form-control w-75 shadow-none" placeholder={"birthdate"} value={`${user.birthdate}`} onChange={(e)=>handleChange(e)}  />   
       </div>
 
       <div class="row row-cols-1 row-cols-lg-2 mt-3 mt-md-0 mx-5 right_container justify-content-center align-items-center">
   
           <div class='form-group '>
-            <input name='first_name' class="form-control" type="text" placeholder={`${user.first_name}`} onChange={(e)=>{handleChange(e);fNameVaildation(e)}} />
+            <input name='first_name' class="form-control" type="text" placeholder={"first name"}  onChange={(e)=>{handleChange(e);fNameVaildation(e)}} />
             <small> {fNameError} </small> 
           </div>
   
           <div class='form-group'>
-            <input name='last_name' class="form-control" type="text" placeholder={`${user.last_name}`} onChange={(e)=>{handleChange(e);lNameVaildation(e)}}  />
+            <input name='last_name' class="form-control" type="text" placeholder={"last name"} value={`${user.last_name}`} onChange={(e)=>{handleChange(e);lNameVaildation(e)}}  />
             <small> {lNameError} </small>
           </div>
         
           <div class='form-group'>
-            <input name='email' class="form-control" type="email"  placeholder={`${user.email}`} onChange={(e)=>{handleChange(e);mailVaildation(e)}} readOnly  />       
+            <input name='email' class="form-control" type="email" placeholder={"email"}  value={`${user.email}`} onChange={(e)=>{handleChange(e);mailVaildation(e)}} readOnly  />       
             <small> {mailError} </small>
           </div>
   
           <div class='form-group'>
-            <input name='phone' class="form-control" type="text"  placeholder={`${user.phone}`} onChange={(e)=>{handleChange(e);phoneVaildation(e)}} />        
+            <input name='phone' class="form-control" type="text" placeholder={"phone"}   onChange={(e)=>{handleChange(e);phoneVaildation(e)}} />        
             <small> {phoneError} </small>
           </div>
   
           <div class='form-group'>
-            <input name='city' class="form-control" type="text"  placeholder={`${user.city}`} onChange={(e)=>handleChange(e)} />   
+            <input name='city' class="form-control" type="text" placeholder={"city"}   onChange={(e)=>handleChange(e)} />   
           </div>
 
       </div>
@@ -222,23 +222,23 @@ const [avatar,setAvatar] = useState(null);
             
     //         <form >
     //             <div className='form-group form_inputs'>
-    //             <input name='first_name' className="form-control" type="text" placeholder={`${user.first_name}`}
+    //             <input name='first_name' className="form-control" type="text" value={`${user.first_name}`}
     //                     onChange={(e)=>{handleChange(e);fNameVaildation(e)}}/>
     //                      <small>{fNameError}</small> 
     //             </div>
     //             <div className='form-group'>
-    //             <input name='last_name' className="form-control" type="text" placeholder={`${user.last_name}`}
+    //             <input name='last_name' className="form-control" type="text" value={`${user.last_name}`}
     //                     onChange={(e)=>{handleChange(e);lNameVaildation(e)}}/>
     //                      <small>{lNameError}</small> 
 
     //             </div>
     //             <div className='form-group'>
-    //             <input name='email' className="form-control" type="email" placeholder={`${user.email}`}
+    //             <input name='email' className="form-control" type="email" value={`${user.email}`}
     //                     onChange={(e)=>{handleChange(e);mailVaildation(e)}}/>
     //                      <small>{mailError}</small> 
     //             </div>
     //             <div className='form-group'>
-    //             <input type="date" name='birthdate' className="form-control" placeholder={`${user.birthdate}`}
+    //             <input type="date" name='birthdate' className="form-control" value={`${user.birthdate}`}
     //                     onChange={(e)=>handleChange(e)}/>
     //             </div>
     //             <div className='form-group'>
@@ -246,12 +246,12 @@ const [avatar,setAvatar] = useState(null);
     //                      onChange={(e)=>handleChange(e)}/>
     //             </div>
     //             <div className='form-group'>
-    //             <input name='phone' className="form-control" type="text" placeholder={`${user.phone}`}
+    //             <input name='phone' className="form-control" type="text" value={`${user.phone}`}
     //                     onChange={(e)=>{handleChange(e);phoneVaildation(e)}}/>
     //                      <small>{phoneError}</small> 
     //             </div>
     //             <div className='form-group'>
-    //             <input name='city' className="form-control" type="text" placeholder={`${user.city}`}
+    //             <input name='city' className="form-control" type="text" value={`${user.city}`}
     //                     onChange={(e)=>handleChange(e)}/>
     //             </div>
     //             <div className="btn_container px-0 d-flex justify-content-between buttons">
