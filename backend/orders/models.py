@@ -27,7 +27,7 @@ class Orders (models.Model):
         (SHIPPING, "shipping"),
         (DELIVERED, "delivered"),
     )
-    status = models.CharField(max_length=1, choices=TYPE_CHOICES, default=PENDENG)
+    status = models.CharField(max_length=1, choices=STATUS_CHOICES, default=PENDENG)
     type = models.CharField(max_length=1, choices=TYPE_CHOICES, default=HOME)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
     first_name = models.CharField(max_length=50)

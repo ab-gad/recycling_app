@@ -15,6 +15,9 @@ import {
   updateCart,
 } from "../../../features/cartSlice";
 import "./homeproducts.css";
+import "./cart.css";
+
+
 
 const Wagon = () => {
   const dispatch = useDispatch();
@@ -107,6 +110,9 @@ const Wagon = () => {
           user: user.id,
         }),
       });
+    
+      // localStorage.removeItem("cartItems");
+
     } else {
       history.push("/login");
     }
@@ -129,16 +135,18 @@ const Wagon = () => {
   const item = [];
   const quantity = [];
   const total = 0;
+  var d = new Date()
+console.log(d);
   return (
     <div>
       {cart.cartItems.length === 0 ? (
-        <>
+        <div className="text-center ">
           <div>your cart is Empty </div>
           <Link to="/">
             {" "}
             <span>Start Shopping</span>
           </Link>
-        </>
+        </div>
       ) : (
         <>
           <section className="h-100 gradient-custom">
@@ -175,18 +183,18 @@ const Wagon = () => {
 
                             <div className="col-lg-5 col-md-6 mb-4 mb-lg-0">
                               <p>
-                                <strong>{cartItem.title}</strong>
+                                <strong><span className="big">Name:</span>{cartItem.title}</strong>
                               </p>
-                              <p>{cartItem.description}</p>
+                              <p><span className="big">description:</span>{cartItem.description}</p>
                               <p></p>
                               <button
                                 type="button"
                                 onClick={() => handleRemoveFromCart(cartItem)}
-                                className="btn btn-primary btn-sm me-1 mb-2"
+                                className="btn btn-sm me-1 mb-2"
                                 data-mdb-toggle="tooltip"
                                 title="Remove item"
                               >
-                                <BsFillTrashFill />
+                                <BsFillTrashFill className="BsFillTrashFill"/>
                               </button>
                               {/* <button type="button" className="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip"
                      title="Move to the wish list">
@@ -198,9 +206,9 @@ const Wagon = () => {
                               <div className="d-flex mb-4">
                                 <button
                                   onClick={() => handleDecreaseCart(cartItem)}
-                                  className="btn btn-primary px-3 me-2"
+                                  className="btn px-3 me-2 test"
                                 >
-                                  <TiMinus />
+                                  <TiMinus className="BsFillTrashFill"/>
                                 </button>
 
                                 <div className="form-outline">
@@ -217,15 +225,15 @@ const Wagon = () => {
 
                                 <button
                                   onClick={() => handleIncreaseCart(cartItem)}
-                                  className="btn btn-primary px-3 ms-2"
+                                  className="btn px-3 ms-2 test"
                                 >
-                                  <TiPlus />
+                                  <TiPlus className="BsFillTrashFill"/>
                                 </button>
                               </div>
 
                               <p className="text-start text-md-center">
                                 <strong>
-                                  ${cartItem.price * cartItem.cartQuantity}
+                                  Price:{cartItem.price}$
                                 </strong>
                               </p>
                             </div>
@@ -236,13 +244,17 @@ const Wagon = () => {
                       </div>
                     ))}
                   </div>
+                  <div className="text-center">
                   <button
                     type="button"
                     onClick={() => handleClearCart()}
-                    className="btn btn-primary btn-lg btn-block"
+                    className="btn btn-success btn-lg btn-block"
                   >
                     Clear cart
                   </button>
+                  </div>
+                  
+                  <hr></hr>
                   <div className="card mb-4">
                     <div className="card-body">
                       <p>
@@ -285,7 +297,7 @@ const Wagon = () => {
                       >
                         <button
                           type="submit"
-                          className="btn btn-primary btn-lg btn-block"
+                          className="btn btn-success btn-lg btn-block"
                           onClick={() => checkout()}
                         >
                           Checkout

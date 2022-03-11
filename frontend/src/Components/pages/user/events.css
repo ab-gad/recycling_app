@@ -1,133 +1,140 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,800&display=swap");
 
 #events_container h1 {
-    font-family: 'Poppins', sans-serif;
-    color: #00a300 ;
-    margin-top: 30px;
+  font-family: "Poppins", sans-serif;
+  color: #00a300;
+  margin-top: 30px;
 }
 
 #events_container .card {
-    max-width: 450px;
-    padding: 4vh 0;
-    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-top: 3px solid rgb(252, 103, 49);
-    border-bottom: 3px solid rgb(252, 103, 49);
-    transition: 0.3s
+  max-width: 450px;
+  padding: 4vh 0;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-top: 3px solid rgb(252, 103, 49);
+  border-bottom: 3px solid rgb(252, 103, 49);
+  transition: 0.3s;
 }
 #events_container .card:hover {
-    box-shadow: 0 0 45px gray
+  box-shadow: 0 0 45px gray;
 }
 
 #events_container .photo {
-    height: 300px;
-    width: 100%
+  height: 300px;
+  width: 100%;
 }
 
 #events_container .photo img {
-    height: 100%;
-    width: 100%
+  height: 100%;
+  width: 100%;
 }
 
 #events_container .content {
-    width: 80%;
-    height: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    top: -33px
+  width: 80%;
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  top: -33px;
 }
 
 #events_container .event_no {
-    width: 90px;
-    height: 30px;
-    background-color: #E74C3C;
-    color: white;
-    position: relative;
-    top: -30px;
-    padding-left: 10px;
-    font-size: 20px
+  width: 90px;
+  height: 30px;
+  background-color: #e74c3c;
+  color: white;
+  position: relative;
+  top: -30px;
+  padding-left: 10px;
+  font-size: 20px;
 }
 
 #events_container .title {
-    font-size: 30px;
-    position: relative;
-    top: 33px
+  font-size: 30px;
+  position: relative;
+  top: 33px;
 }
 #events_container .subtitle {
-    position: relative;
-    top: 18px;
-    color: #E74C3C;
-    font-size: 20px;
+  position: relative;
+  top: 18px;
+  color: #e74c3c;
+  font-size: 20px;
 }
 
 #events_container .details {
-    position: relative;
-    top: 10px;
-    display: none;
+  position: relative;
+  top: 10px;
+  display: none;
 }
 
-#events_container .card:hover>.photo {
-    height: 200px;
-    animation: move1 0.5s ease both
+#events_container .card:hover > .photo {
+  height: 200px;
+  animation: move1 0.5s ease both;
 }
 
 @keyframes move1 {
-    0% {
-        height: 300px
-    }
+  0% {
+    height: 300px;
+  }
 
-    100% {
-        height: 200px
-    }
+  100% {
+    height: 200px;
+  }
 }
 
-#events_container .card:hover>.content {
-    height: 350px
+#events_container .card:hover > .content {
+  height: 350px;
 }
-#events_container .card:hover>.content .details {
-    display: block;
+#events_container .card:hover > .content .details {
+  display: block;
 }
-
 
 #events_container .footer {
-    width: 80%;
-    height: 100px;
-    margin: auto;
-    background-color: white;
-    position: relative;
-    top: -15px
+  width: 80%;
+  height: 100px;
+  margin: auto;
+  background-color: white;
+  position: relative;
+  top: -15px;
 }
 
 #events_container .btn {
-    position: relative;
-    top: 20px
+  position: relative;
+  top: 20px;
 }
 
 #events_container .location {
-    float: right;
-    font-size: 22px;
-    position: relative;
-    top: 20px;
-    color: #333333
+  float: right;
+  font-size: 22px;
+  position: relative;
+  top: 20px;
+  color: #333333;
 }
 
-
 #events_container .lo_icon {
-    margin-right: 10px;
-    transition: 0.5s
+  margin-right: 10px;
+  transition: 0.5s;
 }
 
 #events_container .date {
-    color: rgb(78, 76, 76);
-    position: relative;
-    top: 18px;
-    font-size: 15px;
-    font-weight: 200;
+  color: rgb(78, 76, 76);
+  position: relative;
+  top: 18px;
+  font-size: 15px;
+  font-weight: 200;
 }
 
 #events_container .end_date {
-    float: right;
+  float: right;
 }
-#events_container .date_icon{
-    margin-bottom: 2px;
+#events_container .date_icon {
+  margin-bottom: 2px;
+}
+#events_container .nav-item .active {
+  background-color: #00a300 !important;
+  color: aliceblue !important;
+}
+#events_container .nav-item > button {
+  color: #00a300 !important;
+  background-color: aliceblue !important;
+  border: 1px solid #00a300 !important;
 }

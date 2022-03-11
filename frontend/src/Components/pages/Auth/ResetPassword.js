@@ -45,7 +45,7 @@ const ResetPassword = ({ reset_password, resetPassErr }) => {
                     />
                 </div>
                 <p className=" my-2 text-center text-danger" id="validation" > {resetPassErr&&resetPassErr.email[0]} </p>
-                <button className='btn btn-primary my-2' type='submit'>Reset Password</button>
+                <button className='btn btn-success my-2' type='submit'>Reset Password</button>
             </form>
         </div>
     );
