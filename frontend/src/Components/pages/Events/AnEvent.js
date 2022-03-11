@@ -1,4 +1,4 @@
-import {BsListStars, BsFillBookmarkStarFill,BsFillAlarmFill, BsFillCursorFill } from "react-icons/bs"
+import {BsListStars, BsFillAlarmFill, BsFillCursorFill } from "react-icons/bs"
 import { Link } from "react-router-dom"
 
 // BsFillBookmarkStarFill
@@ -9,9 +9,6 @@ const AnEvent = (props) => {
         title,
         details,
         location,
-        target,
-        interests,
-        volunteers,
         creation_date,
         start_date,
         end_date
@@ -19,11 +16,11 @@ const AnEvent = (props) => {
 
 
     return (
-        <div className="col">
+        <div className="col ">
             <div className="card h-100 ">
                 <img src={img} className="card-img-top" alt="..."/>
                     <div className="card-body position-relative">
-                        <span className="text-white bg-danger py-2 px-4 positi position-absolute bottom-100 start-0" >{id}</span>
+                        <span className="text-white bg-danger py-2 px-4 position-absolute bottom-100 start-0" >{id}</span>
                         <h4 className="card-title mb-1" style={{minHeight: 60}}>{title}</h4>
                         <div className="text-secondary small mb-2">
                         <span className="me-4"><BsFillAlarmFill className="me-1"/> From {start_date.split("T")[0]} to {end_date.split("T")[0]}</span>

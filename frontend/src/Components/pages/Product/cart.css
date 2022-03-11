@@ -1,0 +1,12 @@
+.test {
+  height: 40px;
+}
+.big {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: bold;
+}
+.BsFillTrashFill {
+  color: #00a300;
+}

@@ -2,29 +2,31 @@ import React from 'react'
 import axios from "axios"
 import {useState, useEffect}  from  "react"
 import './settings.css'
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useSelector } from "react-redux";
-
-
-
+import { toast } from "react-toastify";
+import { load_user, logout } from '../../../redux/actions/actions';
+import { useDispatch } from 'react-redux';
 
 
 const Settings=()=> {
-// const history=useHistory()
+const history=useHistory()
 const authed_user = useSelector((state)=> state.authReducer.user)
+const dispatch = useDispatch()
 console.log(authed_user)
     
 
 const [userData,updateData]=useState({})
 const [avatar,setAvatar] = useState(null);
     const handleChange=(e) => {
-        if ([e.target.name] == 'avatar'){
+        if ([e.target.name] === 'avatar'){
                 setAvatar({
                     avatar: e.target.files[0]
                 })
                 console.log("FILES",e.target.files)
+
+
         }else{
-            // console.log(e.target.value)
                 updateData({
                     ...userData,
                     [e.target.name]:e.target.value.trim()
@@ -38,36 +40,29 @@ const [avatar,setAvatar] = useState(null);
         const config = { headers: { 'Content-Type': 'multipart/form-data' } };
 
         console.log("without avatar",userData)
-        formData.append("avatar",avatar?.avatar)
-        formData.append('email', userData.email)
-        formData.append('first_name', userData.first_name)
-        formData.append('last_name', userData.last_name)
-        formData.append('phone', userData.phone)
-        formData.append('birthdate', userData.birthdate)
+        avatar && formData.append("avatar",avatar?.avatar)
+        userData.email&& formData.append('email', userData?.email)
+        userData.first_name && formData.append('first_name', userData?.first_name)
+        userData.last_name && formData.append('last_name', userData.last_name)
+        phone && formData.append('phone', userData?.phone)
+        userData.birthdate && formData.append('birthdate', userData?.birthdate)
+        userData.city && formData.append('city', userData?.city)
         console.log(formData, "FORM DATA")
         axios.put(`http://localhost:8000/user_api/list/${authed_user.id}`,formData, config)
-            // email: userData.email,
-            // city: userData.city,
-            // first_name: userData.first_name,
-            // last_name: userData.last_name,
-            // phone:userData.phone,
-            // birthdate:userData.birthdate,
-            // avatar:image.avatar
-        
         .then((response) => {
             console.log("UPDATE RES" ,response.data)
             setUser(response.data)
-            // history.push('/settings')
+            dispatch(load_user())
+            toast.success("Edit done successfully",{position:"bottom-left"})
         })
         
         .catch((err) => {
             console.log(err)
+            toast.error("Error in editing!,try again!",{position:"bottom-left"})
+
         })
     }
-    // const handleFileSelect = (e) => {
-    //     setAvatar(e.target.files[0])
-    // }
-
+    
     const [user, setUser] = useState({})
     const getUser=() => {
         if (authed_user !== null){
@@ -84,14 +79,20 @@ const [avatar,setAvatar] = useState(null);
         }
 
     }
-    const deleteUser=() => {
+    const deleteUser=(e) => {
+        e.preventDefault()
         axios.delete(`http://localhost:8000/user_api/list/${authed_user.id}`)
         .then((result) => {
-            console.log("user",result.data)
-
+            console.log("delete",result.data)
+            dispatch(logout())
+            toast.success("Delete done successfully",{position:"bottom-left"})
+            history.push('/auth/login')
+        
         })
         .catch((err) => {
-            console.log(err)
+            console.log("error in deleting",err)
+            toast.error("Error in deleting!,try again!",{position:"bottom-left"})
+
         })    
 
     }
@@ -110,9 +111,7 @@ const [avatar,setAvatar] = useState(null);
         if(e.target.name === "email") {
             setmailName(e.target.value);
             if(e.target.value.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)){
-
                 setmailError (" ");
-                // console.log(mailName)
             }else {
                 setmailError ("Please enter a vaild email format");
             }
@@ -192,7 +191,7 @@ const [avatar,setAvatar] = useState(null);
           </div>
         
           <div class='form-group'>
-            <input name='email' class="form-control" type="email"  placeholder={`${user.email}`} onChange={(e)=>{handleChange(e);mailVaildation(e)}}  />       
+            <input name='email' class="form-control" type="email"  placeholder={`${user.email}`} onChange={(e)=>{handleChange(e);mailVaildation(e)}} readOnly  />       
             <small> {mailError} </small>
           </div>
   

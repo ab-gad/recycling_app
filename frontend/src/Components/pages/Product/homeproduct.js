@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 import { useGetAllProductsQuery } from "../../../features/productsApi";
 import { addToCart, updateCart } from "../../../features/cartSlice";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
+
 const Homeproduct = () => {
   const { data, error, isLoading } = useGetAllProductsQuery();
   const dispatch = useDispatch();
@@ -16,8 +18,14 @@ const Homeproduct = () => {
 
   const history = useHistory();
   const handleAddToCart = (product) => {
+    if(user!=null){
     dispatch(addToCart(product));
-
+    }else{
+      toast.error(`login in order to add product to cart`, {
+        position: "top-center",
+      });
+      console.log("login????")
+    }
     // const all = {};
 
     // if (user != null) {
@@ -49,6 +57,7 @@ const Homeproduct = () => {
 
     if (user != null) {
       if (cartItems != []) {
+        console.log("cart")
         const user_id = user.id;
         all[user_id] = cartItems;
         localStorage.setItem("cartItems", JSON.stringify(all));
@@ -67,34 +76,26 @@ const Homeproduct = () => {
     <>
       <PageTitle title="Products" description="Home/Products" />
 
-      <div className="container">
+      <div className="container" id="homeproduct">
         {isLoading ? (
           <p>loading...</p>
         ) : error ? (
           <p>error occured</p>
         ) : (
-          <div className="row">
-            {data?.map((product) => (
-              <div key={product.id} className="col-lg-3  col-md-3 col-sm-12">
-                <div className="card border">
-                  <img
-                    src={product.image}
-                    className="card-img-top"
-                    alt={product.title}
-                  />
-                  <hr />
-                  <div className="card-body">
-                    <h5 className="card-title">{product.title}</h5>
-                    <p className="card-text">{product.description}</p>
-                    <button
-                      onClick={() => handleAddToCart(product)}
-                      className="btn btn-success"
-                    >
-                      Add To Cart
-                    </button>
-                  </div>
+          <div className="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3 " >
+          {data?.map((product) => (
+            <div key={product.id} className="col border">
+                <div className="card h-100 shadow-sm"> <img src={product.image} className="card-img-top" alt={product.title}/>
+                   <hr/>
+                    <div className="card-body">
+                        <div claclassNamess="clearfix mb-3"> <span className="float-start badge rounded-pill bg-primary"></span> <span class="float-end price-hp">{product.price}$</span> </div>
+                        <h2 className="card-title text-center">{product.title}</h2>
+                        <h5 className="">{product.description}.</h5>
+                        <div className="text-center my-4"> <button   onClick={() => handleAddToCart(product)} class="btn1 btn-warning">Add To Cart</button> </div>
+                    </div>
                 </div>
-              </div>
+            </div>
+
             ))}
           </div>
         )}
