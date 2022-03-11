@@ -114,10 +114,8 @@ const [avatar,setAvatar] = useState(null);
             setmailName(e.target.value);
             if(e.target.value.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)){
                 setmailError (false);
-                return true
             }else {
                 setmailError ("Please enter a vaild email format");
-                return false
             }
             
         }
@@ -130,10 +128,8 @@ const [avatar,setAvatar] = useState(null);
             setFName(e.target.value);
             if(e.target.value.match("^(?=.{3,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z._]+(?<![_.])$")&&!(e.target.value.includes(" "))){
                 setFNameError (false);
-                return true
             }else {
                 setFNameError ("Please enter a vaild username format");
-                return false
             }
             
           }
@@ -146,10 +142,8 @@ const [avatar,setAvatar] = useState(null);
             setLName(e.target.value);
             if(e.target.value.match("^(?=.{3,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z._]+(?<![_.])$")&&!(e.target.value.includes(" "))){
                 setLNameError (false);
-                return true
             }else {
                 setLNameError ("Please enter a vaild username format");
-                return false
             }
             
           }
@@ -162,10 +156,8 @@ const [avatar,setAvatar] = useState(null);
             setPhone(e.target.value);
             if(e.target.value.match("^01[0125][0-9]{8}$")){
                 setPhoneError (false);
-                return true
             }else {
                 setPhoneError ("Please enter a valid phone format");
-                return false
             }
             
           }
@@ -178,12 +170,8 @@ const [avatar,setAvatar] = useState(null);
             setCity(e.target.value);
             if(e.target.value.match("^(?=.{3,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z._]+(?<![_.])$")&&!(e.target.value.includes(" "))){
                 setCityError (false);
-                return true
-                // updateUser()
-                // console.log("done from validation")
             }else {
                 setCityError ("Please enter a vaild city format");
-                return false
             }
             
           }
