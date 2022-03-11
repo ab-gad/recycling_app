@@ -16,6 +16,7 @@ import {
 } from "../../../features/cartSlice";
 import "./homeproducts.css";
 import "./cart.css";
+import Footer from "../Footer/Footer";
 
 
 const Wagon = () => {
@@ -317,6 +318,9 @@ const Wagon = () => {
         </section>
       </>
     )}
+      <div className="mt-5">
+        <Footer />
+      </div>
   </div>
   );
 };
