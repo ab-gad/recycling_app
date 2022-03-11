@@ -81,7 +81,6 @@ const App = ({load_user,checkAuthenticated, user, isAuthenticated}) => {
   useEffect(()=>{
     checkAuthenticated()
     load_user()
-    // console.log("user>>>>>",user)
   },[])
     
 
