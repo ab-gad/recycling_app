@@ -4,7 +4,7 @@ import React from "react";
 export const themes = {
     dark: {
         color: '#fff',
-        background: '#121418' ,
+        background: '#444' ,
       
     } ,
     light : {

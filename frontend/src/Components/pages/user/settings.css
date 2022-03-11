@@ -10,7 +10,7 @@
     max-width: 75%;
     margin: 3rem auto;
     padding: 1.5rem 1rem ;
-    border: 1px solid #00000028;
+    border: 1px solid #00a30037;
     border-radius: 7px;
   }
   @media (max-width: 552px){
@@ -42,8 +42,17 @@
 #settings_container .button_container button{
   width: 100%;
 }
-
-
+#settings_container .setting_img{
+  object-fit: contain;
+}
+#settings_container #login_button ,
+#settings_container #register_button {
+  background-color: #00a300c5 ;
+}
+#settings_container #login_button:hover ,
+#settings_container #register_button:hover {
+  background-color: #00a300 ;
+}
 /* #settings_container {
     height: 100vh !important ;
     max-width: 24rem;

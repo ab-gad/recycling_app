@@ -169,8 +169,8 @@ const [avatar,setAvatar] = useState(null);
   
     <form id='settings_container'>
     <div class='d-flex justify-content-between flex-column flex-md-row' >
-      <div class="d-flex flex-column align-items-center left_container">
-        <img src={`${user.avatar}`}  class="rounded-circle border border-muted border-2 " width="200" />    
+      <div class="d-flex flex-column align-items-center left_container"> {/* {`${user.avatar}`}  */}
+        <img src={require('../Home/images/lo.png')} class="rounded-circle border border-muted border-2 setting_img " width="200" height="200" />    
         <h3 class="my-3 text-center">  {`${authed_user && user.first_name}`} {`${authed_user && user.last_name}`} </h3> 
         <small class="align-self-start mx-4 px-2">Change image</small> 
         
@@ -208,8 +208,8 @@ const [avatar,setAvatar] = useState(null);
       </div>
     </div>
     <div class="d-flex justify-content-evenly mt-5 m-auto button_container gap-0 gap-md-5 w-50 flex-column flex-md-row">
-      <button class="btn btn-info  my-2 text-light shadow-none" id="login_button" onClick={e=> {updateUser(e)} }  > Edit </button>
-      <button class="btn btn-info my-2 text-light shadow-none" id="register_button"  onClick={e=> {deleteUser()}}> Delete </button>
+      <button class="btn my-2 text-light shadow-none" id="login_button" onClick={e=> {updateUser(e)} }  > Edit </button>
+      <button class="btn my-2 text-light shadow-none" id="register_button"  onClick={e=> {deleteUser()}}> Delete </button>
     </div>
     </form>
 
