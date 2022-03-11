@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,800&display=swap');
-#buy_container h1{
+#orders h1{
     font-family: 'Poppins', sans-serif;
     color: #00a300 ;
     margin-top: 10px;
 }
 #buy_container .card {
-    /* max-width: 500px; */
+    max-width: 500px;
     padding: 4vh 0;
     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-top: 3px solid red;
@@ -50,6 +50,9 @@
 #buy_container .pricing .col-3 {
     padding: 0
 }
+/* #buy_container #products::after {
+    content: ", ";
+  } */
 
 
 #buy_container .status {
@@ -79,7 +82,7 @@
 
 #buy_container #progressbar #step1:before {
     content: "";
-    color: rgb(252, 103, 49);
+    color: red;
     width: 5px;
     height: 5px;
     margin-left: 0px !important
@@ -90,7 +93,7 @@
     color: #fff;
     width: 5px;
     height: 5px;
-    margin-left: 32%
+    margin-left: 100%
 }
 
 #buy_container #progressbar #step3:before {
@@ -160,5 +163,5 @@
 
 #buy_container #progressbar li.active:before,
 #buy_container #progressbar li.active:after {
-    background: rgb(252, 103, 49)
+    background: red
 }

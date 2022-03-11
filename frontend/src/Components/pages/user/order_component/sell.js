@@ -1,18 +1,18 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import "../orders.css";
+import "./sell.css";
 import { Link} from "react-router-dom";
 import { useSelector } from "react-redux";
 import { setUserSellOrders } from "../../../../redux/actions/actions";
 import { useDispatch } from "react-redux";
 
-const SoldOrders = () => {
+const Sell = () => {
   const authed_user = useSelector((state) => state.authReducer.user);
   console.log(authed_user);
   const [soldOrders, setSoldOrders] = useState([]);
   const dispatch = useDispatch();
-  const getOrders = () => {
+  const getSoldOrders = () => {
     if (authed_user !== null) {
       axios
         .get(`http://localhost:8000/user_api/orders/${authed_user.id}`)
@@ -30,12 +30,12 @@ const SoldOrders = () => {
 
   };
   useEffect(() => {
-      getOrders();
+    getSoldOrders();
     
   }, [authed_user]);
 
   return (
-    <section id="orders_container">  
+    <section id="sell_container">  
         <div className="row justify-content-center ">
         {soldOrders.map((order) => {
           return (
@@ -67,12 +67,10 @@ const SoldOrders = () => {
                   </div>
                 </div>
                 <div className="row">
-                  <div className="col-9">
-                    
+                  <div className="col-9"> 
                     <span id="name">Plastic Qty</span>
                   </div>
                   <div className="col-3">
-                
                     <span id="price">£{order.plastic_q}</span>
                   </div>
                 </div>
@@ -93,32 +91,21 @@ const SoldOrders = () => {
                   </div>
                 </div>
               </div>
-              <div className="status">
-                <div className="row">
-                    <div className="col-9">
-                      <span id="name">Status</span>
-                    </div>
-                    <div className="col-3">
-                      <span id="order_status">{order.status}</span>
-                    </div>
-                </div>
-              </div>
               <div className="tracking">
                 <div className="title">Tracking Order</div>
               </div>
               <div className="progress-track">
                 <ul id="progressbar">
-                  <li className="step0 active " id="step1">
-                    Pending
-                  </li>
-                  <li className="step0 active text-center" id="step2">
-                    Approved
-                  </li>
-                  <li className="step0 active text-right" id="step3">
-                    Shipping                  </li>
-                  <li className="step0 text-right" id="step4">
-                    Delivered
-                  </li>
+                    <li className="step0 active " id="step1">Pending</li>
+                    {order.status !== "P" ?(<li className="step0 active " id="step2">Approved</li>):
+                    (<li className="step0 " id="step2">Approved</li>)}
+
+                    {order.status === "S" || order.status === "D" ?(<li className="step0 active " id="step3">Shipping</li>):
+                    (<li className="step0 " id="step3">Shipping</li>)}
+
+                    {order.status === "D" ?(<li className="step0 active " id="step4">Deliverd</li>):
+                    (<li className="step0 " id="step4">Deliverd</li>)}
+                      
                 </ul>
               </div>
               {order.type === "H" && (
@@ -140,4 +127,4 @@ const SoldOrders = () => {
   );
 };
 
-export default SoldOrders;
+export default Sell;

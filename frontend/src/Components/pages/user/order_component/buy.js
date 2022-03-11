@@ -2,24 +2,21 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "./buy.css";
-import { Link} from "react-router-dom";
 import { useSelector } from "react-redux";
-// import { setUserSellOrders } from "../../../../redux/actions/actions";
-import { useDispatch } from "react-redux";
+import { Link} from "react-router-dom";
 
-const BoughtOrders = () => {
+
+const Buy = () => {
   const authed_user = useSelector((state) => state.authReducer.user);
   console.log(authed_user);
   const [boughtOrders, setBoughtOrders] = useState([]);
-  const dispatch = useDispatch();
-  const getOrders = () => {
+  const getBoughtOrders = () => {
     if (authed_user !== null) {
       axios
         .get(`http://localhost:8000/order_product_api/OrderProductList`)
         .then((result) => {
           console.log("bought orders", result.data);
           setBoughtOrders(result.data);
-        //   dispatch(setUserSellOrders(result.data.orders));
         })
         .catch((err) => {
           console.log(err);
@@ -30,7 +27,7 @@ const BoughtOrders = () => {
 
   };
   useEffect(() => {
-      getOrders();
+    getBoughtOrders();
     
   }, [authed_user]);
 
@@ -62,8 +59,7 @@ const BoughtOrders = () => {
                     <span id="name">Products</span>
                   </div>
                   <div className="col-3">
-                    
-                    <span id="products">{order.products[0]}</span>
+                    <span id="products">{order.products.join(", ")}</span>
                   </div>
                 </div>
                 <div className="row">
@@ -73,7 +69,7 @@ const BoughtOrders = () => {
                   </div>
                   <div className="col-3">
                 
-                    <span id="qty">{order.quantities}</span>
+                    <span id="qty">{order.quantities.join(", ")}</span>
                   </div>
                 </div>
                 <div className="row">
@@ -93,45 +89,19 @@ const BoughtOrders = () => {
                   </div>
                 </div>
               </div>
-              <div className="status">
-                <div className="row">
-                    <div className="col-9">
-                      <span id="name">Status</span>
-                    </div>
-                    <div className="col-3">
-                      <span id="order_status">{order.status}</span>
-                    </div>
-                </div>
-              </div>
               <div className="tracking">
                 <div className="title">Tracking Order</div>
               </div>
               <div className="progress-track">
                 <ul id="progressbar">
-                  <li className="step0 active " id="step1">
-                    Pending
-                  </li>
-                  <li className="step0 active text-center" id="step2">
-                    Approved
-                  </li>
-                  <li className="step0 active text-right" id="step3">
-                    Shipping                  </li>
-                  <li className="step0 text-right" id="step4">
-                    Delivered
-                  </li>
+                    <li className="step0 active " id="step1">Being delivered</li>
+                    <li className={`step0 ${order.received && "active"}`} id="step2">Received</li>
+
                 </ul>
               </div>
-              {order.type === "H" && (
-                <Link to={`/service/cart/home/${order.id}`} className="btn btn-danger w-50 m-auto">More Details</Link>
-              )}
-              {order.type === "S" && (
-                <Link to={`/service/cart/shop/${order.id}`} className="btn btn-danger w-50 m-auto">More Details</Link>
-              )}
-              {order.type === "W" && (
-                <Link to={`/service/cart/worker/${order.id}`} className="btn btn-danger w-50 m-auto">
-                  More Details
+                <Link to="/contact" className="btn btn-success w-50 m-auto">
+                  If you need help,contact us.
                 </Link>
-              )}
             </div>
           );
         })}
@@ -140,4 +110,4 @@ const BoughtOrders = () => {
   );
 };
 
-export default BoughtOrders;
+export default Buy;
