@@ -1,26 +1,22 @@
- .visi{
-    visibility: hidden;
+.visi {
+  visibility: hidden;
 }
-#centeremptycart{
-position:absolute;
-top: 40%;
-left: 50%;
-transform: translate(-50%,-50%);
-font-size: larger;
+#centeremptycart {
+  font-size: larger;
+  text-align: center;
+  height: 100vh;
+  vertical-align: middle;
 }
 
 #centeremptycart img {
-    filter:drop-shadow(1px 1px 50px rgba(238, 238, 238, 0.582));
-    
+  filter: drop-shadow(1px 1px 50px rgba(238, 238, 238, 0.582));
 }
-#centeremptycart .startshoping{
-    background-color: #00a300c7;
-    color:white;
-    
+#centeremptycart .startshoping {
+  background-color: #00a300c7;
+  color: white;
 }
-#centeremptycart .startshoping:hover{
-    background-color: #00a300;
-    
+#centeremptycart .startshoping:hover {
+  background-color: #00a300;
 }
 
 .big {
@@ -30,8 +26,8 @@ font-size: larger;
   font-weight: bold;
 }
 .BsFillTrashFill {
-    width: 30px;
-    height: 30px;
-    margin-bottom: 30px;
+  width: 30px;
+  height: 30px;
+  margin-bottom: 30px;
   color: #00a300;
 }

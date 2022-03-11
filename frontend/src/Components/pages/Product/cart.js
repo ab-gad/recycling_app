@@ -308,7 +308,7 @@ const Wagon = () => {
                         onClick={() => checkout()}
                       >
                         Checkout
-                      </button>
+                      </button> 
                     {/* </form> */}
                   </div>
                 </div>
@@ -318,9 +318,7 @@ const Wagon = () => {
         </section>
       </>
     )}
-      <div className="mt-5">
         <Footer />
-      </div>
   </div>
   );
 };
