@@ -308,7 +308,7 @@ const Wagon = () => {
                         onClick={() => checkout()}
                       >
                         Checkout
-                      </button>
+                      </button> 
                     {/* </form> */}
                   </div>
                 </div>
