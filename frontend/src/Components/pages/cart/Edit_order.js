@@ -23,7 +23,7 @@ function OrderForm (props) {
     const userSellOrders = useSelector(state => state.sellOrders )
 
     const order_id =  props.order_id
-    const cart_catigory = props.type
+    const cart_catigory = props.catigory
 
     let type = ""
     if (cart_catigory==='shop'){
@@ -54,7 +54,6 @@ function OrderForm (props) {
         const filteredOrders = userSellOrders.filter(order => order.id == order_id )
         const myOrder = filteredOrders[0]
         setOrderData(myOrder)
-        console.log("sSSSSSS",myOrder)
         setQuantity({
             paper: myOrder.paper_q , 
             metal: myOrder.metal_q , 
@@ -136,10 +135,8 @@ function OrderForm (props) {
 
     const onDelete = (e) => {
         e.preventDefault();
-        console.log('DELETE YES')
         axios.delete(url)
             .then ( res => {
-                console.log(res.data)
                 toast.success(`Your Order Was Deleted Successfully`, {
                     position: "bottom-left",
                   });
@@ -157,9 +154,7 @@ function OrderForm (props) {
     const handleSubmit = (e) => {
         e.preventDefault()
         const valid = form_validation()
-        console.log("USER",user, "Valid", valid )
         if (user !== null && valid){
-            console.log('VAAALID')
             const updatedOrderData = {
                 first_name: orderData.first_name ,
                 last_name: orderData.last_name ,
@@ -173,10 +168,8 @@ function OrderForm (props) {
                 latitude: latitude || null ,
                 longitude: latitude || null ,
             }
-            console.log(updatedOrderData)
             axios.put(url,updatedOrderData)
             .then ( res => {
-                console.log(res.data)
                 toast.success(`Your Order Was Updated Successfully`, {
                     position: "bottom-left",
                   });
