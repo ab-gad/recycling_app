@@ -3,13 +3,9 @@ import "./order_component/sell.css";
 import { useSelector } from "react-redux";
 import Buy from "./order_component/buy";
 import Sell from "./order_component/sell";
+
 const Orders = () => {
   const authed_user = useSelector((state) => state.authReducer.user);    
-  
-    const Orders = () => {
-    const authed_user = useSelector((state) => state.authReducer.user);
-    
-  
     return (
         <section id="orders">
             <h1 className="text-center"> {`welcome ${authed_user && authed_user.first_name} ${authed_user && authed_user.last_name}`} </h1>
@@ -30,13 +26,9 @@ const Orders = () => {
 
             
 
-        </section>
-
-        
-
-    
+        </section>   
     );
-  };
+};
   
-  export default Orders;
+export default Orders;
 
