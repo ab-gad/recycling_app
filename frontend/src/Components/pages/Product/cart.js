@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useHistory, Link } from "react-router-dom";
+import { useLocation, useHistory, Link, Redirect } from "react-router-dom";
 import { API_URL } from "../../../config/index";
 import QueryString from "query-string";
 import PageTitle from "../../page_title";
@@ -96,7 +96,7 @@ const Wagon = () => {
   const history = useHistory();
 
   const checkout = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     if (user != null) {
       fetch("http://127.0.0.1:8000/order_product_api/OrderProductList/", {
         method: "POST",
@@ -115,6 +115,7 @@ const Wagon = () => {
       delete car[user.id];
       console.log(car, "cartIcarttems");
       localStorage.setItem("cartItems", JSON.stringify(car));
+      history.push("/Payment");
     } else {
       history.push("/login");
     }
@@ -296,10 +297,10 @@ const Wagon = () => {
                         </span>
                       </li>
                     </ul>
-                    <form
+                    {/* <form
                       action={`${API_URL}/api/stripe/create-checkout-session`}
                       method="POST"
-                    >
+                    > */}
                       <button
                         type="submit"
                         className="btn btn-success btn-lg btn-block"
@@ -307,7 +308,7 @@ const Wagon = () => {
                       >
                         Checkout
                       </button>
-                    </form>
+                    {/* </form> */}
                   </div>
                 </div>
               </div>

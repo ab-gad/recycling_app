@@ -1,0 +1,15 @@
+
+.buttoncolorpayment{
+    background-color: #00a300c7;
+    color:white;
+    
+}
+.buttoncolorpayment:hover{
+    background-color: #00a300;
+    
+}
+
+.light {
+    filter:drop-shadow(1px 1px 50px rgba(238, 238, 238, 0.582));
+    
+}

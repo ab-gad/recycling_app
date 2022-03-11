@@ -8,32 +8,7 @@ import { addToCart, updateCart } from "../../../features/cartSlice";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { Modal , Button } from 'react-bootstrap';
-function MyVerticallyCenteredModal(props) {
-  return (
-    <Modal
-    
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Product Details
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <h4>Centered Modal</h4>
-        <p>
-          
-        </p>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
-    </Modal>
-  );
-}
+
 
 const Homeproduct = () => {
   const [modalShow, setModalShow] = React.useState(false);
