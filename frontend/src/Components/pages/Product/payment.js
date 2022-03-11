@@ -2,17 +2,24 @@ import PageTitle from "../../page_title";
 import React, { useEffect } from "react";
 import {  useHistory,Redirect} from "react-router-dom";
 import { API_URL } from "../../../config/index";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import {
 
+    updateCart
+  } from "../../../features/cartSlice";
 
 import "./payment.css";
 
 const Payment = () => {
     const history = useHistory();
+    const dispatch = useDispatch();
+
     // const cartItems = useSelector((state) => state.cart.cartItems);
     // console.log(cartItems, "ys");
 
     const finsh = () => {
+        dispatch(updateCart([]));
+
         history.push("/success_order");
         // console.log()
         // <Redirect to="/success_order" />
