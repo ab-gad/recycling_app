@@ -64,8 +64,3 @@
     background-color: #66cd17;
     border-color:#66cd17;
 }
-
-#team .card img {
-    max-height: 210px;
-    object-fit: cover;
-}
