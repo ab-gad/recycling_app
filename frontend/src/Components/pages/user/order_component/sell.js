@@ -6,10 +6,15 @@ import { Link} from "react-router-dom";
 import { useSelector } from "react-redux";
 import { setUserSellOrders } from "../../../../redux/actions/actions";
 import { useDispatch } from "react-redux";
+import Spinner from '../../../../spinner/spinner'  
+import { useHistory } from 'react-router-dom';
+
 
 const Sell = () => {
   const authed_user = useSelector((state) => state.authReducer.user);
   console.log(authed_user);
+  const history = useHistory()
+  const [loading,setLoading]=useState(true) 
   const [soldOrders, setSoldOrders] = useState([]);
   const dispatch = useDispatch();
   const getSoldOrders = () => {
@@ -20,6 +25,7 @@ const Sell = () => {
           console.log("sold orders", result.data.orders);
           setSoldOrders(result.data.orders);
           dispatch(setUserSellOrders(result.data.orders));
+          setLoading(false)
         })
         .catch((err) => {
           console.log(err);
@@ -30,9 +36,20 @@ const Sell = () => {
 
   };
   useEffect(() => {
-    getSoldOrders();
+    if (localStorage.getItem('access')){
+      if (authed_user !== null){
+        getSoldOrders()
+      }
+  }else{
+      history.push('error_404')
+  }   
+
     
   }, [authed_user]);
+
+  if (loading){
+    return <Spinner/>
+}
 
   return (
     <section id="sell_container">  

@@ -4,11 +4,15 @@ import { useState, useEffect } from "react";
 import "./buy.css";
 import { useSelector } from "react-redux";
 import { Link} from "react-router-dom";
+import Spinner from '../../../../spinner/spinner'  
+import { useHistory } from 'react-router-dom';
 
 
 const Buy = () => {
   const authed_user = useSelector((state) => state.authReducer.user);
   console.log(authed_user);
+  const history = useHistory()
+  const [loading,setLoading]=useState(true) 
   const [boughtOrders, setBoughtOrders] = useState([]);
   const getBoughtOrders = () => {
     if (authed_user !== null) {
@@ -17,6 +21,7 @@ const Buy = () => {
         .then((result) => {
           console.log("bought orders", result.data);
           setBoughtOrders(result.data);
+          setLoading(false)
         })
         .catch((err) => {
           console.log(err);
@@ -27,9 +32,20 @@ const Buy = () => {
 
   };
   useEffect(() => {
-    getBoughtOrders();
+    if (localStorage.getItem('access')){
+      if (authed_user !== null){
+        getBoughtOrders()
+      }
+    }else{
+      history.push('error_404')
+      } 
     
   }, [authed_user]);
+
+  if (loading){
+    return <Spinner/>
+}
+
 
   return (
     <section id="buy_container">  

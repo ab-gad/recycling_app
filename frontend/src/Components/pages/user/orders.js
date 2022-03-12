@@ -5,6 +5,7 @@ import Buy from "./order_component/buy";
 import Sell from "./order_component/sell";
 
 const Orders = () => {
+
   const authed_user = useSelector((state) => state.authReducer.user);    
     return (
         <section id="orders">

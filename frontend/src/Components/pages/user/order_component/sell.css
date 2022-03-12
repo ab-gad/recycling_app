@@ -158,3 +158,12 @@
 #sell_container #progressbar li.active:after {
     background: rgb(252, 103, 49)
 }
+#orders .nav-item .active {
+    background-color: #00a300 !important;
+    color: aliceblue !important;
+  }
+#orders .nav-item > button {
+color: #00a300 !important;
+background-color: aliceblue !important;
+border: 1px solid #00a300 !important;
+}

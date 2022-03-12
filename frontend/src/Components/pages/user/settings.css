@@ -45,76 +45,19 @@
 #settings_container .setting_img{
   object-fit: contain;
 }
-#settings_container #login_button ,
-#settings_container #register_button {
+#settings_container #update_button {
   background-color: #00a300c5 ;
 }
-#settings_container #login_button:hover ,
-#settings_container #register_button:hover {
+#settings_container #delete_button {
+  background-color: rgb(236, 47, 47) ;
+}
+#settings_container #update_button:hover {
   background-color: #00a300 ;
 }
-/* #settings_container {
-    height: 100vh !important ;
-    max-width: 24rem;
-    padding: 1.5rem 1rem ;
-    border: 1px solid #00000028;
-    max-width: 30rem;
-    border-radius: 5px;
-    margin-top: 10px;
-    
-}
-#settings_container img{
-    margin: auto;
-    display: block;
-    max-width: 80px;
-    max-height: 80px;
-}
-
-#settings_container .image span {
-    background-color: blue;
-    color: #fff;
-    padding: 6px;
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    font-size: 13px;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: -10px;
-    left: 50px;
-}
-#settings_container h2 {
-    font-family: 'Poppins', sans-serif;
-    color: #00a300 ;
-    font-size: 35px;
-}
-
-
-#settings_container .btn_container {
-    font-size: 30px;
-}
-#settings_container .buttons .btn {
-    min-width: 40%;
-    font-weight: 100 !important ;
-}
-
-#settings_container .btn_color {
-    background-color: #00a300c5;
-    color: #fff;
-    padding: 10px;
-}
-#settings_container .btn_color:hover {
-    background-color: #00a300;
-
-}
-
-#settings_container input {
-    margin: 1rem 0;
-    padding: .5rem;  
+#settings_container #delete_button:hover {
+  background-color: red ;
 }
 #settings_container small{
-    color:red;
-    font-weight: 100;
-} */
+  position: absolute;
+  color: red;
+}

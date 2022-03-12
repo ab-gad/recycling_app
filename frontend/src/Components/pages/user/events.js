@@ -4,11 +4,6 @@ import { useSelector } from "react-redux";
 import Volunteer from "./event_components/volunteer";
 import Interest from "./event_components/interest";
 
-
-
-
-
-
 const Events = () => {
     const authed_user = useSelector((state) => state.authReducer.user);
     

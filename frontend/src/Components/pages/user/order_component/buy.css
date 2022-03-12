@@ -77,7 +77,8 @@
     float: left;
     position: relative;
     font-weight: 400;
-    color: rgb(160, 159, 159)
+    color: rgb(160, 159, 159);
+    font-size: 11px;
 }
 
 #buy_container #progressbar #step1:before {
@@ -158,7 +159,9 @@
 }
 
 #buy_container #progressbar li.active {
-    color: black
+    color: black;
+    font-size: 11px;
+
 }
 
 #buy_container #progressbar li.active:before,
