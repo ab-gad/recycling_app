@@ -5,13 +5,13 @@
 }
 
 .owl-nav button i {
-    color: #b12c2c;
+    color: #50a409;
     transition: .2s;
-    border: 2px solid #b12c2c;
+    border: 2px solid #50a409;
 }
 
 .owl-nav button i:hover{
-    background-color: #b12c2c;
+    background-color: #50a409;
     color: white;
 }
 
