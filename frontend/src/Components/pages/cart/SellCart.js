@@ -1,12 +1,10 @@
 import React , { useContext, useState, useEffect } from "react";
 import PageTitle from "../../page_title";
-import Footer from '../Footer/Footer';
 import { Langcontext } from "../../../App";
 import OrderForm from "./OrderForm";
 import EditOrder from "./Edit_order";
 import "./cart.css";
 import { useParams } from "react-router-dom";
-// import { Link } from "react-router-dom";
 import axios from "axios";
 import Spinner from "../../../spinner/spinner";
 
@@ -112,7 +110,6 @@ function SellCart () {
                     }
                 </div>
             </section> 
-        <Footer/>
         </> 
     )
 }

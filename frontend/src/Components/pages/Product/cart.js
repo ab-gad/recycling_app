@@ -16,8 +16,6 @@ import {
 } from "../../../features/cartSlice";
 import "./homeproducts.css";
 import "./cart.css";
-import Footer from "../Footer/Footer";
-
 
 const Wagon = () => {
   const dispatch = useDispatch();
@@ -318,7 +316,6 @@ const Wagon = () => {
         </section>
       </>
     )}
-        <Footer />
   </div>
   );
 };

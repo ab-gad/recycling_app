@@ -9,8 +9,6 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { Modal, Button } from "react-bootstrap";
 
-import Footer from "../Footer/Footer";
-
 const Homeproduct = () => {
   const [modalShow, setModalShow] = React.useState(false);
 
@@ -85,7 +83,7 @@ const Homeproduct = () => {
     <>
       <PageTitle title="Products" description="Home/Products" />
 
-      <div className="container" id="homeproduct">
+      <div className="container my-5" id="homeproduct">
         {isLoading ? (
           <p>loading...</p>
         ) : error ? (
@@ -93,7 +91,7 @@ const Homeproduct = () => {
         ) : (
           <div className="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3 ">
             {data?.map((product) => (
-              <div key={product.id} className="col cont">
+              <div key={product.id} className="col">
                 <div className="card h-100 shadow-sm">
                   {" "}
                   <img
@@ -133,9 +131,6 @@ const Homeproduct = () => {
             ))}
           </div>
         )}
-      </div>
-      <div className="mt-5">
-        <Footer />
       </div>
     </>
   );

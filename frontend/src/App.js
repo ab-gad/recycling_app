@@ -34,6 +34,7 @@ import Payment from "./Components/pages/Product/payment";
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import LiveChat from "./Components/pages/LiveChat/LiveChat";
+import Footer from "./Components/pages/Footer/Footer";
 
 export const Langcontext = React.createContext();
 
@@ -91,8 +92,8 @@ const App = ({load_user,checkAuthenticated, user, isAuthenticated}) => {
         <Router>
           <ToastContainer/>
           <Langcontext.Provider value={{ langcont, Setlangcontext }}>
+            <Navbar />
             <main>
-              <Navbar />
               <ThemesContext.Provider value={{theme}} >
                 <div onClick={toggle_theme} id='box_theme'>
                   { theme_icon }
@@ -157,6 +158,7 @@ const App = ({load_user,checkAuthenticated, user, isAuthenticated}) => {
                 </Switch>
               </ThemesContext.Provider>
             </main>
+            <Footer/>
           </Langcontext.Provider>
         </Router>
         <ScrollButton />
