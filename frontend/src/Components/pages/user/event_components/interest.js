@@ -10,6 +10,7 @@ import Spinner from '../../../../spinner/spinner'
 import { useHistory } from 'react-router-dom';
 
 const Interest = (props) => {
+
     const history = useHistory()
     const [loading,setLoading]=useState(true) 
     const [intEvents, setIntEvents] = useState([]);
@@ -38,7 +39,7 @@ const Interest = (props) => {
     useEffect(() => {
         if (localStorage.getItem('access')){
             if (authed_user !== null){
-            getInterestedEvents()
+                getInterestedEvents()
             }
         }else{
             history.push('error_404')

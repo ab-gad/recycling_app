@@ -34,7 +34,7 @@ const [avatar,setAvatar] = useState(null);
     }
             
     const updateUser=() => {
-        // e.preventDefault();
+        
         let formData = new FormData();
         const config = { headers: { 'Content-Type': 'multipart/form-data' } };
         console.log("without avatar",userData)
