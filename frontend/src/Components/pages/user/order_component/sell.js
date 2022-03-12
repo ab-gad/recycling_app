@@ -52,7 +52,18 @@ const Sell = () => {
 }
 
   return (
-    <section id="sell_container">  
+    <section id="sell_container">
+      {soldOrders.length === 0 ? (
+      <div className="text-center" id="empty_sell">
+        <img src={require('../img/orders2.png')} alt="Empty page img" />
+        <h3 className="text-capitalize">your Page is Empty </h3>
+        <Link to="/service">
+          <span className="btn sellsorders">Sell Orders</span>
+        </Link>
+
+      </div>
+    ) : (
+      <>
         <div className="row justify-content-center ">
         {soldOrders.map((order) => {
           return (
@@ -139,7 +150,12 @@ const Sell = () => {
             </div>
           );
         })}
-      </div>
+        </div>
+        
+      </>
+    )}
+
+
     </section>
   );
 };

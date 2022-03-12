@@ -168,3 +168,19 @@
 #buy_container #progressbar li.active:after {
     background: red
 }
+#buy_container #empty_buy img {
+    filter: drop-shadow(1px 1px 50px rgba(238, 238, 238, 0.582));
+    /* vertical-align: middle; */
+    width: 700px;
+    height: 400px;
+    }
+    
+#buy_container #empty_buy h3 {
+    font-size: calc(1.3rem + .6vw);  
+    }
+    
+#buy_container #empty_buy .buyorders
+{
+    background-color: #00a300c7;
+    color: white;
+}                 
