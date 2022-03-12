@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Contact.css";
-import Footer from "../Footer/Footer";
 import PageTitle from "../../page_title";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BiMap,BiShareAlt } from "react-icons/bi";
@@ -272,7 +271,6 @@ const Contact = () => {
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2488.013831396725!2d30.730240585299416!3d28.12873809271241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145b2552474cdc59%3A0xd9d57bc4a705a4ae!2sITI%20-%20Information%20Technology%20Institute%20(AlMinya)!5e0!3m2!1sen!2seg!4v1642383049533!5m2!1sen!2seg"
         />
       </div>
-      <Footer />
     </>
   );
 };

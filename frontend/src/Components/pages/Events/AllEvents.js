@@ -3,7 +3,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import AnEvent from "./AnEvent";
 import Spinner from "../../../spinner/spinner";
-import Footer from "../Footer/Footer";
 import PageTitle from "../../page_title";
 
 const AllEvents = () => {
@@ -32,24 +31,20 @@ const AllEvents = () => {
 
     return (
         <>
-              <PageTitle title="Events" description="Home/Events" />
-
-        <section id="allEvents " className="py-5 container">
-            {console.log('RENDER')}  
-            <div className="container row row-cols-1 row-cols-md-3 g-4">
-            {events.map((e) =>{
-                return (
-                    <AnEvent event={e}/>
-                );
-            })}
-            </div>
-            
-   
-        </section>
-        <div className="mt-5">
-        <Footer />
-      </div>
-</>
+            <PageTitle title="Events" description="Home/Events" />
+            <section id="allEvents " className="py-5 container">
+                {console.log('RENDER')}  
+                <div className="container row row-cols-1 row-cols-md-3 g-4">
+                {events.map((e) =>{
+                    return (
+                        <AnEvent event={e}/>
+                    );
+                })}
+                </div>
+                
+    
+            </section>
+        </>
     
     );
   };

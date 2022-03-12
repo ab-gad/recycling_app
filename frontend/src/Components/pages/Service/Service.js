@@ -1,5 +1,4 @@
 import React from 'react'
-import Footer from "../Footer/Footer";
 import PageTitle from "../../page_title"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Service.css';
@@ -143,7 +142,6 @@ const Services = () => {
                 </div>
             </div>
         
-            <Footer/>
         </div>
     )
 }
