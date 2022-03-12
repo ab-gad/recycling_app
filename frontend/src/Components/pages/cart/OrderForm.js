@@ -184,7 +184,7 @@ function OrderForm (props) {
         const valid = form_validation()
         console.log("USER",user, "Valid", valid )
         if (user !== null && valid){
-            console.log('VAAALID')
+            // console.log('VAAALID')
             const orderData = {
                 first_name: data.firstName ,
                 last_name: data.lastName ,
@@ -200,10 +200,10 @@ function OrderForm (props) {
                 user_id:user.id,
                 type:type
             }
-            console.log(orderData)
+            // console.log(orderData)
             axios.post(url,orderData)
             .then ( req => {
-                console.log(req.data)
+                // console.log(req.data)
                 toast.success(`Your Order Was Sent Successfully`, {
                     position: "bottom-left",
                   });

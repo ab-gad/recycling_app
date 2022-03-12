@@ -1,12 +1,10 @@
 import React , { useContext, useState, useEffect } from "react";
 import PageTitle from "../../page_title";
-import Footer from '../Footer/Footer';
 import { Langcontext } from "../../../App";
 import OrderForm from "./OrderForm";
 import EditOrder from "./Edit_order";
 import "./cart.css";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import Spinner from "../../../spinner/spinner";
 
@@ -51,7 +49,6 @@ function SellCart () {
     const getMaterialPrice=() => {
         axios.get(`http://localhost:8000/material_api/price/`)
         .then((result) => {
-            console.log('Price',result.data)
             setMaterialPrice(result.data)
             setLoading(false)
             
@@ -62,8 +59,6 @@ function SellCart () {
 }
 
     const {name, order_id} = useParams()
-    console.log(name, "name from sell cart")
-    console.log(order_id, "ORDER_ID from sell cart")
 
     useEffect(()=>{
         getMaterialPrice()
@@ -115,7 +110,6 @@ function SellCart () {
                     }
                 </div>
             </section> 
-        <Footer/>
         </> 
     )
 }

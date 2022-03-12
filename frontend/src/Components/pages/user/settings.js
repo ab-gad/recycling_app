@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { load_user, logout } from '../../../redux/actions/actions';
 import { useDispatch } from 'react-redux';
 import Spinner from '../../../spinner/spinner'  
+import PageTitle from '../../page_title';
 
 const Settings=()=> {
     const history=useHistory()

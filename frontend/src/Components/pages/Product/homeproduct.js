@@ -7,8 +7,11 @@ import { useGetAllProductsQuery } from "../../../features/productsApi";
 import { addToCart, updateCart } from "../../../features/cartSlice";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { Modal, Button } from "react-bootstrap";
 
 const Homeproduct = () => {
+  const [modalShow, setModalShow] = React.useState(false);
+
   const { data, error, isLoading } = useGetAllProductsQuery();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.authReducer.user);
@@ -18,13 +21,13 @@ const Homeproduct = () => {
 
   const history = useHistory();
   const handleAddToCart = (product) => {
-    if(user!=null){
-    dispatch(addToCart(product));
-    }else{
+    if (user != null) {
+      dispatch(addToCart(product));
+    } else {
       toast.error(`login in order to add product to cart`, {
         position: "top-center",
       });
-      console.log("login????")
+      console.log("login????");
     }
     // const all = {};
 
@@ -41,7 +44,7 @@ const Homeproduct = () => {
     // history.push("/Cart");
   };
   useEffect(() => {
-    if (localStorage.getItem("cartItems") != [] && user != null) {
+    if (localStorage.getItem("cartItems") && user != null) {
       const usercart = JSON.parse(localStorage.getItem("cartItems"));
       if (usercart[user.id]) {
         console.log(usercart, "cat");
@@ -56,46 +59,75 @@ const Homeproduct = () => {
     const all = {};
 
     if (user != null) {
-      if (cartItems != []) {
-        console.log("cart")
+      if (!localStorage.getItem("cartItems")) {
+        console.log("carttttt");
         const user_id = user.id;
         all[user_id] = cartItems;
         localStorage.setItem("cartItems", JSON.stringify(all));
       } else {
+        const cart = JSON.parse(localStorage.getItem("cartItems"));
+
         const user_id = user.id;
-        all[user_id] = cartItems;
-        localStorage.setItem("cartItems", JSON.stringify(all));
+        cart[user_id] = cartItems;
+        // all[user_id] = cartItems;
+        localStorage.setItem("cartItems", JSON.stringify(cart));
       }
-    } else {
-      const user_id = 0;
-      all[user_id] = cartItems;
-      localStorage.setItem("any", JSON.stringify(all));
     }
+    //  else {
+    //   const user_id = 0;
+    //   all[user_id] = cartItems;
+    //   localStorage.setItem("any", JSON.stringify(all));
+    // }
   }, [cartItems]);
   return (
     <>
       <PageTitle title="Products" description="Home/Products" />
 
-      <div className="container" id="homeproduct">
+      <div className="container my-5" id="homeproduct">
         {isLoading ? (
           <p>loading...</p>
         ) : error ? (
           <p>error occured</p>
         ) : (
-          <div className="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3 " >
-          {data?.map((product) => (
-            <div key={product.id} className="col border">
-                <div className="card h-100 shadow-sm"> <img src={product.image} className="card-img-top" alt={product.title}/>
-                   <hr/>
-                    <div className="card-body">
-                        <div claclassNamess="clearfix mb-3"> <span className="float-start badge rounded-pill bg-primary"></span> <span class="float-end price-hp">{product.price}$</span> </div>
-                        <h2 className="card-title text-center">{product.title}</h2>
-                        <h5 className="">{product.description}.</h5>
-                        <div className="text-center my-4"> <button   onClick={() => handleAddToCart(product)} class="btn1 btn-warning">Add To Cart</button> </div>
+          <div className="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3 ">
+            {data?.map((product) => (
+              <div key={product.id} className="col">
+                <div className="card h-100 shadow-sm">
+                  {" "}
+                  <img
+                    src={product.image}
+                    className="card-img-top"
+                    alt={product.title}
+                  />
+                  <hr />
+                  <div className="card-body productbodycolor">
+                    <div className=" mb-3">
+                      {" "}
+                      <span className="float-start badge rounded-pill bg-primary"></span>{" "}
+                      <span className="float-end price-hp">
+                        {product.price}$
+                      </span>{" "}
                     </div>
+                    <h2 className=" text-center">{product.title}</h2>
+                    <h5 className="">{product.description}.</h5>
+                    <div className="text-center my-4">
+                      {" "}
+                      <button
+                        onClick={() => handleAddToCart(product)}
+                        className="btn1 btn-warning"
+                      >
+                        Add To Cart
+                      </button>{" "}
+                    </div>
+                    {/*  */}
+                    {/* <MyVerticallyCenteredModal
+        show={modalShow}
+        data={product}
+        onHide={() => setModalShow(false)}
+      /> */}
+                  </div>
                 </div>
-            </div>
-
+              </div>
             ))}
           </div>
         )}

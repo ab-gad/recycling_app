@@ -1,7 +1,4 @@
-#homeproduct .border {
-  border-color: black;
-  border-radius: 2px;
-}
+#homeproduct 
 #homeproduct .visi {
   visibility: hidden;
 }
@@ -13,6 +10,10 @@
 #homeproduct .container-fluid {
   max-width: 1200px;
 }
+#homeproduct .cont{
+    box-Shadow: 2px 2px 36px 8px #06060614 ;
+
+}
 
 #homeproduct .card {
   background: #fff;
@@ -22,6 +23,7 @@
     0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
   border: 0;
   border-radius: 1rem;
+
 }
 
 #homeproduct.card-img,
@@ -33,14 +35,13 @@
 #homeproduct .card h5 {
   overflow: hidden;
   height: 56px;
-  font-weight: 900;
   font-size: 1rem;
 }
 
 #homeproduct .card-img-top {
   width: 100%;
   max-height: 250px;
-  object-fit: contain;
+  object-fit: cover;
   padding: 30px;
 }
 
@@ -194,6 +195,9 @@
   .thumb-sec {
     max-width: 200px;
   }
+}
+#homeproduct .productbodycolor{
+    color:initial;
 }
 
 #homeproduct .inner-gallery {

@@ -188,7 +188,7 @@ REST_FRAMEWORK = {
     )
 }
 STRIPE_SECRET_KEY = 'sk_test_51IYY44J336fqgY5lGe92VvAof8JhuDajn5srjtiukf4HfXty8sNYme4Zg4Clb8oCNTx04O6Wa47CABLkrtvI1zyc00xcXRGYzx'
-SITE_URL = 'http://localhost:3000/Homeproduct'
+SITE_URL = 'http://localhost:3000/'
 # linktosite
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

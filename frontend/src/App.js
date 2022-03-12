@@ -30,9 +30,11 @@ import { useEffect } from "react";
 import Show from "./Components/pages/Events/showevent";
 import Homeproduct from "./Components/pages/Product/homeproduct";
 import Wagon from "./Components/pages/Product/cart";
+import Payment from "./Components/pages/Product/payment";
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import LiveChat from "./Components/pages/LiveChat/LiveChat";
+import Footer from "./Components/pages/Footer/Footer";
 
 export const Langcontext = React.createContext();
 
@@ -80,7 +82,6 @@ const App = ({load_user,checkAuthenticated, user, isAuthenticated}) => {
   useEffect(()=>{
     checkAuthenticated()
     load_user()
-    // console.log("user>>>>>",user)
   },[])
     
 
@@ -91,8 +92,8 @@ const App = ({load_user,checkAuthenticated, user, isAuthenticated}) => {
         <Router>
           <ToastContainer/>
           <Langcontext.Provider value={{ langcont, Setlangcontext }}>
+            <Navbar />
             <main>
-              <Navbar />
               <ThemesContext.Provider value={{theme}} >
                 <div onClick={toggle_theme} id='box_theme'>
                   { theme_icon }
@@ -137,7 +138,10 @@ const App = ({load_user,checkAuthenticated, user, isAuthenticated}) => {
                   </Route>
                   <ProtectedRoute exact path="/service/cart/:name/:order_id"  component={SellCart}/>
                   <ProtectedRoute exact path="/success_order"  component={Success_order}/>
-
+                  <ProtectedRoute exact path="/Payment"  component={Payment}/>
+                  {/* <Route path="/Payment" exact>
+                    <Payment />
+                  </Route> */}
                   <Route path="/service/cart/:name/" exact> 
                     <SellCart/>
                   </Route>
@@ -154,6 +158,7 @@ const App = ({load_user,checkAuthenticated, user, isAuthenticated}) => {
                 </Switch>
               </ThemesContext.Provider>
             </main>
+            <Footer/>
           </Langcontext.Provider>
         </Router>
         <ScrollButton />
