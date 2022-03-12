@@ -12,7 +12,7 @@ import { useHistory } from 'react-router-dom';
 
 const Sell = () => {
   const authed_user = useSelector((state) => state.authReducer.user);
-  console.log(authed_user);
+  console.log('authed user',authed_user);
   const history = useHistory()
   const [loading,setLoading]=useState(true) 
   const [soldOrders, setSoldOrders] = useState([]);
@@ -22,7 +22,7 @@ const Sell = () => {
       axios
         .get(`http://localhost:8000/user_api/orders/${authed_user.id}`)
         .then((result) => {
-          console.log("sold orders", result.data.orders);
+          console.log("sell orders", result.data.orders);
           setSoldOrders(result.data.orders);
           dispatch(setUserSellOrders(result.data.orders));
           setLoading(false)
