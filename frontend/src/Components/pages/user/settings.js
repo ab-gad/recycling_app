@@ -196,8 +196,9 @@ const [avatar,setAvatar] = useState(null);
     }
 
   return (
-  
-    <form id='settings_container'>
+    <>
+    <PageTitle title="My Settings" description='Profile/settings'/>
+    <form id='settings_container' className='my-5'>  
     <div class='d-flex justify-content-between flex-column flex-md-row' >
       <div class="d-flex flex-column align-items-center left_container">
         <img src={`${user.avatar}`} class="rounded-circle border border-muted border-2 setting_img " width="200" height="200" />    
@@ -255,6 +256,7 @@ const [avatar,setAvatar] = useState(null);
       <button class="btn my-2 text-light shadow-none" id="delete_button"  onClick={e=> {if (window.confirm('Are you sure you wish to delete your account?')) deleteUser(e)} }> Delete </button>
     </div>
     </form>
+     </>
 
     
   );
