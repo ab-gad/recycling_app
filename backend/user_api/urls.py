@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import LocationList, EventDetails, getAuthedUser
+from .views import LocationList, EventDetails
 from . import views
 
 app_name = 'user_api'

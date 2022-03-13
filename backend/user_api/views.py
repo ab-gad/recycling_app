@@ -1,9 +1,8 @@
-from cgitb import lookup
 from rest_framework import generics
 from orders.models import Orders
 from user.models import User, userLocation
 from events.models import Events
-from .serializers import UserSerializer, LocationSerializer, EventsSerializer, AuthedUserSerializer
+from .serializers import UserSerializer, LocationSerializer, EventsSerializer
 from rest_framework.permissions import BasePermission, SAFE_METHODS, IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
@@ -23,17 +22,6 @@ def userList(request):
     all_users=User.objects.all()
     data=UserSerializer(all_users,many=True).data
     return Response({'data':data})
-
-@api_view(['Get'])
-@permission_classes([IsAuthenticated])
-def getAuthedUser(request):
-    if request.user :
-        print("USER________________",request.user)
-        authedUser=User.objects.get(id = request.user.id)
-        print("AUTHED________________",authedUser)
-        
-        data=AuthedUserSerializer(authedUser, many=False).data
-        return Response({'data':data})
 
     #class based views  
 class UserDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -84,3 +72,14 @@ Used for read or delete endpoints to represent a single model instance.
 #RetrieveUpdateDestroyAPIView
 Used for read-write-delete endpoints to represent a single model instance.
 """
+
+# @api_view(['Get'])
+# @permission_classes([IsAuthenticated])
+# def getAuthedUser(request):
+#     if request.user :
+#         print("USER________________",request.user)
+#         authedUser=User.objects.get(id = request.user.id)
+#         print("AUTHED________________",authedUser)
+        
+#         data=AuthedUserSerializer(authedUser, many=False).data
+#         return Response({'data':data})
