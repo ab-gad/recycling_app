@@ -251,7 +251,6 @@ function OrderForm (props) {
                                 <option value="Minia"> {translation.Minia} </option>
                             </select>
 
-                            {/* <input className="w-50" onChange={(e) => inputsData(e) } type="text" id="city" name="city" /> */}
                         </div>
                         <div className="d-flex flex-wrap justify-content-between my-2 col-12 ">
                             <label htmlFor="Address" > {translation.address} <span className="text-muted mx-2"> {translation.address_caption} </span> </label>

@@ -38,14 +38,14 @@ function OrderForm (props) {
     useEffect(()=>{
         if ( cart_catigory === 'shop' ) {
             setPrice({ paper: props.paperPrice.shop_price , metal: props.metalPrice.shop_price , plastic: props.plasticPrice.shop_price})
-            setLimit({  min: 10 , max: 80 });
+            setLimit({  min: 0 , max: 80 });
         }
         else if ( cart_catigory === 'worker' ){
             setPrice({ paper: props.paperPrice.workers_price , metal: props.metalPrice.workers_price , plastic: props.plasticPrice.workers_price})
-            setLimit({ min: 80 , max: 200 });
+            setLimit({ min: 0 , max: 200 });
         }else{
             setPrice({ paper: props.paperPrice.home_price , metal: props.metalPrice.home_price , plastic: props.plasticPrice.home_price})
-            setLimit({ min: 2 , max: 20 });
+            setLimit({ min: 0 , max: 20 });
         }
         setLoader1(false)
     },[cart_catigory])

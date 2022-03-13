@@ -59,7 +59,7 @@
     padding: 0.5rem;
   }
   #about .circle_icons div:nth-child(1) .ico {
-    top: -5rem;
+    top: -7rem;
     left: 9.5rem;
   }
   
@@ -118,8 +118,8 @@
     bottom: 0rem;
   }
   #about .circle_icons div:nth-child(7) .ico {
-    bottom: -10.5rem;
-    left: 9.5rem;
+    bottom: -11.5rem;
+    left: 10.5rem;
   }
   #about .ico_2 {
     box-shadow: 10px 10px 15px #00000026;
