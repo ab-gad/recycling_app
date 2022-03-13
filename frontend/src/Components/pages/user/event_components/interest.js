@@ -54,7 +54,18 @@ const Interest = (props) => {
     
   
     return (
-        <section id="events_container">  
+        <section id="events_container">
+            {intEvents.length === 0 ? (
+            <div className="text-center" id="empty_interest">
+                <img src={require('../img/event2.jpeg')} alt="Empty page img" />
+                <h3 className="text-capitalize">your Page is Empty </h3>
+                <Link to="/events">
+                <span className="btn interestbtn">you can interest now</span>
+                </Link>
+
+            </div>
+    ) : (
+      <>
             <div className="row justify-content-center ">
             {intEvents.map((E) =>{
                 return (
@@ -80,6 +91,9 @@ const Interest = (props) => {
                 );
             })}
             </div>
+
+      </>
+        )}  
             
         </section>
 

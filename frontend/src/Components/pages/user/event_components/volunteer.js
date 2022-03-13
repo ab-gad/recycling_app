@@ -52,7 +52,18 @@ const Volunteer = (props) => {
     }
   
     return (
-        <section id="events_container">  
+        <section id="events_container">
+            {volEvents.length === 0 ? (
+            <div className="text-center" id="empty_volunteer">
+                <img src={require('../img/event2.jpeg')} alt="Empty page img" />
+                <h3 className="text-capitalize">your Page is Empty </h3>
+                <Link to="/events">
+                <span className="btn volunteerbtn">you can volunteer now</span>
+                </Link>
+
+            </div>
+    ) : (
+      <>
             <div className="row justify-content-center ">
             {volEvents.map((E) =>{
                 return (
@@ -78,7 +89,8 @@ const Volunteer = (props) => {
                 );
             })}
             </div>
-            
+      </>  
+        )}   
         </section>
 
     

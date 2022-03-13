@@ -197,53 +197,67 @@ const [avatar,setAvatar] = useState(null);
 
   return (
     <>
-        <PageTitle title="My Settings" description='Profile/settings'/>
-        <form id='settings_container' className='my-5'>
-            <div class='d-flex justify-content-between flex-column flex-md-row' >
-                <div class="d-flex flex-column align-items-center left_container">
-                    <img src={`${user.avatar}`} class="rounded-circle border border-muted border-2 setting_img " width="200" height="200" />    
-                    <h3 class="my-3 text-center">  {`${authed_user && user.first_name}`} {`${authed_user && user.last_name}`} </h3> 
-                    <h6 class="align-self-start mx-4 px-2">Change image</h6> 
-                    
-                    <input type="file" accept="image/*" name="avatar" class=" w-75 form-control form-control-alternative shadow-none" onChange={(e)=>handleChange(e)}/>
-                    <h6 class="align-self-start mx-4 px-2">Birth Date</h6> 
-                    <input type="date" name='birthdate' class="form-control w-75 shadow-none" placeholder={`${user.birthdate}`} onChange={(e)=>handleChange(e)}  />   
-                </div>
-                <div class="row row-cols-1 row-cols-lg-2 mt-3 mt-md-0 mx-5 right_container justify-content-center align-items-center">
-            
-                    <div class='form-group '>
-                        <input name='first_name' class="form-control" type="text" placeholder={`${user.first_name}`}  onChange={(e)=>{handleChange(e);fNameVaildation(e)}} />
-                        <small> {fNameError} </small> 
-                    </div>
-            
-                    <div class='form-group'>
-                        <input name='last_name' class="form-control" type="text" placeholder={`${user.last_name}`} onChange={(e)=>{handleChange(e);lNameVaildation(e)}}  />
-                        <small> {lNameError} </small>
-                    </div>
-                    
-                    <div class='form-group'>
-                        <input name='email' class="form-control" type="email"   value={`${user.email}`} onChange={(e)=>{handleChange(e);mailVaildation(e)}} readOnly  />       
-                        <small> {mailError} </small>
-                    </div>
-            
-                    <div class='form-group'>
-                        <input name='phone' class="form-control" type="text" placeholder={`${user.phone}`}   onChange={(e)=>{handleChange(e);phoneVaildation(e)}} />        
-                        <small> {phoneError} </small>
-                    </div>
-            
-                    <div class='form-group'>
-                        <input name='city' class="form-control" type="text" placeholder={`${user.city}`}   onChange={(e)=>{handleChange(e);cityVaildation(e)}} />   
-                        <small> {cityError} </small> 
-                    </div>
+    <PageTitle title="My Settings" description='Profile/settings'/>
+    <form id='settings_container' className='my-5'>  
+    <div class='d-flex justify-content-between flex-column flex-md-row' >
+      <div class="d-flex flex-column align-items-center left_container">
+        <img src={`${user.avatar}`} class="rounded-circle border border-muted border-2 setting_img " width="200" height="200" />    
+        <h3 class="my-3 text-center">  {`${authed_user && user.first_name}`} {`${authed_user && user.last_name}`} </h3> 
+        <h6 class="align-self-start mx-4 px-2">Change image</h6> 
+        
+        <input type="file" accept="image/*" name="avatar" class=" w-75 form-control form-control-alternative shadow-none" onChange={(e)=>handleChange(e)}/>
+        <h6 class="align-self-start mx-4 px-2">Birth Date</h6> 
+        <input type="date" name='birthdate' class="form-control w-75 shadow-none" onChange={(e)=>handleChange(e)}  />   
+        <span className="align-self-start mx-4 px-2" >{user.birthdate}</span>
+      </div>
 
-                </div>
-            </div>
-            <div class="d-flex justify-content-evenly mt-5 m-auto button_container gap-0 gap-md-5 w-50 flex-column flex-md-row">
-                <button class="btn my-2 text-light shadow-none" id="update_button" onClick={e=> {updateValidation(e)} }> Edit </button>
-                <button class="btn my-2 text-light shadow-none" id="delete_button"  onClick={e=> {if (window.confirm('Are you sure you wish to delete your account?')) deleteUser(e)} }> Delete </button>
-            </div>
-        </form>
-    </>
+      <div class="row row-cols-1 row-cols-lg-2 mt-3 mt-md-0 mx-5 right_container justify-content-center align-items-center">
+  
+          <div class='form-group '>
+            <label className="text-dark mx-1 fw-bold"> First name </label>
+            <input name='first_name' class="form-control" type="text" placeholder={`${user.first_name}`}  onChange={(e)=>{handleChange(e);fNameVaildation(e)}} />
+            <small> {fNameError} </small> 
+          </div>
+  
+          <div class='form-group'>
+            <label className="text-dark mx-1 fw-bold"> Last name </label>
+            <input name='last_name' class="form-control" type="text" placeholder={`${user.last_name}`} onChange={(e)=>{handleChange(e);lNameVaildation(e)}}  />
+            <small> {lNameError} </small>
+          </div>
+        
+          <div class='form-group'>
+            <label className="text-dark mx-1 fw-bold"> Email </label>
+            <input name='email' class="form-control" type="email"   value={`${user.email}`} onChange={(e)=>{handleChange(e);mailVaildation(e)}} readOnly  />       
+            <small> {mailError} </small>
+          </div>
+  
+          <div class='form-group'>
+            <label className="text-dark mx-1 fw-bold"> Mobile phone </label>
+            {user.phone === null ?
+            (<input name='phone' class="form-control" type="text" placeholder={"Enter your phone"} onChange={(e)=>{handleChange(e);phoneVaildation(e)}} />)
+            :
+            (<input name='phone' class="form-control" type="text" placeholder={`${user.phone}`} onChange={(e)=>{handleChange(e);phoneVaildation(e)}} />)}
+            <small> {phoneError} </small>
+          </div>
+  
+          <div class='form-group'>
+            <label className="text-dark mx-1 fw-bold"> City </label>
+            {user.city === "" ?
+            (<input name='city' class="form-control" type="text" placeholder={"Enter your city"} onChange={(e)=>{handleChange(e);cityVaildation(e)}} />)
+            :
+            (<input name='city' class="form-control" type="text" placeholder={`${user.city}`} onChange={(e)=>{handleChange(e);cityVaildation(e)}} />)}
+            <small> {cityError} </small> 
+          </div>
+
+      </div>
+    </div>
+    <div class="d-flex justify-content-evenly mt-5 m-auto button_container gap-0 gap-md-5 w-50 flex-column flex-md-row">
+      <button class="btn my-2 text-light shadow-none" id="update_button" onClick={e=> {updateValidation(e)} }> Edit </button>
+      <button class="btn my-2 text-light shadow-none" id="delete_button"  onClick={e=> {if (window.confirm('Are you sure you wish to delete your account?')) deleteUser(e)} }> Delete </button>
+    </div>
+    </form>
+     </>
+
     
   );
 };

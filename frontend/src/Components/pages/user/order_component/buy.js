@@ -10,17 +10,17 @@ import { useHistory } from 'react-router-dom';
 
 const Buy = () => {
   const authed_user = useSelector((state) => state.authReducer.user);
-  console.log(authed_user);
+  console.log('authed user',authed_user);
   const history = useHistory()
   const [loading,setLoading]=useState(true) 
   const [boughtOrders, setBoughtOrders] = useState([]);
   const getBoughtOrders = () => {
     if (authed_user !== null) {
       axios
-        .get(`http://localhost:8000/order_product_api/OrderProductList`)
+        .get(`http://localhost:8000/order_product_api/OrderProductList/${authed_user.id}`)
         .then((result) => {
-          console.log("bought orders", result.data);
-          setBoughtOrders(result.data);
+          console.log("buy orders", result.data.products);
+          setBoughtOrders(result.data.products);
           setLoading(false)
         })
         .catch((err) => {
@@ -48,7 +48,18 @@ const Buy = () => {
 
 
   return (
-    <section id="buy_container">  
+    <section id="buy_container">
+      {boughtOrders.length === 0 ? (
+      <div className="text-center" id="empty_buy">
+                <img src={require('../img/orders2.png')} alt="Empty page img" />
+        <h3 className="text-capitalize">your Page is Empty </h3>
+        <Link to="/Homeproduct">
+          <span className="btn buyorders">Buy Orders</span>
+        </Link>
+
+      </div>
+    ) : (
+      <>
         <div className="row justify-content-center ">
         {boughtOrders.map((order) => {
           return (
@@ -121,7 +132,10 @@ const Buy = () => {
             </div>
           );
         })}
-      </div>
+        </div>
+
+      </>
+       )}  
     </section>
   );
 };

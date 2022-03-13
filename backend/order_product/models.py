@@ -5,7 +5,7 @@ from decimal import Decimal
 
 
 
-class OrderProduct(models.Model):
+class OrderProducts(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     products = ArrayField(models.CharField(max_length=50), default=[])
     quantities = ArrayField(models.PositiveIntegerField(), default=[])
