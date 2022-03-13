@@ -5,9 +5,6 @@ from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager, Permi
 # 3. write a manager for new custome user model > if your user model defines different fields, you’ll need to define a custom manager that extends BaseUserManager providing two additional methods:
 
 from django.core.validators import RegexValidator
-from django.db import models
-from django.urls import reverse
-
 from django.contrib.gis.db import models
 from django.contrib.gis.geos import Point
 
@@ -146,9 +143,6 @@ class User (AbstractBaseUser, PermissionsMixin):
     def get_short_name(self):
         return self.first_name
 
-    def __unicode__(self):
-        return self.email
-
     def has_perm(self, perm, obj=None):
         return True
 
@@ -174,13 +168,4 @@ class userLocation(models.Model):
     def __str__(self):
         # here return the full name (we can return anything we want > return self.email)
         return f'{self.user} || {self.city}'
-
-
-# class UserProfile(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE)
-#     avatar = models.ImageField(
-#         upload_to="profile_images", verbose_name='profile picture', default='profile_images/default-pic.jpeg')
-
-#     def get_absolute_url(self):
-#         return reverse('user_profile')
 
