@@ -18,7 +18,7 @@ const AnEvent = (props) => {
     return (
         <div className="col ">
             <div className="card h-100 ">
-                <img src={img} className="card-img-top" alt="..."/>
+                <img src={img} className="card-img-top" style={{maxHeight: '70vh'}} alt="..."/>
                     <div className="card-body position-relative">
                         <span className="text-white bg-danger py-2 px-4 position-absolute bottom-100 start-0" >{id}</span>
                         <h4 className="card-title mb-1" style={{minHeight: 60}}>{title}</h4>
