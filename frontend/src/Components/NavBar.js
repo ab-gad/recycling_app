@@ -83,7 +83,7 @@ const Navbar = (props) => {
 
   return (
     <>
-     <div className="overlay">
+     <div className="nav-overlay">
       <nav className="navbar navbar-expand-xl " dir='ltr'>
         <div className="container-fluid ">
 

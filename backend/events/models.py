@@ -24,6 +24,11 @@ class Events(models.Model):
     volunteers = models.ManyToManyField('user.User',related_name='myevents')
     interests = models.ManyToManyField('user.User',related_name='myinterests')
 
+    class Meta:
+        verbose_name = ("Event")
+        verbose_name_plural = ("Events")
+        ordering=('-creation_date',)
+
     def __str__(self):
         return str(self.title)
 
@@ -70,6 +75,11 @@ class Comments(models.Model):
         upload_to="profile_images", verbose_name='profile picture', default='profile_images/default-pic.jpeg')
     userName= models.CharField(max_length=100, verbose_name='first name', default=None, blank=True, null=True)
     
+    class Meta:
+        verbose_name = ("Comment")
+        verbose_name_plural = ("Comments")
+        ordering=('-creation_date',)
+
     def save(self, *args, **kwargs):
         self.avatar = self.user.avatar
         self.userName = self.user

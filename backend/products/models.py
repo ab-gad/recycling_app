@@ -9,5 +9,5 @@ class Product(models.Model):
     description = models.TextField()
     image = models.ImageField()
 
-    def str(self):
+    def __str__(self):
         return self.title

@@ -199,61 +199,63 @@ const [avatar,setAvatar] = useState(null);
     <>
     <PageTitle title="My Settings" description='Profile/settings'/>
     <form id='settings_container' className='my-5'>  
-    <div class='d-flex justify-content-between flex-column flex-md-row' >
-      <div class="d-flex flex-column align-items-center left_container">
-        <img src={`${user.avatar}`} class="rounded-circle border border-muted border-2 setting_img " width="200" height="200" />    
-        <h3 class="my-3 text-center">  {`${authed_user && user.first_name}`} {`${authed_user && user.last_name}`} </h3> 
-        <h6 class="align-self-start mx-4 px-2">Change image</h6> 
+    <div className='d-flex justify-content-between flex-column flex-md-row' >
+      <div className="d-flex flex-column align-items-center left_container">
+        <img src={`${user.avatar}`} className="rounded-circle border border-muted border-2 setting_img " width="200" height="200" /> 
+   
+        <h3 className="mt-3 mb-0 text-center">  {`${authed_user && user.first_name}`} {`${authed_user && user.last_name}`} </h3> 
+        <span className="small text-success" >{user.birthdate}</span>
         
-        <input type="file" accept="image/*" name="avatar" class=" w-75 form-control form-control-alternative shadow-none" onChange={(e)=>handleChange(e)}/>
-        <h6 class="align-self-start mx-4 px-2">Birth Date</h6> 
-        <input type="date" name='birthdate' class="form-control w-75 shadow-none" onChange={(e)=>handleChange(e)}  />   
-        <span className="align-self-start mx-4 px-2" >{user.birthdate}</span>
+        <div className='mx-3'>
+            <h6 className="mt-3 mb-0">Change image</h6> 
+            <input type="file" accept="image/*" name="avatar" className="form-control form-control-alternative shadow-none" onChange={(e)=>handleChange(e)}/>
+            <h6 className="mt-3 mb-0">Email</h6> 
+            <input name='email' className="form-control shadow-none" type="email"   value={`${user.email}`} onChange={(e)=>{handleChange(e);mailVaildation(e)}} readOnly  />       
+            <small> {mailError} </small>
+        </div>
       </div>
 
-      <div class="row row-cols-1 row-cols-lg-2 mt-3 mt-md-0 mx-5 right_container justify-content-center align-items-center">
+      <div className="row row-cols-1 row-cols-lg-2 mt-3 mt-md-0 mx-3 right_container justify-content-center align-items-center">
   
-          <div class='form-group '>
-            <label className="text-dark mx-1 fw-bold"> First name </label>
-            <input name='first_name' class="form-control" type="text" placeholder={`${user.first_name}`}  onChange={(e)=>{handleChange(e);fNameVaildation(e)}} />
+          <div className='form-group position-relative'>
+            <input name='first_name' className="form-control" type="text" placeholder={`${user.first_name}`}  onChange={(e)=>{handleChange(e);fNameVaildation(e)}} />
+            <label className="floatingLabel"> First name </label>
             <small> {fNameError} </small> 
           </div>
   
-          <div class='form-group'>
-            <label className="text-dark mx-1 fw-bold"> Last name </label>
-            <input name='last_name' class="form-control" type="text" placeholder={`${user.last_name}`} onChange={(e)=>{handleChange(e);lNameVaildation(e)}}  />
+          <div className='form-group position-relative'>
+            <input name='last_name' className="form-control" type="text" placeholder={`${user.last_name}`} onChange={(e)=>{handleChange(e);lNameVaildation(e)}}  />
+            <label className="floatingLabel"> Last name </label>
             <small> {lNameError} </small>
           </div>
-        
-          <div class='form-group'>
-            <label className="text-dark mx-1 fw-bold"> Email </label>
-            <input name='email' class="form-control" type="email"   value={`${user.email}`} onChange={(e)=>{handleChange(e);mailVaildation(e)}} readOnly  />       
-            <small> {mailError} </small>
-          </div>
   
-          <div class='form-group'>
-            <label className="text-dark mx-1 fw-bold"> Mobile phone </label>
-            {user.phone === null ?
-            (<input name='phone' class="form-control" type="text" placeholder={"Enter your phone"} onChange={(e)=>{handleChange(e);phoneVaildation(e)}} />)
-            :
-            (<input name='phone' class="form-control" type="text" placeholder={`${user.phone}`} onChange={(e)=>{handleChange(e);phoneVaildation(e)}} />)}
-            <small> {phoneError} </small>
-          </div>
-  
-          <div class='form-group'>
-            <label className="text-dark mx-1 fw-bold"> City </label>
+          <div className='form-group position-relative'>
             {user.city === "" ?
-            (<input name='city' class="form-control" type="text" placeholder={"Enter your city"} onChange={(e)=>{handleChange(e);cityVaildation(e)}} />)
+            (<input name='city' className="form-control" type="text" placeholder={"Enter your city"} onChange={(e)=>{handleChange(e);cityVaildation(e)}} />)
             :
-            (<input name='city' class="form-control" type="text" placeholder={`${user.city}`} onChange={(e)=>{handleChange(e);cityVaildation(e)}} />)}
+            (<input name='city' className="form-control" type="text" placeholder={`${user.city}`} onChange={(e)=>{handleChange(e);cityVaildation(e)}} />)}
+            <label className="floatingLabel"> City </label>
             <small> {cityError} </small> 
           </div>
-
+  
+          <div className='form-group position-relative'>
+            {user.phone === null ?
+            (<input name='phone' className="form-control" type="text" placeholder={"Enter your phone"} onChange={(e)=>{handleChange(e);phoneVaildation(e)}} />)
+            :
+            (<input name='phone' className="form-control" type="text" placeholder={`${user.phone}`} onChange={(e)=>{handleChange(e);phoneVaildation(e)}} />)}
+            <label className="floatingLabel"> Mobile phone </label>
+            <small> {phoneError} </small>
+          </div>
+                
+          <div className='form-group position-relative'>
+            <input type="date" name='birthdate' className="form-control" onChange={(e)=>handleChange(e)}  />   
+            <label className="floatingLabel"> Birthdate </label>
+          </div>
       </div>
     </div>
-    <div class="d-flex justify-content-evenly mt-5 m-auto button_container gap-0 gap-md-5 w-50 flex-column flex-md-row">
-      <button class="btn my-2 text-light shadow-none" id="update_button" onClick={e=> {updateValidation(e)} }> Edit </button>
-      <button class="btn my-2 text-light shadow-none" id="delete_button"  onClick={e=> {if (window.confirm('Are you sure you wish to delete your account?')) deleteUser(e)} }> Delete </button>
+    <div className="d-flex justify-content-evenly mt-5 m-auto button_container gap-0 gap-md-5 w-50 flex-column flex-md-row">
+      <button className="btn my-2 text-light shadow-none" id="update_button" onClick={e=> {updateValidation(e)} }> Edit </button>
+      <button className="btn my-2 text-light shadow-none" id="delete_button"  onClick={e=> {e.preventDefault(); if (window.confirm('Are you sure you wish to delete your account?')) deleteUser(e)} }> Delete </button>
     </div>
     </form>
      </>

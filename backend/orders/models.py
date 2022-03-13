@@ -45,7 +45,10 @@ class Orders (models.Model):
     location = models.PointField(blank=True, null=True)
     order_date = models.DateTimeField(auto_now_add=True)
 
-
+    class Meta:
+        verbose_name = ("Order")
+        verbose_name_plural = ("Orders")
+        ordering=('-order_date',)
 
     def save(self, *args, **kwargs):
         self.location = Point(self.longitude, self.latitude)

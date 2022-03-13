@@ -170,7 +170,7 @@ const Footer = ()=> {
             </div>
             <div className='below-footer '>
                 <div className='overlay py-5 '>
-                    <div className='container text-center py-5 my-5'>
+                    <div className='container text-center py-5 my-3'>
                         <h5 className='mb-0'> {translation.the_end_1} </h5>
                         <h2 className='h1 my-3'>  {translation.the_end_2} </h2>
                         <Link to='/events' className='btn bg-green rounded-pill text-light py-1 px-4'>
