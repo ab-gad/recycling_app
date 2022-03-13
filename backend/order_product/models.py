@@ -16,6 +16,11 @@ class OrderProducts(models.Model):
     being_delivered = models.BooleanField(default=True)
     received = models.BooleanField(default=False)
 
-
     class Meta:
         db_table = 'orderproduct'
+        verbose_name = ("Products order")
+        verbose_name_plural = ("Products order ")
+        ordering=('-order_date',)
+
+    def __str__(self):
+        return self.id

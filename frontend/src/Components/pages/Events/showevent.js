@@ -113,7 +113,7 @@ const Show = (props) => {
     axios.get(`http://127.0.0.1:8000/events_api/getEventComments/${params.id}`)
       .then((res) => {
         console.log(res.data, "comments");
-        setcomments(res.data.comments.reverse());
+        setcomments(res.data.comments);
         setLoader2(false)
       })
       .catch((err) => {

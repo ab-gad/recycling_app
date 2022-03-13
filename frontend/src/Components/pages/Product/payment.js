@@ -32,7 +32,7 @@ return (
       
     <div>
               <PageTitle title="Payment" description="Home/Cart/Payment" />
-              <div className="row">
+              <div className="row my-5">
             <div className="col-lg-6 text-center">
             <img className="light" src={require('./img/cash.png')} alt="cash on Delivery" width={"35%"} /><br/>
                 <button className="btn buttoncolorpayment"  onClick={() => finsh()}> Cash On Delivery</button>

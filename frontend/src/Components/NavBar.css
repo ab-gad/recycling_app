@@ -15,7 +15,7 @@ li {
   list-style: none !important;
 }
 
-.overlay {
+.nav-overlay {
   width: 100%;
   height: 56px;
   position: sticky;
@@ -51,7 +51,7 @@ nav {
     width: 100%;
     z-index: 555;
   }
-  .overlay {
+  .nav-overlay {
     height: 84px;
     box-shadow: 3px -16px 19px 10px #00000047;
     border-color: var(--nav_overlay);

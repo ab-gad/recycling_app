@@ -21,15 +21,15 @@ function Success_order() {
   const translation = langcont === "ENGLISH" ? English : Arabic;
 
   return (
-    <div className='container m-auto'>
+    <div className='container m-auto my-5'>
         <img  src={require('../Auth/images/car.png')} width='70%' className='success_img' />       
-        <h2 className='text-danger text-center my-3'> Success Prossess </h2>
+        <h2 className='text-success text-center my-3'> Success Prossess </h2>
         <p className='mb-4'> {translation.paragraph} </p>
   
         <div className='d-flex gap-5 justify-content-center flex-wrap'>
-            <Link to='/Homeproduct' className='btn btn-danger px-5 fw-light shadow-none'> {translation.product_button} </Link>
-            <Link to='/events' className='btn btn-danger px-5 fw-light shadow-none'> {translation.event_button} </Link>
-            <Link to='/' className='btn btn-danger px-5 fw-light shadow-none'> {translation.home_button} </Link>
+            <Link to='/Homeproduct' className='btn btn-success px-5 fw-light shadow-none'> {translation.product_button} </Link>
+            <Link to='/events' className='btn btn-success px-5 fw-light shadow-none'> {translation.event_button} </Link>
+            <Link to='/' className='btn btn-success px-5 fw-light shadow-none'> {translation.home_button} </Link>
         </div>
     </div>
   )

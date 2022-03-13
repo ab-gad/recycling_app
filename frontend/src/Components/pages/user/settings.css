@@ -23,11 +23,12 @@
   }
   #settings_container .right_container input {
     margin: 1rem 0;
-    padding: .5rem;  
-    border-color: transparent transparent rgba(121, 130, 204, 0.329) transparent ;
+    padding: 1rem;  
+    border-color:   rgba(121, 130, 204, 0.329)  ;
     border-radius: 0;
     box-shadow: none;
     text-align: center;
+    border-radius: 5px;
 }
 #settings_container input:focus {
   border-color: #00a300a2 ;
@@ -60,4 +61,21 @@
 #settings_container small{
   position: absolute;
   color: red;
+}
+
+#settings_container .floatingLabel{
+  position: absolute;
+  font-size: small;
+  background: white;
+  padding: 0 3px;
+  color: #046804d7 ;
+  top: 5px;
+  left: 25px;
+  transition: .2s;
+  transform: scale(1.15);
+}
+
+#settings_container input:focus + .floatingLabel{
+  color: rgba(35, 38, 59, 0.596);
+  transform: scale(1);
 }
