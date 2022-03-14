@@ -48,14 +48,15 @@ class LiveChat extends Component {
 
   onButtonClicked = (e) => {
     e.preventDefault();
-      this.client.send(JSON.stringify({
-          type: "message",
-          message: this.state.value,
-          name: this.state.name
-      }));
-      this.state.value = ''
-      
-  }
+    this.client.send(
+      JSON.stringify({
+        type: "message",
+        message: this.state.value,
+        name: this.state.name,
+      })
+    );
+    this.state.value = "";
+  };
   componentDidMount() {
     this.client.onopen = () => {
       console.log("WebSocket Client Connected");
@@ -79,109 +80,104 @@ class LiveChat extends Component {
   render() {
     const { classes } = this.props;
     return (
-        <section id="chat">
-<Container component="main" maxWidth="xs">
-        {this.state.isLoggedIn ? (
-          <div className="t1" style={{ marginTop: 50 }}>
-            <b>Room Name: {this.state.room}</b>
-            <Paper
-              style={{
-                height: 500,
-                maxHeight: 500,
-                overflow: "auto",
-                boxShadow: "none",
-              }}
-            >
-              {this.state.messages.map((message) => (
-                <>
-                  <Card className={classes.root}>
-                    <CardHeader
-                      avatar={<Avatar className={classes.avatar}>R</Avatar>}
-                      title={message.name}
-                      subheader={message.msg}
-                    />
-                  </Card>
-                </>
-              ))}
-            </Paper>
-            <form
-              className={classes.form}
-              onSubmit={this.onButtonClicked}
-            >
-              <TextField
-                id="outlined-helperText"
-                placeholder="Make a comment"
-                defaultValue="Default Value"
-                variant="outlined"
-                value={this.state.value}
-                fullWidth
-                required
-                onChange={(e) => {
-                  this.setState({ value: e.target.value });
-                  this.value = this.state.value;
+      <section id="chat">
+        <Container component="main" maxWidth="xs">
+          {this.state.isLoggedIn ? (
+            <div className="t1" style={{ marginTop: 50 }}>
+              <b>Room Name: {this.state.room}</b>
+              <Paper
+                style={{
+                  height: 500,
+                  maxHeight: 500,
+                  overflow: "auto",
+                  boxShadow: "none",
                 }}
-              />
-              <hr></hr>
-              <button className="btn" type="submit">
-                Start Chatting
-              </button>
-            </form>
-          </div>
-        ) : (
-          <div>
-            <CssBaseline />
-            <div className={classes.paper}>
-            <div className="form-title">
-            <h1 className="form-h1">
-              <b>Recycle Chatty Rooms</b>
-            </h1>
-          </div>
-              <form
-                className={classes.form}
-                onSubmit={(value) => this.setState({ isLoggedIn: true })}
               >
+                {this.state.messages.map((message) => (
+                  <>
+                    <Card className={classes.root}>
+                      <CardHeader
+                        avatar={<Avatar className={classes.avatar}>R</Avatar>}
+                        title={message.name}
+                        subheader={message.msg}
+                      />
+                    </Card>
+                  </>
+                ))}
+              </Paper>
+              <form className={classes.form} onSubmit={this.onButtonClicked}>
                 <TextField
+                  id="outlined-helperText"
+                  placeholder="Make a comment"
+                  defaultValue="Default Value"
                   variant="outlined"
-                  margin="normal"
-                  className="t1"
-                  required
+                  value={this.state.value}
                   fullWidth
-                  id="email"
-                  placeholder="Chatroom Name"
-                  name="Chatroom Name"
-                  autoFocus
-                  value={this.state.room}
+                  required
                   onChange={(e) => {
-                    this.setState({ room: e.target.value });
-                    this.value = this.state.room;
+                    this.setState({ value: e.target.value });
+                    this.value = this.state.value;
                   }}
                 />
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  required
-                  fullWidth
-                  name="Username"
-                  placeholder="UserName"
-                  type="Username"
-                  id="Username"
-                  value={this.state.name}
-                  onChange={(e) => {
-                    this.setState({ name: e.target.value });
-                    this.value = this.state.name;
-                  }}
-                />
+                <hr></hr>
                 <button className="btn" type="submit">
-                Start Chatting
-              </button>
-                
+                  Start Chatting
+                </button>
               </form>
             </div>
-          </div>
-        )}
-      </Container>
-        </section>
-      
+          ) : (
+            <div>
+              <CssBaseline />
+              <div className={classes.paper}>
+                <div className="form-title">
+                  <h1 className="form-h1">
+                    <b>Recycle Chatty Rooms</b>
+                  </h1>
+                </div>
+                <form
+                  className={classes.form}
+                  onSubmit={(value) => this.setState({ isLoggedIn: true })}
+                >
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    className="t1"
+                    required
+                    fullWidth
+                    id="email"
+                    placeholder="Chatroom Name"
+                    name="Chatroom Name"
+                    autoFocus
+                    value={this.state.room}
+                    onChange={(e) => {
+                      this.setState({ room: e.target.value });
+                      this.value = this.state.room;
+                    }}
+                  />
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    name="Username"
+                    placeholder="UserName"
+                    type="Username"
+                    id="Username"
+                    value={this.state.name}
+                    onChange={(e) => {
+                      this.setState({ name: e.target.value });
+                      this.value = this.state.name;
+                    }}
+                  />
+                  <button className="btn" type="submit">
+                    Start Chatting
+                  </button>
+                </form>
+              </div>
+            </div>
+          )}
+        </Container>
+      </section>
     );
   }
 }

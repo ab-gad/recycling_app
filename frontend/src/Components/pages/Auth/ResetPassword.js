@@ -30,7 +30,7 @@ const ResetPassword = ({ reset_password, resetPassErr }) => {
     }
 
     return (
-        <div className='container mt-5 w-50 mx-auto'>
+        <div className='container my-5 w-50 mx-auto'>
             <h1>Request Password Reset:</h1>
             <form onSubmit={e => onSubmit(e)}>
                 <div className='form-group'>

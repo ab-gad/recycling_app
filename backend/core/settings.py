@@ -13,7 +13,7 @@ from .credentials import *
 from pathlib import Path
 import os
 from datetime import timedelta
-
+ 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
@@ -188,7 +188,7 @@ REST_FRAMEWORK = {
     )
 }
 STRIPE_SECRET_KEY = 'sk_test_51IYY44J336fqgY5lGe92VvAof8JhuDajn5srjtiukf4HfXty8sNYme4Zg4Clb8oCNTx04O6Wa47CABLkrtvI1zyc00xcXRGYzx'
-SITE_URL = 'http://localhost:3000/'
+SITE_URL = 'http://localhost:3000'
 # linktosite
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -267,7 +267,7 @@ SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 JAZZMIN_SETTINGS = {
     "site_title": "Recycling",
     "site_header": "Recycle",
-    "site_brand": "Recycing",
+    "site_brand": "Recycling",
     "site_logo": "logo.png",
     "welcome_sign": "Welcome to Recycling Dashboard",
     "icons": {
