@@ -267,7 +267,7 @@ SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 JAZZMIN_SETTINGS = {
     "site_title": "Recycling",
     "site_header": "Recycle",
-    "site_brand": "Recycing",
+    "site_brand": "Recycling",
     "site_logo": "logo.png",
     "welcome_sign": "Welcome to Recycling Dashboard",
     "icons": {

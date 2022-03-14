@@ -29,7 +29,7 @@ const ResetPasswordConfirm = ({ match, reset_password_confirm }) => {
     }
 
     return (
-        <div className='container mt-5'>
+        <div className='container my-5 w-50 mx-auto'>
             <form onSubmit={e => onSubmit(e)}>
             <div className='form-group'>
                     <input

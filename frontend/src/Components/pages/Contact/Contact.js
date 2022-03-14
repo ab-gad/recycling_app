@@ -13,7 +13,7 @@ import { useContext } from "react";
 const Contact = () => {
   const Arabic = {
     CONTACTUS: " اتصل بنا",
-    Home_CONTACTUS: "الصفحه الرئيسيه /اتصل بينا",
+    Home_CONTACTUS: "تواصل معنا",
     OurAddress: "عنوان موقعنا",
     Address: "شارع حسنين ابوالعال ,بني سويف, مصر",
     SocialProfiles: " مواقع التواصل الاجتماعي",

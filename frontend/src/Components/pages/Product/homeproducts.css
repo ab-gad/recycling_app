@@ -1,18 +1,12 @@
-#homeproduct 
-#homeproduct .visi {
+#homeproduct #homeproduct .visi {
   visibility: hidden;
-}
-
-#homeproduct h2 {
-  font-weight: 900;
 }
 
 #homeproduct .container-fluid {
   max-width: 1200px;
 }
-#homeproduct .cont{
-    box-Shadow: 2px 2px 36px 8px #06060614 ;
-
+#homeproduct .cont {
+  box-shadow: 2px 2px 36px 8px #06060614;
 }
 
 #homeproduct .card {
@@ -23,7 +17,6 @@
     0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
   border: 0;
   border-radius: 1rem;
-
 }
 
 #homeproduct.card-img,
@@ -153,7 +146,6 @@
 #homeproduct .price-hp {
   font-size: 1rem;
   font-weight: 600;
-  color: darkgray;
 }
 
 #homeproduct .amz-hp {
@@ -196,8 +188,8 @@
     max-width: 200px;
   }
 }
-#homeproduct .productbodycolor{
-    color:initial;
+#homeproduct .productbodycolor {
+  color: initial;
 }
 
 #homeproduct .inner-gallery {

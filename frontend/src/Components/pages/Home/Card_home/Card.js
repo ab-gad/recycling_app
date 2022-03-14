@@ -9,7 +9,7 @@ function Card(props) {
                 <div className='bg-white pt-4 pb-3 buttom-rounded'> 
                     <img src={imgSrc} className="card-img-top" alt="photo" />
                     
-                    <h4 className='my-3'> {title} </h4>
+                    <h4 className='my-3 text-dark'> {title} </h4>
                 </div>
                 <div className="card-body text-white small py-3 ">
                     <p className="card-text" style={{height:'6rem',padding:'23px 0',overflow:'hidden'}}> {text} </p>

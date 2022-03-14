@@ -21,7 +21,7 @@ const Navbar = (props) => {
     About: "من نحن",
     Services: "خدمات",
     Events: "الأحداث",
-    CountactUs: "اتصل بنا",
+    CountactUs: "تواصل",
     Products: "منتجات",
     Login: " تسجيل الدخول",
     SignUp:"انشاء حساب",

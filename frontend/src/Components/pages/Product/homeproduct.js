@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import PageTitle from "../../page_title";
 import "./homeproducts.css";
+import Spinner from "../../../spinner/spinner";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useGetAllProductsQuery } from "../../../features/productsApi";
@@ -85,14 +86,14 @@ const Homeproduct = () => {
 
       <div className="container my-5" id="homeproduct">
         {isLoading ? (
-          <p>loading...</p>
+          <Spinner />
         ) : error ? (
           <p>error occured</p>
         ) : (
           <div className="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3 ">
             {data?.map((product) => (
               <div key={product.id} className="col">
-                <div className="card h-100 shadow-sm">
+                <div className="card h-100 shadow">
                   {" "}
                   <img
                     src={product.image}
@@ -101,16 +102,12 @@ const Homeproduct = () => {
                   />
                   <hr />
                   <div className="card-body productbodycolor">
-                    <div className=" mb-3">
-                      {" "}
-                      <span className="float-start badge rounded-pill bg-primary"></span>{" "}
-                      <span className="float-end price-hp">
-                        {product.price}$
-                      </span>{" "}
-                    </div>
                     <h2 className=" text-center">{product.title}</h2>
-                    <h5 className="">{product.description}.</h5>
-                    <div className="text-center my-4">
+                    <h5 className="text-secondary">{product.description}.</h5>
+                    <h4 className="text-center price-hp mb-2 fw-bold">
+                      {product.price}$
+                    </h4>
+                    <div className="text-center">
                       {" "}
                       <button
                         onClick={() => handleAddToCart(product)}

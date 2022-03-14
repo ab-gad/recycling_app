@@ -38,3 +38,7 @@
 #chat .btn[type="submit"]:hover {
   background: #00a300;
 }
+#chat .MuiPaper-root {
+  background-color: #eee;
+  border-radius: 9px;
+}

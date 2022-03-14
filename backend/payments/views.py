@@ -14,8 +14,7 @@ class StripeCheckoutView(APIView):
             checkout_session = stripe.checkout.Session.create(
                 line_items=[
                     {
-                        # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                        'price': 'price_1KZcffJ336fqgY5l80sj5FGn',
+                        'price': 'price_1KdBTBJ336fqgY5l2gvj3dNi',
                         'quantity': 1,
                     },
                 ],

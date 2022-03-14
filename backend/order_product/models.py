@@ -23,4 +23,4 @@ class OrderProducts(models.Model):
         ordering=('-order_date',)
 
     def __str__(self):
-        return self.id
+       return str( self.id )
